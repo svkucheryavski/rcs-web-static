@@ -1,0 +1,1778 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta http-equiv="Content-Language" content="ru">
+<title>Статистика</title>
+<style>
+<!--
+h1           {
+	font-family: Arial;
+	font-size: 14pt;
+	font-weight: bold;
+	text-align: Center;
+	padding-top: 75px;
+}
+#menu        { font-family: Tahoma; font-size: 12pt; font-weight: bold }
+h2           {
+	font-family: Arial;
+	font-size: 12pt;
+	font-style: italic;
+	padding-top: 25px;
+}
+.header      { font-family: Arial; font-size: 18pt; letter-spacing: 1; font-weight: bold; 
+               text-align: Center }
+ .style2 {
+	text-align: center;
+}
+.address {
+	font-family: Arial, Helvetica, sans-serif;
+}
+.style41 {
+	border-width: 0;
+}
+.style45 {
+	vertical-align: middle;
+}
+.menu {
+	border-width: 0px;
+	font-family: Tahoma;
+	font-size: 12px;
+	font-weight: bold;
+}
+.style49 {
+	margin-left: 40px;
+}
+.style53 {
+	margin-left: 80px;
+}
+.prog {
+	font-family: "Courier New", Courier, monospace;
+}
+.style54 {
+	border-width: 0;
+	vertical-align: middle;
+}
+-->
+</style>
+        <title></title>
+</head>
+
+<body>
+
+  <center>
+  <table border="0" width="95%" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="100%" >
+</center>
+      <h3 class="header">Статистика</h3>
+      <dl>
+        <div align="center">
+          <center>
+          <dt>© <span lang="en-us">2011 </span>Алексей Померанцев&nbsp;</dt>
+          </center>
+        </div>
+        <div align="center">
+          <center>
+          <dt><a href="../index.html">Российское хемометрическое общество</a></dt>
+          </center>
+        </div>
+      </dl>
+        <h1><a name="Contents"></a>Содержание&nbsp;</h1>
+        <dl>
+          <table border="0" cellpadding="0" cellspacing="0" width="95%">
+            <tr>
+              <td style="width: 50%" valign="top">
+                <dl>
+					<dt><a href="#Ch0"><b>Введение</b></a></dt>
+          <dt><a href="#Ch1"><b>1. Базовые сведения</b></a></dt>
+          <dd><strong><a href="#Ch1.1">1.1 Вероятность события </a></strong></dd>
+					<dd><b><a href="#Ch1.2">1.2. Случайная величина&nbsp;</a></b></dd>
+          <dd><b><a href="#Ch1.3">1.3. Распределение случайной величины</a></b></dd>
+          <dd><a href="#Ch1.4"><b>1.4. Математическое ожидание</b></a></dd>
+          <dd><b><a href="#Ch1.5">1.5.<span lang="en-us"> Дисперсия и СKО</span></a></b></dd>
+          <dd><b><a href="#Ch1.6">1.6. Моменты</a></b></dd>
+          <dd><b><a href="#Ch1.7">1.7. Квантили</a></b></dd>
+          <dd><b><a href="#Ch1.8">1.8. Многомерные распределения</a></b></dd>
+          <dd><b><a href="#Ch1.9">1.<span lang="en-us">9</span>. Ковариации и 
+			корреляции</a></b></dd>
+          <dd><b><a href="#Ch1.10">1.<span lang="en-us">1</span>0. Функции от 
+			случайной величины</a></b></dd>
+					<dd><span lang="en-us"><b><a href="#Ch1.11">1.1<span lang="ru">1</span>.Стандартизация 
+					случайн<span lang="ru">ой</span> величин<span lang="ru">ы</span></a></b></span></dd>
+          <dt><b><a href="#Ch2">2. Основные распределения</a></b></dt>
+          <dd><b><a href="#Ch2.1">2.1.<span lang="en-us"> </span>Биномиальное&nbsp;распределение</a></b></dd>
+          <dd><b><a href="#Ch2.2">2.2. Равномерное распределение</a></b></dd>
+          <dd><b><a href="#Ch2.3">2.3. Нормальное распределение</a></b></dd>
+          <dd><b><a href="#Ch2.4">2.4. Распределение хи-квадрат</a></b></dd>
+					<dd><a href="#Ch2.5"><span lang="en-us"><b>2.5</b>.<b> </b>
+					</span><b>Распределение Стьюдента</b></a></dd>
+					<dd><b><a href="#Ch2.6">2.6. Распределение Фишера</a></b></dd>
+					<dd><b><a href="#Ch2.7">2.7. Многомерное нормальное 
+					распределение</a></b></dd>
+					<dd><b><a href="#Ch2.8">2.8. Генерация случайных чисел </a>
+					</b></dd>
+          <dt><b><a href="#Ch3"><span lang="en-us">3</span>. Оценка параметров</a> </b></dt>
+          <dd><b><a href="#Ch3.1"><span lang="en-us">3</span>.1.<span lang="en-us"> 
+			Выборка</span></a></b></dd>
+          <dd><b><a href="#Ch3.2">3.2. Выбросы и маргиналы</a></b></dd>
+					<dd><b><a href="#Ch3.3">3.3. Генеральная совокупность</a></b></dd>
+					<dd><b><a href="#Ch3.4">3.4. Статистика</a></b></dd>
+					<dd><b><a href="#Ch3.5">3.5. Выборочное среднее и выборочная 
+					дисперсия</a></b></dd>
+					<dt></dt>
+				</dl>
+				</td>
+              <td valign="top">
+                <dl>
+					<dd><b><a href="#Ch3.6">3.6. Выборочные ковариации и 
+					корреляции</a></b></dd>
+					<dd><b><a href="#Ch3.7">3.7. Вариационный ряд и порядковые 
+					статистики</a></b></dd>
+					<dd><b><a href="#Ch3.8">3.8. Выборочная функция 
+					распределения и гистограмма</a></b></dd>
+					<dd><b><a href="#Ch3.9">3.9. Метод моментов</a></b></dd>
+					<dd><b><a href="#Ch3.10">3.10. Метод максимума правдоподобия</a></b></dd>
+					<dt><a href="#Ch4"><b>4. Свойства оценок</b></a></dt>
+          <dd><b><a href="#Ch4.1"><span lang="en-us">4</span>.1. Состоятельность</a></b></dd>
+					<dd><b><a href="#Ch4.2">4.2. Смещенность</a></b></dd>
+					<dd><b><a href="#Ch4.3">4.3. Эффективность</a></b></dd>
+					<dd><b><a href="#Ch4.4">4.4. Робастность</a></b></dd>
+					<dd><b><a href="#Ch4.5">4.5. Нормальная выборка</a></b></dd>
+          <dt><b><a href="#Ch5">5. Доверительное оценивание</a></b></dt>
+          <dd><b><a href="#Ch5.1"><span lang="en-us">5</span>.1.Доверительная 
+			область</a></b></dd>
+          <dd><b><a href="#Ch5.2">5.2. Доверительный интервал</a></b></dd>
+					<dd><b><a href="#Ch5.3">5.3. Пример построения 
+					доверительного интервала</a></b></dd>
+					<dd><b><a href="#Ch5.4">5.4. Вычисление доверительного 
+					интервала для нормального 
+					распределения</a></b></dd>
+          <dt><b><a href="#Ch6">6. Проверка гипотез</a></b></dt>
+          <dd><b><a href="#Ch6.1">6.1.<span lang="en-us"> Постановка задачи</span></a></b></dd>
+					<dd><b><a href="#Ch6.2">6.2. Проверка гипотез</a></b></dd>
+					<dd><b><a href="#Ch6.3">6.3. Ошибки 1-го и 2-го родов</a></b></dd>
+					<dd><b><a href="#Ch6.4">6.4. Пример проверки гипотезы</a></b></dd>
+					<dd><b><a href="#Ch6.5">6.5. Критерий согласия хи-квадрат</a></b></dd>
+					<dd><b><a href="#Ch6.6">6.6. F-критерий </a></b></dd>
+					<dt><b><a href="#Ch7">7. Регрессия</a></b></dt>
+          <dd><b><a href="#Ch7.1">7.1. Простейшая регрессия</a></b></dd>
+					<dd><b><a href="#Ch7.2">7.2. Метод наименьших квадратов</a></b></dd>
+					<dd><b><a href="#Ch7.3">7.3. Множественная регрессия</a></b></dd>
+					<dt><strong><a href="#Conclusions">Заключение</a></strong></dt>
+				</dl>
+				</td>
+            </tr>
+          </table>
+        </dl>
+        <h1><a name="Ch0"></a>Введение&nbsp;</h1>
+        <p>В этом документе собраны основные сведения из математической 
+		статистики, которые используются в хемометрике. Приведенный текст не 
+		может служить учебником по статистике –&nbsp; это скорее конспект, 
+		краткий справочник по математической статистике. Более глубокое и 
+		систематическое изложение может быть найдено в
+		<a href="references.htm">
+        литературе</a>.&nbsp;</p>
+<p>Изложение иллюстрируется примерами, выполненными в рабочей книге Excel <em>
+<a href="statistics/Statistics.xls"><span lang="en-us">Statistics</span>.xls</a></em>, 
+которая сопровождает этот документ.</p>
+      <p align="center"><b><a href="moffice.htm">Важная информация о работе с 
+		файлом <span lang="en-us">Statistics</span>.xls</a>&nbsp;</b></p>
+Ссылки на примеры помещены в текст как объекты Excel. 
+      <p class="style2"><b><a href="index.html">Другие 
+		пособия по хемометрике</a></b></p>
+          <p><a href="#Contents">Содержание</a>
+          <a name="Ch1"></a>
+        </p>
+        <h1>1. Базовые сведения<a name="Ch1.1"></a> </h1>
+        <h2><span lang="en-us">1.1. </span>Вероятность события</h2>
+          <p>В мире часто происходят события, исход которых не предопределен 
+			заранее. Всем известен хрестоматийный пример с подбрасыванием 
+			монетки, завершающийся случайным событием: выпадением орла или 
+			решки. Таким случайным событиям можно приписать вероятность – число 
+			от нуля до единицы. Однако не у всякого события может быть 
+			вероятность. Ключевым условием является повторяемость. Поэтому 
+			бессмысленно спрашивать, какова вероятность того, что завтра пойдет 
+			дождь. У «завтра» нет повторяемости – это уникальное событие, 
+			которое нельзя повторить. Однако можно говорить о вероятности того, 
+			что 7 июля будет дождь. Событие «7 июля» повторяется каждый год, и 
+			дождю в этот день можно приписать некоторую вероятность.
+        </p>
+<p>Понятие вероятности можно применять только к тем событиям, которые еще не 
+произошли, или исход которых нам пока не известен. Так, например, мы можем 
+рассчитать вероятность выигрыша в лотерею, но, как только нам стал известен 
+результат розыгрыша, т.е. событие уже произошло – рассчитанная вероятность 
+теряет всякий смысл.
+        </p>
+<p>Еще одним важным понятием является пространство событий – это полный набор 
+всех возможных исходов. Так в опыте с монеткой есть только два события: орел и 
+решка. Рассмотрим другой опыт – измерение роста случайно выбранного человека. 
+Если точность измерения один сантиметр, то пространство событий – это набор 
+чисел от 30 см (новорожденный), до 251 см (рекорд книги Гиннеса) – всего 222 
+варианта. Однако если мы меряем рост с точность до 1 метра, то в пространстве 
+оказываются только три события: меньше 1 м, от 1 м до 2 м, и больше 2 м.
+        </p>
+        <p><a href="#Contents">Содержание</a>&nbsp; <a name="Ch1.2"></a> </p>
+        <h2>1.2. Случайная величина </h2>
+        <p>Случайная величина — это переменная, значение которой до опыта 
+		(реализации) неизвестно. Всякая случайная величина характеризуется:</p>
+<ul>
+	<li>множеством своих возможных значений (пространство событий)</li>
+	<li>неограниченным числом повторения реализаций</li>
+	<li>вероятностью попадания в любую наперед заданную область во множестве 
+	значений </li>
+</ul>
+<p>Множество значений может быть дискретным, непрерывным и 
+дискретно-непрерывным. Соответственно именуются и случайные величины. </p>
+        <p><a href="#Contents">Содержание</a>.<a name="Ch1.3"></a>
+      </p>
+        <h2>1.3. Распределение случайной величины </h2>
+        <p>Пусть <em>X</em> – это случайная величина, множеством возможных значений которой 
+		являются действительные числа. Рассмотрим<span lang="en-us"> </span>
+		вероятность события, что реализация <em>X</em> не больше заданного числа
+		<em>x</em>. Если рассматривать эту вероятность в зависимости от величины
+		<em>x</em>, то получится функция <em>F</em>(<em>x</em>), называемая 
+		(кумулятивной) <em>функцией распределения</em> случайной величины – </p>
+          <table border="0" cellpadding="0" cellspacing="0" width="95%">
+            <tr>
+              <td width="90%">
+                <p align="center"><a name="Eq1"></a><em>F</em>(<em>x</em>) = Pr{<em>X</em>&#8804;<em>x</em>}.</td>
+              <td>
+                <p align="center">(3)</td>
+            </tr>
+          </table>
+        <p>Функция распределения это неубывающая функция, которая стремится к 0 при малых <i>x</i>, и 
+		стремится к 1 при больших значениях аргумента. </p>
+<p>То, что случайная величина <em>X</em> имеет функцию распределения <em>F</em> обозначается так 
+–</p>
+<p class="style2"><em>X</em> ~ <em>F.</em> </p>
+<p>Распределение называется симметричным (относительно точки <em>a</em>) если <em>F</em>(<em>a</em>+<em>x</em>)=1–<em>F</em>(<em>a</em>–<em>x</em>). </p>
+<p>Для дискретных случайная величина функция распределения кусочно-постоянна со скачками в точках <em>x</em>=<em>x<sub>i</sub></em>. </p>
+<p>Производная функция распределения <em>F</em>(<em>x</em>) называется <em>плотностью вероятности</em> 
+<em>f</em>(<em>x</em>)&nbsp; </p>
+<p class="style2"><img src="statistics/image01.gif" class="style45">. .<samp><a name="Fig01"></a></samp></p>
+        <p></p>
+        <p align="center">
+		<span lang="en-us">&nbsp;<img src="statistics/Fig01a.png">
+		<img src="statistics/Fig01b.png" width="343" height="343"></span></p>
+<p align="center"><samp>Рис. 1 плотность вероятности <em>f</em>(<em>x</em>) и ф.р <em>F</em>(<em>x</em>) 
+случайной величины </samp></p>
+<p><a href="#Contents">Содержание</a>.<a name="Ch1.4"></a><h2>1.4. 
+Математическое ожидание </h2>
+        <p>Пусть <em>X</em> – это случайная величина с плотностью вероятности <em>f</em>(<em>x</em>). 
+        <p><em>
+		Математическим ожиданием X</em> называется величина 
+        <p class="style2">
+		<img src="statistics/image02.gif" class="style45">.&nbsp;</p>
+        <p align="left"><a href="#Contents">Содержание</a>.<a name="Ch1.5"></a></p>
+        <h2>1.5. Дисперсия и СKО </h2>
+      <p>Пусть <em>X</em> – это случайная величина с плотностью вероятности <em>f</em>(<em>x</em>). </p>
+<p><em>Дисперсией</em>&nbsp;<em>X</em> называется 
+		величина </p>
+<p class="style2"><img src="statistics/image03.gif" class="style45">.</p>
+<p>Если из дисперсии извлечь квадратный корень, то получится&nbsp; величина, 
+называемая<em> среднеквадратичным отклонением (СКО)</em>. </p>
+<p align="left"><a href="#Contents">Содержание</a>.<a name="Ch1.6"></a>
+        <h2 align="left">1.6. Моменты </h2>
+        <p>Пусть <em>X</em> – это случайная величина с плотностью вероятности <em>f</em>(<em>x</em>). </p>
+<p><em>Моментом</em> порядка <em>n</em> 
+		называется величина </p>
+<p class="style2"><img src="statistics/image04.gif" class="style45">.</p>
+<p>По определению <em>&#956;</em><sub>1</sub> = E(<em>X</em>). </p>
+<p><em>Центральным моментом</em>&nbsp; порядка <em>n</em> называется величина </p>
+          <table border="0" cellpadding="0" cellspacing="0" width="95%">
+            <tr>
+              <td width="90%">
+                <p align="center"><b><a name="Eq2"></a>&nbsp;<img src="statistics/image05.gif" class="style45">.</b></td>
+              <td>
+                <p align="center">(<span lang="en-us">2</span>)</td>
+            </tr>
+          </table>
+        <p>По определению <em>m</em><sub>2</sub>= V(<em>X</em>). </p>
+<p align="left"><a href="#Contents">Содержание</a> <a name="Ch1.7"></a>
+      <h2 align="left">1.7. Квантили</h2>
+        <p align="left">Пусть <em>F</em>(<em>x</em>) – (кумулятивная) функция 
+		распределения 
+		случайной величины 
+<p class="style2"><img src="statistics/image01.gif" class="style45">.<p align="left">
+Рассмотрим функцию <em>F</em><sup>–1</sup>(<em>P</em>),&nbsp;0&#8804;<em>P</em>&#8804;1, 
+обратную к <em>F</em>(<em>x</em>) т.е.<p class="style2"><em>F</em><sup>–1</sup>(<em>F</em>(<em>x</em>))=<em>x</em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<em>F</em>(<em>F</em><sup>–1</sup>(<em>P</em>))=<em>P</em> 
+.<p align="left">Функция <em>F</em><sup>–1</sup>(<em>P</em>) называется
+<a href="http://ru.wikipedia.org/wiki/Квантиль"><em>P-квантилем</em></a> 
+распределения <em>F</em>. 
+<p align="left">Величина квантиля для <em>P</em>=0.5 называется <em>медианой</em> 
+распределения. 
+<p align="left">Квантили для <em>P</em>=0.25, 0.75 называются <em>квартилями</em>, 
+а для <em>P</em>=0.01, 0.02, …, 0.99 называются <em>процентилями.</em> 
+        <p align="left"><a href="#Contents">Содержание</a> <a name="Ch1.8"></a> </p>
+<h2 align="left">
+1.8. Многомерные распределения </h2>
+<p>Две (и более) случайные величины можно рассматривать совместно. Совместная 
+(кумулятивная) функция распределения двух случайных величин <em>X</em> и <em>Y</em> 
+определяется так </p>
+<p class="style2"><img src="statistics/image06.gif" class="style45">.</p>
+<p>Так же, как и в одномерном случае, функция <em>f</em>(<em>x</em>, <em>y</em>) 
+называется плотностью вероятности . </p>
+<p>Случайные величины <em>X</em> и <em>Y</em> называются <em>независимыми</em>, если их 
+совместная плотность вероятности равна произведению частных плотностей. </p>
+          <table border="0" cellpadding="0" cellspacing="0" width="95%">
+            <tr>
+              <td width="90%">
+                <p align="center"><b><a name="Eq3"></a>&nbsp;</b><em>f</em>(<em>x</em>,
+				<em>y</em>)= <em>f</em>(<em>x</em>) <em>f</em>(<em>y</em><span lang="en-us">)</span> 
+				.</td>
+              <td>
+                <p align="center">(3)</td>
+            </tr>
+          </table>
+        <p align="left"><a href="#Contents">Содержание</a><span lang="en-us">
+<a name="Ch1.9"></a></span>
+<h2 align="left">1.<span lang="en-us">9</span>. Ковариации и корреляции </h2>
+        <p align="left"><em>Ковариацией</em> случайных величин <em>X</em> и <em>Y</em> называется 
+		(детерминированная) величина
+        <p class="style2">
+		<img src="statistics/image07.gif" class="style45">,<p align="left">
+где <em>f</em>(<em>x</em>, <em>y</em>)&nbsp; – совместная плотность вероятности . Величина
+        <p class="style2">
+		<img src="statistics/image08.gif" width="169" height="47"><p align="left">
+называется <em>корреляцией</em> случайных величин <em>X</em> и <em>Y</em>.
+        <p align="left">Если случайные величины <em>X</em> и <em>Y</em> независимы, то их 
+		ковариация и корреляция равны нулю. Обратное не верно.
+        <p align="left">Для совместных распределений многомерных случайных 
+		величин <em>X</em><sub>1</sub>,…,
+		<em>X<sub>n</sub></em> <em>ковариационная матрица</em> <strong>C</strong>
+        <p class="style2"><em>c<sub>ij</sub></em>=cov(<em>X<sub>i</sub></em>,
+		<em>X<sub>j</sub></em>),&nbsp;&nbsp;&nbsp;&nbsp; <em>i</em>, <em>j</em>=1,…, <em>
+		n</em>
+        <p align="left">играет ту же роль, что и дисперсия в одномерном 
+		распределении.
+        <p align="left"><a href="#Contents">Содержание</a><span lang="en-us">
+<a name="Ch1.10"></a></span>
+<h2 align="left">1.<span lang="en-us">1</span>0. Функции от случайной величины</h2>
+<p>Функция от случайной величины также является случайной величиной. </p>
+<p>Пусть случайная величина <em>X</em> имеет функцию распределения <em>F<sub>X</sub></em>(<em>x</em>), 
+и случайные величины <em>X</em> и <em>Y</em> связаны взаимно однозначными соотношениями </p>
+<p class="style2"><em>y</em>=&#966;(<em>x</em>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <em>
+x</em>=&#968;(<em>y</em>) .</p>
+<p>Если &#966;(<em>x</em>) – возрастающая функция, то функция распределения и квантили случайной 
+величины <em>Y</em> 
+определяются так </p>
+<p class="style2"><em>F<sub>Y</sub></em>(<em>y</em>) = <em>F<sub>X</sub></em>(&#968;(<em>y</em>))&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<em>y</em>(<em>P</em>)= &#966;(<em>x</em>(<em>P</em>)) .</p>
+<p>Если &#968;(<em>y</em>) – дифференцируемая функция, то плотность вероятности случайной 
+величины <em>Y</em> 
+вычисляется по формуле </p>
+<p class="style2"><img src="statistics/image09.gif" width="149" height="48"></p>
+<p>Для линейных преобразований <em>y</em>=<em>ax</em>+<em>b</em> </p>
+<p class="style2"><img src="statistics/image10.gif" class="style45">,</p>
+          <table border="0" cellpadding="0" cellspacing="0" width="95%">
+            <tr>
+              <td width="90%">
+                <p align="center"><b><a name="Eq4"></a></b>E(<em>aX</em>+<em>b</em>)=<em>a</em>E(<em>X</em>)+<em>b,</em>&nbsp;&nbsp;<span lang="en-us">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span lang="en-us">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				</span>&nbsp; V(<em>aX</em>+<em>b</em>)=<em>a</em><sup>2</sup>V(<em>X</em>),
+				<p align="center">E(<em>X</em>+<em>Y</em>)=E(<em>X</em>)+ E(<em>Y</em>),&nbsp;&nbsp;&nbsp;<span lang="en-us">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				</span>&nbsp;V(<em>X</em>+<em>Y</em>)=V(<em>X</em>)+ V(<em>Y</em>)+cov(<em>X</em>,
+				<em>Y</em>)
+				.</td>
+              <td>
+                <p align="center">(<span lang="en-us">4</span>)</td>
+            </tr>
+          </table>
+<a href="#Contents">Содержание</a><span lang="en-us">
+<a name="Ch1.11"></a></span> 
+<h2 align="left">1.<span lang="en-us">1</span>1. Стандартизация случайной 
+величины </h2>
+<p>Если&nbsp;случайная величина <em>X</em> имеет математическое ожидание <span lang="en-us"><em>m</em>
+</span>и дисперсию <em>s</em><sup>2</sup>:</p>
+<p class="style2">E(<em>X</em>)=<em>m,</em>&nbsp;<span lang="en-us">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>&nbsp;&nbsp; V(<em>X</em>)=<em>s</em><sup>2</sup>, </p>
+<p>то случайная величина </p>
+<p class="style2"><em>Y</em>=(<em>X</em>–<em>m</em>)/<em>s</em> </p>
+<p>называется стандартизованной (нормированной), поскольку </p>
+<p class="style2">E(<em>Y</em>)=0&nbsp;&nbsp;&nbsp;<span lang="en-us">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>&nbsp;V(<em>Y</em>)=1. </p>
+<p align="left"><a href="#Contents">Содержание</a><a name="Ch2"></a>
+        <h1 align="left">2. Основные распределения<a name="Ch2.1"></a></h1>
+        <h2 align="left">2.1. Биномиальное распределение&nbsp; </h2>
+      <p align="left">Дискретная случайная величина <em>X</em> имеет дискретное
+		<a href="http://ru.wikipedia.org/wiki/Биномиальное_распределение">
+		биномиальное распределение</a>, если ее плотность вероятности имеет вид 
+<p class="style2"><img src="statistics/image11.gif" class="style45">,<p align="left">
+где <img src="statistics/image12.gif" width="108" height="48" class="style45"> – 
+биномиальный коэффициент. 
+<p align="left">Биномиальное распределение – это распределение числа успехов <em>
+k</em> в серии из независимых <em>n</em> опытов, при условии, что вероятность успеха в 
+каждом опыте есть <em>p</em>. 
+<p align="left">Математическое ожидание и дисперсия, соответственно, равны 
+<p align="left"> 
+          <table border="0" cellpadding="0" cellspacing="0" width="95%">
+            <tr>
+              <td width="90%">
+                <p align="center"><b><a name="Eq5"></a> </b>E(<em>X</em>)=<em>np</em>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+				V(<em>X</em>)=<em>np</em>(1&#8722;<em>p</em>).</td>
+              <td>
+                <p align="center">(<span lang="en-us">5</span>)</td>
+            </tr>
+          </table>
+        <p align="left">При больших <em>n</em> биномиальное распределение хорошо 
+		приближается <a href="#Ch2.3">нормальным</a> с параметрами <a href="#Eq5">(5)</a> .<samp><a name="Fig02"></a></samp>&nbsp;
+        <p align="center">
+		<a href="statistics/Statistics.xls#Binomial!K9">
+		<img src="statistics/Fig02a.png" width="342" height="342" class="style41"></a>
+		<span lang="en-us">&nbsp;<a href="statistics/Statistics.xls#Binomial!R10"><img src="statistics/Fig02b.png" width="342" height="342" class="style41"></a></span><p align="center"><samp>
+Рис. 2 плотность вероятности и функция распределения биномиального распределения </samp></p>
+<p>Для вычисления биномиального распределения в Excel используется стандартная 
+функция
+<a href="http://office.microsoft.com/en-us/excel-help/redir/HP005209005.aspx" class="prog">
+<strong>BINOMDIST</strong></a> (<a href="http://office.microsoft.com/ru-ru/excel-help/HP005209005.aspx" class="prog"><strong>БИНОМРАСП</strong></a>). </p>
+<p><em><strong>Синтаксис</strong> </em></p>
+<p><span class="prog"><strong>BINOMDIST</strong></span>(<span class="prog"><strong>number_s</strong></span>=<em>k</em>, 
+<strong class="prog">trials</strong>=<em>n</em>, 
+<strong class="prog">probability_s</strong>=<em>p</em> ,<span class="prog">cumulative</span>=TRUE|FALSE) 
+</p>
+<dl>
+	<dd>Если&nbsp;<span class="prog">cumulative</span>=TRUE, то возвращается 
+кумулятивная функция распределения, а если <span class="prog">cumulative</span>=FALSE 
+	, то возвращается плотность вероятности </dd>
+</dl>
+<p align="center">
+		<a href="statistics/Statistics.xls#Binomial!D6">
+		<img src="statistics/Fig03.png" class="style41"></a><p align="center"><samp>
+Рис. 3 Пример вычисления биномиального распределения </samp></p>
+      <p><a href="#Contents">Содержание</a><a name="Ch2.2"></a>
+        </p>
+        <h2 align="left">2.2. Равномерное распределение </h2>
+      <p align="left">Случайная величина <em>X</em>
+		<a href="http://ru.wikipedia.org/wiki/Непрерывное_равномерное_распределение">
+		распределена равномерно</a> на отрезке [<em>a</em>, <em>b</em>], &nbsp;если 
+		ее функция распределения <em>U</em>(<em>x</em>|<em>a</em>,<em>b</em>) и, 
+		соответственно, плотность вероятности <em>u</em>(<em>x</em>|<em>a</em>,<em>b</em>) имеют вид &nbsp;<p class="style2">
+<img src="statistics/image13.gif" width="440" height="91">&nbsp;<p align="left">
+Математическое ожидание и дисперсия, соответственно, равны 
+        <p class="style2">E(<em>X</em>)=0.5(<em>a</em>+<em>b</em>),&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; V(<em>X</em>)=(<em>b</em>&#8722;<em>a</em>)<sup>2</sup>/12&nbsp; 
+		.<samp><a name="Fig04"></a></samp> 
+        <p align="center">
+		<span lang="en-us">
+		<img src="statistics/Fig04a.png" width="336" height="343">&nbsp;&nbsp;&nbsp;
+		<img src="statistics/Fig04b.png" width="336" height="343"></span><p class="style2"><samp>
+Рис. 4 Плотность вероятности и функция распределения равномерного распределения </samp> </p>
+      <p>То, что случайная величина <em>X</em> распределена равномерно на отрезке[<em>a</em>,
+		<em>b</em>], будем обозначать </p>
+<p class="style2"><em>X</em> ~ U(<em>a</em>, <em>b</em>)<span lang="en-us">.</span> 
+&nbsp;</p>
+<p align="left"><a href="#Contents">Содержание</a><a name="Ch2.3"></a>
+        <h2 align="left">2.3. Нормальное распределение </h2>
+        <p><a href="http://ru.wikipedia.org/wiki/Нормальное_распределение">
+		Нормальное (или гауссово) распределение</a> – это, наверное, самое 
+		важное распределение в статистике.&nbsp;Плотность этого распределения имеет 
+		вид &nbsp;</p>
+<table border="0" cellpadding="0" cellspacing="0" width="95%">
+	<tr>
+		<td width="90%">
+		<p align="center"><b><a name="Eq6"></a></b>
+		<img src="statistics/image14.gif" width="236" height="51"><span lang="en-us">.</span></td>
+		<td>
+		<p align="center">(6)</td>
+	</tr>
+</table>
+      <p>Нормальное распределение зависит от двух параметров: <em>m</em> и &#963;<sup>2</sup> 
+		и оно обычно обозначается N(<em>m</em>, &#963;<sup>2</sup>)&nbsp;т.е. </p>
+<p class="style2"><em>X</em> ~ N(<em>m</em>, &#963;<sup>2</sup>)<span lang="en-us">.</span> </p>
+<p>Математическое ожидание и дисперсия нормального распределения равны, 
+соответственно </p>
+<p class="style2">E(<em>X</em>)=<em>m</em>,&nbsp;<span lang="en-us">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>&nbsp;V(<em>X</em>)=&#963;<sup>2</sup>. </p>
+<p>Нормальное распределение называется <em>стандартным</em>,&nbsp;если <em>m</em>=0,&nbsp;&#963;<sup>2</sup>=1. </p>
+<p>Если <em>X</em><sub>0</sub> ~ N(0, 1), то&nbsp;<em>X</em>= <em>m</em>+ &#963;<em>X</em><sub>0</sub>&nbsp; 
+~ N(<em>m</em>, &#963;<sup>2</sup>)<span lang="en-us">.</span></p>
+<p>Кумулятивная функция стандартного нормального распределения&nbsp; &nbsp;</p>
+<p class="style2"><img src="statistics/image15.gif" width="108" height="51"></p>
+<p>является специальной функцией, т.к. она не выражается через 
+элементарные функции. 
+</p>
+<p>Квантили стандартного нормального распределения 
+обозначаются &#934;<sup>–1</sup>(<em>P</em>).
+</p>
+<p>Стандартное нормальное распределение симметрично, поэтому для 
+него верны следующие соотношения</p>
+<p class="style2">&#934;(–<em>x</em>)=1– &#934;(<em>x</em>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&#934;<sup>–1</sup>(1–<em>P</em>) = – &#934;<sup>–1</sup>(<em>P</em>)&nbsp; <samp><a name="Fig05"></a></samp>
+</p>
+        <p align="center">
+		<span lang="en-us"><a href="statistics/Statistics.xls#Normal!K9">
+		<img src="statistics/Fig05b.png" width="342" height="342" class="style41"></a>&nbsp;&nbsp;&nbsp;
+		<a href="statistics/Statistics.xls#Normal!Q9">
+		<img src="statistics/Fig05a.png" width="342" height="342" class="style41"></a></span><p align="center"><samp>
+Рис. 5 Функция распределения и плотность вероятности нормального распределения </samp></p>
+      <p align="left">Для вычисления нормального распределения в Excel 
+		используется стандартные функции: <strong><span class="prog">
+		<a href="http://office.microsoft.com/en-us/excel-help/normdist-HP005209192.aspx">
+		NORMDIST</a></span><span lang="en-us"> </span></strong>(<strong class="prog"><a href="http://office.microsoft.com/ru-ru/excel-help/HP005209192.aspx">НОРМРАСП</a></strong>) 
+		и <strong class="prog">
+		<a href="http://office.microsoft.com/en-us/excel-help/normsdist-HP005209194.aspx">
+		NORMSDIST</a></strong> (<a href="http://office.microsoft.com/ru-ru/excel-help/redir/HP005209194.aspx" class="prog"><strong>НОРМСТРАСП</strong></a>), 
+		а также <strong class="prog">
+		<a href="http://office.microsoft.com/en-us/excel-help/norminv-HP005209193.aspx">
+		NORMINV</a></strong> (<strong class="prog"><a href="http://office.microsoft.com/ru-ru/excel-help/redir/HP005209193.aspx">НОРМОБР</a></strong>) 
+		и <strong class="prog">
+		<a href="http://office.microsoft.com/en-us/excel-help/normsinv-HP005209195.aspx">
+		NORMSINV</a></strong> (<strong class="prog"><a href="http://office.microsoft.com/ru-ru/excel-help/redir/HP005209195.aspx">НОРМСТОБР</a></strong>)<span lang="en-us">.</span><p align="left"><em><strong>Синтаксис </strong></em>
+<p align="left"><strong class="prog">NORMDIST</strong>(<strong class="prog">x</strong>, 
+<strong class="prog">mean</strong>=<i>m</i>,
+<strong class="prog">standard_dev</strong>= &#963;, <span class="prog">cumulative</span>=TRUE|FALSE)
+<p align="left" class="style49">Если <span class="prog">cumulative</span>=TRUE 
+то возвращается кумулятивная функция распределения &#934;(<em>x</em>|<em>m</em>, &#963;<sup>2</sup>), 
+а если <span class="prog">cumulative</span>=FALSE , то 
+возвращается плотность <samp>
+вероятности </samp><span lang="en-us"> <a href="#Eq6">(6)</a></span>.&nbsp; 
+<p align="left"><strong><span class="prog">NORM<span lang="en-us">S</span>DIST</span></strong>(<strong>x<span class="prog"><span lang="en-us">)</span></span></strong>&nbsp;<p align="left" class="style49">
+Возвращается кумулятивная функция стандартного нормального распределения в точке <em>x</em>. 
+<p align="left"><strong class="prog">NORMINV</strong>(<strong class="prog">probability</strong>=<em>P</em>,
+<strong class="prog">mean</strong>=<em>m</em>, <span class="prog"><strong>standard_dev</strong></span>= 
+&#963;) 
+<p align="left" class="style49">Возвращается квантиль &#934;<sup>–1</sup>(<em><span lang="en-us">P</span></em>|<em>m</em>, 
+&#963;<sup>2</sup>) нормального распределения для вероятности <em>P<span lang="en-us">.</span></em> 
+<p align="left"><strong class="prog">NORMSINV</strong>(<span class="prog"><strong>probability</strong></span> =<em>P</em>)
+<p align="left" class="style49">Возвращается квантиль &#934;<sup>–1</sup>(<em>P</em>|0, 1) 
+стандартного нормального распределения для вероятности <em>P.</em><samp><a name="Fig06"></a></samp><p align="center">
+<a href="statistics/Statistics.xls#Normal!H8" class="style41">
+		<img src="statistics/Fig06.png" class="style54"></a>&nbsp;<p align="center"><samp>
+Рис.6 Пример вычисления нормального распределения </samp></p>
+        <p align="left"><a href="#Contents">Содержание</a><a name="Ch2.4"></a><h2 align="left">
+2.4. Распределение хи-квадрат </h2>
+      <p>Рассмотрим <em>N</em> независимых стандартных <a href="#Ch2.3">нормальных</a> 
+		случайных величин <em>X</em><sub>1</sub>,…,
+		<em>X<sub>n</sub></em>,…,&nbsp;<em>X<sub>N</sub></em> с нулевым мат. 
+		ожиданием и&nbsp;единичной дисперсией, т.е. </p>
+<p class="style2"><em>X<sub>n</sub></em>&nbsp;~ N(0, 1). </p>
+<p>Величина </p>
+<p class="style2"><img src="statistics/image16.gif" width="147" height="27"></p>
+<p>является случайной, распределение которой носит название
+<a href="http://ru.wikipedia.org/wiki/Распределение_хи-квадрат">хи-квадрат</a>. 
+Это распределение зависит от одного параметра – <em>N</em>, который называется 
+числом степеней свободы. Плотность вероятности распределения хи-квадрат имеет вид </p>
+<p class="style2"><img src="statistics/image17.gif" class="style45">.</p>
+<p>Распределение хи-квадрат широко используется в статистике, например, при 
+проверке гипотез.</p>
+<p>Математическое ожидание и дисперсия распределения &#967;<sup>2</sup>(<em>N</em>) 
+равны, соответственно,</p>
+<table border="0" cellpadding="0" cellspacing="0" width="95%">
+	<tr>
+		<td width="90%">
+		<p align="center"><b><a name="Eq7"></a>&nbsp;</b>E(&#967;<sup>2</sup>(<em>N</em>))=<em>N,</em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		V(&#967;<sup>2</sup>(<em>N</em>))=2<em>N</em> ,</td>
+		<td>
+		<p align="center">(7)</td>
+	</tr>
+</table>
+      <p>При больших <em>N</em> распределение хи-квадрат хорошо приближается 
+		<a href="#Ch2.3">нормальным</a> с параметрами (<a href="#Eq7">7</a>). </p>
+<p>Квантили распределения &#967;<sup>2</sup>(<em>N</em>) обозначаются &#967;<sup>–2</sup>(<em>P</em>|<em>N</em>).
+<samp><a name="Fig07"></a></samp>
+        &nbsp;</p>
+        <p align="center">
+		<a href="statistics/Statistics.xls#'Chi-Square'!M10">
+		<img src="statistics/Fig07a.png" width="342" height="342" class="style41"></a>&nbsp;&nbsp;
+		<a href="statistics/Statistics.xls#'Chi-Square'!T10">
+		<img src="statistics/Fig07b.png" width="342" height="342" class="style41"></a><p align="center"><samp>
+Рис.7 функция распределения и квантиль распределения хи-квадрат
+      </samp></p>
+        <p>Для вычисления распределения хи-квадрат в Excel используется две 
+		стандартные функции:
+		<a href="http://office.microsoft.com/en-us/excel-help/redir/HP005209010.aspx" class="prog">
+		<strong>CHIDIST</strong></a> (<a href="http://office.microsoft.com/ru-ru/excel-help/redir/HP005209010.aspx" class="prog"><strong>ХИ2РАСП</strong></a>) 
+		и
+		<a href="http://office.microsoft.com/en-us/excel-help/redir/HP005209011.aspx" class="prog">
+		<strong>CHIINV</strong></a> (<a href="http://office.microsoft.com/ru-ru/excel-help/HP005209011.aspx" class="prog"><strong>ХИ2ОБР</strong></a>).</p>
+<p><em><strong>Синтаксис</strong></em> &nbsp;</p>
+<p><strong class="prog">CHIDIST</strong>(<strong class="prog">x</strong>,<strong><span lang="en-us"> </span>
+<span class="prog">degrees_freedom</span></strong>=<em>N</em>) </p>
+<p class="style49">Возвращается значение 1 – &#967;<sup>2</sup>(<em>x</em>|<em>N</em>), где &#967;<sup>2</sup>(<em>x</em>|<em>N</em>) 
+–<span lang="en-us"> </span>кумулятивная функция распределения хи-квадрат. </p>
+<p><strong class="prog">CHIINV</strong>(<strong class="prog">probability</strong>=1–<em>P</em> 
+,<strong class="prog">degrees_freedom</strong>=<em>N</em>) </p>
+<p class="style49">Возвращается квантиль &#967;<sup>–2</sup>(1 – <em>P</em>|<em>N</em>) распределения 
+хи-квадрат для вероятности 1 – <em>P</em><span lang="en-us">.</span><samp><a name="Fig08"></a></samp>
+        </p>
+        <p align="center">
+		<a href="statistics/Statistics.xls#'Chi-Square'!D8">
+		<img src="statistics/Fig08.png" class="style41"></a><p align="center"><samp>
+Рис.8 Пример вычисления распределения хи-квадрат&nbsp;
+      </samp></p>
+<p>&nbsp;</p>
+<p align="left"><a href="#Contents">Содержание</a><a name="Ch2.5"></a><h2 align="left">
+2.<span lang="en-us">5</span>. Распределение Стьюдента </h2>
+      <p>Рассмотрим две случайные величины: <em>X</em> &nbsp;– распределенную стандартно-<a href="#Ch2.3">нормально</a>
+		<em>X</em>&nbsp;~ N(0, 1), и <em>Y</em> – распределенную по 
+		<a href="#Ch2.4">хи-квадрат</a> с <em>
+		N</em> степенями свободы&nbsp; <em>Y</em>&nbsp;~ &#967;<sup>2</sup>(<em>N</em>)<span lang="en-us">.</span></p>
+<p>Случайная величина </p>
+<p class="style2"><img src="statistics/image18.gif" width="111" height="44"></p>
+<p class="style37">подчиняется распределению, которое носит имя <em>Стьюдента</em>. Это 
+распределение зависит от одного параметра <em>N</em>, который также называется 
+числом степеней свободы.
+<a href="http://ru.wikipedia.org/wiki/Распределение_Стьюдента">Распределение 
+Стьюдента</a> применяется в проверке гипотез и для построения доверительных 
+интервалов. </p>
+<p class="style37">Математическое ожидание&nbsp;T(<em>N</em>) равно нулю, а дисперсия 
+равна </p>
+<p class="style2">V(T(<em>N</em>))=<em>N</em>/(<em>N</em>–2),&nbsp;&nbsp; <em>N</em>&gt;2. </p>
+<p class="style37">Распределение Стьюдента симметрично, и при <em>N</em>&gt;20 
+неотличимо от нормального. </p>
+<p class="style37">Формула для плотности вероятности Стьюдента приведена во многих пособиях. 
+Квантили распределения T(N) обозначаются T<sup>–1</sup>(<em>P</em>|<em>N</em>).<a name="Fig09"></a>
+        </p>
+        <p align="center"><span lang="en-us">
+		<a href="statistics/Statistics.xls#Student!K10">
+		<img src="statistics/Fig09a.png" width="342" height="342" class="style41"></a>&nbsp;&nbsp;
+		<a href="statistics/Statistics.xls#Student!R10">
+		<img src="statistics/Fig09b.png" width="342" height="342" class="style41"></a></span><p align="center"><samp>
+Рис.<span lang="en-us">9</span> 
+Функция распределения и квантиль распределения Стьюдента </samp></p>
+        <p class="style37">Для вычисления распределения Стьюдента в Excel 
+		используется две стандартные функции:<span lang="en-us"> </span>
+		<a href="http://office.microsoft.com/en-us/excel-help/redir/HP005209312.aspx" class="prog">
+		<strong>TDIST </strong></a>(<a href="http://office.microsoft.com/ru-ru/excel-help/HP005209312.aspx" class="prog"><strong>СТЬЮДРАСП</strong></a>) 
+		и
+		<a href="http://office.microsoft.com/en-us/excel-help/redir/HP005209317.aspx" class="prog">
+		<strong>TINV</strong></a> (<a href="http://office.microsoft.com/ru-ru/excel-help/HP005209317.aspx" class="prog"><strong>СТЬЮДРАСПОБР</strong></a>). </p>
+<p class="style37"><em><strong>Синтаксис </strong></em></p>
+<p> <strong class="prog">TDIST</strong>(<span class="prog"><strong>x</strong></span>,
+<span class="prog"><strong>degrees_freedom</strong></span>=<em>N</em>, 
+<span class="prog"><strong>tails</strong></span>=1|2) </p>
+<p class="style49">Если <span class="prog"><strong>tails</strong> </span>= 1, то функция
+<span class="prog"><strong>TDIST</strong> </span>возвращает значение Pr{T(<em>N</em>) &gt; <em>x </em>}, а при
+<span class="prog"><strong>tails</strong> </span>= 2 значение Pr{|T(<em>N</em>)| &gt; <em>x</em>}. 
+Значения при <em>x</em>&lt;0 не возвращаются. Поэтому, для того, чтобы вычислить в 
+Excel обычную кумулятивную функцию распределения Стьюдента T(<em>x</em>|<em>N</em>), 
+приходится использовать следующую формулу </p>
+<p class="style2"><span class="address">IF(x&gt;0, 1-TDIST(x,N,1), -TDIST(-x,N,1))
+.</span></p>
+<p class="style37"><span class="prog"><strong>TINV</strong></span>(<strong class="prog">probability</strong>,
+<span class="prog"><strong>degrees_freedom</strong></span>=<em>N</em>) </p>
+<p class="style49">Возвращается значение <em>x</em>, для которого Pr{|T(<em>N</em>)| 
+&gt; <em>x</em> } = <span class="prog"><strong>probability</strong></span>. И в этом случае для 
+вычисления в Excel квантиля распределения Стьюдента T<sup>–1</sup>(<em>P</em>|<em>N</em>), 
+нужно использовать следующую формулу</p>
+<p class="style2"><span class="address">&nbsp;IF(P&lt;0.5, TINV(2*P,N), 
+-TINV(2-2*P,N)). </span></p>
+        <p class="style2"><a name="Fig10"></a>
+		<a href="statistics/Statistics.xls#Student!D8">
+		<img src="statistics/Fig10.png" class="style41"></a><p align="center"><samp>
+Рис.1<span lang="en-us">0</span> 
+Пример вычисления распределения Стьюдента </samp></p>
+        <p align="left"><a href="#Contents">Содержание</a><a name="Ch2.6"></a><h2 align="left">
+2.<span lang="en-us">6</span>. Распределение Фишера</h2>
+      <p>Пусть имеются две независимые случайные величины <em>X</em><sub>1</sub> и <em>X</em><sub>2</sub> 
+		, каждая из которых подчиняется распределению <a href="#Ch2.4">хи-квадрат</a> с <em>N</em><sub>1</sub> 
+		и <em>N</em><sub>2</sub> степенями свободы, т.е. </p>
+<p class="style2"><em>X</em><sub>1</sub> 
+		~ &#967;<sup>2</sup>(<em>N</em><sub><span lang="en-us">1</span></sub>) и <em>
+		X</em><sub>2</sub> ~ &#967;<sup>2</sup>(<em>N</em><sub><span lang="en-us">2</span></sub>)<span lang="en-us">.</span></p>
+<p>Случайная величина </p>
+<p class="style2"><img src="statistics/image19.gif" width="121" height="45"></p>
+<p>подчиняется распределению, которое носит имя
+<a href="http://ru.wikipedia.org/wiki/Распределение_Фишера">Фишера</a>. Это 
+распределение зависит от двух параметров <em>N</em><sub>1</sub> и <em>N</em><sub>2</sub>, 
+которые также называются числами степеней свободы. Математическое ожидание и 
+дисперсия&nbsp;распределения&nbsp;F(<em>N</em><sub>1</sub>,<em><span lang="en-us">&nbsp;</span>N</em><sub>2</sub>) 
+равны , соответственно, </p>
+<p class="style2">E(F(<em>N</em><sub>1</sub>,<em><span lang="en-us">&nbsp;</span>N</em><sub>2</sub>))=
+<em>N</em><sub>2</sub>/(<em>N</em><sub>2</sub> –2),&nbsp;&nbsp; <em>N</em><sub>2</sub>&gt;2 </p>
+<p class="style2"><img src="statistics/image20.gif" class="style45">.</p>
+<p>Формула для плотности вероятности распределения Фишера приведена во многих пособиях. </p>
+<p>Если <em>X</em>~ F(<em>N</em><sub>1</sub>,<em><span lang="en-us">&nbsp;</span>N</em><sub>2</sub>), 
+то 1/<em>X</em>~ F(<em>N</em><sub><span lang="en-us">2</span></sub>,<em><span lang="en-us">&nbsp;</span>N</em><sub><span lang="en-us">1</span></sub>). 
+        </p>
+<p>Квантили распределения F(<em>N</em><sub>1</sub>,<em><span lang="en-us">&nbsp;</span>N</em><sub>2</sub>) 
+обозначаются F<sup>–1</sup>(<em>P</em>|<em>N</em><sub>1</sub>,<em><span lang="en-us">&nbsp;</span>N</em><sub>2</sub><span lang="en-us">)</span>.
+<a name="Fig11"></a>
+        </p>
+        <p align="center">
+		<a href="statistics/Statistics.xls#Fisher!M6">
+		<img src="statistics/Fig11a.png" width="342" height="342" class="style41"></a><span lang="en-us">&nbsp;&nbsp;
+		<a href="statistics/Statistics.xls#Fisher!T6">
+		<img src="statistics/Fig11b.png" width="343" height="343" class="style41"></a></span><p align="center"><samp>
+Рис.1<span lang="en-us">1</span> 
+Функция распределения и квантиль распределения Фишера </samp></p>
+      <p>Для вычисления распределения Фишера в Excel используются две 
+		стандартные функции: 
+		<a href="http://office.microsoft.com/en-us/excel-help/fisher-HP005209091.aspx" class="prog">
+		<strong>FDIST</strong></a> (<a href="http://office.microsoft.com/ru-ru/excel-help/redir/HP005209087.aspx" class="prog"><strong>FРАСП</strong></a>) 
+		и
+		<a href="http://office.microsoft.com/en-us/excel-help/fisherinv-HP005209092.aspx" class="prog">
+		<strong>FINV</strong></a> (<a href="http://office.microsoft.com/ru-ru/excel-help/redir/HP005209090.aspx" class="prog"><strong>FРАСПОБР</strong></a>). </p>
+<p><em><strong>Синтаксис </strong></em></p>
+<p><span class="prog"><strong>FDIST</strong></span>(<span class="prog"><strong>x</strong></span>,<span lang="en-us">
+</span><span class="prog"><strong>degrees_freedom1</strong></span>=
+<em>N</em><sub>1</sub>,<span class="prog"><strong><span lang="en-us"> </span>degrees_freedom2</strong></span>= <em>N</em><sub>2</sub>) </p>
+<p class="style49">Возвращается значение 1 – F(<em>x</em>|<em>N</em><sub>1</sub>,<em><span lang="en-us">&nbsp;</span>N</em><sub>2</sub>), 
+где F(<em>x</em>|<em>N</em><sub>1</sub>,<em><span lang="en-us">&nbsp;</span>N</em><sub>2</sub>) 
+– кумулятивная функция распределения Фишера. </p>
+<p><span class="prog"><strong>FINV</strong></span>(<span class="prog"><strong>probability</strong></span>=1–<em>P</em>,
+<span class="prog"><strong>degrees_freedom1</strong></span>= <em>N</em><sub>1</sub>,<span class="prog"><strong><span lang="en-us">
+</span>degrees_freedom2</strong></span>=
+<em>N</em><sub>2</sub>) </p>
+<p class="style49">Возвращается квантиль F<sup>–1</sup>(1 – <em>P</em>|<em>N</em><sub>1</sub>,<em><span lang="en-us">&nbsp;</span>N</em><sub>2</sub>) 
+для вероятности 1 – <em>P</em><span lang="en-us">.</span> <a name="Fig12"></a>
+        </p>
+        <p align="center">
+		<span lang="en-us">&nbsp;<a href="statistics/Statistics.xls#Fisher!I9"><img src="statistics/Fig12.png" class="style41"></a>&nbsp; </span><p align="center"><samp>
+Рис.12 Пример вычисления распределения Фишера </samp></p>
+        <p align="left"><a href="#Contents">Содержание</a><a name="Ch2.7"></a><h2 align="left">
+2.<span lang="en-us">7</span>. Многомерное нормальное распределение </h2>
+      <p>Это распределение является естественным обобщением одномерного 
+		нормального распределения на случай многомерной случайной величины, т.е. случайного 
+		вектора <strong>x</strong>, размерностью <em>n</em>. </p>
+<p>Функция плотности вероятности имеет следующий вид </p>
+<p class="style2"><img src="statistics/image21.gif" class="style45">,</p>
+<p>где&nbsp;<strong>&#931;</strong> – симметричная положительно определенная (<em>n</em> 
+&times;<em>n</em>) матрица. </p>
+<p><a href="http://ru.wikipedia.org/wiki/Многомерное_нормальное_распределение">
+Многомерное нормальное распределение</a> зависит от двух групп параметров: </p>
+<p class="style2"><strong>x</strong> ~ N(<strong>m</strong>, <strong>&#931;</strong>). </p>
+<p>Математическое ожидание <strong>x</strong> равно <strong>m</strong>, а ковариационная матрица 
+равна матрице <strong>&#931;</strong>. </p>
+        <p align="left"><a href="#Contents">Содержание</a><a name="Ch2.8"></a><h2 align="left">
+2.<span lang="en-us">8</span>. Генерация случайных чисел&nbsp; </h2>
+      <p>Иногда бывает полезно создать искусственную выборку случайных чисел, 
+		подчиняющихся заданному распределению. Это можно сделать, используя 
+		следующее простое утверждение. </p>
+<p>Пусть <em>F</em>(<em>x</em>) и <em>F</em><sup>–1</sup>(<em>P</em>) суть 
+некоторая функция распределения и ее квантиль, соответственно. Если случайная величина <em>X</em> распределена <a href="#Ch2.2">
+равномерно</a> на отрезке <span lang="en-us">[</span>0, 1<span lang="en-us">]</span>, 
+т.е </p>
+<p class="style2"> <em>X</em> ~ U(0,1), </p>
+<p>тогда случайная величина </p>
+<p class="style2"><em>Y</em> =
+<em>F</em><sup>–1</sup>(<em>X</em>) </p>
+<p>имеет функция распределения <em>F</em>.</p>
+<p>Таким образом, если получить набор случайных величин, распределенных равномерно, то 
+эти случайные величины можно превратить в новые, имеющие другое, заданное распределение. </p>
+<p>Для генерации случайных чисел в Excel имеется стандартная функция: 
+<a href="http://office.microsoft.com/en-us/excel-help/rand-HP005209229.aspx" class="prog">
+<strong>RAND</strong></a> (<a href="http://office.microsoft.com/ru-ru/excel-help/redir/HP005209229.aspx" class="prog"><strong>СЛЧИС</strong></a>) 
+. </p>
+<p><em><strong>Синтаксис </strong></em></p>
+<p><span class="prog"><strong>RAND() </strong></span> </p>
+<p class="style49">Возвращает случайное число, равномерно распределенное на отрезке [0,1]. Новое 
+случайное число возвращается при каждом вычислении рабочего листа. </p>
+<p>На листе <a href="statistics/Statistics.xls#Random!A1"><em>Random</em> </a>
+приведен пример генерации случайных чисел для разных распределений.&nbsp;
+		<a name="Fig13"></a>
+        &nbsp;</p>
+<p align="center">
+<span lang="en-us"><a href="statistics/Statistics.xls#Random!D9">
+<img src="statistics/Fig13.png" class="style41"></a> </span><p align="center"><samp>
+Рис.13 Пример генерации случайных чисел </samp></p>
+<p align="left"><a href="#Contents">Содержание</a><a name="Ch3"></a>
+        <h1 align="left">3. Оценка параметров<a name="Ch3.1"></a></h1>
+      <h2 align="left">3.1. Выборка </h2>
+        <p>Предположим, что имеется набор чисел <strong>x</strong>=(<em>x</em><sub>1</sub>,…,
+		<em>x<sub>I</sub></em> ), и каждое&nbsp;<em>x<sub>i</sub></em> является 
+		одной реализацией случайной величины, подчиняющейся, вообще говоря, 
+		неизвестному распределению. Этот набор называется <em>выборкой</em>, а 
+		число <em>I</em> – объемом выборки. 
+<p>В случае одномерного распределения&nbsp;выборка – это вектор <strong>x</strong>, а 
+в многомерном случае выборка – это матрица <strong>X</strong> размерностью&nbsp;<em>I</em>&times;<em>J</em> 
+, каждая строка которой представляет одну реализацию (наблюдение) многомерной 
+случайной величины размерностью <em>J</em>. 
+<p>Обычно предполагается, что все элементы выборки статистически независимы. В 
+практических приложениях слово «выборка» часто заменяется словом «данные». 
+<p><a href="#Contents">Содержание</a><a name="Ch3.2"></a><h2 align="left">
+3.2. Выбросы и маргиналы </h2>
+        <p align="left">Среди элементов выборки могут присутствовать такие, 
+		которые существенно отличаются от других элементов.
+        <p align="left">Пусть, например, имеется выборка из стандартного 
+		<a href="#Ch2.3">нормального</a> распределения <span lang="en-us">N</span>(0,1), в которой присутствует элемент со 
+		значением <em>x</em><sub>out</sub>=3.2. Для такого распределения вероятность единичного 
+		события <em>x</em><sub>out</sub>&nbsp;&#8805; 3.2 мала – она равна &#945;=0.0007.&nbsp;Однако 
+		значение <em>x</em><sub>out</sub>&nbsp;присутствует в независимой выборке 
+		размера <em>I</em>, поэтому нужно рассчитывать вероятность события «хотя 
+		бы один раз среди <em>I</em> попыток»
+        <p class="style2">
+		<img src="statistics/image22.gif" class="style45">&nbsp;.
+        <p align="left">Для <em>I</em>=10 <em>P</em><sub>out</sub>=0.007, для
+		<em>I</em>=100 <em>P</em><sub>out</sub>=0.07, а для <em>I</em>=1000 <em>
+		P</em><sub>out</sub>=0.50. Естественно – чем больше выборка, тем выше 
+		вероятность того, что встретится такое экстремальное значение.
+        <p align="left">Таким образом, интерпретация выпадающих из выборки 
+		значений существенно зависит от объема выборки – для малых <em>I</em> их 
+		нужно рассматривать как <em>выбросы</em> (промахи при измерениях) и, 
+		соответственно, удалять из выборки. Для больших <em>I</em> такие 
+		выпадающие значения являются приемлемыми <em>маргиналами</em> и они 
+		должны сохраняться в выборке.
+        <p align="left"><a href="#Contents">Содержание</a><a name="Ch3.3"></a></p>
+      <h2 align="left">3.3. Генеральная совокупность </h2>
+<p align="left">Операцию создания выборки в статистике называют извлечением. Тем 
+самым подчеркивают, что имеющаяся у нас выборка <strong>x</strong><sub>1</sub> 
+не единственная, и что можно получить (часто только теоретически) и другие 
+похожие выборки <strong>x</strong><sub>2</sub> , <strong>x</strong><sub>3</sub>, 
+…., <strong>x</strong><sub><em>n</em></sub>.&nbsp;Слово <em>похожие</em> означает, что все эти 
+выборки устроены аналогичным способом – подчиняются одному и тому же 
+распределению, имеют одинаковый объем <em>I</em>, и т.п. &nbsp;Все 
+бесконечное множество таких выборок образуют <em>генеральную совокупность</em> 
+(называемую также популяцией). </p>
+<p align="left"><a href="#Contents">Содержание</a><span lang="en-us">
+<a name="Ch3.4"></a></span>
+<h2 align="left">3.4. Статистика </h2>
+<p align="left">В математике слово «<em>статистика</em>» имеет два значения. 
+</p>
+<p align="left">Во-первых, так называется раздел математики, в котором по 
+выборке (результатам экспериментов) определяется вид распределения, из которого 
+была извлечена эта выборка, оцениваются параметры этого распределения, 
+проверяются гипотезы о виде этого распределения. </p>
+<p align="left">Второе значение слова «статистика» – это (измеримая) функция 
+выборки. Поскольку элементы выборки суть случайные величины, то и статистика 
+является случайной величиной.&nbsp;Назначение статистик – оценка параметров распределения, из 
+которого извлечена выборка.&nbsp; </p>
+<p align="left">Примеры таких оценок приведены ниже. &nbsp; </p>
+<p align="left"><a href="#Contents">Содержание</a><span lang="en-us">
+<a name="Ch3.5"></a></span>
+<h2 align="left"><span lang="en-us">3.5. </span>Выборочное среднее и выборочная 
+дисперсия </h2>
+<p align="left"><em>Выборочным средним</em> называется статистика </p>
+        <div align="center">
+          <center>
+          <table border="0" cellpadding="0" cellspacing="0" width="95%" height="50">
+            <tr>
+              <td width="90%">
+                <p align="center">
+				<a name="Eq8"></a>&nbsp;<img src="statistics/image23.gif" class="style45">.</td>
+              <td>
+                <p align="center">(8)</td>
+            </tr>
+          </table>
+          </center>
+        </div>
+        <p align="left">Для вычисления <em>выборочной дисперсии</em> 
+		используются две статистики: 
+<p align="left">&nbsp;- для случая выборки с неизвестным средним &nbsp;<div align="center">
+          <center>
+          <table border="0" cellpadding="0" cellspacing="0" width="95%">
+            <tr>
+              <td width="90%">
+                <p align="center"><b><a name="Eq9"></a>&nbsp;<img src="statistics/image24.gif" class="style45">,</b></td>
+              <td>
+                <p align="center">(9)</td>
+            </tr>
+          </table>
+          </center>
+        </div>
+        <p align="left">- и для известного среднего значения <em>m </em> <div align="center">
+          <center>
+          <table border="0" cellpadding="0" cellspacing="0" width="95%" height="40">
+            <tr>
+              <td width="90%">
+                <p align="center"><b><a name="Eq10"></a>&nbsp;
+				<img src="statistics/image25.gif" class="style45">.</b></td>
+              <td>
+                <p align="center">(1<span lang="en-us">0</span>)</td>
+            </tr>
+          </table>
+          </center>
+        </div>
+      <p align="left">Аналогичным образом определяются выборочные моменты, 
+		например, </p>
+<div align="center">
+          <center>
+          <table border="0" cellpadding="0" cellspacing="0" width="95%" height="40">
+            <tr>
+              <td width="90%">
+                <p align="center"><b><a name="Eq11"></a>&nbsp; </b>&nbsp;<img src="statistics/image26.gif" class="style45">,</td>
+              <td>
+                <p align="center">(1<span lang="en-us">1</span>)</td>
+            </tr>
+          </table>
+          </center>
+        </div>
+      <p align="left">является оценкой <em>k</em>-ого <a href="#Ch1.6">центрального момента</a>. </p>
+<p align="left">Для вычисления выборочных статистик в Excel используют следующие 
+стандартные функции :<a href="http://office.microsoft.com/en-us/excel-help/redir/HP005208994.aspx" class="prog"><strong>AVERAGE</strong></a> 
+(<a href="http://office.microsoft.com/ru-ru/excel-help/HP005208994.aspx" class="prog"><strong>СРЗНАЧ</strong></a>),
+<a href="http://office.microsoft.com/en-us/excel-help/redir/HP005209330.aspx" class="prog">
+<strong>VAR</strong></a>&nbsp;(<a href="http://office.microsoft.com/ru-ru/excel-help/redir/HP005209330.aspx" class="prog"><strong>ДИСП</strong></a>),
+<a href="http://office.microsoft.com/en-us/excel-help/varp-HP005209332.aspx" class="prog">
+<strong>VARP</strong></a> (<a href="http://office.microsoft.com/ru-ru/excel-help/redir/HP005209332.aspx" class="prog"><strong>ДИСПР</strong></a>),
+<a href="http://office.microsoft.com/en-us/excel-help/redir/HP005209277.aspx" class="prog">
+<strong>STDEV</strong></a><span lang="en-us"> </span>(<a href="http://office.microsoft.com/ru-ru/excel-help/redir/HP005209277.aspx" class="prog"><strong>СТАНДОТКЛОН</strong></a>),
+<a href="http://office.microsoft.com/en-us/excel-help/redir/HP005209281.aspx" class="prog">
+<strong>STDEVP</strong></a><span lang="en-us"> </span>(<a href="http://office.microsoft.com/ru-ru/excel-help/redir/HP005209281.aspx" class="prog"><strong>СТАНДОТКЛОНП</strong></a>). </p>
+<p align="left"><em><strong>Синтаксис </strong></em> </p>
+<p align="left"><span class="prog"><b>AVERAGE </b></span><strong>
+<span class="prog">(x)</span> </strong> </p>
+<p align="left" class="style49">Возвращает среднее значение выборки 
+<strong class="prog">x</strong>, 
+вычисленное по формуле (<a href="#Eq8">8</a>). </p>
+<p align="left"><span class="prog"><strong>VAR (x)</strong></span> </p>
+<p align="left" class="style49">Возвращает выборочную дисперсию выборки 
+<strong class="prog">x</strong>, 
+вычисленную по формуле (<a href="#Eq9">9</a>). </p>
+<p align="left"><span class="prog"><strong>VARP (x)</strong></span> </p>
+<p align="left" class="style49">Возвращает выборочную дисперсию выборки <strong>x</strong>, 
+вычисленную по формуле (<a href="#Eq10">10</a>). </p>
+<p align="left"><span class="prog"><strong>STDEV (x)</strong></span></p>
+<p align="left" class="style49">Возвращает среднеквадратичное отклонение т.е. корень квадратный 
+из выборочной дисперсии выборки <strong class="prog">x</strong>, вычисленной по формуле (<a href="#Eq9">9</a>). </p>
+<p align="left"><strong class="prog">STDEVP (x)</strong> </p>
+<p align="left" class="style49">Возвращает среднеквадратичное отклонение т.е. корень квадратный 
+из выборочной дисперсии выборки <strong class="prog">x</strong>, вычисленной по формуле (<a href="#Eq10">10</a>). </p>
+<p align="left"><a href="#Contents">Содержание</a><span lang="en-us">
+<a name="Ch3.6"></a></span>
+<h2 align="left"><span lang="en-us">3.6. </span>Выборочные ковариации и 
+корреляции </h2>
+<p align="left">Если имеются две выборки <strong>x</strong>=(<em>x</em><sub>1</sub>,…,
+<em>x<sub>I</sub></em>)<span lang="en-us"> </span>и <strong><span lang="en-us">y</span></strong>=(<em><span lang="en-us">y</span></em><sub>1</sub>,…,
+<em><span lang="en-us">y</span><sub>I</sub></em> ), то можно рассчитать 
+выборочные значения <em>ковариации и корреляции</em>. Ковариация <em>c</em> 
+рассчитывается по формуле </p>
+<p class="style2"><img src="statistics/image27.gif" class="style45">,</p>
+<p align="left">а коэффициент корреляции <em>r</em> по формуле </p>
+<p class="style2"><img src="statistics/image28.gif" class="style45">.</p>
+<p class="style37">В более общем случае, когда имеется матрица данных <strong>X</strong>, 
+размерностью <em>I</em> наблюдений на <em>J</em> переменных, то выборочная 
+матрица ковариаций <strong>C</strong><sub><em>I</em></sub> между наблюдениями 
+рассчитывается так&nbsp; – </p>
+<p class="style2"><strong>C</strong><sub><span lang="en-us"><em>I</em></span></sub>=<strong>XX</strong><sup>t </sup>
+.</p>
+<p class="style37">Выборочная матрица ковариаций <strong>C</strong><sub><em>J</em></sub> 
+между переменными так – </p>
+<p class="style2"><strong>C</strong><sub><em>J</em></sub>=<strong>X</strong><sup>t</sup><strong>X</strong> 
+.</p>
+<p class="style37">Для вычисления парных ковариаций в Excel используют следующие 
+стандартные функции:
+<a href="http://office.microsoft.com/en-us/excel-help/redir/HP005209036.aspx" class="prog">
+<strong>COVAR</strong></a><span lang="en-us"> </span>(<a href="http://office.microsoft.com/ru-ru/excel-help/redir/HP005209036.aspx" class="prog"><strong>КОВАР</strong></a>),
+<a href="http://office.microsoft.com/en-us/excel-help/redir/HP005209023.aspx" class="prog">
+<strong>CORREL</strong></a><span lang="en-us"> </span>(<a href="http://office.microsoft.com/ru-ru/excel-help/redir/HP005209023.aspx" class="prog"><strong>КОРРЕЛ</strong></a>). </p>
+<p class="style37"><strong><em>Синтаксис </em></strong></p>
+<span class="prog"><strong>COVAR</strong></span>(<span class="prog"><strong>x</strong></span>,<span lang="en-us">
+</span><span class="prog"><strong>y</strong></span>)
+<p class="style49">Возвращает выборочную ковариацию между выборками <strong>x</strong> 
+и <strong>y<span lang="en-us">.</span></strong> </p>
+<span class="prog"><strong>CORREL</strong></span>(<span class="prog"><strong>x</strong></span>,<span lang="en-us">
+</span><span class="prog"><strong>y</strong></span>)
+<p class="style49">Возвращает выборочный коэффициент корреляции между выборками
+<strong>x</strong> и <strong>y<span lang="en-us">.</span></strong>&nbsp; </p>
+<p align="left"><a href="#Contents">Содержание</a><span lang="en-us">
+<a name="Ch3.7"></a></span>
+<h2 align="left"><span lang="en-us">3.7. </span>Вариационный ряд и порядковые 
+статистики </h2>
+<p align="left">Исходную выборку (<em>x</em><sub>1</sub>,…, <em>x<sub>I</sub></em>) 
+можно упорядочить в порядке неубывания :</p>
+<p class="style2"><em>x</em>(1) &#8804; <em>x</em>(2) &#8804; …&#8804; <em>x</em>(<em>i</em>) &#8804;… &#8804;
+<em>x</em>(<em>I</em>) ,</p>
+<p align="left">и получить т.н. <em>вариационный ряд</em>. </p>
+<p align="left">Элементы этого ряда являются <em>порядковыми статистиками</em>. 
+Центральный элемент ряда (а если <em>I</em> – четное, то полусумма двух 
+центральных) является выборочной оценкой медианы </p>
+<div align="center">
+          <center>
+          <table border="0" cellpadding="0" cellspacing="0" width="95%" height="40">
+            <tr>
+              <td width="90%">
+                <p align="center"><b><a name="Eq12"></a>&nbsp;<img src="statistics/image29.gif" class="style45">.</b></td>
+              <td>
+                <p align="center">(1<span lang="en-us">2</span>)</td>
+            </tr>
+          </table>
+          </center>
+        </div>
+      <p align="left">Аналогичным способом строятся оценки <a href="#Ch1.7">квартилей и процентилей.</a> </p>
+<p align="left">Размахом выборки называется величина </p>
+<p class="style2"><em>x</em>(<em>I</em>) – <em>x</em>(1) .</p>
+<p align="left">Интерквартильным размахом выборки <strong>x</strong> называется 
+величина </p>
+<p class="style2"><img src="statistics/image30.gif" class="style45">,</p>
+<p align="left">являющаяся разностью выборочных квартилей для <em>P</em>=0.75 и
+<em>P</em>=0.25. </p>
+<p align="left">Для вычисления порядковых статистик в Excel используют следующие 
+стандартные функции:
+<a href="http://office.microsoft.com/en-us/excel-help/redir/HP005209174.aspx" class="prog">
+<strong>MEDIAN</strong></a>&nbsp;(<a href="http://office.microsoft.com/ru-ru/excel-help/redir/HP005209174.aspx" class="prog"><strong>МЕДИАНА</strong></a>),
+<a href="http://office.microsoft.com/en-us/excel-help/redir/HP005209226.aspx" class="prog">
+<strong>QUARTILE</strong></a><span lang="en-us"> </span>(<a href="http://office.microsoft.com/ru-ru/excel-help/redir/HP005209226.aspx" class="prog"><strong>КВАРТИЛЬ</strong></a>),
+<a href="http://office.microsoft.com/en-us/excel-help/redir/HP005209211.aspx" class="prog">
+<strong>PERCENTILE</strong></a><span lang="en-us"> </span>(<a href="http://office.microsoft.com/ru-ru/excel-help/redir/HP005209211.aspx" class="prog"><strong>ПЕРСЕНТИЛЬ</strong></a>). </p>
+<p align="left"><strong><em>Синтаксис </em></strong></p>
+<p align="left"><span class="prog"><strong>MEDIAN</strong> </span>(<span class="prog"><strong>x</strong></span>) </p>
+<p align="left" class="style49">Возвращает выборочную медиану для выборки 
+<strong class="prog">x</strong>.. </p>
+<p align="left"><span class="prog"><strong>QUARTILE</strong></span><strong><span lang="en-us">
+</span>(</strong><span class="prog"><strong>x</strong></span><strong>, 
+<span class="prog">quart</span></strong>=0|1|2|3|4) </p>
+<span class="style49">Возвращает выборочный квартиль для выборки 
+<strong class="prog">x</strong>. в зависимости от значения аргумента </span>
+<span class="prog"><strong>quart</strong></span>
+<dl class="style53">
+	<div align="left">
+		<dd><span class="prog"><strong>0</strong></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Минимальное значение </dd>
+	</div>
+	<div align="left">
+		<dd><span class="prog"><strong>1</strong></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Первый квартиль (25-ый перцентиль) </dd>
+	</div>
+	<div align="left">
+		<dd><span class="prog"><strong>2</strong></span>&nbsp;<span lang="en-us">
+		</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Значение медианы (50-ый перцентиль) </dd>
+	</div>
+	<div align="left">
+		<dd><span class="prog"><strong>3</strong></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Третий квартиль (75-ый перцентиль) </dd>
+	</div>
+	<div align="left">
+		<dd><span class="prog"><strong>4</strong></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Максимальное значение </dd>
+	</div>
+</dl>
+<p align="left"><span class="prog"><strong>PERCENTILE</strong> </span>(<span class="prog"><strong>x</strong></span>, 
+<span class="prog"><strong>k</strong></span>) </p>
+<p align="left" class="style49">Возвращает <em>k</em>-ый выборочный перцентиль для выборки<strong> 
+</strong><span class="prog">x</span>. Значения аргумента: 0&#8804;<span class="prog"><strong>k</strong></span>&#8804;1<span lang="en-us">.</span></p>
+<p align="left"><a href="#Contents">Содержание</a><span lang="en-us">
+<a name="Ch3.8"></a></span>
+<h2 align="left"><span lang="en-us">3.8. </span>Выборочная функция распределения и гистограмма </h2>
+<p align="left"><em>Выборочная</em> <em>(или эмпирическая) фу</em>нкция 
+распределения – это 
+неубывающая функция <em>F<sub>I</sub></em>(x), которая равна нулю при <em>x</em>&lt;<em>x</em>(1) 
+и равна 1 при <em>x</em>&#8805;<em>x</em>(<em>I</em>). Между этими двумя точками&nbsp;функция <em>F<sub>I</sub></em>(x) ступенчато возрастает на величину 1/<em>I</em> 
+каждый раз при переходе через следующую точку <em>x</em>(<em>i</em>) – </p>
+<p class="style2"><img src="statistics/image31.gif" class="style45">.&nbsp;</p>
+<p align="left">Выборочная функция распределения имеет важное теоретическое значение, т.к. при 
+увеличении<em> </em> объема выборки<em> I</em> эмпирическая функция сходится к истинной 
+функции распределения. Однако в 
+практических приложениях чаще используется <em>гистограмма</em>. </p>
+<p align="left">Для построения гистограммы область изменения выборочных значений 
+[<em>x</em>(1), <em>x</em>(<em>I</em>)] разбивается на <em>R</em> частей равного 
+размера. Затем подсчитывается, сколько элементов выборки попало в каждую из этих 
+областей: <em>I</em><sub>1</sub>+ <em>I</em><sub>2</sub>+ …+ <em>I<sub>R</sub></em>=<em>I</em>. 
+После этого частоты <em>F<sub>r</sub></em>=<em>I<sub>r</sub></em>/<em>I</em> откладывают на 
+ступенчатом графике, аналогичном показанному на Рис. 14.&nbsp; <a name="Fig14"></a></p>
+<p align="center">
+<img src="statistics/Fig14.png" width="456" height="342">&nbsp; <p align="center"><samp>
+Рис.14 Гистограмма&nbsp; </samp></p>
+      <p align="left">Для построения гистограмм в Excel применяется стандартная 
+		функция 
+		<a href="http://office.microsoft.com/en-us/excel-help/redir/HP005209097.aspx" class="prog">
+		<strong>FREQUENCY</strong></a> (<a href="http://office.microsoft.com/ru-ru/excel-help/redir/HP005209097.aspx" class="prog"><strong>ЧАСТОТА</strong></a>). 
+		.<p align="left">
+<em><strong>Синтаксис </strong></em>
+<p align="left"><span class="prog"><strong>FREQUENCY</strong> </span>(<span class="prog"><strong>data_array</strong></span>, 
+<span class="prog"><strong>bins_array</strong></span>)
+<p align="left" class="style49">Возвращает число попаданий значений 
+<span class="prog"><strong>data_array</strong> </span>в интервалы, заданные аргументом 
+<span class="prog"><strong>bins_array</strong></span>. Эта 
+функция возвращает вертикальный массив, и она должна вводится как
+<a href="excel.htm#Ch2.1">формула массива</a> – с помощью комбинации клавиш
+<span class="menu">CTRL+SHIFT+ENTER</span>. Количество элементов в возвращаемом 
+массиве на единицу больше числа элементов в массиве <span class="prog"><strong>bins_array</strong></span>. 
+Дополнительный элемент содержит количество значений из <span class="prog">
+<strong>data_array</strong> </span>больших, чем максимальное значение в массиве 
+<span class="prog"><strong>bins_array</strong></span>.
+<span lang="en-us"> <a name="Fig15"></a></span><p align="center">
+<a href="statistics/Statistics.xls#'Chi-Test'!F3">
+<img src="statistics/Fig15.png" class="style41"></a>&nbsp;<p align="center"><samp>
+Рис.15 Пример использования функции <strong>FREQUENCY</strong></samp></p>
+      <p align="left"><a href="#Contents">Содержание</a><span lang="en-us">
+<a name="Ch3.9"></a></span>
+<h2 align="left"><span lang="en-us">3.9. </span>Метод моментов </h2>
+<p align="left">Все рассмотренные выше методы анализа выборок не учитывали 
+конкретный вид распределения, из которого эта выборка была извлечена. Такие 
+способы оценивания называются <em>непараметрическими</em>.</p>
+<p align="left">Теперь мы рассмотрим типичный <em>параметрический</em>
+<a href="http://ru.wikipedia.org/wiki/Метод_моментов">метод моментов</a>.&nbsp;Пусть 
+выборка <strong>x</strong>=(<em>x</em><sub>1</sub>,…, <em>x<sub>I</sub></em>) 
+подчиняется функции распределения</p>
+<p class="style2"><em>x<sub>i</sub></em> ~ <em>F</em>(<em>x</em> | <strong>p</strong>)<span lang="en-us">,</span>&nbsp;</p>
+<p align="left">которая известна с точностью до значений параметров <strong>p</strong> 
+=(<em>p</em><sub>1</sub>,…, <em>p<sub>M</sub></em>). Для оценки параметров 
+вычислим <em>M</em> выборочных моментов&nbsp;<span lang="en-us"><img src="statistics/image32.gif" class="style45">
+</span>(<a href="#Eq11">11</a>) и приравняем их соответствующим теоретическим 
+значениям, определяемым по формулам (<a href="#Eq2">2</a>). Получится система 
+нелинейных уравнений &nbsp;</p>
+<p class="style2"><img src="statistics/image33.gif" class="style45">&nbsp;,</p>
+<p align="left">из которой нужно численно найти значения оценок параметров
+<strong>p</strong>. </p>
+<p align="left">Для примера рассмотрим случайную величину <em>X</em>=<em>aY</em>, где 
+величина <em>Y<span lang="en-us">
+</span></em>распределена по <a href="#Ch2.4">хи-квадрат</a></p>
+<p class="style2"><em>Y</em>&nbsp;~ &#967;<sup>2</sup>(<em>N</em>). </p>
+<p align="left">По выборке <strong>x</strong>=(<em>x</em><sub>1</sub>,…, <em>x<sub>I</sub></em>) 
+нужно найти оценки двух неизвестных параметров <em>a</em> и <em>N</em>. </p>
+<p align="left">Из<span lang="en-us"> </span>формул (<a href="#Eq4">4</a>) и (<a href="#Eq7">7</a>) 
+следует &nbsp;</p>
+<p class="style2">E(<em>X</em>)=<em>a</em> E(<em>Y</em>)=<em>aN</em>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+V(<em>X</em>)=<em>a</em><sup>2</sup>V(<em>Y</em>)=2<em>a</em><sup>2</sup><em>N.</em> </p>
+<p align="left">Поэтому &nbsp;</p>
+<p class="style2"><img src="statistics/image34.gif" class="style45">.&nbsp;</p>
+<p align="left"><a href="#Contents">Содержание</a><span lang="en-us">
+<a name="Ch3.10"></a></span>
+<h2 align="left"><span lang="en-us">3.10. </span>Метод максимума правдоподобия </h2>
+<p align="left">Самый популярный способ параметрического оценивания – это
+<a href="http://ru.wikipedia.org/wiki/Метод_максимального_правдоподобия">метод 
+максимума правдоподобия</a>. Учитывая, что каждый элемент выборки <strong>x</strong>=(<em>x</em><sub>1</sub>,…, <em>x<sub>I</sub></em>) 
+имеет одну и ту же плотность вероятности&nbsp;<em>f</em>(<em>x<sub>i</sub></em> | <strong>p</strong>), 
+совместная плотность всей выборки имеет вид &nbsp;</p>
+      <table border="0" cellpadding="0" cellspacing="0" width="95%" height="40" align="center">
+		<tr>
+			<td width="90%">
+			<p align="center"><b><a name="Eq13"></a>&nbsp; 
+			<img src="statistics/image35.gif" width="360" height="45"></b><span lang="en-us">
+			</span></td>
+			<td>
+			<p align="center">(1<span lang="en-us">3</span>)</td>
+		</tr>
+</table>
+<p align="left">Функция <em>L</em>(<strong>x</strong>|<strong>p</strong>) называется <em>
+функцией правдоподобия</em> выборки. Она зависит от двух групп переменных – 
+выборочных значений <strong>x</strong>=(<em>x</em><sub>1</sub>,…, <em>x<sub>I</sub></em>), 
+известных из эксперимента, и параметров <strong>p</strong> =(<em>p</em><sub>1</sub>,…,
+<em>p<sub>M</sub></em>), которые предстоит оценить. </p>
+<p align="left">В качестве оценок берутся такие значения параметров <strong>p</strong>, 
+при которых функция правдоподобия (или ее логарифм) имеет максимум &nbsp;</p>
+<p class="style2"><img src="statistics/image36.gif" class="style45">&nbsp;.</p>
+<p align="left">Рассмотрим, для примера, оценки параметров <a href="#Ch2.3">нормального</a> распределения <em>N</em>(<em>m</em>, &#963;<sup>2</sup>). Из 
+уравнений (<a href="#Eq3">3</a>) и (<a href="#Eq6">6</a>) следует, что &nbsp;</p>
+<p class="style2"><img src="statistics/image37.gif" class="style45">.</p>
+<p align="left">Максимум этой функции достигается при следующих значениях 
+параметров &nbsp;</p>
+<table border="0" cellpadding="0" cellspacing="0" width="95%" align="center">
+	<tr>
+		<td width="90%">
+		<p align="center"><b><a name="Eq14"></a>&nbsp;<img src="statistics/image38.gif" class="style45">.</b></td>
+		<td>
+		<p align="center">(1<span lang="en-us">4</span>)</td>
+	</tr>
+</table>
+      <p align="left">Таким образом, для нормального распределения оценки МП 
+		совпадают с выборочными оценками (<a href="#Eq8">8</a>) и (<a href="#Eq10">10</a>).&nbsp;</p>
+<p align="left"><a href="#Contents">Содержание</a><a name="Ch4"></a></p>
+        <h1 align="left">4. Свойства оценок<a name="Ch4.1"></a></h1>
+      <h2 align="left">4.1. Состоятельность</h2>
+      <p align="left">Любая оценка <em>p</em>(<strong>x</strong>) параметра <em>
+		p</em> есть статистика, т.е. случайная величина. И как всякая случайная 
+		величина она обладает 
+		собственной функцией распределения, математическим ожиданием, дисперсией и т.д. Все эти 
+		характеристики позволяют сравнивать разные оценки, судить об их 
+		свойствах и качествах. Ниже следует краткий&nbsp;обзор основных свойств 
+		оценок.</p>
+<p align="left">Оценка <em>p</em>(<strong>x</strong>) называется
+<a href="http://ru.wikipedia.org/wiki/Состоятельная_оценка">состоятельной</a>, 
+если она сходится по вероятности к значению оцениваемого параметра <em>p</em> 
+при безграничном возрастании объема выборки <em>I</em>. Точнее, статистика <em>p</em>(<strong>x</strong>) 
+является состоятельной оценкой параметра <em>p</em> тогда и только тогда, когда 
+для любого положительного числа &#949; справедливо </p>
+<p class="style2"><img src="statistics/image39.gif" class="style45">.&nbsp;</p>
+<p align="left">Большинство оценок, используемых в практических приложениях, 
+являются состоятельными. &nbsp;</p>
+<p align="left"><a href="#Contents">Содержание</a><a name="Ch4.2"></a></p>
+      <h2 align="left">4.2. Смещенность</h2>
+      <p align="left">Оценка <em>p</em>(<strong>x</strong>) называется
+		<a href="http://ru.wikipedia.org/wiki/Несмещённая_оценка">несмещенной</a>, 
+		если </p>
+<p class="style2">E[<em>p</em>(<strong>x</strong>)]=<em>p.</em> </p>
+<p align="left">Смещенные оценки часто встречаются в приложениях. Например, 
+<a href="#Ch3.10">МП-оценка</a> дисперсии нормального распределения (<a href="#Eq14">14</a>) является 
+смещенной &nbsp;</p>
+<p class="style2"><img src="statistics/image40.gif" class="style45">.&nbsp;</p>
+<p align="left">Для несмещенных оценок мерилом их точности является дисперсия V[<em>p</em>(<strong>x</strong>)] 
+– чем она меньше, тем лучше. Для смещенных оценок нужно использовать 
+математическое ожидание квадрата смещения </p>
+<p class="style2"><em>d</em>(<strong>x</strong>)= E[<em>p</em>(<strong>x</strong>) 
+–<em> p</em>)<sup>2</sup>] .</p>
+<p align="left">Имеет место формула </p>
+<table border="0" cellpadding="0" cellspacing="0" width="95%" align="center">
+	<tr>
+		<td width="90%">
+		<p class="style2"><b><a name="Eq15"></a></b><span lang="en-us">&nbsp; </span><em>
+		d</em>(<strong>x</strong>)= V[<em>p</em>(<strong>x</strong>)]+{E[(<em>p</em>(<strong>x</strong>)] 
+		–<em> p</em>)}<sup>2 </sup>.</td>
+		<td>
+		<p align="center">(1<span lang="en-us">5</span>)</td>
+	</tr>
+</table>
+<p align="left"><a href="#Contents">Содержание</a><a name="Ch4.3"></a></p>
+      <h2 align="left">4.3. Эффективность</h2>
+      <p align="left">
+Несмещенная оценка называется
+<a href="http://ru.wikipedia.org/wiki/Эффективная_оценка">эффективной</a>, если 
+она имеет наименьшую возможную дисперсию. Оценки (<a href="#Eq14">1<span lang="en-us">4</span></a>) 
+нормального распределения являются эффективными, но вот выборочная оценка 
+медианы (см. раздел <a href="#Ch3.7">3.7</a>) таковой не является –&nbsp;она менее 
+эффективно оценивает <em>m</em>, чем выборочное среднее.</p>
+<p align="left">
+Смещенные оценки могут оказаться более точными, чем несмещенные. Это означает, 
+что часто можно построить такие смещенные оценки, для которых квадрат ошибки 
+меньше, чем наименьшая эффективная дисперсия. На этом принципе основаны такие 
+методы оценивания как <a href="calibration.htm#Ch5.1">PC<span lang="en-us">R</span>, PLS</a> и др. &nbsp;</p>
+<p align="left"><a href="#Contents">Содержание</a><a name="Ch4.4"></a></p>
+      <h2 align="left">4.<span lang="en-us">4</span>. Робастность</h2>
+      <p align="left">
+<a href="http://ru.wikipedia.org/wiki/Робастность_в_статистике">Робастность</a> 
+оценки – это важная характеристика, которая, однако, плохо поддается 
+формализации.</p>
+<p align="left">
+Оценка <em>p</em>(<strong>x</strong>) называется <em>робастной</em>, если она 
+устойчива к наличию<a href="#Ch3.2"> выбросов</a> в выборке. </p>
+<p align="left">
+Как правило, эффективные оценки являются менее робастными, чем неэффективные. 
+Выбирая более устойчивую оценку, мы расплачиваемся за это эффективностью. </p>
+<p align="left">
+Для нормального распределения робастной оценкой среднего значения является
+<a href="#Eq12">медиана</a>, а для СКО можно использовать
+<a href="http://en.wikipedia.org/wiki/Median_absolute_deviation">MAD</a>-оценку </p>
+<p class="style2">
+<img src="statistics/image41.gif" class="style45">,&nbsp;</p>
+<p align="left">
+в которой median рассчитывается по формуле (<a href="#Eq12">12</a>). </p>
+<p align="left">
+На листе <em><a href="statistics/Statistics.xls#Robust!A1">Robust</a></em> 
+приведено сравнение классических и робастных оценок для выборки из стандартного
+<a href="#Ch2.3">нормального</a> распределения N(0,1), в которой первый 
+элемент заменен на выброс<span lang="en-us">&nbsp;</span>–&nbsp;случайную 
+величину 
+из распределения<span lang="en-us"> </span>N(0,100). <a name="Fig16"></a>
+        &nbsp;</p>
+        <p align="center">
+		<a href="statistics/Statistics.xls#Robust!D7">
+		<img src="statistics/Fig16.png" width="342" height="342" class="style41"></a>&nbsp;<p align="center"><samp>Рис.16 
+Обычные и робастные оценки </samp></p>
+        <p align="left"><a href="#Contents">Содержание</a><a name="Ch4.5"></a></p>
+      <h2 align="left">4.<span lang="en-us">5</span>. Нормальная выборка</h2>
+      <p align="left">
+Если выборка <strong>x</strong>=(<em>x</em><sub>1</sub>,…, <em>x<sub>I</sub></em>) 
+извлечена из <a href="#Ch2.3">нормального</a> распределения</p>
+<p class="style2">
+<em>x<sub>i</sub></em>&nbsp;~ N(<em>m</em>, &#963;<sup>2</sup>) ,</p>
+<p align="left">
+и оценки 
+<img src="statistics/image42.gif" width="56" height="27" class="style45">&nbsp;определены 
+формулами (<a href="#Eq8">8</a>) – (<a href="#Eq10">10</a>), то выполняются 
+следующие утверждения. &nbsp;</p>
+<table border="0" cellpadding="0" cellspacing="0" width="95%" height="40">
+	<tr>
+		<td width="90%">
+		<p class="style49"><span lang="en-us">&nbsp;</span><b><a name="Eq16"></a> </b>
+		<span lang="en-us"><img src="statistics/image43.gif" class="style45"></span>, 
+		т.е. имеет стандартное <a href="#Ch2.3">нормальное</a> распределение; 
+		</td>
+		<td>
+		<p align="center">(1<span lang="en-us">6</span>)</td>
+	</tr>
+</table>
+<p align="left" class="style49">
+<img src="statistics/image44.gif" class="style45">&nbsp;, т.е.имеет 
+распределение <a href="#Ch2.4">хи-квадрат</a> с <em>I</em> степенями 
+свободы; &nbsp;</p>
+<p align="left" class="style49">
+<img src="statistics/image45.gif" class="style45">, т.е. имеет 
+распределение <a href="#Ch2.4">хи-квадрат</a> с <em>I</em> -1 степенью свободы;&nbsp;</p>
+<p align="left" class="style49">
+<img src="statistics/image46.gif" class="style45">, т.е. имеет 
+распределение <a href="#Ch2.5">Стьюдента</a> с <em>I</em> -1 степенью 
+свободы. &nbsp;</p>
+<p align="left"><a href="#Contents">Содержание</a><a name="Ch5"></a>&nbsp;</p>
+        <h1 align="left"><span lang="en-us">5</span>. Доверительное оценивание
+		<a name="Ch5.1"></a></h1>
+      <h2 align="left"><span lang="en-us">5</span>.1. Доверительная область</h2>
+      <p align="left">Во многих случаях, помимо точечных оценок неизвестных 
+		параметров распределения, желательно указать область, в которой 
+		истинные значения этих параметров содержатся с заданной вероятностью. 
+		Такая область называется <em>доверительной</em>. </p>
+<p align="left">Дадим точное определение.&nbsp;Пусть <a href="#Ch3.1">выборка</a> <strong>x</strong>=(<em>x</em><sub>1</sub>,…, <em>x<sub>I</sub></em>) 
+подчиняется функция распределения <em>F</em>(<em>x</em> | <strong>p</strong>), 
+т.е. </p>
+<p class="style2"><em>x<sub>i</sub></em> ~ <em>F</em>(<em>x</em> |<strong> p</strong>), </p>
+<p align="left">которая известна с точностью до значений параметров<strong>p</strong> 
+=(<em>p</em><sub>1</sub>,…, <em>p<sub>M</sub></em>). Статистика <em>P</em>(<strong>x</strong>) 
+&#8712; R<sup><em>M</em></sup> называется доверительной областью, соответствующей 
+доверительной вероятности &#947;, если </p>
+<p class="style2">Pr{<strong>p</strong> &#8712; <em>P</em>(<strong>x</strong>)}&#8805;&#947; &nbsp;.</p>
+<p align="left"><a href="#Contents">Содержание</a><a name="Ch5.2"></a></p>
+      <h2 align="left"><span lang="en-us">5</span>.<span lang="en-us">2</span>.Доверительный 
+		интервал </h2>
+      <p align="left">Часто для каждого параметра <em>p<sub>m</sub></em> 
+		строится своя одномерная область – <em>доверительный интервал</em>.</p>
+<p align="left">Границы доверительного интервала – это две статистики&nbsp;<em>p</em><sup>–</sup>(<strong>x</strong>) 
+и <em>p</em><sup>+</sup>(<strong>x</strong>)<span lang="en-us">,</span> такие, 
+что </p>
+<p class="style2">Pr{ <em>p</em><sup>–</sup>(<strong>x</strong>) &#8804;<span lang="en-us">
+</span>&nbsp;<em>p</em> &#8804; &nbsp;<em>p</em><sup>+</sup>(<strong>x</strong>)}&#8805;&#947;.</p>
+<p align="left">Для односторонних доверительных интервалов соответствующая граница заменяется на –&#8734;, 
+0, или +&#8734;. </p>
+<p align="left">В большинстве практических случаев доверительные интервалы строятся для 
+(асимптотически) нормальных выборок с помощью соотношений, приведенных в разделе
+<a href="#Ch4.5">4.5</a>. </p>
+<p align="left"><a href="#Contents">Содержание</a><a name="Ch5.3"></a></p>
+      <h2 align="left"><span lang="en-us">5</span>.<span lang="en-us">3</span>.
+		Пример построения доверительного интервала</h2>
+      <p align="left">Приведем пример построения доверительного интервала. </p>
+<p align="left">Пусть имеется выборка <strong>x</strong>=(<em>x</em><sub>1</sub>,…, <em>x<sub>I</sub></em>) 
+из <a href="#Ch2.3">нормального</a> распределения N(<em>m</em>, &#963;<sup>2</sup>) с 
+известной дисперсией &#963;<sup>2</sup>. Построим доверительный интервал для параметра <em>m</em> – 
+математического ожидания. </p>
+<p align="left">Из<span lang="en-us"> </span>уравнения (<a href="#Eq16">1<span lang="en-us">6</span></a>) 
+следует, что</p>
+<p class="style2"><img src="statistics/image47.gif" class="style45">,</p>
+<p align="left">&nbsp;где &#934;<sup>–1</sup> – квантиль стандартного нормального 
+распределения, поэтому </p>
+<p class="style2"><img src="statistics/image48.gif" class="style45">.</p>
+<p align="left">Для построения симметричного доверительного интервала с доверительной вероятностью &#947;, 
+положим &#945;<sub>1</sub>= &#945;<sub>2</sub> = 0.5(1+&#947;).&nbsp;Для построения односторонних 
+доверительных интервалов, 
+положим &#945;<sub>1</sub>= 1, &#945;<sub>2</sub> =&#947;, или &#945;<sub>1</sub>= &#947;, &#945;<sub>2</sub> 
+=1.&nbsp; </p>
+<p align="left"><a href="#Contents">Содержание</a><a name="Ch5.4"></a></p>
+      <h2 align="left"><span lang="en-us">5</span>.<span lang="en-us">4</span>.
+		Вычисление доверительного интервала для нормального распределения </h2>
+      <p align="left">Используя соотношения, приведенные в разделе
+		<a href="#Ch4.5">4.5</a>, можно построить доверительный интервал для параметров
+		<a href="#Ch2.3">нормального</a> распределения N(<em>m</em>, &#963;<sup>2</sup>). </p>
+<p align="left">Пусть оценки <img src="statistics/image42.gif" class="style45">&nbsp;определены 
+формулами (<a href="#Eq8">8</a>) – (<a href="#Eq10">10</a>), тогда выполняются 
+следующие утверждения. </p>
+<p align="left">Доверительный интервал для среднего значения <em>m</em> при <em>
+неизвестной дисперсии</em> &#963;<sup>2</sup> имеет вид </p>
+<p class="style2"><img src="statistics/image49.gif" class="style45">,</p>
+<p align="left">где T<sup>–1</sup>(&#945; | <em>I</em>–1) – квантиль распределения
+<a href="#Ch2.5">Стьюдента</a> с <em>I</em>–1 степенями свободы.</p>
+<p align="left">Доверительный интервал для дисперсии &#963;<sup>2</sup> при <em>
+известном среднем</em> значении <em>m</em> имеет вид </p>
+<p class="style2">
+<img src="statistics/image50.gif" class="style45">,</p>
+<p align="left">&nbsp;где &#967;<sup>–2</sup>(&#945; | <em>I</em>) – квантиль 
+распределения <a href="#Ch2.4">хи-квадрат</a> с <em>I</em> степенями свободы.</p>
+<p align="left">Доверительный интервал для дисперсии &#963;<sup>2</sup> при <em>
+неизвестном среднем</em> значении <em>m</em> имеет вид </p>
+<p class="style2"><img src="statistics/image51.gif" class="style45">,</p>
+<p align="left">
+где &#967;<sup>–2</sup>(&#945; | <em>I</em>–1) – квантиль распределения <a href="#Ch2.4">
+хи-квадрат</a> с <em>I</em>–1 степенями свободы. </p>
+<p align="left"><a href="#Contents">Содержание</a><a name="Ch6"></a></p>
+        <h1 align="left"><span lang="en-us">6</span>. Проверка гипотез&nbsp;
+		<a name="Ch6.1"></a></h1>
+      <h2 align="left"><span lang="en-us">6</span>.1. Постановка задачи </h2>
+      <p align="left">
+		<a href="http://ru.wikipedia.org/wiki/Проверка_статистических_гипотез">
+		Статистической гипотезой</a> называется непротиворечивое утверждение, 
+		касающееся вида распределения имеющейся <a href="#Ch3.1">выборки</a>. </p>
+<p align="left">Основная гипотеза, нуждающаяся в проверке называется нулевой или
+<em>нуль-гипотезой</em>. Любая другая гипотеза, относительно которой проверяют 
+нуль-гипотезу, называется <em>альтернативой</em>.&nbsp;Например: пусть имеется 
+выборка из распределения <a href="#Ch2.4">хи-квадрат</a> с <em>N</em> степенями 
+свободы. Нуль-гипотеза состоит в том, что – </p>
+<p class="style2">H<sub>0</sub>: <em>N</em>=2 ,</p>
+<p align="left">альтернатива –</p>
+<p class="style2">H<sub>1</sub>: <em>N</em>&gt;2 .</p>
+<p align="left">
+На практике альтернативу часто опускают, формулируя только нуль-гипотезу. </p>
+<p align="left">
+Гипотеза называется <em>простой</em>, если она однозначно определяет функцию 
+распределения 
+выборки. В противном случае гипотеза называется сложной. В примере: H<sub>0</sub> 
+– это простая гипотеза, а H<sub>1</sub> – это сложная альтернатива. </p>
+<p align="left">
+Гипотезы бывают параметрическими, когда вид распределения известен заранее, с 
+точностью до численных значений его параметров – как в примере выше. Кроме того, 
+гипотезы могут быть непараметрическими. </p>
+<p align="left">
+Например: пусть имеется выборка из неизвестного распределения <em>F</em>. 
+Нуль-гипотеза состоит в том, что&nbsp; – </p>
+<p class="style2">
+H<sub>0</sub>: <em>F</em> – это равномерное распределение.</p>
+<p align="left"><a href="#Contents">Содержание</a><a name="Ch6.2"></a></p>
+      <h2 align="left"><span lang="en-us">6</span>.<span lang="en-us">2</span>.
+		Проверка гипотез </h2>
+      <p align="left">Метод проверки статистической гипотезы называется
+		<a href="http://ru.wikipedia.org/wiki/Статистический_критерий">
+		статистическим критерием</a>. Он строится на основе имеющейся выборки <strong>x</strong>=(<em>x</em><sub>1</sub>,…, <em>x<sub>I</sub></em>) 
+		с помощью измеримой функции <em>S</em>(<strong>x</strong>), называемой 
+		<em>статистикой критерия</em>. В пространстве значений статистики <em>S</em>(<strong>x</strong>) 
+		выбирается область <em>C</em>, называемая <em>критической</em>. Если <em>
+		S</em>(<strong>x</strong>) &#8712; <em>С</em>, то гипотезу отклоняют 
+		(отвергают), в противном случае – принимают. </p>
+<p align="left">Статистика&nbsp;<em>S</em>(<strong>x</strong>) должна быть устроена 
+особым образом – так, чтобы ее распределение не зависело от неизвестных&nbsp; 
+параметров распределения выборки <strong>x</strong>. Кроме того функция 
+распределения <em>S</em>(<strong>x</strong>) 
+должна быть табулирована заранее. </p>
+<p align="left">В большинстве практических приложений статистика <em>S</em>(<strong>x</strong>)&nbsp;строится 
+из соображений нормальности. </p>
+<p align="left"><a href="#Contents">Содержание</a><a name="Ch6.3"></a></p>
+      <h2 align="left"><span lang="en-us">6</span>.<span lang="en-us">3</span>.
+		Ошибки 1-го и 2-го родов </h2>
+      <p align="left">
+Проверка статистической гипотезы не дает ее логического подтверждения или 
+опровержения. Проверка только утверждает, что &quot;имеющиеся данные (не) 
+противоречат» выдвинутому предположению&quot;. Поэтому при проверке статистической 
+гипотезы возможны случайные ошибки, которые могут быть
+<a href="http://ru.wikipedia.org/wiki/Ошибки_первого_и_второго_рода">двух родов</a>. </p>
+<p align="left">
+<em>Ошибка 1-го рода</em> происходит тогда, когда нуль-гипотеза верна, но 
+отвергается согласно критерию.</p>
+<p align="left">
+<em>Ошибка 2-го рода</em> происходит тогда, когда нуль-гипотеза не верна, но 
+принимается согласно критерию.</p>
+<p align="left">
+Вероятность ошибки первого рода называется
+<a href="http://ru.wikipedia.org/wiki/Уровень_значимости">уровнем значимости</a> 
+и обозначается &#945;. </p>
+<p align="left">
+Обычно уровень значимости выбирается равным 0.01, 0.05, или 0.1 и по этому 
+значению подбирают критическую область <em>C</em><sub>&#945;</sub>.</p>
+<p align="left"><a href="#Contents">Содержание</a><a name="Ch6.4"></a></p>
+      <h2 align="left"><span lang="en-us">6</span>.<span lang="en-us">4</span>.
+		Пример проверки гипотезы </h2>
+      <p>Пусть имеется выборка <strong>x</strong>=(<em>x</em><sub>1</sub>,…, <em>x<sub>I</sub></em>) 
+		из <a href="#Ch2.3">нормального</a> распределения&nbsp; – <p class="style2"><em>x<sub>i</sub></em>&nbsp;~ 
+N(<em>m</em>, &#963;<sup>2</sup>)
+        <p>с <em>известной дисперсией</em> &#963;<sup>2</sup> и неизвестным средним
+		<em>m</em>.
+        <p>Проверяется простая нуль-гипотеза&nbsp; –
+        <p class="style2">H<sub>0</sub>: <em>m</em>=0.
+        <p>Альтернативу мы сформулируем позже.
+        <p>В качестве <a href="#Ch6.2">статистического критерия</a> возьмем 
+		функцию
+        <p class="style2">
+		<img src="statistics/image52.gif" class="style45">,<p>которая при
+<em>m</em>=0 подчиняется стандартному нормальному распределению&nbsp; –
+        <p class="style2"><em>S</em> ~ N(0, 1)
+        .<p>При заданном <a href="#Ch6.3">уровне значимости &#945;</a> критическая 
+		область определяется условием&nbsp; –
+        <p class="style2">Pr{|<em>S</em>|&gt; <em>C</em><sub>&#945;</sub> }= &#945; .<p>
+Поэтому
+        <p class="style2"><em>C</em><sub>&#945;</sub> = &#934;<sup>–1</sup>(1– &#945;/2).<p>Введем теперь альтернативную гипотезу&nbsp; 
+–
+        <p class="style2">H<sub>1</sub>: <em>m</em>=<em>a</em>
+        ,<p>и найдем величину ошибки 2-го рода. Ее величина
+        <p class="style2">&#946;=Pr{|<em>S</em>|&lt; <em>C</em><sub>&#945;</sub> | <em>m</em>=<em>a</em>}
+        <p align="left">рассчитывается при условии </p>
+<p class="style2"><em>S</em>&nbsp; ~ N(<em>а</em>, 1). </p>
+<p align="left">Поэтому, </p>
+<p class="style2">&#946;=&#934;(C<sub>&#945;</sub> –<em>a</em>) – &#934;(–C<sub>&#945;</sub> –<em>a</em>) 
+.</p>
+<p align="left">На листе <em>
+<a href="statistics/Statistics.xls#Hypothesis!A1">Hypothesis</a></em> приведены расчеты этого примера<span lang="en-us">.</span>
+<a name="Fig17"></a>
+        &nbsp;</p>
+<p class="style2">
+		<a href="statistics/Statistics.xls#Hypothesis!G7">
+		<img src="statistics/Fig17.png" width="456" height="342" class="style41"></a><p align="center"><samp>
+Рис.17 Ошибки 1-го и 2-го родов при проверке гипотез</samp></p>
+<p align="left"><a href="#Contents">Содержание</a><a name="Ch6.5"></a></p>
+      <h2 align="left"><span lang="en-us">6</span>.<span lang="en-us">5</span>.
+		Критерий согласия хи-квадрат </h2>
+      <p align="left">
+<a href="http://ru.wikipedia.org/wiki/Критерий_согласия_Пирсона">Критерий 
+согласия хи-квадрат</a> проверяет соответствие между теоретическими 
+вероятностями <em>P</em><sub>1</sub>, <em>P</em><sub>2</sub>, …и их 
+эмпирическими <a href="#Ch3.8">частотными оценками</a> <em>I</em><sub>1</sub>/<em>I</em>, <em>I</em><sub>2</sub>/<em>I</em>,… </p>
+<p align="left">
+Для примера рассмотрим выборку <strong>x</strong>=(<em>x</em><sub>1</sub>,…, <em>x<sub>I</sub></em>) 
+из неизвестного распределения&nbsp; – </p>
+<p class="style2">
+<em>x<sub>i</sub></em> ~ <em>F</em>(<em>x</em>)<span lang="en-us">.</span> </p>
+<p align="left">
+Нуль гипотеза состоит в конкретизации этого распределения, т.е. в утверждении 
+типа «<em>F</em> – это нормальное распределение с нулевым средним и дисперсией 
+равной 2» </p>
+<p align="left">
+В соответствие с выбранным гипотетическим распределением, область изменения 
+случайной величины
+<em>X</em>, разбивается на <em>R</em> классов (корзин) и рассчитываются 
+теоретические вероятности <em>P</em><sub>1</sub>, <em>P</em><sub>2</sub>, …, <em>
+P<sub>R</sub></em> попадания в каждую из корзин. С другой стороны определяется, 
+сколько элементов выборки попало в каждую из этих корзин – <em>I</em><sub>1</sub>,
+<em>I</em><sub>2</sub>, …, <em>I<sub>R</sub></em> и вычисляются эмпирические 
+вероятности <em>F<sub>r</sub></em>=<em>I<sub>r</sub></em>/<em>I<span lang="en-us">.
+</span></em></p>
+<p align="left"><a href="#Ch6.2">Статистикой критерия</a> согласия служит 
+случайная величина </p>
+<table border="0" cellpadding="0" cellspacing="0" width="95%" align="center">
+	<tr>
+		<td width="90%">
+		<p align="center"><b>&nbsp;<a name="Eq17"></a><span lang="en-us"> </span> </b>&nbsp;<img src="statistics/image53.gif" class="style45">,</td>
+		<td>
+		<p align="center">(1<span lang="en-us">7</span>)</td>
+	</tr>
+</table>
+<p>которая при <em>I</em> &#8594; &#8734;<span lang="en-us"> </span>стремится к 
+распределению <a href="#Ch2.4">хи-квадрат</a> с <em>R</em>–1 степенями свободы. 
+Число и размеры корзин надо выбирать так, чтобы
+        </p>
+<p class="style2"><em>IP<sub>r</sub> </em>&gt; 6
+        .</p>
+<p><a href="#Ch6.2">Критическая область</a> на уровне значимости &#945; определяется 
+условием&nbsp; –
+        </p>
+<p class="style2">S &gt; &#967;<sup>–2</sup>(1–&#945; | <em>R</em>–1)
+        .</p>
+<p>Критерий согласия хи-квадрат можно применять и в том случае, когда 
+теоретическое распределение <em>F</em>(<em>x<span lang="en-us"> </span></em>|<span lang="en-us">
+</span><strong>p</strong>) известно с точностью до неизвестных параметров <strong>p</strong> 
+=(<em>p</em><sub>1</sub>,…, <em>p<sub>M</sub></em>). Эти параметры 
+предварительно оцениваются по той же выборке <strong>x</strong> и подставляются 
+в функцию <em>F</em>(<em>x<span lang="en-us"> </span></em>|<span lang="en-us">
+</span><strong>p</strong>). В этом случае следует изменить число степеней 
+свободы на <em>R</em>–<em>M</em>–<em>1</em>.
+        </p>
+<p>Для проверки согласия по критерию хи-квадрат в Excel применяется стандартная 
+функция 
+<a href="http://office.microsoft.com/en-us/excel-help/redir/HP005209012.aspx" class="prog">
+<strong>CHITEST </strong></a>(<a href="http://office.microsoft.com/ru-ru/excel-help/redir/HP005209012.aspx" class="prog"><strong>ХИ2ТЕСТ</strong></a>). 
+.
+        </p>
+<p><em><strong>Синтаксис</strong> </em>
+        </p>
+<p><strong><span class="prog">CHITEST</span></strong>(<strong><span class="prog">actual_range</span>,</strong><span lang="en-us"><strong> </strong></span><strong>
+<span class="prog">expected_range</span></strong>)
+        </p>
+<p class="style49">Вычисляет статистику <em>S</em> по формуле (<a href="#Eq17">1<span lang="en-us">7</span></a>) используя
+<strong class="prog">actual_range</strong>= (<em>I</em><sub>1</sub>, <em>I</em><sub>2</sub>, 
+…, <em>I<sub>R</sub></em>) и <strong class="prog">expected_range</strong>= (<em>IP</em><sub>1</sub>,
+<em>IP</em><sub>2</sub>,…, <em>IP<sub>R</sub></em>). Возвращает вероятность <em>
+P</em>= 1 – &#967;<sup>2</sup>(<em>S </em>| <em>R</em>–1).
+        </p>
+<p>Для принятия гипотезы на уровне значимости &#945; необходимо, чтобы <em>P</em>&gt;1–&#945; 
+.
+<a name="Fig18"></a>
+        </p>
+        <p align="center">
+		&nbsp;
+		<a href="statistics/Statistics.xls#'Chi-Test'!M8">
+		<img src="statistics/Fig18.png" class="style41"></a><p align="center"><samp>Рис.18 
+Пример проверки критерия <strong>согласия хи-квадрат</strong> </samp></p>
+      <p align="left"><a href="#Contents">Содержание</a><a name="Ch6.6"></a></p>
+      <h2 align="left"><span lang="en-us">6</span>.<span lang="en-us">6</span>.
+		F-критерий </h2>
+      <p align="left">
+Этот критерий применяется для проверки нуль-гипотезы о равенстве дисперсий в 
+двух <a href="#Ch2.3">нормальных </a>выборках: <strong>x</strong>=(<em>x</em><sub>1</sub>,…, <em>x<sub>I</sub></em>)<span lang="en-us">
+</span>и <strong><span lang="en-us">y</span></strong>=(<em><span lang="en-us">y</span></em><sub>1</sub>,…, <em>
+<span lang="en-us">y</span><sub><span lang="en-us">J</span></sub></em>). Пусть
+<span lang="en-us">&nbsp;</span>&nbsp;</p>
+<p class="style2">
+<img src="statistics/image54.gif" width="39" height="27"></p>
+<p align="left">
+&nbsp;–
+суть оценки выборочных дисперсий, найденные по формуле (<a href="#Eq9">9</a>). </p>
+<p align="left">
+Если</p>
+<p class="style2">
+<img src="statistics/image55.gif" class="style45"><span lang="en-us">,</span></p>
+<p align="left">
+то обозначим </p>
+<p class="style2">
+<img src="statistics/image56.gif" class="style45">.</p>
+<p align="left">
+Иначе&nbsp; –&nbsp; </p>
+<p class="style2">
+<img src="statistics/image57.gif" class="style45">.</p>
+<p align="left">
+Статистикой F-критерия служит случайная величина </p>
+<p class="style2">
+<img src="statistics/image58.gif" class="style45">,</p>
+<p align="left">
+которая подчиняется <a href="#Ch2.6">распределению Фишера</a> с <em>N</em>1, <em>
+N</em>2 степенями свободы. </p>
+<p align="left">
+<a href="#Ch6.2">Критическая область</a> на уровне значимости &#945; определяется 
+условием&nbsp; – </p>
+<p class="style2">
+<em>S</em> &gt; <em>F</em><sup>–1</sup>(1–&#945; | <em>N</em><sub>1</sub>, <em>N</em><sub>2</sub>) 
+.</p>
+<p align="left">
+F-критерий очень чувствителен к нарушению предположения о нормальности 
+распределений выборок, поэтому его не рекомендуется применять в практических 
+приложениях. </p>
+<p align="left">
+Для проверки F-критерия в Excel применяется стандартная функция
+<a href="hhttp://office.microsoft.com/en-us/excel-help/ftest-HP005209098.aspx">
+<span class="prog"><strong>FTEST</strong></span> </a>(<a href="http://office.microsoft.com/ru-ru/excel-help/HP005209098.aspx" class="prog"><strong>ФТЕСТ</strong></a>). </p>
+<p align="left">
+<em><strong>Синтаксис </strong></em></p>
+<p align="left">
+<span class="prog"><strong>FTEST</strong></span>(<strong class="prog">x</strong>, 
+<span class="prog"><strong>y</strong></span>) </p>
+<p align="left" class="style49">
+Возвращает вероятность <em>P</em>= 2[1 – F(<em>S<span lang="en-us"> </span></em>
+|<em><span lang="en-us"> </span>N</em><sub>1</sub>, <em>N</em><sub>2</sub>)]. 
+Для принятия гипотезы на уровне значимости &#945; необходимо, чтобы <em>P</em>&gt;2&#945;
+<a name="Fig19"></a>.</p>
+<p align="center">
+		<span lang="en-us">
+		&nbsp;
+		<a href="statistics/Statistics.xls#'F-test'!H8">
+		<img src="statistics/Fig19.png" class="style41"></a></span><p align="center"><samp>Рис.19 
+Пример проверки <strong>F-критерия </strong> </samp></p>
+        <p align="left"><a href="#Contents">Содержание</a><a name="Ch7"></a></p>
+        <h1 align="left"><span lang="en-us">7</span>. Регрессия&nbsp;
+		<a name="Ch7.1"></a></h1>
+      <h2 align="left"><span lang="en-us">7</span>.1. Простейшая регрессия </h2>
+      <p align="left">
+В простейшей постановке в регрессионном анализа рассматриваются две 
+<a href="#Ch3.1">выборки</a>: 
+детерминированных величин <strong>x</strong>=(<em>x</em><sub>1</sub>,…, <em>x<sub>I</sub></em>) 
+и<span lang="en-us"> </span>случайных величин <strong><span lang="en-us">y</span></strong>=(<em><span lang="en-us">y</span></em><sub>1</sub>,…, <em>
+<span lang="en-us">y</span><sub><span lang="en-us">I</span></sub></em>). </p>
+<p align="left">
+Набор <strong>x</strong> называется <em>предикторами</em>, а набор <strong>y</strong> 
+– <em>откликами</em>. Предполагается, что между этими величинами существует 
+линейная связь вида</p>
+<p class="style2">
+<em>y<sub>i</sub></em>=<em>ax<sub>i</sub></em>+<em>b</em>+&#949;<sub><em>i</em></sub>,</p>
+<p align="left">
+где <em>a</em> и <em>b</em> – неизвестные параметры, а&nbsp;&#949;<sub><em>i</em></sub> –
+<em>ошибки</em>, т.е. некоррелированные случайные величины, имеющие нулевое мат<span lang="en-us">.</span>ожидание 
+и неизвестную дисперсию &#963;<sup>2</sup>.</p>
+<p align="left">
+Если дополнительно предположить, что ошибки распределены нормально</p>
+<table border="0" cellpadding="0" cellspacing="0" width="95%" align="center">
+	<tr>
+		<td width="90%">
+		<p align="center"><b><span lang="en-us">&nbsp;</span><a name="Eq18"></a>&nbsp;</b>&#949;<sub><em>i</em></sub> 
+				~ N(0, &#963;<sup>2</sup>) ,</td>
+		<td>
+		<p align="center">(1<span lang="en-us">8</span>)</td>
+	</tr>
+</table>
+      <p align="left">то оценивание параметров <em>a</em> и <em>b</em>
+		<a href="#Ch3.10">методом МП</a> сведется к поиску минимума следующей 
+		суммы квадратов <p class="style2">
+<img src="statistics/image59.gif" width="171" height="45" class="style45">&nbsp;<a name="Fig20"></a>.</p>
+<p align="center">
+<span lang="en-us">
+<a href="statistics/Statistics.xls#Regression!G9">
+<img src="statistics/Fig20.png" width="343" height="343" class="style41"></a>&nbsp;</span><p align="center"><samp>Рис.20 
+Простая регрессия </samp></p>
+<p align="left"><a href="#Contents">Содержание</a><a name="Ch7.2"></a></p>
+      <h2 align="left"><span lang="en-us">7</span>.<span lang="en-us">2</span>.
+		Метод наименьших квадратов</h2>
+      <p align="left">
+На практике допущение о нормальности является избыточным и метод наименьших 
+квадратов применяют и в случае ошибок произвольного вида. </p>
+<p align="left">
+Минимум суммы <em>Q</em> 
+достигается в точке  
+–</p>
+<p class="style2">
+<img src="statistics/image60.gif" width="257" height="136"></p>
+<p align="left">
+Дисперсии оценок параметров равны  
+–</p>
+        <p class="style2">
+		<img src="statistics/image61.gif" width="325" height="88"><p align="left">
+Оценка параметра &#963;<sup>2</sup> равна 
+–<p class="style2"><img src="statistics/image62.gif" width="237" height="48"><p align="left">
+Если верно (<a href="#Eq18">1<span lang="en-us">8</span></a>),&nbsp; 
+то выполняются следующие соотношения 
+<p class="style2"><img src="statistics/image63.gif" class="style45">.<p align="left">
+Кроме того, оценки параметров <em>a</em> и <em>b</em> независимы от оценки &#963;<sup>2</sup> 
+, что позволяет строить для оценок параметров доверительные интервалы с помощью
+<a href="#Ch2.5">статистики Стьюдента</a>.&nbsp; 
+<p align="left">Для вычисления параметров регрессии в Excel используют две 
+стандартные функции:
+<a href="http://office.microsoft.com/en-us/excel-help/slope-HP005209264.aspx" class="prog">
+<strong>SLOPE</strong></a> (<a href="http://office.microsoft.com/ru-ru/excel-help/redir/HP005209264.aspx" class="prog"><strong>НАКЛОН</strong></a>) 
+и
+<a href="http://office.microsoft.com/en-us/excel-help/intercept-HP005209143.aspx" class="prog">
+<strong>INTERCEPT</strong></a> (<a href="http://office.microsoft.com/ru-ru/excel-help/redir/HP005209143.aspx" class="prog"><strong>ОТРЕЗОК</strong></a>) 
+.<p align="left"><em><strong>Синтаксис </strong></em>
+<p align="left"><span class="prog"><strong>SLOPE</strong> </span>(<span class="prog"><strong>known_y's</strong></span>=<strong>y</strong>,
+<span class="prog">known_x's</span>=<strong>x</strong>) 
+<p align="left" class="style49">Возвращает оценку параметра <em>a</em>. 
+<p align="left"><span class="prog"><strong>INTERCEPT</strong> </span>
+<span lang="en-us">(</span><span class="prog"><strong>known_y's</strong></span>=<strong>y</strong>,
+<span class="prog">known_x's</span>=<strong>x</strong>) 
+<p align="left" class="style49">Возвращает оценку параметра <em>b</em>. <a name="Fig21"></a>
+        &nbsp;<p align="center"><span lang="en-us">
+		&nbsp;<a href="statistics/Statistics.xls#Regression!F3"><img src="statistics/Fig21.png" class="style41"></a></span><p align="center"><samp>
+Рис.21 Пример вычисления параметров <strong>линейной регрессии</strong> </samp></p>
+<p align="left"><a href="#Contents">Содержание</a><a name="Ch7.3"></a></p>
+      <h2 align="left"><span lang="en-us">7</span>.<span lang="en-us">3</span>.
+		Множественная регрессия </h2>
+      <p align="left">
+Естественным обобщением простой однофакторной регрессии является <em>
+множественная регрессия </em>–</p>
+<p class="style2">
+&nbsp;<strong>y</strong>=<strong>Xa</strong>+<strong>&#949;</strong> ,</p>
+<p align="left">
+в которой рассматривается связь между вектором откликов <strong>y</strong> и 
+матрицей предикторов <strong>X</strong>. Обычное предположение относительно 
+ошибок состоит в том, что </p>
+<p class="style2">
+E(&#949;<sub><em>i</em></sub>)=0,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cov(<strong>&#949;</strong>,
+<strong>&#949;</strong>)= &#963;<sup>2</sup><strong>I</strong> ,</p>
+<p align="left">
+где <strong>I</strong>  
+– единичная (<em>I</em>&times;<em>I</em>) матрица. </p>
+<p align="left">
+Если в задаче имеется <em>I</em> наблюдений и <em>J</em> переменных, то матрица
+<strong>X</strong> имеет размерность <em>I</em>&times;<em>J</em>. Цель регрессионного 
+анализа – найти оценки неизвестных коэффициентов <strong>a</strong>=(<em>a</em><sub>1</sub>,…,<em>a<sub>J</sub></em>)<sup>t</sup>, 
+такие, которые минимизируют сумму квадратов остатков  
+–</p>
+<p class="style2">
+<img src="statistics/image64.gif" class="style45">.</p>
+<p align="left">
+В обычном методе наименьших квадратов (МНК) предполагается, что матрица <strong>
+X</strong><sup>t</sup><strong>X</strong> обратима. Тогда минимум <em>Q</em>(<strong>a</strong>) 
+достигается при </p>
+<p class="style2">
+<span lang="en-us"><strong>a</strong><sub>hat</sub>=</span>(<strong>X</strong><sup>t</sup><strong>X</strong>)<sup>–1</sup><strong>X</strong><sup>t</sup><span lang="en-us"><strong>y</strong></span> 
+.</p>
+<p align="left">
+Оценка параметра &#963;<sup>2</sup> равна </p>
+<p class="style2">
+<span lang="en-us"><em>s</em><sup>2</sup>=<em>Q</em>(<strong>a</strong><sub>hat</sub>)/(<em>I</em></span>–<span lang="en-us"><em>J</em>)</span>.</p>
+<p align="left">
+Матрица ковариаций оценок равна </p>
+<p class="style2">
+<strong>C</strong>=s<sup>2</sup>(<strong>X</strong><sup>t</sup><strong>X</strong>)<sup>–1</sup> 
+.</p>
+<p class="style37">
+Для построения множественной регрессии в Excel используют две стандартные 
+функции:
+<a href="http://office.microsoft.com/en-us/excel-help/trend-HP005209320.aspx" class="prog">
+<strong>TREND</strong></a> (<a href="http://office.microsoft.com/ru-ru/excel/HP052093201049.aspx" class="prog"><strong>ТЕНДЕНЦИЯ</strong></a>) 
+и 
+<a href="http://office.microsoft.com/en-us/excel-help/linest-HP005209155.aspx" class="prog">
+<strong>LINEST</strong></a> <span lang="en-us">(</span><a href="http://office.microsoft.com/ru-ru/excel/HP052091551049.aspx" class="prog"><strong>ЛИНЕЙН</strong></a><span lang="en-us">)
+</span>применение которых разобрано в пособии <a href="excel.htm#Ch2.7">Матричные 
+операции в Excel</a>. </p>
+<p align="left"><a href="#Contents">Содержание</a><a name="Conclusions"></a></p>
+        <h1 align="left">Заключение</h1>
+<p align="left">Статистические методы активно используются при анализе данных, 
+в том числе и хемометрическими методами.&nbsp;</p>
+<p align="left">Примеры приведены в пособиях</p>
+<ul>
+	<li>
+	<p align="left">
+	<a href="excel.htm">Матричные 
+	операции в Excel</a> и в сопровождающем его файле
+	<a href="excel/Excel.xls"><em>Excel.xls</em></a></p>
+	</li>
+	<li>
+	<p align="left"><a href="pca.htm">Метод главных компонент (PCA)</a> и в сопровождающем его файле
+	<a href="pca/People.xls"><em>People.xls</em></a></p>
+	</li>
+	<li>
+	<p align="left">
+	<a href="calibration.htm">Калибровка</a> и в сопровождающем его файле
+	<a href="calibration/Calibration.xls"><em>Calibration.xls</em></a></p>
+	</li>
+	<li>
+	<p align="left">
+	<a href="classification.htm">Классификация</a> и в сопровождающем его файле
+	<a href="classification/Iris.xls"><em>Iris.xls</em></a></p>
+	</li>
+	<li>
+	<p align="left"><a href="mcr.htm">Разрешение многомерных кривых </a>и в сопровождающем его файле
+	<a href="mcr/MCR.xls"><em>MCR.xls</em></a>.
+	</p>
+	</li>
+</ul>
+<p align="left"><a href="#Contents">Содержание</a></p>
+      <p align="left">&nbsp;</p>
+  </table>
+
+</body>
+

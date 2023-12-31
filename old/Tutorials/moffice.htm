@@ -1,0 +1,210 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta http-equiv="Content-Language" content="ru">
+<title>О работе с файлами XLS в сети</title>
+<style>
+<!--
+h1           { font-family: Arial; font-size: 14pt; font-weight: bold; text-align: Center }
+#menu        {
+	font-family: Tahoma;
+	font-size: x-small;
+	font-weight: bold;
+}
+h2           { font-family: Arial; font-size: 12pt; font-style: italic }
+.header      { font-family: Arial; font-size: 18pt; letter-spacing: 1; font-weight: bold; 
+               text-align: Center }
+.style1 {
+	font-family: "Courier New";
+}
+.style2 {
+	text-align: left;
+}
+.style3 {
+	text-align: center;
+}
+.style4 {
+	text-align: left;
+	margin-left: 42px;
+}
+.style32 {
+	text-align: center;
+	margin-left: 42px;
+}
+.menu {
+	font-family: Tahoma;
+	font-size: 12px;
+	font-weight: bold;
+}
+.style33 {
+	margin-top: 75px;
+}
+-->
+</style>
+        <title></title>
+</head>
+
+<body>
+
+<p>&nbsp;</p>
+  <center>
+  <table border="0" width="95%" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="100%">
+      <h3 class="header">О работе с файлами XLS в сети</h3>
+      <dl>
+        <div align="center">
+          <center>
+          <dt>© <span lang="en-us">2009 </span>Алексей
+        Померанцев&nbsp;</dt>
+          </center>
+        </div>
+        <div align="center">
+          <center>
+          <dt><a href="../index.html">Российское хемометрическое общество</a></dt>
+          </center>
+        </div>
+        <div align="left">
+              <ol>
+                <li>
+                  <p class="style33">Удобнее всего работать с
+					<span lang="en-us">Excel</span>-файлами в Интернете с 
+					помощью браузера <span lang="en-us">Internet Explorer (IE).
+					</span>Если система правильно сконфигурирована (см. п.9), 
+					то, при нажатие на соответствующую ссылку,
+					<span lang="en-us">Excel</span>-файл будет открываться в том 
+					же окне. Кнопка <span class="menu">Back </span>позволит вернуться в старое окно, хотя часто на другое 
+					место. Почему <span lang="en-us">IE </span>иногда не 
+					помнит, откуда была ссылка <span class="style1">-</span>нам 
+					не ясно. </li>
+                <li>
+                  <p style="margin-top: 10">При загрузке из
+                  Интернета файлов с расширением XLS
+                  (<a href="excel.htm#Ch1.2">рабочих книг Excel</a>) возможно
+                  заражение вирусом. Мы с этим
+                  никогда не сталкивались, но все же....&nbsp; Поэтому
+                  большинство браузеров (например
+                  Internet Explorer, Mozilla)
+                  предотвращают открытие таких
+                  файлов предлагая сохранить их
+                  на диске. Для того, чтобы
+                  убедиться в безопасности
+                  прилагаемой рабочей книги (<i>Calibration.xls</i>,
+                  <i>Projection.xls<span lang="en-us">, </span></i>и т.п.)
+                  мы рекомендуется сначала
+                  скопировать ее на диск,
+                  проверить антивирусной
+                  программой, и только потом,
+                  разрешить автоматически
+                  открывать в окне браузера.&nbsp;</li>
+				<li>
+                  <p style="margin-top: 10" class="style2">При вызове
+					<span lang="en-us">Excel</span>-файла в браузере открывается 
+					его локальная копия на Вашем компьютере и если в нем 
+					происходили какие-то изменения, то система предлагает их 
+					сохранить, что, в общем-то, бессмысленно. </li>
+              </ol>
+				<p style="margin-top: 10" class="style3">
+				<img src="office/save.png" width="341" height="152"></p>
+				<p style="margin-top: 10" class="style4">Для того, чтобы 
+				предотвратить появление этого окна, в каждый<span lang="en-us">
+				</span>наш <span lang="en-us">Excel</span>-файл добавлены две 
+				подпрограммы<code><span lang="en-us"> </span>Workbook_<span lang="en-us">Open,
+				</span>Workbook_<span lang="en-us">SheetChange</span> </code>закрывающие эти файлы без сохранения. 
+				Если Вы скопировали эти файлы к себе на компьютер для того, 
+				чтобы их изменить <span class="style1">-</span> удалите эти 
+				подпрограммы. Они находятся здесь </p>
+				<p style="margin-top: 10" class="style32">
+				<img src="office/vba.png" width="889" height="431">&nbsp;</p>
+				<ol start="4">
+                <li>
+                  <p style="margin-top: 10">Программа Excel
+                  позволяет пользователю
+                  устанавливать различные <a href="excel.htm#Ch4.1">уровни
+                  безопасности</a> при работе с <a href="excel.htm#Ch4.2">макрокомандами</a>.
+                  Если&nbsp;установлен высший
+                  уровень безопасности, то Вы не
+                  сможете использовать функции,
+                  приведенные на&nbsp;рабочих на листе.
+                  Рекомендуемый уровень
+                  безопасности – низкий. Не
+                  забудьте восстановить прежний
+                  уровень после окончания работы, если для Вас это важно.</li>
+                <li>
+                  <p style="margin-top: 10">Для того, чтобы
+                  выполнять вычисления,
+                  необходимые для построения
+                  проекционных моделей, необходимо
+                  установить на Вашем компьютере
+                  специальное программное
+                  обеспечение <i> Chemometrics<span lang="en-us"> Add In</span></i> – <a href="excel.htm#Ch4.5">надстройку</a>
+                  для&nbsp;Excel. О том, как это
+                  сделать рассказывается в пособии
+                  <span lang="en-us">&quot;</span><a href="installation.htm">Установка 
+					надстройки <em>Chemometrics Add-In </em></a>
+					<span lang="en-us">&quot;</span>.</li>
+				<li>
+                  <p style="margin-top: 10">Демонстрационная версия надстройки <i> Chemometrics<span lang="en-us"> 
+					Add In</span></i> 
+					находится <a href="install.zip">здесь</a>. Эта версия ничем 
+					не отличается от полной, однако она работает только с 
+					&quot;нашими&quot; рабочими книгами: <em>Calibration.xls</em>, <em>
+					<span lang="en-us">MCR</span>.xls</em>, <em>Projections.xls</em>, 
+					и т.д. Эти файлы можно изменять, но сохранять эти изменения 
+					нельзя. Полная версия может быть предоставлена по запросу.</li>
+				<li>
+                  <p style="margin-top: 10">Все рабочие книги, размещенные на 
+					нашем сервере, имеют предустановленную опцию
+					<a href="http://office.microsoft.com/ru-ru/excel-help/HP010054149.aspx?CTT=1">
+					Вычисление вручную</a>.&nbsp;Поэтому<span lang="en-us">,</span> если Вы что-то изменили в 
+					книге и хотите посмотреть результат –&nbsp;нажмите
+					<strong class="menu">
+					CTRL+ALT+F9</strong>. Однако, если надстройка <i> Chemometrics</i>&nbsp; 
+					не была подключена, то значения, которые были с ней связаны, 
+					пропадут.&nbsp; </li>
+                <li>
+                  <p style="margin-top: 10">Если у Вас не установлена надстройка <i>Chemometrics</i>, Вы
+                  все равно можете просматривать наши
+                  рабочие книги, но менять в них ничего нельзя..</li>
+                <li>
+                  <p style="margin-top: 10; margin-bottom: 10">Прилагаемые XLS 
+					файлы предназначены для работы с MS Excel версий 97, 2000, 
+					2003 и 2007.
+              	<li>
+				<p style="margin-top: 10; margin-bottom: 10">Для того, чтобы 
+				было удобно работать в браузере <span lang="en-us">IE</span>,<span lang="en-us"> </span>
+				рекомендуем выполнить следующие настройки. </li>
+				<ol>
+                <li>
+                  <p style="margin-left: 50">Щелкните дважды
+                  значок <span class="menu"> <b>Мой компьюте</b>р</span>.&nbsp;</li>
+                <li>
+                  <p style="margin-left: 50">В меню <span class="menu"> <b>Сервис</b></span> (или
+                  в меню <b class="menu">Вид</b>) выберите <b>
+					<span class="menu">Свойства
+                  папки</span></b> (или <b class="menu">Свойства</b>).&nbsp;</li>
+                <li>
+                  <p style="margin-left: 50">Перейдите на
+                  вкладку <b class="menu">Типы файлов</b>.&nbsp;</li>
+                <li>
+                  <p style="margin-left: 50">Из списка <b class="menu">Зарегистрированные
+                  типы файлов</b> выберите тип файла <span class="menu"> <b>XLS</b></span>
+                  (лист Microsoft Excel) и нажмите кнопку <span class="menu"> <b>Дополнительно</b></span>
+                  (или <b class="menu">Изменить</b>).&nbsp;</li>
+                <li>
+                  <p style="margin-left: 50">В диалоговом окне <b class="menu">Изменение
+                  свойств типа файла</b> установите
+                  флажок&nbsp; <b><span class="menu">Просматривать в том
+                  же окне</span>&nbsp;</b>&nbsp;</li>
+                <li>
+                  <p style="margin-left: 50">Нажмите <span class="menu">ОК</span>.</li>
+              </ol>
+                <p style="margin-top: 10; margin-bottom: 10">Тогда все рабочие книги и ссылки на них будут открываться в том же окне, где был 
+текст пособия.              </ol>
+        </div>
+      </dl>
+      </table>
+
+</body>
+

@@ -1,0 +1,1683 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta http-equiv="Content-Language" content="ru">
+<title>Проекционные методы в системе Excel</title>
+<style>
+<!--
+h1           {
+	font-family: Arial;
+	font-size: 14pt;
+	font-weight: bold;
+	text-align: Center;
+	padding-top: 75px;
+}
+#menu        { font-family: Tahoma; font-size: 12pt; font-weight: bold }
+h2           {
+	font-family: Arial;
+	font-size: 12pt;
+	font-style: italic;
+	padding-top: 25px;
+}
+.header      { font-family: Arial; font-size: 18pt; letter-spacing: 1; font-weight: bold; 
+               text-align: Center }
+.style2 {
+	text-align: center;
+}
+.style3 {
+	border-width: 0px;
+}
+.style4 {
+	vertical-align: middle;
+}
+.menu {
+	font-family: Tahoma;
+	font-size: 12px;
+	font-weight: bold;
+}
+.style6 {
+	text-decoration: underline;
+}
+.prog {
+	font-family: "Courier New", Courier, monospace;
+}
+-->
+</style>
+        <title></title>
+</head>
+
+<body>
+
+<p>&nbsp;</p>
+  <center>
+  <table border="0" width="95%" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="100%">
+</center>
+      <h3 class="header">Проекционные методы в
+        системе Excel</h3>
+      <dl>
+        <div align="center">
+          <center>
+          <dt>© 2008 Оксана Родионова, Алексей
+        Померанцев&nbsp;</dt>
+          </center>
+        </div>
+        <div align="center">
+          <center>
+          <dt><a href="../index.html">Российское хемометрическое общество</a></dt>
+          </center>
+        </div>
+      </dl>
+        <h1><a name="Contents"></a>Содержание&nbsp;</h1>
+        <dl>
+          <dt><b><a href="#Ch0">Введение</a></b></dt>
+          <dt><b><a href="#Ch1">1. Проекционные методы</a></b></dt>
+          <dd><b><a href="#Ch1.1">1.1. Постановка задачи</a></b></dd>
+          <dd><b><a href="#Ch1.2">1.2. PCA</a></b></dd>
+          <dd><b><a href="#Ch1.3">1.3. PLS</a></b></dd>
+          <dd><b><a href="#Ch1.4">1.4. Подготовка данных</a></b></dd>
+          <dd><a href="#Ch1.5"><b>1.5. Программы</b></a></dd>
+          <dd><a href="#Ch1.6"><b>1.6. Модельный пример</b></a></dd>
+          <dt><b><a href="#Ch2">2.
+        Использование надстройки Chemometrics Add-In</a></b></dt>
+          <dd><a href="#Ch2.1"><b>2.1.
+        Установка</b></a></dd>
+          <dd><a href="#Ch2.2"><b>2.2. Общие сведения</b></a></dd>
+          <dt><a href="#Ch3"><b>3. PCA</b></a></dt>
+          <dd><a href="#Ch3.1"><b>3.1.
+        ScoresPCA</b></a></dd>
+          <dd><a href="#Ch3.2"><b>3.2. LoadingsPCA</b></a></dd>
+          <dt><b><a href="#Ch4">4.PLS</a></b></dt>
+          <dd><b><a href="#Ch4.1">4.1. ScoresPLS</a></b></dd>
+          <dd><b><a href="#Ch4.2">4.2. UScoresPLS</a></b></dd>
+          <dd><b><a href="#Ch4.3">4.3. LoadingsPLS</a></b></dd>
+          <dd><b><a href="#Ch4.4">4.4. WLoadingsPLS</a></b></dd>
+          <dd><b><a href="#Ch4.5">4.5. QLoadingsPLS</a></b></dd>
+          <dt><b><a href="#Ch5">5. PLS2&nbsp;</a></b></dt>
+          <dd><b><a href="#Ch5.1">5.1. ScoresPLS2&nbsp;</a></b></dd>
+          <dd><b><a href="#Ch5.2">5.2. UScoresPLS2</a></b></dd>
+          <dd><b><a href="#Ch5.3">5.3. LoadingsPLS2&nbsp;</a></b></dd>
+          <dd><b><a href="#Ch5.4"> 5.4. WLoadingsPLS2</a></b></dd>
+          <dd><b><a href="#Ch5.5">5.5. QLoadingsPLS2</a></b></dd>
+          <dt><b><a href="#Ch6">6. Дополнительные матричные функции</a></b></dt>
+          <dd><b><a href="#Ch6.1">6.1 MIdent&nbsp;</a></b></dd>
+          <dd><b><a href="#Ch6.2">6.2 MIdentD2</a></b></dd>
+          <dd><b><a href="#Ch6.3">6.3 MCut<span lang="en-us">Rows</span></a></b></dd>
+          <dd><b><a href="#Ch6.4">6.4 MTrace</a></b></dd>
+          <dt><b><a href="#Conclusion">Заключение</a></b></dt>
+          <dd><a name="Ch0"></a>&nbsp;</dd>
+        </dl>
+        <h1>Введение</h1>
+        <p>В этом пособии рассказывается о
+        применении программного средства <i>
+        Chemometrics Add-In</i> - специальной <a href="excel.htm#Ch4.5">надстройки для
+        системы Microsoft Excel</a>. Программа <i> Chemometrics
+        Add-In</i> предназначена для анализа данных
+        методами Principal Component Analysis (PCA), Projection on
+        Latent Structures (PLS1 и PLS2). Все вычисления
+        производятся внутри рабочих книг Excel с
+        помощью функций листа (worksheet functions)
+        аналогично стандартным функциям, таким,
+        как, например, <a href="excel.htm#MMULT" class="prog"><strong>МУМНОЖ</strong></a>.
+        Предполагается, что читатель имеет
+        базовые навыки работы в среде Excel, умеет
+        проводить простейшие <a href="excel.htm">матричные
+        вычисления</a> с использованием функций
+        листа.&nbsp;</p>
+        <p>В пособии интенсивно используются
+        понятия и методы матричной алгебры –
+        вектор, матрица, и т.п. Читателям,
+        которые плохо знакомы с этим аппаратом,
+        рекомендуется изучить, или, хотя бы
+        просмотреть, пособие &quot;<a href="matlab.htm">Матрицы и векторы</a>&quot;.&nbsp;</p>
+        <p>Настоящее пособие не является
+        учебником по проекционным методам
+        анализа многомерных данных. В нем
+        приведены только основные формулы,
+        поскольку они необходимы для понимания
+        реализованных методов. Читатели,
+        которые плохо знакомы с этим подходом,
+        могут обратиться к <a href="references.htm"> Литературе</a>.&nbsp;</p>
+        <p>Изложение иллюстрируется примерами,
+        выполненными в рабочей книге Excel&nbsp; <a href="projection/Projections.xls#Intro!C4">
+		<em>Projection.xls</em></a>,
+        которая сопровождает этот документ.</p>
+        <p align="center"><b><a href="moffice.htm">Важная
+        информация о работе с
+              файлом Projection.xls</a></b></p>
+      <p>Ссылки на примеры помещены в текст как
+        объекты Excel.&nbsp;По форме эти примеры имеют
+      абстрактный, модельный характер, однако,
+      по своей сути, они тесно связаны с
+      задачами, встречающимися на практике</p>
+      <p class="style2"><b><a href="index.html">Другие 
+		пособия по хемометрике</a></b></p>
+          <p style="line-height: 150%"><a href="#Contents">Содержание</a>
+          <a name="Ch1"></a>
+        <h1>1. Проекционные методы<a name="Ch1.1"></a> </h1>
+        <h2>1.1. Постановка задачи</h2>
+        <p>Проекционные методы интенсивно
+        используются для анализа многомерных
+        данных, прежде всего, в хемометрике. Они
+        применяются и для одноблочных массивов
+        <b>
+        X</b> (классификация – PCA), так и для данных,
+        состоящих из двух блоков <b> X</b> и <b> Y</b> (калибровка
+        – PCR, PLS).</p>
+        <p>Пусть имеется матрица переменных <b> X</b>
+        размерностью (<i>I</i>&times;<i>J</i>), где <i> I</i> –
+        число образцов (строк),
+        а <i> J</i> – это число независимых переменных (столбцов),
+        которых, как правило, много (<i>J</i>&gt;&gt;1). С
+        другой стороны, может еще иметься
+        матрица откликов <b> Y</b>, размерностью (<i>I</i>&times;<i>K</i>),
+        где <i> I</i> – это, естественно, тоже число
+        образцов, а <i> K</i> – это число откликов.</p>
+        <p align="center">&nbsp;<img border="0" src="projection/image001.gif" align="center" width="442" height="175"></p>
+        <p align="center"><samp><a name="Fig01"></a>Рис. 1 Многомерные
+        данные</samp></p>
+        <p>Суть проекционного подхода состоит в
+        существенном понижении размерности
+        исходных массивов, как блока <b>X</b>, так и
+        блока <b>Y</b>. Подробное описание
+        проекционных методов можно найти в <a href="references.htm">
+        Литературе.</a> </p>
+        <p><a href="#Contents">Содержание</a>&nbsp; <a name="Ch1.2"></a> </p>
+        <h2>1.2. PCA </h2>
+        <p>Старейшим проекционным методом
+        является <a href="pca.htm">метод главных компонент</a> (Principal
+        Component Analysis – PCA). В этом методе
+        используются новые, формальные
+        переменные <b>t</b><sub>a</sub>, (<i>a</i>=1,…<i>A</i>),
+        являющиеся линейной комбинацией
+        исходных переменных <b>x</b><i><sub>j</sub></i> (<i>j</i>=1,…<i>J</i>)
+        –</p>
+        <p align="center"><b>t</b><sub><i>a</i></sub>=<b>p</b><sub><i>a</i>1</sub><b>x</b><sub>1</sub>+…
+        <b>p</b><i><sub>aJ</sub></i><b>x</b><i><sub>J</sub></i> </p>
+        <p>или в матричном виде – </p>
+        <div align="center">
+          <center>
+          <table border="0" cellpadding="0" cellspacing="0" width="95%">
+            <tr>
+              <td width="90%">
+                <p align="center"><a name="Eq1"></a><img border="0" src="projection/image002.gif" width="177" height="48"></td>
+              <td>
+                <p align="center">(1)</td>
+            </tr>
+          </table>
+          </center>
+        </div>
+        <p>В этом уравнении <b>T</b> называется <i>
+        матрицей счетов</i> (scores). Ее размерность –
+        (<i>I</i>&times;<i>A</i>).
+        Матрица <b>P</b> называется <i> матрицей
+        нагрузок</i> (loadings). Ее размерность (<i>A</i>&times;<i>J</i>).
+        <b>E</b> – это <i> матрица остатков</i>,
+        размерностью (<i>I</i>&times;<i>J</i>).
+        <p align="center"><img border="0" src="projection/Fig02.png" width="400" height="311">
+        <p align="center"><samp><a name="Fig02"></a>Рис. 2 Графическое
+        представление метода главных
+        компонент</samp></p>
+        <p>Новые переменные <b>t</b><i><sub>a</sub></i>
+        называются <i> главными компонентами </i> (Principal
+        Components), поэтому и сам метод называется <i>
+        методом главных компонент </i> (PCA). Число
+        столбцов – <b>t</b><i><sub>a</sub></i> в матрице <b>T</b>,
+        и <b>p</b><i><sub>a</sub></i> в матрице <b>P</b> – равно <i>A</i>,
+        которое называется <i> числом главных компонент
+        </i> (PC). Эта величина заведомо меньше числа переменных <i>J</i>
+        и числа образцов<i> I.</i> Имеют место
+        следующие соотношения –
+        <p align="center"><b>T</b><sup>t</sup><b>T</b> = <strong>&#923;</strong>=
+      diag{ &#955;<sub>1</sub>,…,&#955;<sub><i>A</i></sub>},&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<span lang="en-us"><strong>P</strong><sup>t</sup><strong>P</strong> =
+		<strong>I</strong></span><p>Для построения PCA счетов и нагрузок,
+        используется рекуррентный алгоритм <a href="references.htm#L3.1">NIPALS</a>,
+        который на каждом шагу вычисляет одну
+        компоненту. Сначала исходная матрица <b>X</b>
+        преобразуется (как минимум – центрируется; см. <a href="#Ch1.4">раздел 1.4</a>)
+        и превращается в матрицу <b>E</b><sub>0</sub>, <i>a</i>=0.
+        Далее применяют следующий алгоритм.&nbsp;
+        <blockquote>
+          <dl>
+            <dd>1. Выбрать начальный вектор <b>t</b>&nbsp;</dd>
+            <dd>2. <b>p</b><sup>t</sup> = <b>t</b><sup>t</sup> <b>E</b><i><sub>a</sub></i>
+              / <b>t</b><sup>t</sup><b>t</b>&nbsp;</dd>
+            <dd>3. <b>p</b> = <b>p</b> / (<b>p</b><sup>t</sup><b>p</b>)<sup>&frac12;</sup></dd>
+            <dd>4. <b>t</b> = <b>E</b><i><sub>a</sub></i> <b>p</b> / <b>p</b><sup>t</sup><b>p</b></dd>
+            <dd>5. Проверить сходимость, если нет,
+              то идти на 2</dd>
+          </dl>
+        </blockquote>
+        <p>После вычисления очередной (<i>a</i>-ой)
+        компоненты, полагаем <b>t</b><i><sub>a</sub></i>=<b>t</b>
+        и <b>p</b><i><sub>a</sub></i>=<b>p</b>. Для получения
+        следующей компоненты надо вычислить
+        остатки <b>E</b><sub><i>a</i>+1</sub> = <b>E</b><i><sub>a</sub></i>
+        – <b>t</b> <b>p</b><sup>t</sup> и применить к ним тот
+        же алгоритм, заменив индекс <i>a</i> на <i>a</i>+1.
+        Программа для реализации PCA в среде MatLab
+        приведена в пособии <a href="matlab.htm#Ch5.3">MatLab.
+          Руководство для начинающих</a>.&nbsp;
+        <p>После того, как построено
+        пространство из главных компонент,
+        новые образцы<b> X</b><sub>new </sub>могут быть
+        на него спроецированы, иными словами – определены матрицы их счетов <b>T</b><sub>new</sub>.
+        В методе PCA это делается очень просто –
+        <p align="center"><b>T</b><sub>new</sub>.= <b>X</b><sub>new</sub> <b>P</b>
+        <p>Разумеется, матрица <b>X</b><sub>new</sub>
+        новых образцов должен предварительно
+        быть модифицирован так же, как и
+        вектора из обучающего набора <b>X</b>, по
+        которым строилось PCA подпространство
+        <p><a href="#Contents">Содержание</a>.<a name="Ch1.3"></a>
+        <h2>1.3. PLS&nbsp;</h2>
+        <p>Обобщением метода PCA является <i> метод
+        проекций на латентные структуры</i> (Projection
+        on Latent Structures, PLS), в котором проводится
+        одновременная декомпозиция матриц <b>X</b>
+        и <b>Y<br>
+        &nbsp;</b>
+        <div align="center">
+          <center>
+          <table border="0" cellpadding="0" cellspacing="0" width="95%">
+            <tr>
+              <td width="90%">
+                <p align="center"><a name="Eq2"><b>X</b>=<b>TP</b><sup>t</sup>+<b>E&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
+                <b>Y</b>=<b>UQ</b><sup>t</sup>+<b>F</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <b>T</b>=<b>XW</b>(<b>P</b><sup>t</sup><b>W</b>)<sup>–1</sup></a></td>
+              <td>
+                <p align="center">(2)</td>
+            </tr>
+          </table>
+          </center>
+        </div>
+        <p>Проекция строится согласованно – так,
+        чтобы максимизировать корреляцию
+        между соответствующими векторами <b>X</b>-счетов
+        <b>t</b><i><sub>a</sub></i> и <b>Y</b>-счетов <b>u</b><i><sub>a</sub></i>.
+        <p align="center"><img border="0" src="projection/Fig03.png" width="500" height="304">
+        <p align="center"><samp><a name="Fig03"></a>Рис. 3 Графическое
+        представление метода главных
+        компонент</samp></p>
+        <p align="left">Если блок данных <b>Y</b> включает
+        несколько откликов (т.е. <i>K</i>&gt;1), можно
+        построить две проекции исходных данных
+        – PLS1 и PLS2. В первом случае для каждого из
+        откликов <b>y</b><sub><i>k</i></sub> строится свое
+        проекционное подпространство. При этом
+        и счета <b>T</b> (<b>U</b>) и нагрузки <b>P</b> (<b>W</b>,
+        <b>Q</b>) , зависят от того, какой отклик
+        используется. Этот подход называется
+        PLS1. Для метода PLS2 строится только одно
+        проекционное пространство, которое
+        является общим для всех откликов. Имеют
+        место следующие соотношения –
+        <p align="center"><b>T</b><sup>t</sup><b>T</b> = <strong>&#923;</strong>=
+      diag{ &#955;<sub>1</sub>,…,&#955;<sub><i>A</i></sub>},&nbsp;&nbsp;&nbsp;&nbsp;
+		<span lang="en-us"><strong>W</strong><sup>t</sup><strong>W</strong> =
+		<strong>I</strong>,<strong>&nbsp;&nbsp;&nbsp;&nbsp; T = XR</strong>,&nbsp;&nbsp;&nbsp;&nbsp;
+		<strong>R = W</strong>(<strong>P</strong><sup>t</sup><strong>W</strong>)</span><sup>–<span lang="en-us">1</span></sup><p class="style2">
+<span lang="en-us"><strong>R</strong><sup>t</sup><strong>P</strong> = <strong>I</strong>,<strong>&nbsp;&nbsp;&nbsp; 
+Y</strong><sup>hat</sup><strong> = XB</strong>=<strong>TQ</strong><sup>t</sup>,&nbsp;&nbsp;&nbsp;
+<strong>B = RQ</strong><sup>t</sup>,<strong>&nbsp;&nbsp;&nbsp;&nbsp; 
+Q</strong><sup>t</sup><strong> = </strong></span> <strong>&#923;</strong><sup>–<span lang="en-us">1</span></sup><strong><span lang="en-us">T<sup>t</sup>Y</span></strong>,
+<span lang="en-us">&nbsp;&nbsp; <strong>W</strong><sup>t</sup> <strong>=&nbsp;
+</strong></span> <strong>&#923;</strong><sup>–1</sup><strong>U<sup>t</sup>X</strong><p align="left">Для построения PLS счетов и
+        нагрузок, используется рекуррентный
+        алгоритм, который на каждом шагу
+        вычисляет одну PLS компоненту.&nbsp;<p align="left">Для
+        PLS1 алгоритм выглядит следующим образом.
+        Исходная матрица <b>X</b> и вектор <b>y</b>
+        преобразуют (как минимум – центрируют;
+        см. <a href="#Ch1.4">раздел 1.4</a>), и они
+        превращаются в матрицу <b>E</b><sub>0</sub> и
+        вектор <b>f</b><sub>0</sub>, <i>a</i>=0. Далее к ним
+        применяет следующий алгоритм.
+        <blockquote>
+          <dl>
+            <dd>1. <b>w</b><sup>t</sup> = <b>f</b><i><sub>a</sub></i><sup>t</sup>
+              <b>E</b><sub><i>a</i></sub>&nbsp;</dd>
+            <dd>2. <b>w</b> = <b>w</b> / (<b>w</b><sup>t</sup><b>w</b>)<sup>&frac12;</sup>&nbsp;</dd>
+            <dd>3. <b>t</b> = <b>E</b><i><sub>a</sub></i> <b>w</b></dd>
+            <dd>4. <i>q</i> = <b>t</b><sup>t </sup><b>f</b><i><sub>a</sub></i> /
+              <b>t</b><sup>t</sup><b>t</b>&nbsp;</dd>
+            <dd>5. <b>u</b> = <i>q</i><b>f</b><i><sub>a</sub></i> / <i>q</i><sup>2</sup>&nbsp;</dd>
+            <dd>6. <b>p</b><sup>t</sup> = <b>t</b><sup>t </sup><b>E</b><i><sub>a</sub></i>
+              / <b>t</b><sup>t</sup><b>t</b>&nbsp;</dd>
+          </dl>
+        </blockquote>
+        <p>После вычисления очередной (<i>a</i>-ой)
+        PLS1 компоненты надо положить: <b>t</b><i><sub>a</sub></i>=<b>t</b>,
+        <b>p</b><i><sub>a</sub></i>=<b>p, w</b><i><sub>a</sub></i>=<b>w</b>, <b>u</b><i><sub>a</sub></i>=<b>u</b>
+        и <i>q</i><sub>a</sub>=<i>q</i>. Для получения
+        следующей компоненты надо вычислить
+        остатки <b>E</b><sub><i>a</i>+1</sub> = <b>E</b><i><sub>a</sub></i>
+        –<b> t p</b><sup>t</sup> и <b>f</b><sub><i>a</i>+1 </sub>= <b>f</b><i><sub>a</sub></i>
+        – <i>q</i><b>t</b> и применить к ним тот же
+        алгоритм, заменив индекс <i>a</i> на <i>a</i>+1.&nbsp;</p>
+        <p>Для PLS2 алгоритм выглядит следующим
+        образом. Сначала исходные матрицы <b>X</b>
+        и <b>Y</b> преобразуют (как минимум – центрируют; см. <a href="#Ch1.4">раздел 1.4</a>), и
+        они превращаются в матрицы <b>E</b><sub>0</sub>
+        и <b>F</b><sub>0</sub>, <i>a</i>=0. Далее к ним
+        применяет следующий алгоритм.</p>
+        <blockquote>
+          <dl>
+            <dd>1. Выбрать начальный вектор <b>u</b>&nbsp;</dd>
+            <dd>2. <b>w</b><sup>t</sup> = <b>u</b><sup>t</sup> <b>E</b><sub><i>a</i></sub>&nbsp;</dd>
+            <dd>3. <b>w</b> = <b>w</b> / (<b>w</b><sup>t</sup><b>w</b>)<sup>&frac12;</sup>&nbsp;</dd>
+            <dd>4. <b>t</b> = <b>E</b><i><sub>a</sub></i> <b>w</b></dd>
+            <dd>5. <b>q</b><sup>t</sup> = <b>t</b><sup>t </sup><b>F</b><i><sub>a</sub></i>
+              / <b>t</b><sup>t</sup><b>t</b>&nbsp;</dd>
+            <dd>6. <b>u</b> = <b>F</b><i><sub>a</sub></i> <b>q</b>/ <b>q</b><sup>t</sup><b>q</b>&nbsp;</dd>
+            <dd>7. Проверить сходимость, если нет,
+              то идти на 2</dd>
+            <dd>8. <b>p</b><sup>t</sup> = <b>t</b><sup>t </sup><b>E</b><i><sub>a</sub></i>
+              / <b>t</b><sup>t</sup><b>t</b>&nbsp;</dd>
+          </dl>
+        </blockquote>
+        <p>После вычисления очередной (<i>a</i>-ой)
+        PLS2 компоненты надо положить: <b>t</b><i><sub>a</sub></i>=<b>t</b>,
+        <b>p</b><i><sub>a</sub></i>=<b>p, w</b><i><sub>a</sub></i>=<b>w</b>, <b>u</b><i><sub>a</sub></i>=<b>u</b>
+        и <b>q</b><sub>a</sub>=<b>q</b>. Для получения
+        следующей компоненты надо вычислить
+        остатки <b>E</b><sub><i>a</i>+1</sub> = <b>E</b><i><sub>a</sub></i>
+        –<b> t p</b><sup>t</sup> и <b>F</b><i><sub>a</sub></i><sub>+1</sub> =
+        <b>F</b><sub><i>a</i></sub> – <b>tq</b><sup>t</sup>&nbsp; и
+        применить к ним тот же алгоритм,
+        заменив индекс <i>a</i> на <i>a</i>+1. Программы
+        для реализации PLS1 и PLS2 в среде MatLab
+        приведены в <a href="matlab.htm#Ch5.4">MatLab.
+          Руководство для начинающих&nbsp;</a></p>
+        <p>Вычисление счетов <b>T</b><sub>new </sub>и <b>U</b><sub>new</sub>
+        для новых образцов (<b>X</b><sub>new</sub> , <b>Y</b><sub>new</sub>)
+        в методе PLS сложнее, чем в PCA. Для PLS1,
+        матрица <b>X</b><sub>new</sub> , и вектор <b>y</b><sub>new</sub>
+        модифицируются так же, как и в
+        обучающем наборе и превращаются в <b>E</b><sub>0
+        </sub>и <b>f</b><sub>0</sub>, <i>a</i>=0. Далее к ним
+        применяет следующий алгоритм для
+        вычисления счетов для <i>a</i>=1,…, <i>A</i>
+        компонент</p>
+        <blockquote>
+          <dl>
+            <dd>1. <b>t</b> = <b>E</b><sub><i>a</i></sub> <b>w</b></dd>
+            <dd>2. <b>u</b> =<b>f</b><sub>a</sub></dd>
+          </dl>
+        </blockquote>
+        <p>После вычисления очередной (<i>a</i>-ой)
+        PLS1 компоненты надо вычислить новые
+        остатки <b>E</b><sub><i>a</i>+1</sub> = <b>E</b><i><sub>a</sub></i>
+        –<b> t p</b><sup>t</sup> и <b>f</b><sub><i>a</i>+1 </sub>= <b>f</b><i><sub>a</sub></i>
+        – <i>q</i><b>t</b> и применить к ним тот же
+        алгоритм, заменив индекс <i>a</i> на <i>a</i>+1.&nbsp;</p>
+        <p>В методе PLS2 новые матрицы <b>X</b><sub>new</sub>
+        и <b>Y</b><sub>new </sub>модифицируются так же,
+        как и в обучающем наборе, и они
+        превращаются в матрицы <b>E</b><sub>0</sub> и <b>F</b><sub>0</sub>,
+        <i>a</i>=0. Далее к ним применяет следующий
+        алгоритм для <i>a</i>=1,…, <i>A</i>
+        компонент&nbsp;</p>
+        <dl>
+          <dd>1. <b>t</b> = <b>E</b><sub><i>a</i></sub> <b>w</b></dd>
+          <dd>2. <b>u</b> = <b>F</b><i><sub>a</sub></i> <b>q</b>/ <b>q</b><sup>t</sup><b>q</b>&nbsp;</dd>
+        </dl>
+        <p>После вычисления <i>a</i>-ой PLS2
+        компоненты надо вычислить новые
+        остатки <b>E</b><sub><i>a</i>+1</sub> = <b>E</b><i><sub>a</sub></i>
+        –<b> tp</b><sup>t</sup> и <b>F</b><i><sub>a</sub></i><sub>+1</sub> =
+        <b>F</b><i><sub>a</sub></i> – <b>tq</b><sup>t</sup>&nbsp; и
+        применить к ним тот же алгоритм,
+        заменив индекс <i>a</i> на <i>a</i>+1</p>
+        <p><a href="#Contents">Содержание</a>.<a name="Ch1.4"></a></p>
+        <h2>1.4. Подготовка данных&nbsp;</h2>
+        <p>Следует обратить внимание на то, что,
+        и PCA, и PLS методы не учитывают свободного
+        члена при разложении матриц <b>X </b>и <b>Y</b>.&nbsp;
+        Это видно из формул (<a href="#Eq1">1</a>) и (<a href="#Eq2">2</a>).
+        В них исходно предполагается, что все
+        столбцы матриц <b>X</b> и <b>Y</b> имеют
+        нулевое среднее, т.е.,&nbsp;</p>
+        <p align="center">
+		<img border="0" src="projection/image007.gif" align="center" width="64" height="48" class="style4">
+        и&nbsp;&nbsp; 
+		<img border="0" src="projection/image008.gif" align="middle" width="67" height="48" class="style4">
+        для всех<i> i</i>=1,…, <i>I</i> и <i>k</i>=1,…, <i>K</i>.&nbsp;</p>
+        <p>Это условие легко можно
+        удовлетворить, проведя центрирование
+        данных. Центрирование – это вычитание
+        из исходной матрицы <b>X</b> матрицы <b>M</b>,
+        т.е.</p>
+        <p align="center">&nbsp;<img border="0" src="projection/image009.gif" align="bottom" width="75" height="21"></p>
+        <p>Обычно усреднение проводится по
+        столбцам: для каждого вектора <b>x</b><i><sub>j</sub></i>
+        вычисляется среднее значение –</p>
+        <p align="center"><img border="0" src="projection/image010.gif" width="139" height="29"></p>
+        <p>Тогда <b>M</b>=(<i>m</i><sub>1</sub><b>1</b>,..., <i>m</i><sub><i>J</i></sub><b>1</b>),
+        где <b>1</b> – это вектор из единиц
+        размерности <i>I</i>.</p>
+      <p>Центрирование – это почти обязательная
+        процедура перед применением
+        проекционных методов. Второе
+        простейшее преобразование данных,
+        нормирование, не является столь обязательным.
+        Нормирование, в отличие от
+        центрирования, не меняет структуру
+        данных, а просто изменяет вес различных
+        частей данных при обработке. Чаще всего
+        применяется нормирование по столбцам –
+        это умножение исходной матрицы <b>X</b>
+        справа на матрицу <b>W</b>, т.е. .&nbsp;</p>
+        <p align="center"><img border="0" src="projection/image011.gif" width="61" height="23"></p>
+        <p>Матрица <b>W</b> – это диагональная
+        матрица размерности <i>J</i>&times;<i>J</i>.
+        Обычно диагональные элементы <i>w<sub>jj</sub></i>
+        равны обратным значениям стандартного
+        отклонения.</p>
+        <p align="center"><img border="0" src="projection/image012.gif" width="151" height="53"></p>
+        <p>вычисленным для каждого столбца <b>x</b><i><sub>j</sub></i>.
+        Нормирование по строкам (называемое
+        также нормализацией) – это умножение
+        матрицы <b>X</b> слева на диагональную
+        матрицу <b>W</b>, т.е.</p>
+        <p align="center"><img border="0" src="projection/image013.gif" width="61" height="23"></p>
+        <p align="left">При этом размерность <b>W</b>
+        равна <i>I</i>&times;<i>I</i>, а ее элементы <b>w</b><sub><i>ii</i></sub>
+        – это обратные значения стандартных
+        отклонений строк <b>x</b><sub>i</sub><sup>t</sup></p>
+        <p align="left">Комбинация центрирования и
+        нормирования по столбцам </p>
+        <p align="center"><img border="0" src="projection/image014.gif" width="116" height="25"></p>
+        <p align="left">называется автошкалированием.
+        Нормирование данных часто применяют
+        для того, чтобы уравнять вклад в модель
+        от различных переменных (например, в
+        гибридном методе ЖХ-МС), учесть
+        неравномерные погрешности, или для
+        того, чтобы обрабатывать совместно
+        разные блоки данных. Нормирование
+        также можно рассматривать как метод,
+        позволяющий стабилизировать
+        вычислительные алгоритмы. В тоже время,
+        к этому преобразованию нужно
+        относиться с большой осторожностью, т.к.
+        оно может сильно исказить результаты
+        качественного анализа. Любое
+        преобразование данных – центрирование,
+        шкалирование, и т.п. – всегда делается
+        сначала на обучающем наборе. По этому
+        набору находятся значения&nbsp; <i>m<sub>j</sub> </i>и
+        <i>d</i><sub><i>j</i></sub>, которые затем
+        применяются и к обучающему, и к
+        проверочному набору</p>
+        <p align="left"><a href="#Contents">Содержание</a>.<a name="Ch1.5"></a></p>
+        <h2 align="left">1.5. Программы&nbsp;</h2>
+        <p align="left">Проекционные методы
+        реализованы в нескольких популярных
+        программах, краткий обзор которых
+        приведен в этом разделе. Чаще всего
+        используются специализированные
+        пакеты. Среди них – программа <a href="http://www.umetrics.com/simca">SIMCA</a>,
+        разработанная компанией <a href="http://www.umetrics.com/">Umetrics</a>,
+        и аналогичный пакет <a href="http://www.camo.com/rt/Products/Unscrambler/unscrambler.html">Unscrambler</a>,
+        компании <a href="http://www.camo.com/">Camo</a>. В
+        тройку самых популярных пакетов входит
+        также <a href="http://software.eigenvector.com/toolbox/pls_toolbox/index.html">PLS
+        ToolBox</a> компании <a href="http://www.eigenvector.com/">Eigenvector
+        Research, Inc</a>. Первые две программы
+        функционируют независимо (stand alone),
+        тогда как последняя работает только
+        внутри вычислительной среды MatLab.&nbsp;
+        <p align="left">Многие проекционные методы
+        реализованы в статистических пакетах
+        общего назначения, таких как <a href="http://www.statsoftinc.com/">Statistica</a>,
+        <a href="http://www.spss.com/spss/index.htm">SPSS</a> и в ряде
+        других.
+        <p align="left">Существует одна условно
+        свободно распространяемая программа.
+        Это – <a href="http://www.chm.bris.ac.uk/org/chemometrics/addins/index.html">Multivariate
+        Analysis Add-in</a> – надстройка для Excel,
+        разработанная в <a href="http://www.chm.bris.ac.uk/org/chemometrics/index.html">Хемометрическом
+        центре</a> Бристольского университета
+        под руководством проф. Р. Бреретона
+        <p align="left"><a href="#Contents">Содержание</a>.<a name="Ch1.6"></a>
+        <h2 align="left">1.6. Модельный пример&nbsp;</h2>
+        <p align="left">Для иллюстрации работы
+        надстройки <i>Chemometrics</i> <i>
+        Add-In </i>используется
+        модельный пример, помещенный в файл <i>
+        <a href="projection/Projections.xls">Projection.xls</a></i>. В нем приведены данные (<b>X</b>, <b>Y</b>), к
+        которым применяются описанные здесь
+        процедуры. Данные нуждаются в
+        центрировании, но не требуют
+        шкалирования.&nbsp;&nbsp;
+        <p align="left"> Файл <i>
+        Projection.xls</i>. включает в себя
+        следующие листы:&nbsp;
+      <blockquote>
+        <p align="left"><i><a href="projection/Projections.xls#Intro!C4">Intro</a></i>:
+        краткое введение&nbsp;
+        <p align="left"><i><a href="projection/Projections.xls#Data!A1">Data</a></i>:
+        данные, используемые в примере. Блок
+        независимых переменных <b>X</b> состоит из
+        14 образцов (9 – в <a href="projection/Projections.xls#Xcal">калибровочном</a> и 5
+        – в <a href="projection/Projections.xls#Xtst">проверочном</a> наборе) и 50 переменных.
+        Блок <b>Y</b> включает два отклика,
+        соответствующих тем же 14 образцам.
+        Приведена также <a href="projection/Projections.xls#Data!B22">схема</a>,
+        объясняющая имена массивов,
+        используемых в примере.&nbsp;
+        <p align="left"><i><a href="projection/Projections.xls#PCA!A1">PCA</a></i>:
+        примеры применения функций <span class="prog"><strong>ScoresPCA</strong></span> и
+		<span class="prog"><strong>LoadingsPCA</strong></span>.&nbsp;
+        <p align="left"><a href="projection/Projections.xls#PLS1!A1"><i>PLS1</i></a>:
+        примеры применения функций <span class="prog"><strong>ScoresPLS</strong></span><strong>, 
+		</strong><span class="prog"><strong>UScoresPLS</strong></span><strong>,
+        </strong><span class="prog"><strong>LoadingsPLS</strong></span><strong>, 
+		</strong><span class="prog"><strong>WLoadingsPLS</strong></span> и 
+		<span class="prog"><strong>QLoadingsPLS</strong></span>.&nbsp;
+        <p align="left"><i><a href="projection/Projections.xls#PLS2!A1">PLS2</a></i>:
+        примеры применения функций <strong><span class="prog">ScoresPLS2</span>,
+        <span class="prog">UScoresPLS2</span>, </strong><span class="prog">
+		<strong>LoadingsPLS2</strong></span><strong>, </strong>
+		<span class="prog"><strong>WLoadingsPLS2</strong></span> и 
+		<span class="prog"><strong>QLoadingsPLS2</strong></span>.<p align="left">
+		<i><a href="projection/Projections.xls#Plus!A1">Plus</a></i>:
+        примеры применения дополнительных функций&nbsp; <span class="prog">
+		<strong>MIdent</strong></span><strong>, 
+		<span class="prog">MIdentD2</span>,
+        </strong><span class="prog"><strong>MTrace</strong></span>, и 
+		<span class="prog"><strong class="prog">MCutR</strong><span lang="en-us"><strong>ows</strong></span></span>.&nbsp;
+        <p align="left"><i><a href="projection/Projections.xls#Unscrambler!A1">Unscrambler</a></i>:
+        сравнение результатов, полученных
+        надстройкой <i>Chemometrics Add-In </i>и программой 
+		<a href="http://www.camo.com/rt/Products/Unscrambler/unscrambler.html">the
+        Unscrambler</a>
+		<p align="left"><i><a href="projection/Projections.xls#'SIMCA-P'!A1">SIMCA-P</a></i>:
+        сравнение результатов, полученных
+        надстройкой <i>Chemometrics Add-In </i>и программой 
+		<a href="http://www.umetrics.com/simca">SIMCA</a>.&nbsp;
+        </blockquote>
+        <p align="left"><a href="#Contents">Содержание</a><a name="Ch2"></a>
+        <h1 align="left">2. Использование надстройки
+        Chemometrics Add-In <a name="Ch2.1"></a></h1>
+        <h2 align="left">2.1. Установка</h2>
+        <p align="left">Прежде чем использовать надстройку <i>
+        Chemometrics Add-In</i>, необходимо ее
+        установить. В состав установочного пакета входят
+        два файла<i> Chemometrics.dll</i> и <i> Chemometrics.xla</i>. 
+<p align="left">Установочный пакет с <em>демонстрационной версией</em> 
+надстройки <i>
+        Chemometrics Add-In</i> можно скачать <a href="install.zip">здесь</a>. 
+Демонстрационная версия ничем не отличается от полной, однако она работает 
+только с &quot;нашими&quot; файлами<span lang="en-us">: </span><em>Calibration.xls</em><span lang="en-us"><em>,
+</em></span><em>Excel.xls, Projections.xls</em>, и т.д. Эти файлы можно 
+изменять, но сохранять эти изменения нельзя. Полная версия может быть 
+предоставлена по запросу.<p align="left">Инструкция по установки надстройки <i> Chemometrics Add-In</i> 
+находится&nbsp; <a href="installation.htm">здесь</a>.<p align="left">
+<a href="#Contents">Содержание</a><a name="Ch2.2"></a>
+        <h2 align="left">2.2. Общие сведения&nbsp;</h2>
+        <p align="left">Надстройка <i> Chemometrics</i> <i>
+        Add-In</i> получает
+        всю исходную информацию из открытой
+        <a href="excel.htm#Ch1.2">рабочей книги Excel.</a> Эта информация
+        должна быть помещена в массивах
+        непосредственно на <a href="projection/Projections.xls#Data!C1"> рабочий лист</a> (данные
+        <b>X</b> и <b>Y</b>).&nbsp;
+        <p align="left">Пользователь может
+        организовать рабочее пространство так,
+        как ему удобно – использовать только
+        один лист для размещения всей
+        информации, или несколько листов, или
+        даже листы в разных рабочих книгах.
+        Полученные результаты также выводятся
+        как массивы на листах рабочей книги.
+        Программа не имеет ограничений на
+        размер входной информации – количество
+        образцов (<i>I</i>), переменных (<i>J</i>), и
+        откликов (<i>K</i>) в данных. Размер данных
+        ограничен только объемом памяти,
+        который поддерживает операционная
+        система, установленная на компьютере, а
+        также ограничениями, налагаемыми
+        программой Excel.&nbsp;
+        <p align="left">Надстройка <i> Chemometrics Add-In</i> содержит
+        несколько функций, которыми можно
+        пользоваться как обычными функциями
+        рабочего листа Excel. Для этого надо
+        активизировать <a href="excel.htm#Ch1.6">Мастер
+        функций</a>&nbsp; <img src="excel/insfun.png" class="style4"> (<span class="menu">Insert-Function</span>) и выбрать
+        категорию <strong class="menu">Определенные
+        пользователем</strong>. При этом в списке
+        имен функций будут представлены
+        описанные ниже функции.&nbsp;
+        <p align="left">Результатами работы этих
+        функций являются массивы, поэтому они
+        должны быть введены как <a href="excel.htm#Ch2.1">формулы
+        массива</a>, т.е. с применением
+        комбинации клавиш <span class="menu">Ctrl+Shift+Enter</span>.&nbsp;
+        <p align="left">Аргументы функций должны быть
+        числами или именами, массивами или
+        ссылками, содержащими числа.&nbsp;
+        <p align="left">При вводе формулы необходимо
+        обводить на листе массив, размеры
+        которого соответствуют объему
+        получаемой информации. При задании
+        большего, чем следует массива, в
+        излишних клетках выводятся символы #N/A.
+        В противном случае, т.е. когда размеры
+        массива вывода меньше, чем следует,
+        часть результатов, лежащих за
+        пределами массива, не выводится на лист.&nbsp;<p align="left"><a name="nPCs"></a><b>Число
+      главных компонент</b>&nbsp;<br>
+      Во всех функциях участвует
+        необязательный аргумент <span class="prog">PC</span>
+        – число главных компонент (<i>A</i>). Если он
+        не задан, то выводится максимально
+        возможное для отмеченной области
+        количество столбцов матрицы счетов/
+        нагрузок. Если этот аргумент задан, но <span class="prog">PC</span>&gt;min (<i>I</i>, <i>J</i>), то декомпозиция
+        делается для максимально возможного
+        количества ГК, а оставшиеся столбцы
+        заполняются символами #N/A.<P align=left><b><a name="nCent"></a>Центрирование
+      и/или шкалирование<br>
+      </b>Также во всех функциях участвует
+      необязательные аргументы<span lang="en-us"> </span><span class="prog">
+<strong>CentWeightX</strong></span>
+      и <span class="prog"><strong>СentWeightY</strong></span>,
+      определяющие проводится ли центрирование и/или
+        шкалирование <B>X</B>  и <b>Y</b> переменных.&nbsp;Они
+      могут принимать значения:
+        <blockquote>
+          <P align=left><span class="menu">0</span> -&nbsp; нет ни шкалирования, ни
+          центрирования (значение по умолчанию)<span lang="en-us">;</span><br>
+          <span class="menu">1</span> -&nbsp; только центрирование: вычитание
+          среднего значения по переменной<span lang="en-us">;</span>&nbsp;<br>
+          <span class="menu">2</span> -&nbsp; только шкалирование на
+          среднеквадратичное отклонение
+          переменной<span lang="en-us">;</span><br>
+          <span class="menu">3</span>&nbsp; - и шкалирование, и центрирование
+          одновременно, т.е. автошкалирование<span lang="en-us">.</span>
+        </blockquote>
+        <p align="left">Если аргумент <span class="prog"><strong>CentWeightX</strong></span> 
+		или <span class="prog"><strong>CentWeightY</strong></span>
+          опущен, то предполагается, что он
+          равен 0.&nbsp;
+        <p align="left"><a href="#Contents">Содержание</a><a name="Ch3"></a>
+        <h1 align="left">3. PCA <a name="Ch3.1"></a></h1>
+        <h2 align="left">3.1. ScoresPCA&nbsp;</h2>
+        <p align="left">Возвращает значения счетов <b>T</b>
+        в соответствии с уравнением (<a href="#Eq1">1</a>)
+        метода главных компонент по заданным
+        значениям матрицы <b>X</b> и <b>X</b><sub>new</sub>.
+        <p align="left"><b><i>Синтаксис&nbsp;</i></b>
+      <p align="left"><span class="prog"><B>ScoresPCA</B> (<B>X</B> [, PC]
+      [,CentWeightX] [, Xnew])&nbsp;</span> 
+      </p>
+      <blockquote>
+        <p align="left"><span class="prog"><b>X</b></span> – множество значений <b>X</b> (калибровочный
+        набор)&nbsp;
+        <p align="left"><span class="prog">PC</span> – необязательный аргумент. Целая
+        величина, <a href="#nPCs"> определяющая</a> число главных
+        компонент (<i>A</i>), используемых в методе
+        главных компонент.&nbsp;<P align=left><span class="prog">CentWeightX</span> – 
+        необязательный аргумент. Целая величина,
+        <a href="#nCent">
+        определяющая</a> проводится ли центрирование и/или
+        шкалирование <B>X</B> переменных.&nbsp;<p align="left">
+		<span class="prog">Xnew</span>–
+        необязательный аргумент. Множество
+        новых значений <b>X</b><sub>new</sub> (проверочный
+        набор) для которых вычисляются и
+        выводятся значения счетов <b>T</b>.&nbsp;
+      </blockquote>
+        <p align="left"><b><i>Примечания&nbsp;</i></b>
+      <ul type="square">
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Матрица
+          новых значений <span class="prog">Xnew</span> должна
+          иметь столько же столбцов (переменных),
+          как и матрица <strong class="prog">X</strong>.&nbsp;</li>
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Если
+          аргумент <span class="prog"> Xnew</span>
+          опущен, то предполагается, что он
+          совпадает с массивом <strong class="prog">X</strong>.&nbsp;</li>
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Результат
+          является массивом (матрицей), в
+          которой число строк равно числу строк
+          (образцов, <i>I</i>) в массиве <span class="prog">Xnew</span>,
+          а число столбцов равно числу ГК (<i>A</i>).&nbsp;</li>
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 0">Аналогичная
+          стандартная функция листа: <a href="excel.htm#TREND" class="prog">
+			<strong>ТЕНДЕНЦИЯ</strong></a>&nbsp;</li>
+      </ul>
+        <p align="left"><b><i>Пример</i></b>
+        <p align="center"><a href="projection/Projections.xls#PCA!C13"><img border="0" src="projection/Fig04.png" align="center" width="328" height="290"></a>
+        <p align="center"><samp><a name="Fig04"></a>Рис. 4 Пример ввода
+        функции <strong>ScoresPCA</strong></samp></p>
+        <p align="left">Функция <span class="prog"><strong>ScoresPCA</strong></span> 
+      	является <a href="excel.htm#Ch2.1">формулой
+        массива</a> и ее ввод должен завершаться нажатием комбинации 
+		<span class="menu">CTRL+SHIFT+ENTER</span>.</p>
+<p align="left"><a href="#Contents">Содержание</a><a name="Ch3.2"></a></p>
+        <h2 align="left">3.2. LoadingsPCA&nbsp;</h2>
+        <p align="left">Возвращает значения нагрузок <b>P</b>
+        в соответствии с уравнением (<a href="#Eq1">1</a>)
+        метода главных компонент по заданным
+        значениям матрицы <b>X</b>.
+        <p align="left"><b><i>Синтаксис&nbsp;</i></b>
+        <p align="left"><span class="prog"><B>LoadingsPCA</B> (<B>X</B> [,
+      	PC] [, CentWeightX])</span> 
+      <blockquote>
+        <p align="left"><span class="prog"><b>X</b></span> – множество значений <b>X</b> (калибровочный
+        набор)&nbsp;
+        <p align="left"><span class="prog">PC</span> – необязательный аргумент. Целая
+        величина, <a href="#nPCs"> определяющая</a> число главных
+        компонент (<i>A</i>), используемых в методе
+        главных компонент.&nbsp;<P align=left><span class="prog">CentWeightX</span> – 
+        необязательный аргумент. Целая величина,
+        <a href="#nCent">
+        определяющая</a> проводится ли центрирование и/или
+        шкалирование <B>X</B> переменных.&nbsp;
+      </blockquote>
+        <p align="left"><b><i>Примечания&nbsp;</i></b>
+      <ul type="square">
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Результат
+          является массивом (матрицей), в
+          которой число столбцов равно числу ГК
+          (<i>A</i>), а число строк равно числу
+          столбцов (переменных, <i>J</i>) в массиве <strong class="prog">X</strong>.&nbsp;</li>
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 0">Аналогичная
+          стандартная функция листа: <a href="excel.htm#MINVERSE" class="prog">
+			<strong>МОБР</strong></a></li>
+      </ul>
+        <p align="left"><b><i>Пример</i></b>
+        <p align="center"><a href="projection/Projections.xls#PCA!J4"><img border="0" src="projection/Fig05.png" width="434" height="130"></a><p align="center"><samp><a name="Fig05"></a>Рис.
+      5 Пример ввода функции <strong>LoadingsPCA</strong></samp></p>
+      <p align="left">Функция <span class="prog"><strong>LoadingsPCA</strong></span><span lang="en-us">
+		</span>является <a href="excel.htm#Ch2.1">формулой
+        массива</a> и ее ввод должен завершаться нажатием комбинации 
+		<span class="menu">CTRL+SHIFT+ENTER</span>.</p>
+<p align="left"><a href="#Contents">Содержание</a><a name="Ch4"></a></p>
+        <h1 align="left">4. PLS <a name="Ch4.1"></a></h1>
+        <h2 align="left">4.1. ScoresPLS&nbsp;</h2>
+      <p align="left">Возвращает значения PLS счетов <b>T</b>
+        в соответствии с уравнением (<a href="#Eq2">2</a>)
+        метода PLS по заданным значениям матриц <b>X</b>
+        и <b>Y</b> , а также матрицы <b>X</b><sub>new</sub> .
+        <p align="left"><b><i>Синтаксис&nbsp;</i></b>
+        <p align="left"><span class="prog"><B>ScoresPLS</B> (<B>X</B>, <B>Y </B>[, 
+		PC] [, CentWeightX] [,
+      	CentWeightY] [, Xnew] )</span> 
+      <blockquote>
+        <p align="left"><span class="prog"><strong>X</strong></span> – множество значений <b>X</b> (калибровочный
+        набор)&nbsp;<p align="left"><strong class="prog">Y</strong> – множество значений <b>Y</b> (калибровочный
+        набор)&nbsp;<P align=left><span class="prog">PC</span> – необязательный аргумент. Целая
+        величина, <a href="#nPCs"> определяющая</a> число главных
+        компонент (<i>A</i>), используемых в методе
+        PLS.&nbsp;<P align=left><span class="prog">CentWeightX</span> – 
+        необязательный аргумент. Целая величина,
+        <a href="#nCent">
+        определяющая</a> проводится ли центрирование и/или
+        шкалирование <B>X</B> переменных.&nbsp;<P align=left><span class="prog">CentWeightY</span> – 
+        необязательный аргумент. Целая величина,
+        <a href="#nCent">
+        определяющая</a> проводится ли центрирование и/или
+        шкалирование <B>Y</B> переменных.&nbsp;
+        <p align="left"><span class="prog">Xnew</span> –
+        необязательный аргумент. Множество
+        новых значений <b>X</b><sub>new</sub> (проверочный
+        набор) для которых вычисляются и
+        выводятся значения PLS счетов <b>T</b>.&nbsp;
+      </blockquote>
+        <p align="left"><b><i>Примечания&nbsp;</i></b>
+      <ul type="square">
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Матрица 
+			значений <strong class="prog">Y</strong>
+          должна иметь только один столбец (отклик,
+          <i>K</i>=1)
+          .&nbsp;</li>
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Матрица 
+			значений <strong class="prog">Y</strong>
+          должна иметь столько же строк (образцов
+          <i>I</i>), как и матрица <span class="prog"><strong>X</strong></span>&nbsp;</li>
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Матрица
+          новых значений <span class="prog">Xnew</span> должна
+          иметь столько же столбцов (переменных <i>J</i>), как и матрица
+			<strong class="prog">X</strong>.&nbsp;</li>
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Если 
+			аргумент <span class="prog">Xnew</span><span lang="en-us"> </span>
+			опущен, то предполагается, что он совпадает с массивом
+			<strong class="prog">X</strong>.&nbsp;</li>
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Результат
+          является массивом (матрицей), в
+          которой число строк равно числу строк
+          (образцов, <i>I</i>) в массиве <span class="prog">Xnew</span>,
+          а число столбцов равно числу ГК (<i>A</i>).&nbsp;</li>
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 0">Аналогичная
+          стандартная функция листа: <a href="excel.htm#TREND" class="prog">
+			<strong>ТЕНДЕНЦИЯ</strong></a>&nbsp;</li>
+      </ul>
+        <p align="left"><b><i>Пример</i></b>
+        <p align="center"><a href="projection/Projections.xls#PLS1!C13"><img border="0" src="projection/Fig06.png" width="332" height="288"></a><p align="center"><samp><a name="Fig06"></a>Рис.6
+      Пример ввода функции <strong>ScoresPLS</strong></samp></p>
+      <p align="left">Функция <span class="prog"> <strong>ScoresPLS</strong></span> 
+      является <a href="excel.htm#Ch2.1">формулой
+        массива</a> и ее ввод должен завершаться нажатием комбинации 
+		<span class="menu">CTRL+SHIFT+ENTER</span>.</p>
+<p align="left"><a href="#Contents">Содержание</a><a name="Ch4.2"></a></p>
+        <h2 align="left">4.2. UScoresPLS&nbsp;</h2>
+        <p align="left">Возвращает значения счетов <b>U</b>
+        в соответствии с уравнением (<a href="#Eq2">2</a>)
+        метода PLS по заданным значениям матриц <b>X</b>
+        и <b>Y</b> , а также матриц <b>X</b><sub>new</sub> и <b>Y</b><sub>new</sub>.
+        <p align="left"><b><i>Синтаксис&nbsp;</i></b>
+        <p align="left"><span class="prog"><b>UScoresPLS</b> (<b>X</b>,
+        <b>Y, </b>[, PC] </span> 
+        <span class="prog">[, CentWeightX] [,
+      	CentWeightY] </span><span class="prog">[, Xnew][, Ynew])&nbsp;</span>
+      <blockquote>
+        <p align="left"><span class="prog"><strong>X</strong></span> – множество значений <b>X</b> (калибровочный
+        набор)&nbsp;<p align="left"><strong class="prog">Y</strong> – множество значений <b>Y</b> (калибровочный
+        набор)&nbsp;<P align=left><span class="prog">PC</span> – необязательный аргумент. Целая
+        величина, <a href="#nPCs"> определяющая</a> число главных
+        компонент (<i>A</i>), используемых в методе
+        PLS.&nbsp;<P align=left><span class="prog">CentWeightX</span> – 
+        необязательный аргумент. Целая величина,
+        <a href="#nCent">
+        определяющая</a> проводится ли центрирование и/или
+        шкалирование <B>X</B> переменных.&nbsp;<P align=left><span class="prog">CentWeightY</span> – 
+        необязательный аргумент. Целая величина,
+        <a href="#nCent">
+        определяющая</a> проводится ли центрирование и/или
+        шкалирование <B>Y</B> переменных.&nbsp;
+        <p align="left"><span class="prog">Xnew</span> –
+        необязательный аргумент. Множество
+        новых значений <b>X</b><sub>new</sub> (проверочный
+        набор) для которых вычисляются и
+        выводятся значения PLS счетов <b>T</b>.&nbsp;
+      </blockquote>
+      <blockquote>
+        <p align="left"><span class="prog">Ynew</span> –
+        необязательный аргумент. Множество
+        новых значений <b>Y</b><sub>new</sub> (проверочный
+        набор) для которых вычисляются и
+        выводятся значения PLS счетов <b>U</b>.&nbsp;
+      </blockquote>
+        <p align="left"><b><i>Примечания&nbsp;</i></b>
+      <ul type="square">
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Матрица 
+			значений <strong class="prog">Y</strong>
+          должна иметь только один столбец (отклик,
+          <i>K</i>=1)
+          .&nbsp;</li>
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Матрица 
+			значений <strong class="prog">Y</strong>
+          должна иметь столько же строк (образцов
+          <i>I</i>), как и матрица <span class="prog"><strong>X</strong></span>&nbsp;</li>
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Матрица
+          новых значений <span class="prog">Xnew</span> должна
+          иметь столько же столбцов (переменных <i>J</i>), как и матрица
+			<strong class="prog">X</strong>.&nbsp;</li>
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Если 
+			аргумент <span class="prog">Xnew</span> опущен, то предполагается, 
+			что он совпадает с массивом <strong class="prog">X</strong>.&nbsp;</li>
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Результат
+          является массивом (матрицей), в
+          которой число строк равно числу строк
+          (образцов, <i>I</i>) в массиве <span class="prog">Xnew</span>,
+          а число столбцов равно числу ГК (<i>A</i>).&nbsp;</li>
+        <li>
+		<p align="left" style="margin-left: 25; margin-bottom: 6">Матрицы
+          новых значений <span class="prog">Xnew</span>
+          и <span class="prog">Ynew</span> должны
+          иметь одинаковое количество строк.</li>
+		<li>
+		<p align="left" style="margin-left: 25; margin-bottom: 6">Если
+          аргумент <span class="prog">Ynew</span>
+          опущен, то предполагается, что он совпадает с массивом
+		<strong class="prog">Y</strong>
+          .</li>
+		<li>
+		<p align="left" style="margin-left: 25; margin-bottom: 0">Аналогичная
+          стандартная функция листа: <a href="excel.htm#TREND" class="prog">
+		<strong>ТЕНДЕНЦИЯ</strong></a>&nbsp;</li>
+      </ul>
+        <p align="left"><b><i>Пример</i></b>
+        <p align="center"><a href="projection/Projections.xls#PLS1!C30"><img border="0" src="projection/Fig07.png" width="329" height="290"></a><p align="center"><samp><a name="Fig07"></a>Рис.7
+      Пример ввода функции <strong>UScoresPLS</strong></samp></p>
+      <p align="left">Функция <span class="prog"><span lang="en-us"><strong>US</strong></span><strong>coresP</strong><span lang="en-us"><strong>LS</strong></span></span> 
+      является <a href="excel.htm#Ch2.1">формулой
+        массива</a> и ее ввод должен завершаться нажатием комбинации 
+		<span class="menu">CTRL+SHIFT+ENTER</span>.</p>
+<p align="left"><a href="#Contents">Содержание</a><a name="Ch4.3"></a></p>
+      <h2 align="left">4.3 LoadingsPLS&nbsp;</h2>
+      <p align="left">Возвращает значения нагрузок <b>P</b>
+        в соответствии с уравнением (<a href="#Eq2">2</a>)
+        метода PLS по заданным
+        значениям матриц <b>X</b> и <b>Y</b>.
+        <p align="left"><b><i>Синтаксис&nbsp;</i></b>
+        <p align="left"><span class="prog"><b>LoadingsPLS</b> (<b>X</b>,
+        <b>Y </b>[, PC]</span><span class="prog"> [,
+        CentWeightX] [, CentWeightY])&nbsp;</span>
+      <blockquote>
+        <p align="left"><span class="prog"><strong>X</strong></span> – множество значений <b>X</b> (калибровочный
+        набор)&nbsp;<p align="left"><span class="prog"><strong>Y</strong></span> – множество значений <b>Y</b> (калибровочный
+        набор)&nbsp;<P align=left><span class="prog">PC</span> – необязательный аргумент. Целая
+        величина, <a href="#nPCs"> определяющая</a> число главных
+        компонент (<i>A</i>), используемых в методе
+        PLS.&nbsp;<P align=left><span class="prog">CentWeightX</span> – 
+        необязательный аргумент. Целая величина,
+        <a href="#nCent">
+        определяющая</a> проводится ли центрирование и/или
+        шкалирование <B>X</B> переменных.&nbsp;<P align=left><span class="prog">CentWeightY</span> – 
+        необязательный аргумент. Целая величина,
+        <a href="#nCent">
+        определяющая</a> проводится ли центрирование и/или
+        шкалирование <B>Y</B> переменных.&nbsp;
+        <p align="left"><span class="prog">Xnew</span> –
+        необязательный аргумент. Множество
+        новых значений <b>X</b><sub>new</sub> (проверочный
+        набор) для которых вычисляются и
+        выводятся значения PLS счетов <b>T</b>.&nbsp;
+      </blockquote>
+        <p align="left"><b><i>Примечания&nbsp;</i></b>
+      <ul type="square">
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Матрица 
+			значений <strong class="prog">Y</strong>
+          должна иметь только один столбец (отклик,
+          <i>K</i>=1).&nbsp;</li>
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Матрица
+          значений <strong class="prog">Y</strong>
+          должна иметь столько же строк (образцов
+          <i>I</i>), как и матрица <strong class="prog">X</strong>&nbsp;</li>
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Результат
+          является массивом (матрицей), в
+          которой число столбцов равно числу ГК
+          (<i>A</i>), а число строк равно числу
+          столбцов (переменных, <i>J</i>) в массиве <strong class="prog">X</strong>.&nbsp;</li>
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 0">Аналогичная
+          стандартная функция листа: <a href="excel.htm#MMULT" class="prog">
+			<strong>МУМНОЖ</strong></a>
+       </li>
+      </ul>
+        <p align="left"><b><i>Пример</i></b>
+        <p align="center"><a href="projection/Projections.xls#PLS1!J4"><img border="0" src="projection/Fig08.png" width="395" height="135"></a><p align="center"><samp>Рис.
+      8 Пример ввода функции <strong>LoadingsPLS</strong></samp></p>
+      <p align="left">Функция <span class="prog"><strong>LoadingsPLS</strong></span> 
+      является <a href="excel.htm#Ch2.1">формулой
+        массива</a> и ее ввод должен завершаться нажатием комбинации 
+		<span class="menu">CTRL+SHIFT+ENTER</span>.</p>
+<p align="left"><a href="#Contents">Содержание</a><a name="Ch4.4"></a></p>
+      <h2 align="left">4.4 WLoadingsPLS&nbsp;</h2>
+      <p align="left">Возвращает значения нагрузок <b>W</b>
+        в соответствии с уравнением (<a href="#Eq2">2</a>)
+        метода PLS по заданным
+        значениям матриц <b>X</b> и <b>Y</b>.
+        <p align="left"><b><i>Синтаксис&nbsp;</i></b>
+        <p align="left" style="height: 6px"><span class="prog"><b>WLoadingsPLS</b> (<b>X</b>,
+        <b>Y </b>[, PC] [, CentWeightX] [, CentWeightY])&nbsp;</span>
+      <blockquote>
+        <p align="left"><span class="prog"><strong>X</strong></span> – множество значений <b>X</b> (калибровочный
+        набор)&nbsp;<p align="left"><strong class="prog">Y</strong> – множество значений <b>Y</b> (калибровочный
+        набор)&nbsp;<P align=left><span class="prog">PC</span> – необязательный аргумент. Целая
+        величина, <a href="#nPCs"> определяющая</a> число главных
+        компонент (<i>A</i>), используемых в методе
+        PLS.&nbsp;<P align=left><span class="prog">CentWeightX</span> – 
+        необязательный аргумент. Целая величина,
+        <a href="#nCent">
+        определяющая</a> проводится ли центрирование и/или
+        шкалирование <B>X</B> переменных.&nbsp;<P align=left><span class="prog">CentWeightY</span> – 
+        необязательный аргумент. Целая величина,
+        <a href="#nCent">
+        определяющая</a> проводится ли центрирование и/или
+        шкалирование <B>Y</B> переменных.&nbsp;
+        <p align="left"><span class="prog">Xnew</span> –
+        необязательный аргумент. Множество
+        новых значений <b>X</b><sub>new</sub> (проверочный
+        набор) для которых вычисляются и
+        выводятся значения PLS счетов <b>T</b>.&nbsp;
+      </blockquote>
+        <p align="left"><b><i>Примечания</i></b><ul type="square">
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Матрица
+          значений <strong class="prog">Y</strong>
+          должна иметь только один столбец (отклик,
+          <i>K</i>=1).&nbsp;</li>
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Матрица
+          значений <strong class="prog">Y</strong>
+          должна иметь столько же строк (образцов
+          <i>I</i>), как и матрица <strong class="prog">X</strong>&nbsp;</li>
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Результат
+          является массивом (матрицей), в
+          которой число столбцов равно числу ГК
+          (<i>A</i>), а число строк равно числу
+          столбцов (переменных, <i>J</i>) в массиве <strong class="prog">X</strong>.&nbsp;</li>
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 0">Аналогичная
+          стандартная функция листа: <a href="excel.htm#MMULT" class="prog">
+			<strong>МУМНОЖ</strong></a>
+       </li>
+      </ul>
+        <p align="left"><b><i>Пример</i></b>
+        <p align="center"><a href="projection/Projections.xls#PLS1!J13"><img border="0" src="projection/Fig09.png" width="394" height="137"></a><p align="center"><samp>Рис.
+      9 Пример ввода функции <strong>WLoadingsPLS</strong></samp></p>
+      <p align="left">Функция <span class="prog"><strong>WLoadingsPLS</strong><span lang="en-us">
+		</span></span>является <a href="excel.htm#Ch2.1">формулой
+        массива</a> и ее ввод должен завершаться нажатием комбинации 
+		<span class="menu">CTRL+SHIFT+ENTER</span>.</p>
+<p align="left"><a href="#Contents">Содержание</a><a name="Ch4.5"></a></p>
+      <h2 align="left">4.5 QLoadingsPLS&nbsp;</h2>
+      <p align="left">Возвращает значения нагрузок <b>Q</b>
+        в соответствии с уравнением (<a href="#Eq2">2</a>)
+        метода PLS по заданным
+        значениям матриц <b>X</b> и <b>Y</b>.
+        <p align="left"><b><i>Синтаксис&nbsp;</i></b>
+        <p align="left"><span class="prog"><b>QLoadingsPLS</b> (<b>X</b>,
+        <b>Y </b>[, PC] [, CentWeightX] [, CentWeightY])&nbsp;</span>
+      <blockquote>
+        <p align="left"><span class="prog"><strong>X</strong></span> – множество значений <b>X</b> (калибровочный
+        набор)&nbsp;<p align="left"><span class="prog"><strong>Y</strong></span> – множество значений <b>Y</b> (калибровочный
+        набор)&nbsp;<p align="left"><span class="prog">PC</span> – необязательный аргумент. Целая
+        величина, <a href="#nPCs"> определяющая</a> число главных
+        компонент (<i>A</i>), используемых в методе
+        PLS.&nbsp;<P align=left><span class="prog">CentWeightX</span> – 
+        необязательный аргумент. Целая величина,
+        <a href="#nCent">
+        определяющая</a> проводится ли центрирование и/или
+        шкалирование <B>X</B> переменных.&nbsp;<P align=left><span class="prog">CentWeightY</span> – 
+        необязательный аргумент. Целая величина,
+        <a href="#nCent">
+        определяющая</a> проводится ли центрирование и/или
+        шкалирование <B>Y</B> переменных.&nbsp;
+      </blockquote>
+        <p align="left"><b><i>Примечания&nbsp;</i></b>
+      <ul type="square">
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Матрица
+          значений <span class="prog"><strong>Y</strong></span>
+          должна иметь только один столбец (отклик,
+          <i>K</i>=1).&nbsp;</li>
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Матрица
+          значений <span class="prog"><strong>Y</strong></span>
+          должна иметь столько же строк (образцов
+          <i>I</i>), как и матрица <span class="prog"><strong>X</strong></span>&nbsp;</li>
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Результат
+          является массивом (вектором), в
+          которой число столбцов равно числу ГК
+          (<i>A</i>), а число строк равно числу
+          откликов, т.е 1&nbsp;</li>
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 0">Аналогичная
+          стандартная функция листа: <a href="excel.htm#MMULT" class="prog">
+			<strong>МУМНОЖ</strong></a>
+       </li>
+      </ul>
+        <p align="left"><b><i>Пример</i></b>
+        <p align="center"><a href="projection/Projections.xls#PLS1!J21"><img border="0" src="projection/Fig10.png" width="352" height="138"></a><p align="center"><samp>Рис.
+      10 Пример ввода функции <strong>QLoadingsPLS</strong></samp></p>
+      <p align="left">Функция <span class="prog"><strong><span lang="en-us">Q</span>LoadingsPLS</strong><span lang="en-us">
+		</span></span>является <a href="excel.htm#Ch2.1">формулой
+        массива</a> и ее ввод должен завершаться нажатием комбинации 
+		<span class="menu">CTRL+SHIFT+ENTER</span>.</p>
+<p align="left"><a href="#Contents">Содержание</a><a name="Ch5"></a></p>
+        <h1 align="left">5. PLS2 <a name="Ch5.1"></a></h1>
+        <h2 align="left">5.1. ScoresPLS2&nbsp;</h2>
+      <p align="left">Возвращает значения PLS2 счетов <b>T</b>
+        в соответствии с уравнением (<a href="#Eq2">2</a>)
+        метода PLS2 по заданным значениям матриц <b>X</b>
+        и <b>Y</b> , а также матрицы <b>X</b><sub>new</sub>.
+        <p align="left"><b><i>Синтаксис&nbsp;</i></b>
+        <p align="left"><span class="prog"><strong>ScoresPLS2</strong>(<strong>X</strong>, 
+		<strong>Y </strong>[, 
+		PC] [, CentWeightX] [,
+      	CentWeightY] [, Xnew] )</span>
+      <blockquote>
+        <p align="left"><span class="prog"><strong>X</strong></span> – множество значений <b>X</b> (калибровочный
+        набор)&nbsp;<p align="left"><strong class="prog">Y</strong> – множество значений <b>Y</b> (калибровочный
+        набор)&nbsp;<P align=left><span class="prog">PC</span> – необязательный аргумент. Целая
+        величина, <a href="#nPCs"> определяющая</a> число главных
+        компонент (<i>A</i>), используемых в методе
+        PLS.&nbsp;<P align=left><span class="prog">CentWeightX</span> – 
+        необязательный аргумент. Целая величина,
+        <a href="#nCent">
+        определяющая</a> проводится ли центрирование и/или
+        шкалирование <B>X</B> переменных.&nbsp;<P align=left><span class="prog">CentWeightY</span> – 
+        необязательный аргумент. Целая величина,
+        <a href="#nCent">
+        определяющая</a> проводится ли центрирование и/или
+        шкалирование <B>Y</B> переменных.&nbsp;
+        <p align="left"><span class="prog">Xnew</span> –
+        необязательный аргумент. Множество
+        новых значений <b>X</b><sub>new</sub> (проверочный
+        набор) для которых вычисляются и
+        выводятся значения PLS счетов <b>T</b>.&nbsp;
+      </blockquote>
+        <p align="left"><b><i>Примечания&nbsp;</i></b>
+      <ul type="square">
+        <li>
+		<p align="left" style="margin-left: 25; margin-bottom: 6">Матрица
+          значений <span class="prog"><strong>Y</strong></span>
+          должна иметь столько же строк (образцов
+          <i>I</i>), как и матрица <span class="prog"><strong>X</strong></span>&nbsp;</li>
+		<li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Матрица
+          новых значений <span class="prog">Xnew</span> должна
+          иметь столько же столбцов (переменных <i>J</i>), как и матрица
+			<strong class="prog">X</strong>.&nbsp;</li>
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Если
+          аргумент <span class="prog">Xnew</span> опущен, то предполагается, что 
+			он совпадает с массивом <strong class="prog">X</strong>.&nbsp;</li>
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Результат
+          является массивом (матрицей), в
+          которой число строк равно числу строк
+          (образцов, <i>I</i>) в массиве <span class="prog">Xnew</span>,
+          а число столбцов равно числу ГК (<i>A</i>).&nbsp;</li>
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 0">Аналогичная
+          стандартная функция листа: <a href="excel.htm#TREND" class="prog">
+			<strong>ТЕНДЕНЦИЯ</strong></a>&nbsp;</li>
+      </ul>
+        <p align="left"><b><i>Пример</i></b>
+        <p align="center"><a href="projection/Projections.xls#PLS2!C13"><img border="0" src="projection/Fig11.png" width="331" height="289"></a><p align="center"><samp>
+<a name="Fig11"></a>Рис.11
+      Пример ввода функции <strong>ScoresPLS2</strong></samp></p>
+      <p align="left">Функция <span class="prog"><strong>ScoresPLS2</strong><span lang="en-us">
+		</span></span>является <a href="excel.htm#Ch2.1">формулой
+        массива</a> и ее ввод должен завершаться нажатием комбинации 
+		<span class="menu">CTRL+SHIFT+ENTER</span>.</p>
+<p align="left"><a href="#Contents">Содержание</a><a name="Ch5.2"></a></p>
+        <h2 align="left">5.2. UScoresPLS2&nbsp;</h2>
+        <p align="left">Возвращает значения счетов <b>U</b>
+        в соответствии с уравнением (<a href="#Eq2">2</a>)
+        метода PLS2 по заданным значениям матриц <b>X</b>
+        и <b>Y</b> , а также матриц <b>X</b><sub>new</sub> и <b>Y</b><sub>new</sub>.<p align="left">
+<span class="prog"><b>UScoresPLS2</b> (<b>X</b>,
+        <b>Y, </b>[, PC] [, CentWeightX] [, CentWeightY] [, Xnew][, Ynew])&nbsp;</span>&nbsp;
+        <p align="left"><b><i>Синтаксис&nbsp;</i></b>
+        <blockquote>
+        <p align="left"><span class="prog"><strong>X</strong></span> – множество значений <b>X</b> (калибровочный
+        набор)&nbsp;<p align="left"><strong class="prog">Y</strong> – множество значений <b>Y</b> (калибровочный
+        набор)&nbsp;<P align=left><span class="prog">PC</span> – необязательный аргумент. Целая
+        величина, <a href="#nPCs"> определяющая</a> число главных
+        компонент (<i>A</i>), используемых в методе
+        PLS.&nbsp;<P align=left><span class="prog">CentWeightX</span> – 
+        необязательный аргумент. Целая величина,
+        <a href="#nCent">
+        определяющая</a> проводится ли центрирование и/или
+        шкалирование <B>X</B> переменных.&nbsp;<P align=left><span class="prog">CentWeightY</span> – 
+        необязательный аргумент. Целая величина,
+        <a href="#nCent">
+        определяющая</a> проводится ли центрирование и/или
+        шкалирование <B>Y</B> переменных.&nbsp;
+        <p align="left"><span class="prog">Xnew</span> –
+        необязательный аргумент. Множество
+        новых значений <b>X</b><sub>new</sub> (проверочный
+        набор) для которых вычисляются и
+        выводятся значения PLS<span lang="en-us">2</span> счетов
+		<span lang="en-us"><strong>U</strong></span>.&nbsp;
+      </blockquote>
+      <blockquote>
+        <p align="left"><span class="prog">Ynew</span> –
+        необязательный аргумент. Множество
+        новых значений <b>Y</b><sub>new</sub> (проверочный
+        набор) для которых вычисляются и
+        выводятся значения PLS<span lang="en-us">2</span> счетов <b>U</b>.&nbsp;
+      </blockquote>
+        <p align="left"><b><i>Примечания&nbsp;</i></b>
+      <ul type="square">
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Матрица
+          значений <span class="prog"><strong>Y</strong></span>
+          должна иметь столько же строк (образцов
+          <i>I</i>), как и матрица <span class="prog"><strong>X</strong></span>&nbsp;</li>
+		<li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Матрица
+          новых значений <span class="prog">Xnew</span> должна
+          иметь столько же столбцов (переменных <i>J</i>), как и матрица
+			<strong class="prog">X</strong>.&nbsp;</li>
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Если
+          аргумент <span class="prog">Xnew</span> опущен, то предполагается, что 
+			он совпадает с массивом <strong class="prog">X</strong>.&nbsp;</li>
+		<li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Матрица
+          значений <span class="prog">Ynew</span>
+          должна иметь столько же столбцов (откликов
+          <i>K</i>), как и матрица <span class="prog"><strong>Y</strong></span>
+          .&nbsp;</li>
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Результат
+          является массивом (матрицей), в
+          которой число строк равно числу строк
+          (образцов, <i>I</i>) в массиве <span class="prog">Xnew</span>,
+          а число столбцов равно числу ГК (<i>A</i>).&nbsp;</li>
+        <li>
+		<p align="left" style="margin-left: 25; margin-bottom: 6">Матрицы
+          новых значений <span class="prog">Xnew</span>
+          и <span class="prog">Ynew</span> должны
+          иметь одинаковое количество строк.</li>
+		<li>
+		<p align="left" style="margin-left: 25; margin-bottom: 6">Если
+          аргумент <span class="prog">Ynew</span>
+          опущен, то предполагается, что он совпадает с массивом
+		<strong class="prog">Y</strong>
+          .</li>
+		<li>
+		<p align="left" style="margin-left: 25; margin-bottom: 0">Аналогичная
+          стандартная функция листа: <a href="excel.htm#TREND" class="prog">
+		<strong>ТЕНДЕНЦИЯ</strong></a>&nbsp;</li>
+      </ul>
+        <b><i>Пример</i></b> 
+<p align="center"><a href="projection/Projections.xls#PLS2!C30"><img border="0" src="projection/Fig12.png" width="332" height="287"></a><p align="center"><samp>Рис.12
+      Пример ввода функции <strong>UScoresPLS2</strong></samp></p>
+      <p align="left">Функция <strong><span class="prog"><span lang="en-us">US</span>coresPLS2</span></strong><span class="prog"><span lang="en-us">
+		</span></span>является <a href="excel.htm#Ch2.1">формулой
+        массива</a> и ее ввод должен завершаться нажатием комбинации 
+		<span class="menu">CTRL+SHIFT+ENTER</span>.</p>
+<p align="left"><a href="#Contents">Содержание</a><a name="Ch5.3"></a></p>
+      <h2 align="left">5.3 LoadingsPLS2&nbsp;</h2>
+      <p align="left">Возвращает значения нагрузок <b>P</b>
+        в соответствии с уравнением (<a href="#Eq2">2</a>)
+        метода PLS2 по заданным
+        значениям матриц <b>X</b> и <b>Y</b>.
+        <p align="left"><b><i>Синтаксис&nbsp;</i></b>
+        <p align="left"><span class="prog"><b>LoadingsPLS2</b> (<b>X</b>,
+        <b>Y </b>[, PC] [, CentWeightX] [, CentWeightY])&nbsp;</span>
+      <blockquote>
+        <p align="left"><span class="prog"><strong>X</strong></span> – множество значений <b>X</b> (калибровочный
+        набор)&nbsp;<p align="left"><strong class="prog">Y</strong> – множество значений <b>Y</b> (калибровочный
+        набор)&nbsp;<P align=left><span class="prog">PC</span> – необязательный аргумент. Целая
+        величина, <a href="#nPCs"> определяющая</a> число главных
+        компонент (<i>A</i>), используемых в методе
+        PLS.&nbsp;<P align=left><span class="prog">CentWeightX</span> – 
+        необязательный аргумент. Целая величина,
+        <a href="#nCent">
+        определяющая</a> проводится ли центрирование и/или
+        шкалирование <B>X</B> переменных.&nbsp;<P align=left><span class="prog">CentWeightY</span> – 
+        необязательный аргумент. Целая величина,
+        <a href="#nCent">
+        определяющая</a> проводится ли центрирование и/или
+        шкалирование <B>Y</B> переменных.&nbsp;
+        </blockquote>
+        <p align="left"><b><i>Примечания&nbsp;</i></b>
+      <ul type="square">
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Матрица
+          значений <span class="prog"><strong>Y</strong></span>
+          должна иметь столько же строк (образцов
+          <i>I</i>), как и матрица <span class="prog"><strong>X</strong></span>&nbsp;</li>
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Результат
+          является массивом (матрицей), в
+          которой число столбцов равно числу ГК
+          (<i>A</i>), а число строк равно числу
+          столбцов (переменных, <i>J</i>) в массиве <span class="prog"><strong>X</strong></span>.&nbsp;</li>
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 0">Аналогичная
+          стандартная функция листа: <a href="excel.htm#MMULT" class="prog">
+			<strong>МУМНОЖ</strong></a>
+       </li>
+      </ul>
+        <p align="left"><b><i>Пример</i></b>
+        <p align="center"><a href="projection/Projections.xls#PLS2!J4"><img border="0" src="projection/Fig13.png" width="394" height="135"></a><p align="center"><samp>Рис.
+      13 Пример ввода функции <strong>LoadingsPLS2</strong></samp></p>
+      <p align="left">Функция <span class="prog"><strong>LoadingsPLS2</strong><span lang="en-us">
+		</span></span>является <a href="excel.htm#Ch2.1">формулой
+        массива</a> и ее ввод должен завершаться нажатием комбинации 
+		<span class="menu">CTRL+SHIFT+ENTER</span>.</p>
+<p align="left"><a href="#Contents">Содержание</a><a name="Ch5.4"></a></p>
+      <h2 align="left">5.4 WLoadingsPLS2&nbsp;</h2>
+      <p align="left">Возвращает значения нагрузок <b>W</b>
+        в соответствии с уравнением (<a href="#Eq2">2</a>)
+        метода PLS2 по заданным
+        значениям матриц <b>X</b> и <b>Y</b>.
+        <p align="left"><b><i>Синтаксис&nbsp;</i></b>
+        <p align="left"><span class="prog"><b>WLoadingsPLS2</b> (<b>X</b>,
+        <b>Y </b>[, PC] [, CentWeightX] [, CentWeightY])&nbsp;</span>
+      <blockquote>
+        <p align="left"><span class="prog"><strong>X</strong></span> – множество значений <b>X</b> (калибровочный
+        набор)&nbsp;<p align="left"><strong class="prog">Y</strong> – множество значений <b>Y</b> (калибровочный
+        набор)&nbsp;<P align=left><span class="prog">PC</span> – необязательный аргумент. Целая
+        величина, <a href="#nPCs"> определяющая</a> число главных
+        компонент (<i>A</i>), используемых в методе
+        PLS.&nbsp;<P align=left><span class="prog">CentWeightX</span> – 
+        необязательный аргумент. Целая величина,
+        <a href="#nCent">
+        определяющая</a> проводится ли центрирование и/или
+        шкалирование <B>X</B> переменных.&nbsp;<P align=left><span class="prog">CentWeightY</span> – 
+        необязательный аргумент. Целая величина,
+        <a href="#nCent">
+        определяющая</a> проводится ли центрирование и/или
+        шкалирование <B>Y</B> переменных.&nbsp;
+        </blockquote>
+        <p align="left"><b><i>Примечания&nbsp;</i></b>
+      <ul type="square">
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Матрица
+          значений <span class="prog"><strong>Y</strong></span>
+          должна иметь столько же строк (образцов
+          <i>I</i>), как и матрица <span class="prog"><strong>X</strong></span>&nbsp;</li>
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Результат
+          является массивом (матрицей), в
+          которой число столбцов равно числу ГК
+          (<i>A</i>), а число строк равно числу
+          столбцов (переменных, <i>J</i>) в массиве <span class="prog"><strong>X</strong></span>.&nbsp;</li>
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 0">Аналогичная
+          стандартная функция листа: <a href="excel.htm#MMULT" class="prog">
+			<strong>МУМНОЖ</strong></a>
+       </li>
+      </ul>
+        <p align="left"><b><i>Пример</i></b>
+        <p align="center"><a href="projection/Projections.xls#PLS2!J13"><img border="0" src="projection/Fig14.png" width="395" height="135"></a><p align="center"><samp>Рис.
+      14 Пример ввода функции <strong>WLoadingsPLS2</strong></samp></p>
+      <p align="left">Функция <span class="prog"><strong>WLoadingsPLS2</strong><span lang="en-us">
+		</span></span>является <a href="excel.htm#Ch2.1">формулой
+        массива</a> и ее ввод должен завершаться нажатием комбинации 
+		<span class="menu">CTRL+SHIFT+ENTER</span>.</p>
+<p align="left"><a href="#Contents">Содержание</a> <a name="Ch5.5"></a></p>
+      <h2 align="left">5.5 QLoadingsPLS2&nbsp;</h2>
+      <p align="left">Возвращает значения нагрузок <b>Q</b>
+        в соответствии с уравнением (<a href="#Eq2">2</a>)
+        метода PLS2 по заданным
+        значениям матриц <b>X</b> и <b>Y</b>.
+        <p align="left"><b><i>Синтаксис&nbsp;</i></b>
+        <p align="left"><span class="prog"><b>QLoadingsPLS2</b> (<b>X</b>,
+        <b>Y </b>[, PC] [, CentWeightX] [, CentWeightY])&nbsp;</span>
+      <blockquote>
+        <p align="left"><span class="prog"><strong>X</strong></span> – множество значений <b>X</b> (калибровочный
+        набор)&nbsp;<p align="left"><strong class="prog">Y</strong> – множество значений <b>Y</b> (калибровочный
+        набор)&nbsp;<P align=left><span class="prog">PC</span> – необязательный аргумент. Целая
+        величина, <a href="#nPCs"> определяющая</a> число главных
+        компонент (<i>A</i>), используемых в методе
+        PLS.&nbsp;<P align=left><span class="prog">CentWeightX</span> – 
+        необязательный аргумент. Целая величина,
+        <a href="#nCent">
+        определяющая</a> проводится ли центрирование и/или
+        шкалирование <B>X</B> переменных.&nbsp;<P align=left><span class="prog">CentWeightY</span> – 
+        необязательный аргумент. Целая величина,
+        <a href="#nCent">
+        определяющая</a> проводится ли центрирование и/или
+        шкалирование <B>Y</B> переменных.&nbsp;
+        </blockquote>
+        <p align="left"><b><i>Примечания&nbsp;</i></b>
+      <ul type="square">
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Матрица
+          значений <span class="prog"><strong>Y</strong></span>
+          должна иметь столько же строк (образцов
+          <i>I</i>), как и матрица <span class="prog"><strong>X</strong></span>&nbsp;</li>
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Результат
+          является массивом (матрицей), в
+          которой число столбцов равно числу ГК
+          (<i>A</i>), а число строк равно числу
+          столбцов (переменных, <i><span lang="en-us">K</span></i>) в массиве 
+			<span class="prog"><strong><span lang="en-us">Y</span></strong></span>.&nbsp;</li>
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 0">Аналогичная
+          стандартная функция листа: <a href="excel.htm#MMULT" class="prog">
+			<strong>МУМНОЖ</strong></a>
+       </li>
+      </ul>
+        <p align="left"><b><i>Пример</i></b>
+        <p align="center"><a href="projection/Projections.xls#PLS2!J21"><img border="0" src="projection/Fig15.png" width="353" height="134"></a><p align="center"><samp>Рис.
+      15 Пример ввода функции <strong>QLoadingsPLS2</strong></samp></p>
+      <p align="left">Функция <strong><span class="prog"><span lang="en-us">Q</span>LoadingsPLS2</span></strong><span class="prog"><span lang="en-us">
+		</span></span>является <a href="excel.htm#Ch2.1">формулой
+        массива</a> и ее ввод должен завершаться нажатием комбинации 
+		<span class="menu">CTRL+SHIFT+ENTER</span>.</p>
+<p align="left"><a href="#Contents">Содержание</a><span lang="en-us">
+		<a name="Ch6"></a></span></p>
+        <h1 align="left">6. Дополнительные матричные функции<a name="Ch6.1"></a></h1>
+        <h2 align="left">6.1. MIdent</h2>
+      <p align="left">Возвращает единичную квадратную матрицу
+        <p align="left"><b><i>Синтаксис</i></b><p align="left">
+<span class="prog"><strong>MIdent</strong></span>(<span class="prog"><strong>Size</strong></span>) 
+      </p>
+      <blockquote>
+        <p align="left"><span class="prog"><strong>Size</strong>&nbsp;</span>– аргумент (целое 
+		число) который задает размерность матрицы 
+      </blockquote>
+        <p align="left"><b><i>Примечание&nbsp;</i></b>
+      <ul type="square">
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Результат 
+			является массивом (квадратная матрица) у которой число строк и 
+			столбцов равно
+			<span class="prog"><strong>Size </strong></span></li>
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Аналогичных 
+			стандартных функции листа нет</li>
+      </ul>
+      <p align="left"><b><i>Пример</i></b>
+        <p class="style2">
+		<a href="projection/Projections.xls#Plus!B4">
+		<img src="projection/Fig16.png" width="376" height="154" class="style3"></a><p align="center"><samp>Рис.
+      16 Пример ввода/вывода функции <strong>MIdent</strong></samp></p>
+      <p align="left">Функция <span class="prog"><strong>MIdent</strong><span lang="en-us">
+		</span></span>является <a href="excel.htm#Ch2.1">формулой
+        массива</a> и ее ввод должен завершаться нажатием комбинации 
+		<span class="menu">CTRL+SHIFT+ENTER</span>.</p>
+<p align="left"><a href="#Contents">Содержание</a> </p>
+        <h2 align="left"><a name="Ch6.2"></a>6.2. MIdentD2</h2>
+      <p align="left">Возвращает матрицу из нулей и единиц, получившуюся в 
+		результате вырезание блока строк из единичной матрицы
+        <p align="left"><b><i>Синтаксис</i></b><p align="left">
+<span class="prog"><strong>MIdentD2</strong></span>(<span class="prog"><strong>Size</strong>, 
+<strong>CutFrom</strong>, <strong>CutOff</strong>) </span> 
+      </p>
+      <blockquote>
+        <p align="left"><span class="prog"><strong>Size</strong></span>&nbsp;–&nbsp; аргумент (целое 
+		число &gt; 1), который задает размерность исходной единичной матрицы <p align="left">
+		<span class="prog"><strong>CutFrom</strong></span>&nbsp;–&nbsp; аргумент (целое число &gt; 0), определяющий 
+		номер строки с который начинается вырезание блока<p align="left">
+		<span class="prog"><strong>CutOff</strong></span>&nbsp;–&nbsp; 
+		аргумент (целое число &#8805; 0), определяющий число строк в исключенном блоке</blockquote>
+        <p align="left"><b><i>Примечание&nbsp;</i></b>
+      <ul>
+		<li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Результат 
+			является массивом (прямоугольной матрицей) с числом строк = 
+			<strong class="prog">Size<span lang="en-us"> </span></strong>– <span lang="en-us">&nbsp;</span><span class="prog"><strong>CutOff</strong></span>, и числом столбцов = 
+			<span class="prog"><strong>&nbsp;Size </strong></span> </li>
+		<li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Если (<span class="prog"><strong>CutFrom</strong></span>
+			+ <span class="prog"><strong>CutOff</strong> </span>–&nbsp; 1) &gt; 			<span class="prog"><strong>Size</strong> </span>функция возвращает сообщение об ошибке </li>
+		<li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Аналогичных 
+			стандартных функции листа нет </li>
+      </ul>
+      <p align="left"><b><i>Пример</i></b>
+
+        <p class="style2">
+		<a href="projection/Projections.xls#Plus!K4">
+		<img src="projection/Fig17.png" width="392" height="125" class="style3"></a><p align="center"><samp>Рис.
+      17 Пример ввода/вывода функции <strong>MIdentD2</strong></samp></p>
+      <p align="left">Функция <strong><span class="prog">MIdent<span lang="en-us">D2</span></span></strong><span class="prog"><span lang="en-us">
+		</span></span>является <a href="excel.htm#Ch2.1">формулой
+        массива</a> и ее ввод должен завершаться нажатием комбинации 
+		<span class="menu">CTRL+SHIFT+ENTER</span>.</p>
+<p align="left"><a href="#Contents">Содержание<span lang="en-us">
+		</span><span lang="en-us">
+		<a name="Ch6.3"></a></span></p>
+        <h2 align="left">6.3. MCutR<span lang="en-us">ows</span></h2>
+      <p align="left">Возвращает матрицу у которой вырезан блок строк<p align="left">
+<b><i>Синтаксис</i></b><p align="left"><span class="prog"><strong>MCutR</strong><span lang="en-us"><strong>ows</strong></span><strong>(X</strong>, 
+<strong>CutFrom</strong>, <strong>CutOff</strong>) </span> 
+      </p>
+      <blockquote>
+        <p align="left"><span class="prog"><strong>X</strong></span> – исходный массив, 
+		из которого вырезаются строки<p align="left"><span class="prog"><strong>CutFrom</strong></span>&nbsp;–&nbsp; 
+		аргумент (целое число &gt; 0), определяющий номер строки, с который 
+		начинается вырезание блока 
+		<p align="left"><span class="prog"><strong>CutOff</strong></span>&nbsp;–&nbsp; аргумент (целое 
+		число &#8805; 0), определяющий число строк, которые надо исключить из массива
+		<span class="prog"><strong>X</strong></span> 
+      </blockquote>
+<p align="left"><b><i>Примечание</i></b><ul>
+		<li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">
+	Функция определяет исходный размер массива <span class="prog"><strong>X</strong></span> 
+			: <span class="prog">nRows</span> и <span class="prog">nColumns</span>. Результат 
+			–&nbsp; это массив 
+			(матрица) с числом строк = &nbsp;<span class="prog">nRows</span><span lang="en-us">
+			</span>– <span class="prog"><strong>CutOff,</strong></span> 
+			и числом столбцов = <span class="prog">nColumns </span> </li>
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Если (<span class="prog"><strong>CutFrom</strong></span> 
+			+ <span class="prog"><strong>CutOff</strong></span> –&nbsp; 1) &gt;
+			<span class="prog">nRows</span> функция 
+			возвращает сообщение об ошибке</li>
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Аналогичная
+          стандартная функция листа: 
+			<a href="excel.htm#OFFSET" class="prog"><strong>СМЕЩ</strong></a></li>
+      </ul>
+      <b>
+      <i>
+      <p align="left"><b>Пример</b><i>
+        <p class="style2">
+		<a href="projection/Projections.xls#Plus!B22">
+		<img src="projection/Fig18.png" class="style3"></a></i></i></b><p align="center"><samp>Рис.
+      1<span lang="en-us">8</span> Пример ввода/вывода функции<strong> MCutRows </strong></samp>
+</p>
+      <p align="left">Функция <span class="prog"><strong>MCutR</strong></span><span lang="en-us"><span class="prog"><strong>ows</strong> 
+		</span> </span>является <a href="excel.htm#Ch2.1">формулой
+        массива</a> и ее ввод должен завершаться нажатием комбинации 
+		<b> 
+		<span class="menu">CTRL+SHIFT+ENTER</span><i>.
+</i>
+<p align="left"><a href="#Contents">Содержание</a><i><span lang="en-us">
+		<a name="Ch6.4"></a></span>
+        <h2 align="left">6.4. MTrace </h2>
+      
+      </i> 
+		</b>
+      
+      <p align="left">Возвращает след матрицы<p align="left">
+<span class="prog"><strong>MTrace(X)&nbsp;</strong></span> 
+      </p>
+      <blockquote>
+        <p align="left"><span class="prog"><strong>X</strong></span>  
+		–
+		&nbsp;квадратный массив (матрица)</blockquote>
+		<b> 
+		<i>
+        <p align="left"><b>Примечание</b><i>
+      </i></i> 
+		</b>
+      <ul type="square">
+        <li>
+          <span class="prog">
+          <strong>X</strong></span><i> </i>должен содержать равное количество 
+			строк и столбцов
+		<li>
+          Аналогичная стандартная функция листа:
+			<a href="file:///E:/Web%20Sites/Site/rcs/Tutorials/excel.htm#MDETERM" class="prog">
+			<strong>МОПРЕД</strong></a>
+		</ul>
+<p><em><strong>Пример</strong></em></p>
+<i>
+<p class="style2"><a href="projection/Projections.xls#Plus!C15">
+<img src="projection/Fig19.png" width="352" height="80" class="style3"></a></i><p class="style2">
+<samp>Рис.
+      1<span lang="en-us">8</span> Пример ввода/вывода функции<strong> M<span lang="en-us">Trace</span>
+</strong></samp>&nbsp;<p align="left">Функция <span class="prog"><strong>MTrace</strong><span lang="en-us">
+</span></span><span class="style6">не является</span> формулой
+        массива и ее ввод может&nbsp; завершаться нажатием одной клавиши 
+		<span class="menu">ENTER</span>
+<p align="left"><a href="#Contents">Содержание</a><span lang="en-us">
+<a name="Conclusion"></a></span>
+<h1 align="left">Заключение </h1>
+<p align="left">Надстройка <em>Chemometrics </em>
+<em class="style9">Add-In</em>
+дает
+      возможность вычисления разных величин (счетов,
+      нагрузок), связанных с проекционным
+      представлением исходных данных. Далее,
+      комбинируя эти показатели, можно
+      создать типичные графики, применяемые в
+      анализе данных (например, графики счетов
+      и нагрузок), построить калибровки, найти
+      такие важные характеристики как
+      среднеквадратичные остатки калибровки (RMSEC)
+      и при проверке (RMSEP), и т.п. </p>
+<p align="left">Примеры
+      приведены в пособиях<span lang="en-us">:</span> </p>
+<ul>
+	<li>
+	<p align="left">
+	<a href="file:///E:/Web%20Sites/Site/rcs/Tutorials/excel.htm">Матричные 
+	операции в Excel</a><span lang="en-us"> </span>и сопровождающем его файле
+	<a href="file:///E:/Web%20Sites/Site/rcs/Tutorials/excel/Excel.xls"><em>
+	Excel.xls</em></a><span lang="en-us">;</span></p>
+	</li>
+	<li>
+	<p align="left"><a href="file:///E:/Web%20Sites/Site/rcs/Tutorials/pca.htm">
+	Метод главных компонент</a> и сопровождающем его файле
+	<a href="file:///E:/Web%20Sites/Site/rcs/Tutorials/pca/People.xls"><em>
+	People.xls</em></a><span lang="en-us">;</span></p>
+	</li>
+	<li>
+	<p align="left">
+	<a href="file:///E:/Web%20Sites/Site/rcs/Tutorials/calibration.htm">
+	Калибровка</a> и в сопровождающем его файле
+	<a href="file:///E:/Web%20Sites/Site/rcs/Tutorials/calibration/Calibration.xls">
+	<em>Calibration.xls</em></a><span lang="en-us">;</span></p>
+	</li>
+	<li>
+	<p align="left">
+	<a href="file:///E:/Web%20Sites/Site/rcs/Tutorials/classification.htm">
+	Классификация</a> и в сопровождающем его файле
+	<a href="file:///E:/Web%20Sites/Site/rcs/Tutorials/classification/Iris.xls">
+	<em>Iris.xls</em></a><span lang="en-us">;</span> </p>
+	</li>
+	<li>
+	<p align="left"><a href="file:///E:/Web%20Sites/Site/rcs/Tutorials/mcr.htm">
+	Разрешение многомерных кривых</a> и в сопровождающем его файле
+	<a href="file:///E:/Web%20Sites/Site/rcs/Tutorials/mcr/MCR.xls"><em>MCR.xls</em></a><span lang="en-us">;</span>
+	</p>
+	</li>
+</ul>
+<p align="left">&nbsp;</p>
+<p align="left"><a href="#Contents">Содержание</a></p>
+<i>
+<p align="left">&nbsp;</p>
+<p align="left">&nbsp;</p>
+</i>
+  </table>
+
+</body>
+

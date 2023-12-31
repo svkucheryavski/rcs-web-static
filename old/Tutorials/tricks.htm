@@ -1,0 +1,842 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta http-equiv="Content-Language" content="ru">
+<title>Расширение возможностей Chemometrics Add-In</title>
+<style>
+<!--
+h1           {
+	font-family: Arial;
+	font-size: 14pt;
+	font-weight: bold;
+	text-align: Center;
+	padding-top: 75px;
+}
+h2           {
+	font-family: Arial;
+	font-size: 12pt;
+	font-style: italic;
+	padding-top: 25px;
+}
+.header      { font-family: Arial; font-size: 18pt; letter-spacing: 1; font-weight: bold; 
+               text-align: Center }
+ .style2 {
+	text-align: center;
+}
+.address {
+	font-family: Arial, Helvetica, sans-serif;
+}
+.menu {
+	border-width: 0px;
+	font-family: Tahoma;
+	font-size: 12px;
+	font-weight: bold;
+}
+.style25 {
+	border-width: 0;
+}
+.style28 {
+	font-family: Arial, Helvetica, sans-serif;
+	text-align: center;
+}
+.style32 {
+	vertical-align: middle;
+}
+.style34 {
+	border: 1px solid #000000;
+	background-color: #C0C0C0;
+}
+.prog {
+	font-family: "Courier New", Courier, monospace;
+}
+.style35 {
+	text-decoration: underline;
+}
+-->
+</style>
+        <title></title>
+</head>
+
+<body>
+
+<p>&nbsp;</p>
+
+  <table border="0" width="95%" cellpadding="0" cellspacing="0" align="center">
+    <tr>
+      <td width="100%">
+      <h3 class="header">Расширение возможностей <span lang="en-us">Chemometrics 
+		Add-In</span></h3>
+      <dl>
+        <div align="center">
+          <center>
+          <dt>© 2010 Алексей
+        Померанцев&nbsp;</dt>
+          </center>
+        </div>
+        <div align="center">
+          <center>
+          <a href="../index.html">Российское хемометрическое общество</a></center>
+        </div>
+      </dl>
+        <h1><a name="Contents"></a>Содержание&nbsp;</h1>
+        <dl>
+          <dt><b><a href="#Intro">Введение</a></b></dt>
+          <dt><b><a href="#Ch1"><span lang="en-us">1. </span>Использование виртуальных массивов</a></b></dt>
+          <dd><a href="#Ch1.1"><strong>1.</strong><span lang="en-us"><strong>1. 
+			</strong> </span>
+			<strong>Модельные данные</strong></a></dd>
+			<dd><b><a href="#Ch1.2">1.<span lang="en-us">2</span>. Виртуальные массивы</a></b></dd>
+          <dd><a href="#Ch1.3"><b>1<span lang="en-us">.</span>3<span lang="en-us">.</span> 
+			Подготовка данных </b></a></dd>
+          <dd><b><a href="#Ch1.4"><span lang="en-us">1.4</span>. Декомпозиция</a></b></dd>
+			<dd><a href="#Ch1.5"><span lang="en-us"><strong>1.5. </strong></span>
+			<strong>Вычисление остатков </strong></a></dd>
+			<dd><strong><a href="#Ch1.6"><span lang="en-us">1.6.</span> Вычисление собственных значений</a></strong></dd>
+			<dd><strong><a href="#Ch1.7"><span lang="en-us">1.7.</span> Вычисление 
+			отклонений</a></strong></dd>
+			<dd><strong><a href="#Ch1.8"><span lang="en-us">1.8</span>. Вычисление размаха</a></strong></dd>
+          <dt><a href="#Ch2"><b><span lang="en-us">2. </span>Использование VBA 
+			программирования</b></a></dt>
+          <dd><b><a href="#Ch2.2">2.<span lang="en-us">1</span>. Возможности VBA
+			</a></b></dd>
+          <dd><a href="#Ch2.3"><b><span lang="en-us">2.2.</span> Виртуализация 
+			реальных массивов</b></a> </dd>
+          <dd><b><a href="#Ch2.3"><span lang="en-us">2.3</span>. Подготовка 
+			данных</a></b></dd>
+			<dd><strong><a href="#Ch2.4">2.4. Вычисление остатков</a></strong></dd>
+			<dd><strong><a href="#Ch2.5">2<span lang="en-us">.5.</span> Вычисление собственных значений</a></strong></dd>
+			<dd><strong><a href="#Ch2.6">2<span lang="en-us">.6.</span> Вычисление 
+			отклонений</a></strong></dd>
+			<dd><strong><a href="#Ch2.7">2<span lang="en-us">.7</span>. Вычисление размаха</a></strong></dd>
+          <dt><b><a href="#Conclusions">Заключение</a></b></dt>
+          <dd></dd>
+        </dl>
+        <h1><a name="Intro"></a>Введение&nbsp;</h1>
+        <p>В этом пособии рассказывается как вычислять некоторые 
+		важные характеристики, используемые при анализе многомерных данных. 
+		Применяя надстройку 
+		<em>Chemometrics <span lang="en-us">Add In</span></em>, которая описана в пособии <a href="projection.htm">
+		Проекционные методы в системе Excel</a>, можно найти основные величины: 
+		счета и нагрузки.<span lang="en-us"> </span>Но, кроме них, полезно определять и производные 
+		величины: собственные и сингулярные значения, остатки, ортогональные 
+		расстояния, и т.п.&nbsp; </p>
+		<p>Этот текст является естественным продолжением пособия
+		<a href="excel.htm">Матричные операции 
+		в Excel</a>, развивающим идею <a href="excel.htm#Ch2.9">виртуальных массивов</a> 
+		и <a href="excel.htm#Ch4"> <span lang="en-us">VBA </span>программирования.</a> Поэтому рекомендуется ознакомится с материалом, изложенным в этом 
+		пособии. </p>
+		<p>Изложение иллюстрируется примерами, выполненными в рабочей книге “<em><a href="tricks/Tricks.xls"><span lang="en-us">Tricks</span>.xls</a></em> 
+		”, которая сопровождает этот документ. </p>
+      <p align="center"><b><a href="moffice.htm">Важная
+      информация о работе с
+              файлом <span lang="en-us">Tricks</span>.xls</a>&nbsp;</b></p>
+		<p class="style27">Ссылки на примеры помещены в текст как объекты Excel. 
+		Эта книга не будут работать без использования 
+<em>Chemometrics 
+Add-In</em>. </p>
+      <p class="style2"><b><a href="index.html">Другие 
+		пособия по хемометрике</a></b></p>
+          <p style="line-height: 150%"><a href="#Contents">Содержание</a><span lang="en-us">
+			<a name="Ch1"></a>
+			</span>
+		<h1 align="left">1. Использование виртуальных массивов<span lang="en-us"><a name="Ch1.1"></a></span></h1>
+        <h2 align="left">1.<span lang="en-us">1. </span>
+		Модельные данные</h2>
+		<p align="left">Для иллюстрации описываемых методов и приемов мы будем 
+		использовать модельные данные, которые приведены на листе&nbsp;<em><a href="tricks/Tricks.xls#Data!A1">Data</a></em>. 
+		Они состоят из двух частей. 
+		<p align="left">Первая –это обучающий (калибровочный) массив данных, который имеет имя <span class="address">X</span>, определенное для всей 
+		книги. В нем содержится 15 строк (образцов) и 25 столбцов (переменных). 
+		Соответствующие значения вычисляются в ячейке <span class="address">G29</span>, 
+		именованной <span class="address">I</span>, – с помощью формулы
+		<span class="address">ROWS(X)</span> и, в ячейке <span class="address">
+		G33</span>, названой <span class="address">J</span>,– по формуле
+		<span class="address">COLUMNS(X)</span>.<p align="left">Вторая часть 
+		данных – это проверочный массив, имеющий имя <span class="address">X<span lang="en-us">new</span></span>, определенное для всей 
+		книги. В нем содержится 5 строк (образцов). 
+		Соответствующее значение вычисляется в ячейке <span class="address">G31</span>, 
+		именованной <span class="address">I<span lang="en-us">new</span></span>, – с помощью формулы
+		<span class="address">ROWS(X<span lang="en-us">new</span>)</span>.&nbsp; 
+		<p align="left">Обычно, перед применением проекционных методов, данные 
+		подвергают <a href="projection.htm#Ch1.4">предварительной обработке</a>. Их центрируют и/или шкалируют. Во 
+		всех проекционных функция надстройки <em>Chemometrics <span lang="en-us">
+		Add-In</span></em> такие 
+		преобразования выполняются автоматически, за что отвечает аргумент 
+		<a href="projection.htm#nCent" class="prog">CentWeight</a>. 
+		        <p align="left"><a name="Cnt"></a>Он может принимать следующие 
+		значения 
+		        <blockquote>
+          <span class="menu">0</span> -&nbsp; нет ни шкалирования, ни 
+			центрирования (значение по умолчанию)<span lang="en-us">;</span><br>
+          <span class="menu">1</span> -&nbsp; только центрирование: вычитание среднего значения по 
+			переменной<span lang="en-us">;</span>&nbsp;<br>
+          <span class="menu">2</span> -&nbsp; только шкалирование на среднеквадратичное отклонение 
+			переменной<span lang="en-us">;</span><br>
+          <span class="menu">3</span>&nbsp; - и шкалирование, и центрирование одновременно, т.е. 
+			автошкалирование<span lang="en-us">.</span> 
+        </blockquote>			
+        <p align="left">На листе <em>Data</em> под этот аргумент выделена ячейка
+		<span class="address"><a href="tricks/Tricks.xls#Data!G35">G3<span lang="en-us">5</span></a> </span>с 
+		глобальным именем <span class="address">PP</span>, 
+		значение в которой формируется исходя из опций, выбираемых рядом. </p>
+		<p align="left">В принципе, для построения PCA декомпозиции нет 
+		необходимости в явном преобразовании данных на рабочем листе. Однако 
+		средние и среднеквадратичные значения могут оказаться затем полезными 
+		при вычислении различных характеристик модели. Эти величины формируются 
+		в области: <span class="address">B2<span lang="en-us">0</span>:Z2<span lang="en-us">0</span></span> с именем
+		<span class="address">Mean </span>и области <span class="address">
+		B2<span lang="en-us">1</span>:Z2<span lang="en-us">1</span></span> с именем <span class="address">SDev</span>. Для&nbsp;расчета 
+		применяются формулы, учитывающие заданное значение <span class="address">
+		PP</span>. Для средних значений используется формула<a name="PP"></a></p>
+		<p class="style2"><span class="address">AVERAGE(С4:С18)*MOD(PP,2).</span></p>
+		<p align="left">Функция <span class="address">MOD(PP,2)</span> принимает 
+		значение <span class="address">1</span> при <span class="address">PP=1</span> 
+		и <span class="address">3</span>, и <span class="address">0</span> при
+		<span class="address">PP=0</span> или <span class="address">2</span>. </p>
+		<p align="left">Аналогично для среднеквадратичных отклонений 
+		используется формула </p>
+		<p class="style2"><span class="address">IF(PP&gt;1,STDEV(C4:C18),1)</span>.
+		<a name="Fig1"></a>&nbsp;</p>
+		<p class="style2">
+		<a href="tricks/Tricks.xls#Data!C21">
+		<img src="tricks/Fig01.png" class="style25"></a>&nbsp;<p align="center"><samp>
+		Рис.<span lang="en-us">1</span> Модельные данные&nbsp;</samp></p>
+      <p align="left"><a href="#Contents">Содержание</a><span lang="en-us">
+		<a name="Ch1.2"></a></span></p>
+      <h2 align="left">1.2<span lang="en-us">. </span>Виртуальные массивы</h2>
+        <p align="left">При анализе данных часто возникает проблема сохранения 
+		промежуточных результатов, которые нужны не сами по себе, а только для 
+		того, чтобы вычислить по ним другие, полезные значения. Например, 
+		остатки в методе PCA часто нам не интересны, а нужны только для 
+		определения полной объясненной дисперсии, ортогональных расстояний и 
+		т.п. При этом размеры таких промежуточных массивов могут быть очень 
+		велики, да и к тому же их приходится вычислять при различных значениях 
+		числа главных компонент. Все это ведет к заполнению рабочей книги 
+		большим количеством ненужных, промежуточных результатов. Этого можно 
+		избежать, если использовать виртуальные массивы. Пример, поясняющий идею 
+		виртуального массива, приведен в пособии
+		<a href="excel.htm#Ch2.9">Матричные операции 
+		в Excel</a>.<p align="left">Рассмотрим несколько дидактических примеров, которые 
+		можно рассматривать как &quot;образцы для подражания&quot;, полезные при решении 
+		аналогичных задач. Все они выполнены для анализа 
+		<a href="pca.htm">Методом Главных Компонент (PCA)</a>, но легко могут 
+		быть использованы и для 
+		<a href="calibration.htm">задач калибровки</a> или
+		<a href="classification.htm">классификации</a>.<p align="left"><a href="#Contents">Содержание</a><span lang="en-us">
+		<a name="Ch1.3"></a></span></p>
+      <h2 align="left">
+		1.3<span lang="en-us">. </span>Подготовка 
+		данных</h2>
+        <p align="left">Для подготовки данных в соответствие с заданными 
+		опциями, можно использовать простую <a href="excel.htm#Ch2.1">формулу
+        массива</a><p class="style28">
+		<span lang="en-us">(X</span>–<span lang="en-us">Mean)/SDev</span><p align="left">ввод которой должен завершаться нажатием комбинации
+		<span class="menu"><strong>CTRL+SHIFT+ENTER</strong></span>.<span lang="en-us"> </span>С 
+		учетом того, как на листе <span lang="en-us"><em>Data</em> </span>были 
+		<a href="#PP">определены</a> величины <span class="address">Mean </span>и
+		<span class="address">SDev</span>, результат преобразования будет верен для 
+		любых <a href="#Cnt">комбинаций</a> шкалирования и центрирования.<p align="left">Пример 
+		преобразований обучающих –<span class="address"><span lang="en-us"> X</span>,</span><span lang="en-us">
+		</span>и проверочных –<span class="address"><span lang="en-us"> Xnew</span>,</span><span lang="en-us">
+		</span>данных приведен на листе <em>
+		<a href="tricks/Tricks.xls#Scaling!B5">Scaling</a></em>. 
+      <p align="left"><a href="#Contents">Содержание</a><span lang="en-us">
+		<a name="Ch1.4"></a></span></p>
+      <h2 align="left">1.4. Декомпозиция </h2>
+      <p align="left">На листе <em><a href="tricks/Tricks.xls#Scores!A1">Scores</a></em> 
+		приведены значения PCA счетов, вычисленных с помощью функции 
+		<strong class="prog"><a href="projection.htm#Ch3.1">ScoresPCA</a></strong>. 
+		<a name="Fig2"></a>&nbsp;</p>
+		<p class="style2">
+		<a href="tricks/Tricks.xls#Scores!B4">
+		<img src="tricks/Fig02.png" class="style25" width="481" height="297"></a><p align="center"><samp>
+		Рис.<span lang="en-us">2</span> Вычисление счетов </samp></p>
+      <p align="left">Первый аргумент <span class="address">X</span> – это имя 
+		массива данных, второй аргумент&nbsp;(число главных компонент) 
+		<a href="projection.htm#nPCs">опущен</a>, т.е. 
+		вычисляются все возможные счета. Последний аргумент – это величина
+		<span class="address">PP</span>, отвечающая за нормировку данных. 
+		Функция <strong class="prog">ScoresPCA</strong>&nbsp;является функцией 
+		массива, и ее ввод должен завершаться нажатием комбинации
+		<span class="menu"><strong>CTRL+SHIFT+ENTER</strong></span>. Подробнее об этой функции 
+		можно прочитать <a href="projection.htm#Ch3.1">здесь</a>.</p>
+		<p align="left">Матрица счетов для проверочного набора вычисляется по 
+		аналогичной формуле –</p>
+		<p class="style28">
+		ScoresPCA(X,,PP,Xnew),<p align="left">в которой однако участвует четвертый аргумент
+		<span class="address">Xnew</span>, определяющий, что счета вычисляются 
+		для нового набора данных. </p>
+		<p align="left">Массивы, в которых выведены <span lang="en-us">PCA
+		</span>счета имеют глобальные имена: <span lang="en-us">
+		<span class="address">T</span> </span>и<span lang="en-us">
+		<span class="address">Tnew</span> </span>соответственно.</p>
+		<p align="left">С помощью парной функции <strong class="prog">
+		<a href="projection.htm#Ch3.2">LoadingsPCA</a></strong> 
+		можно найти значения нагрузок, но эти результаты мы не приводим. Дело в 
+		том, что при анализе некоторых данных (прежде всего, спектров) число 
+		переменных (длин волн) может быть очень велико (несколько тысяч). В 
+		таких случаях матрица нагрузок занимает на листе много места. Если эта 
+		матрица не нужна для каких-то особых целей, то без нее можно легко 
+		обойтись, используя виртуальные массивы<span lang="en-us">.</span></p>
+      <p align="left"><a href="#Contents">Содержание</a><span lang="en-us">
+		<a name="Ch1.5"></a></span></p>
+      <h2 align="left">1.<span lang="en-us">5</span>. Вычисление остатков </h2>
+		На листе <em><a href="tricks/Tricks.xls#Residuals!A1">Residuals</a></em> показано как, 
+		с помощью виртуальных массивов, вычисляются <a href="pca.htm#Ch2.7">остатки</a> для любого значения 
+		числа главных компонент PC. <a name="Fig3"></a>&nbsp;<p class="style2">
+		<a href="tricks/Tricks.xls#Residuals!B6">
+		<img src="tricks/Fig03.png" class="style25"></a><p align="center"><samp>
+		Рис.<span lang="en-us">3</span> Вычисление остатков </samp></p>
+      <p align="left">Для этого используется формула массива – </p>
+		<p class="style2"><span class="address">(X-Mean)/SDev-MMULT(ScoresPCA(X,PC,PP),TRANSPOSE(LoadingsPCA(X,PC,PP)))
+		</span></p>
+		<p align="left">Выражение –</p>
+		<p class="style2"><span class="address">MMULT(ScoresPCA(X,PC,PP),TRANSPOSE(LoadingsPCA(X,PC,PP)))</span> </p>
+		<p align="left">соответствует обычной формуле PCA – </p>
+		<p class="style2"><strong>TP</strong><sup>t</sup>, </p>
+		<p align="left">где <strong>T</strong> и <strong>P</strong> – это 
+		соответственно, матрицы счетов и нагрузок. Величина
+		<span class="address">PC</span> берется из ячейки <span class="address">
+		C<span lang="en-us">2</span></span>, и, изменяя это значение, мы получаем все остатки. Выражение
+		<span class="address">(X-Mean)/SDev&nbsp;</span>– это матрица исходных 
+		данных, преобразованная в соответствии с заданным параметром
+		<span class="address">PP</span>.&nbsp; </p>
+		<p align="left">Приведенная формула является <a href="excel.htm#Ch2.1">формулой
+        массива</a> и ее ввод 
+		должен завершаться нажатием комбинации 
+		<span class="menu"><strong>CTRL+SHIFT+ENTER</strong></span><span lang="en-us">.</span></p>
+      <p align="left"><a href="#Contents">Содержание</a><span lang="en-us">
+		<a name="Ch1.6"></a></span></p>
+      <h2 align="left">1.<span lang="en-us">6</span>. Вычисление собственных 
+		значений</h2>
+      <p align="left">На листе <em><a href="tricks/Tricks.xls#Eigenvalues!A1">Eigenvalues</a></em> для вычисления <a href="pca.htm#Ch2.4">собственных значений</a> и других, 
+		связанных с ними величин, используется формула массива – </p>
+		<p class="style2"><span class="address">SUMSQ(INDEX(ScoresPCA(X,,PP),,F3)).</span> 
+		<a name="Fig4"></a>&nbsp;</p>
+		<p class="style2">
+		<a href="tricks/Tricks.xls#Eigenvalues!F6">
+		<img src="tricks/Fig04.png" class="style25"></a><p align="center"><samp>
+		Рис.<span lang="en-us">4</span> Вычисление собственных значений </samp></p>
+      <p align="left">Эта формула устроена так. Сначала вычисляется виртуальный 
+		массив всех возможных счетов <strong>T</strong> = <span class="address">
+		ScoresPCA(X, , PP)</span>. Затем из этого массива виртуально выделяется 
+		столбец <strong>t,</strong> соответствующий главному компоненту, номер 
+		которого указан в ячейке <span class="address">F4</span>. Для этого 
+		применяется формула <span class="address"><a href="excel.htm#INDEX">INDEX</a>(<strong>T</strong>,&nbsp;, 
+		F4)</span>, которой отсутствует второй аргумент. Окончательный результат 
+		получается после применения функции <span class="address">
+		<a href="excel.htm#SUMSQ">SUMSQ</a>(<strong>t</strong>)</span>, 
+		которая находит сумму квадратов всех элементов вектора счетов. Таким 
+		образом реализуется формула для нахождения <em>a</em>-го собственного 
+		значения –</p>
+		<p class="style2"><img src="tricks/eigen.gif" class="style32">.</p>
+		<p class="style27">Каждое собственное значение вычисляется отдельно и 
+		оно связано с соответствующим номером <span class="address">PC</span>, 
+		указанным в ячейках четвертой строки. Для этого сначала вводится одна 
+		формула для первого PC, которая затем &quot;<a href="excel.htm#Ch1.9">растаскивается</a>&quot; для всего набора 
+		главных компонент. Каждая формула является <a href="excel.htm#Ch2.1">формулой
+        массива</a> и ее ввод 
+		должен завершаться нажатием комбинации <strong class="menu">CTRL+SHIFT+ENTER</strong>. </p>
+		<p class="style27">После того, как вычислены собственные значения, с их 
+		помощью можно найти и другие полезные характеристики:
+		<a href="file:///E:/Web%20Sites/Site/rcs/Tutorials/pca.htm#Ch2.3">
+		сингулярные значения</a>,&nbsp;полную и объясненную
+		<a href="file:///E:/Web%20Sites/Site/rcs/Tutorials/pca.htm#Ch2.9">
+		дисперсии остатков.</a> </p>
+		<p class="style27">Массив найденных сингулярных значений имеет глобальное имя
+		<span lang="en-us"><span class="address">SgV</span>.</span></p>
+      <p align="left"><a href="#Contents">Содержание</a><span lang="en-us">
+		<a name="Ch1.7"></a></span></p>
+      <h2 align="left">1.7. Вычисление отклонений </h2>
+      <p align="left">Проще всего <a href="pca.htm#Ch2.13">отклонения
+		</a>(трансверсальные расстояния)<span lang="en-us">,</span>
+		<span lang="en-us">OD </span>– </p>
+		<p class="style2"><img src="tricks/OD.gif"></p>
+		<p align="left">вычислять из матрицы остатков, как это показано на листе
+		<em><a href="tricks/Tricks.xls#Residuals!A1">Residuals</a></em><span lang="en-us">
+		</span>в столбце <span class="address">AB</span>. Однако для этого 
+		придется выводить матрицы остатков для всех PC, что может оказаться 
+		весьма громоздко. Удобнее воспользоваться виртуальными массивами.
+		<a name="Fig5"></a>&nbsp;</p>
+		<p class="style2"><a href="tricks/Tricks.xls#OD!C11">
+		<img src="tricks/Fig05.png" class="style25"></a></p>
+		<p align="center"><samp>
+		Рис.<span lang="en-us">5</span> Вычисление отклонений</samp></p>
+      <p align="left">На листе <em><a href="tricks/Tricks.xls#OD!A1">OD</a></em> приведена соответствующая формула. Ее 
+		внутренняя часть совпадает с приведенной в <a href="#Ch1.5">разделе 
+		<span lang="en-us">5</span></a> 
+		и дает виртуальный массив остатков <strong>E</strong> для любого 
+		значения числа главных компонент PC, заданного в ячейке
+		<span class="address">C3 </span>с именем <span class="address">PC </span> 
+		– </p>
+		<p class="style2"><strong>E</strong><span class="address">=(X-Mean)/SDev-MMULT(ScoresPCA(X,PC,PP),TRANSPOSE(LoadingsPCA(X,PC,PP))).
+		</span></p>
+		<p align="left">Затем из этого массива вырезается виртуальная строка
+		<strong>e</strong><sub><em>i</em></sub> с номером <em>i</em>, заданным в 
+		ячейке <span class="address">A11 </span>– </p>
+		<p class="style2"><strong>e</strong><sub><em>i</em></sub>=
+		<span class="address">INDEX(</span><strong>E</strong><span class="address">,A11,).
+		</span></p>
+		<p align="left">Отметим отсутствие последнего аргумента в функции 
+		<a href="excel.htm#INDEX" class="prog"><strong>INDEX</strong></a>.</p>
+		<p align="left">Окончательный результат получается после применения 
+		функции </p>
+		<p class="style2">OD<sub><em>i</em></sub>=<span class="address">SUMSQ</span>(<strong>e</strong><sub><em>i</em></sub>)/J, </p>
+		<p align="left">которая находит сумму квадратов всех остатков для 
+		образца <em>i</em>. </p>
+		<p align="left">Величины трансверсальных расстояний для проверочного 
+		массива <span class="address">Xnew</span><strong><span lang="en-us">
+		</span></strong>вычисляются по аналогичной формуле – </p>
+		<p class="style28">SUMSQ(INDEX((<strong>Xnew</strong>-<span lang="en-us">M</span>ean)/SDev-MMULT(ScoresPCA(X,PC,PP<strong>,Xnew</strong>),TRANSPOSE(LoadingsPCA(X,PC,PP))),A23,))/J,</p>
+		<p align="left">в которой, однако, дважды участвует имя проверочного 
+		массива <span class="address">Xnew</span>&nbsp;–<span lang="en-us">
+		</span>в нормировке, и при вычислении счетов.</p>
+		<p align="left">Каждая величина OD<sub><em>i</em></sub> вычисляется 
+		отдельно. Она связана с соответствующим номером образца, указанным в 
+		ячейках столбца <span class="address">A</span>. Для этого сначала 
+		вводится одна формула для первого образца, которая затем 
+		&quot;<a href="excel.htm#Ch1.9">растаскивается</a>&quot; для всех остальных образцов. Каждая формула является 
+		<a href="excel.htm#Ch2.1">формулой
+        массива</a> и ее ввод должен завершаться нажатием комбинации
+		<span class="menu"><strong>CTRL+SHIFT+ENTER<span lang="en-us">.</span></strong></span> </p>
+      <p align="left"><a href="#Contents">Содержание</a><span lang="en-us">
+		<a name="Ch1.8"></a></span></p>
+      <h2 align="left">1.<span lang="en-us">8</span>. Вычисление размаха </h2>
+      <p align="left">Для вычисления <a href="pca.htm#Ch2.13">размаха</a> (или расстояния Махаланобиса в 
+		пространстве счетов)<span lang="en-us">, SD </span>– </p>
+		<p class="style2"><img src="tricks/SD.gif" width="286" height="59"></p>
+		<p align="left">можно также воспользоваться техникой виртуальных 
+		массивов. Но сначала нужно будет найти матрицу счетов, и строку 
+		сингулярных значений. Счета были вычислены на листе <em>
+		<a href="tricks/Tricks.xls#Scores!A1">Scores</a></em> (глобальные имена
+		<span class="address">T </span>и <span lang="en-us">
+		<span class="address">Tnew</span>)</span>, а массив сингулярных значений – на 
+		листе <em><a href="tricks/Tricks.xls#Eigenvalues!A1">Eigenvalues</a></em> 
+		(глобальное имя <span class="address">SgV</span>) <a name="Fig6"></a>&nbsp;</p>
+		<p class="style2"><a href="tricks/Tricks.xls#SD!C11">
+		<img src="tricks/Fig06.png" class="style25"></a></p>
+		<p align="center"><samp>
+		Рис.<span lang="en-us">6</span> Вычисление размаха </samp></p>
+      <p class="style25">Для вычисления <span class="address">SD</span><sub><em class="style30">i</em></sub> применяется 
+		формула – </p>
+		<p class="style2"><span class="address">
+		SUMSQ(INDEX(OFFSET(T,,,,PC)/OFFSET(SgV,,,,PC),A11,)). </span></p>
+		<p class="style27">Внутренние функции <span class="address">
+		OFFSET(T,,,,PC)</span> и <span class="address">OFFSET(SgV,,,,PC)</span> 
+		вырезают из массивов <span class="address">T</span> и
+		<span class="address">SgV</span> ровно <span class="address">PC</span> 
+		первых столбцов. Величина <span class="address">PC</span> определяется в 
+		ячейке <span class="address">C3</span> с именем <span class="address">PC</span>. После деления виртуальной 
+		матрицы урезанных счетов на строку урезанных сингулярных значений, 
+		получается виртуальный массив нормированных счетов <strong>U</strong>. 
+		После этого функция <span class="address">INDEX(U,A11,)</span> выбирает 
+		из массива <strong>U</strong> одну строку <strong>u</strong><sub><em>i</em></sub>, 
+		номер которой определен в ячейке <span class="address">A11</span>. 
+		Окончательный результат получается после применения функции </p>
+		<p class="style2"><span class="address">SD<sub><em>i</em></sub></span>=<span class="address">SUMSQ</span>(<strong>u</strong><sub><em>i</em></sub>), </p>
+		<p>которая находит сумму квадратов для образца <em>i</em>. </p>
+		Для проверочного массива формула аналогична – 
+		<p class="style2"><span class="address">
+		SUMSQ(INDEX(OFFSET(T<span lang="en-us">new</span>,,,,PC)/OFFSET(SgV,,,,PC),A23,)).</span></p>
+		<p class="style25">Каждая величина <span class="address">SD<sub>i</sub></span> 
+		вычисляется отдельно. Она связана с соответствующим номером образца, 
+		указанным в ячейках столбца <span class="address">A</span>. Для этого 
+		сначала вводится одна формула для первого образца, которая затем 
+		&quot;<a href="excel.htm#Ch1.9">растаскивается</a>&quot; для всех остальных образцов. В рассматриваемой формуле 
+		нельзя заменить матрицу <span class="address">T</span> на формулу
+		<span class="address">ScoresPCA(X,,PP)</span>, потому что в функции
+		<strong class="prog"><a href="excel.htm#OFFSET">OFFSET</a></strong> первый аргумент не может быть 
+		виртуальным массивом. </p>
+		<p class="style25">Каждая формула является <a href="excel.htm#Ch2.1">формулой
+        массива</a> и ее ввод 
+		должен завершаться нажатием комбинации
+		<span class="style32"><code><strong>CTRL+SHIFT+ENTER</strong></code></span>&nbsp;</p>
+      <p align="left"><a href="#Contents">Содержание</a><span lang="en-us">
+		<a name="Ch2"></a></span></p>
+      <p class="style25">&nbsp;</p>
+		<h1 align="left">2. Использование <span lang="en-us">VBA </span>
+		программирования<span lang="en-us"><a name="Ch2.1"></a></span></h1>
+        <h2 align="left"><span lang="en-us">2</span>.<span lang="en-us">1. </span>
+		Возможности <span lang="en-us">VBA</span></h2>
+		<p align="left">Альтернативным способом расширения надстройки <span lang="en-us"><em>Chemometrics</em> <em>Add In</em></span> 
+		является <span lang="en-us">VBA </span>программирование, т.е. создание 
+		собственных функций листа для решения тех или 
+		иных задач. В пособии <a href="excel.htm#Ch4.1">Матричные операции в Excel</a> 
+		мы вкратце описали принципы такого программирования. Сейчас мы покажем на 
+		примерах, как использовать функции надстройки <span lang="en-us"> <em> Chemometrics<span lang="ru">
+		</span></em><span lang="ru">
+		<span class="style30">при написании </span></span><span class="style30">
+		VBA </span></span><span class="style30">программ</span><em><span lang="en-us">.</span></em><p align="left">
+		Мы ограничимся только несколькими примерами, демонстрирующими 
+		альтернативные решения тех же задач <span lang="en-us">PCA </span>
+		анализа, что были рассмотрены в первой части этого пособия.&nbsp;Мы 
+		намерено не расширяем список полезных функций, оставляя читателю 
+		возможность проделать полезные упражнения и создать свою собственную 
+		библиотеку функций листа, расширяющих возможности стандартной надстройки <span lang="en-us"><em>Chemometrics</em> <em>Add In</em></span>. 
+		<p align="left">При написании новых пользовательских функций, 
+		использующих функции из надстройки <em> <span lang="en-us">Chemometrics</span>,</em> 
+		не забывайте установить ссылку на эту надстройку. Для этого в меню 
+		редактора Visual Basic надо выбрать <span lang="en-us">
+		<span class="menu">Tools-References</span> </span>и затем поставить 
+		галочку напротив <span lang="en-us"><em>Chemometrics</em>. </span>После 
+		этого в окне <span lang="en-us"><span class="menu">Project Explorer</span>
+		</span>появится раздел <span lang="en-us" class="menu">References</span> 
+		со ссылкой внутри<span lang="en-us"> </span>(см. <a href="#Fig9">Рис 9</a>)<p align="left"><a href="#Contents">Содержание</a><span lang="en-us">
+		<a name="Ch2.2"></a></span></p>
+		<h2 align="left"><span lang="en-us">2</span>.<span lang="en-us">2. </span>
+		Виртуализация реальных массивов</h2>
+		<p align="left">Первая задача, которую мы рассмотрим является 
+		подготовительной процедурой, необходимой практически во всех программных модулях. 
+		<p align="left">На листах рабочей книги находятся реальные массивы 
+		данных, которые мы хотим использовать в <span lang="en-us">VBA </span>
+		программах. Для этого их нужно виртуализовать, т.е. создать в памяти 
+		компьютера виртуальный массив, содержащий те же значения, что и его 
+		реальный прототип.<p align="left">Эту задачу решает функция 
+		<strong class="prog">
+		ConvertRange</strong> код которой приведен на Рис. 7. <br>
+&nbsp; 
+		<table align="center" class="style34">
+			<tr>
+				<td><code>Private Function ConvertRange(X As Variant) As Variant<br>
+&nbsp;&nbsp; Dim vMatrix As Variant<br>
+				<br>
+&nbsp;&nbsp; On Error GoTo ErrorEnd<br>
+&nbsp;&nbsp; If IsObject(X) Then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; vMatrix = X.Value<br>
+&nbsp;&nbsp; Else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; vMatrix = X<br>
+&nbsp;&nbsp; End If<br>
+				<br>
+&nbsp;&nbsp; ConvertRange = vMatrix<br>
+&nbsp;&nbsp; Exit Function<br>
+				ErrorEnd:<br>
+&nbsp;&nbsp; ConvertRange = CVErr(xlErrValue)<br>
+				End Function &nbsp;</code></td>
+			</tr>
+		</table>
+		<p align="center"><samp>
+		Рис.<span lang="en-us">7</span> Функция </samp><samp>ConvertRange</samp><samp>
+		</samp></p>
+      <p align="left">Код функции <strong class="prog">ConvertRange</strong><span lang="en-us"> </span>приведен в книге <span lang="en-us"><em>Tricks.xls</em> , </span>в модуле <span lang="en-us"><em>
+		<a href="tricks/Tricks.xls#ConvertRange">Utils</a></em>. </span><p align="left"><a href="#Contents">Содержание</a><span lang="en-us">
+		<a name="Ch2.3"></a></span></p>
+      <h2 align="left">
+		2.3<span lang="en-us">. </span>Подготовка 
+		данных</h2>
+        <p align="left">Для автоматической подготовки данных можно использовать 
+		функцию <strong class="prog">ScaleData</strong>, которая возвращает 
+		преобразованные данные по заданным значениям матриц <b>X</b> и <b>X</b><sub>new</sub>.
+        <p align="left"><b><i>Синтаксис&nbsp;</i></b>
+      <p align="left"><span class="prog"><strong>ScaleData</strong> (<B>X</B> 
+      [,CentWeightX] [, Xnew])</span> 
+      </p>
+      <blockquote>
+        <p align="left"> <strong class="prog">X</strong><span lang="en-us">
+		</span>– множество значений <b>X</b> (калибровочный
+        набор)&nbsp;
+        <P align=left><span class="prog">CentWeightX</span> – 
+        необязательный аргумент. Целая величина,
+        <a href="#Cnt">определяющая</a> проводится ли центрирование и/или
+        шкалирование <B>X</B> переменных.&nbsp;<p align="left">
+		<span class="prog">Xnew</span><span lang="en-us"> </span>–
+        необязательный аргумент. Множество
+        новых значений <b>X</b><sub>new</sub> (проверочный набор) для которых 
+		вычисляются и выводятся преобразованные данные.&nbsp;
+      </blockquote>
+        <p align="left"><b><i>Примечания&nbsp;</i></b>
+      <ul type="square">
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Матрица
+          новых значений <span class="prog">Xnew</span><span lang="en-us"> </span>должна
+          иметь столько же столбцов (переменных),
+          как и матрица <strong class="prog">X</strong>.&nbsp;</li>
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Если
+          аргумент <span class="prog">Xnew</span>
+          опущен, то предполагается, что он
+          совпадает с массивом <b class="prog">X</b>.&nbsp;</li>
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Результат
+          является массивом (матрицей), той же размерности, что и 
+			<span class="prog">Xnew</span>.&nbsp;</li>
+      </ul>
+        <p align="left"><b><i>Пример</i></b>
+        <p align="left">Пример использования функции
+		<span class="prog"><strong>ScaleData</strong></span> 
+		приведен на листе <em><a href="tricks/Tricks.xls#Scaling!B53">Scaling</a></em>.<p align="center">&nbsp;<a href="tricks/Tricks.xls#Scaling!B53"><img src="tricks/Fig08.png" class="style25" width="437" height="151"></a><p align="center">
+		<samp>Рис. <span lang="en-us">8</span> Пример использования
+        функции <strong>Sc</strong><span lang="en-us"><strong>aleData</strong></span></samp></p>
+        <p align="left">Код функции
+		<span class="prog"><strong>ScaleData</strong></span> 
+		приведен в книге <span lang="en-us"><em>Tricks.xls</em>, </span>в модуле <em> <span lang="en-us">
+		<a href="tricks/Tricks.xls#ScaleData">Utils</a></span>.</em><span lang="en-us"><a name="Fig9"></a></span><p class="style2">
+		<img src="tricks/Fig09.png" width="999" height="510"><p align="center">
+		<samp>
+		Рис.<span lang="en-us">9</span> Код функции Sc<span lang="en-us">aleData</span></samp></p>
+		Функция <span class="prog">
+		<strong>Sc</strong></span><span lang="en-us"><span class="prog"><strong>aleData</strong> 
+		</span> </span> является <a href="excel.htm#Ch2.1">формулой
+        массива</a> и ее ввод должен завершаться нажатием комбинации 
+		<strong class="menu">CTRL+SHIFT+ENTER</strong>.<p align="left"><a href="#Contents">Содержание</a><span lang="en-us">
+		<a name="Ch2.4"></a></span></p>
+      <h2 align="left">2.<span lang="en-us">4</span>. Вычисление остатков</h2>
+		<p align="left">Для вычисления остатков можно использовать функцию 		
+		<span lang="en-us" class="prog"><strong>ResPCA</strong></span>, которая 
+		возвращает матрицу остатков по заданным матрицам <b>X</b> и <b>X</b><sub>new</sub>.
+        <p align="left"><b><i>Синтаксис&nbsp;</i></b>
+      <p align="left"><span lang="en-us" class="prog"><strong>ResPCA</strong></span><span class="prog"> ((<B>X</B> [, PC]
+      [,CentWeightX] [, Xnew])&nbsp;</span> 
+      
+      <blockquote>
+        <p align="left"><b class="prog">X</b>&nbsp;– множество значений <b>X</b> (калибровочный
+        набор)&nbsp;
+        <p align="left"><span class="prog">PC</span> – необязательный аргумент. Целая
+        величина, <a href="projection.htm#nPCs">определяющая</a> число главных
+        компонент (<i>A</i>), используемых в <span lang="en-us">PCA</span>.&nbsp;<P align=left>
+		<span class="prog">CentWeightX</span> – 
+        необязательный аргумент. Целая величина,
+        <a href="#Cnt">определяющая</a> проводится ли центрирование и/или
+        шкалирование <B>X</B> переменных.&nbsp;<p align="left">
+		<span class="prog">Xnew</span><b>
+		</b>–
+        необязательный аргумент. Множество
+        новых значений <b>X</b><sub>new</sub> (проверочный
+        набор) для которых вычисляются и
+        выводятся значения остатков.&nbsp;
+      </blockquote>
+        <p align="left"><b><i>Примечания&nbsp;</i></b>
+      <ul type="square">
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Матрица
+          новых значений <span class="prog">Xnew</span> должна
+          иметь столько же столбцов (переменных),
+          как и матрица <b class="prog">X</b>.&nbsp;</li>
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Если
+          аргумент <span class="prog">Xnew </span>опущен, то предполагается, что он
+          совпадает с массивом <b class="prog">X</b>.&nbsp;</li>
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Результат
+          является массивом (матрицей), той же размерности, что и 
+			<span class="prog">Xnew</span>.&nbsp;</li>
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 0">Аналогичная
+          функция <span lang="en-us"><em>Chemometrics Add in</em></span>:
+			<span lang="en-us" class="prog"><strong><a href="projection.htm#Ch3.1">
+			ScoresPCA</a></strong></span>&nbsp;</li>
+      </ul>
+        <p align="left"><b><i>Пример</i></b>
+        <p align="left">Пример применения функции <span lang="en-us"><span class="prog"><strong>ResPCA</strong></span> </span>
+		показан листе <em><a href="tricks/Tricks.xls#Residuals!A48">Residuals</a></em>.&nbsp;<p align="center"><a href="tricks/Tricks.xls#Residuals!B49">
+		<img src="tricks/Fig10.png" class="style25"></a><p align="center">
+		<samp>Рис. <span lang="en-us">10</span> Пример использования
+        функции <span lang="en-us"><strong>ResPCA</strong></span></samp></p>
+        <p class="style27">Функция <span lang="en-us"><span class="prog"><strong>ResPCA</strong></span> </span>является <a href="excel.htm#Ch2.1">формулой
+        массива</a> и ее ввод должен завершаться нажатием комбинации 
+		<strong class="menu">CTRL+SHIFT+ENTER</strong>.</p>
+        <p align="left">Код функции <span lang="en-us"><span class="prog"><strong>ResPCA</strong></span> </span>приведен в книге <span lang="en-us"><em>Tricks.xls</em> </span>в модуле <span lang="en-us"><em>
+		<a href="tricks/Tricks.xls#ResPCA">PCA</a></em>.</span><p align="left"><a href="#Contents">Содержание</a><span lang="en-us">
+		<a name="Ch2.5"></a></span></p>
+      <h2 align="left"><span lang="en-us">2</span>.<span lang="en-us">5</span>. Вычисление собственных 
+		значений&nbsp; </h2>
+      <p align="left">Для вычисления <a href="pca.htm#Ch2.4">собственных значений</a> 
+		можно использовать функцию <strong class="prog">EigenPCA</strong>, 
+		которая возвращает одно собственное значение с номером
+		<span lang="en-us">PC </span>по заданной матрице <b>X</b>.
+        </p>
+        <p align="left"><b><i>Синтаксис&nbsp;</i></b>
+      <p align="left"><span class="prog"><strong>EigenPCA</strong> ((<B>X</B> , 
+		<strong>PC</strong>
+      [,CentWeightX])</span> 
+      </p>
+      
+      <blockquote>
+        <p align="left"><b class="prog">X</b>&nbsp;– множество значений <b>X</b> (калибровочный
+        набор)&nbsp;
+        <p align="left"><span class="prog"><strong>PC</strong></span> – целое 
+		число, определяющие главную <span lang="en-us">PCA</span> компоненту, 
+		для которой вычисляется собственное значение.<P align=left>
+		<span class="prog">CentWeightX</span> – 
+        необязательный аргумент. Целая величина,
+        <a href="#Cnt">определяющая</a> проводится ли центрирование и/или
+        шкалирование <B>X</B> переменных.&nbsp;</blockquote>
+        <p align="left"><b><i>Примечания&nbsp;</i></b>
+      <ul type="square">
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Результат
+          является числом&nbsp;</li>
+      </ul>
+        <p align="left"><b><i>Пример</i></b>
+        <p align="left">На листе <em>
+		<a href="tricks/Tricks.xls#Eigenvalues!A11">Eigenvalues</a></em> 
+		представлен пример использования функции <span class="prog"><strong>EigenPCA</strong> </span> 
+      &nbsp;для вычисления собственных значений.&nbsp;<p align="center">
+		<a href="tricks/Tricks.xls#Eigenvalues!D13">
+		<img src="tricks/Fig11.png" class="style25"></a><p align="center">
+		<samp>Рис. <span lang="en-us">1</span>1 Пример использования
+        функции <span lang="en-us"><strong>EigenPCA</strong></span></samp></p>
+        <p>Функция 
+		<span lang="en-us"><span class="prog"><strong>EigenPCA</strong></span> </span>
+		<span class="style35">не является</span> формулой
+        массива и ее ввод может завершаться нажатием клавиши 
+		<strong class="menu">ENTER</strong>.<p align="left">Код функции
+		<span class="prog"><span lang="en-us"><strong>EigenPCA</strong></span></span> 
+		приведен в книге <span lang="en-us"><em>Tricks.xls</em> , </span>в модуле <span lang="en-us"><em>
+		<a href="tricks/Tricks.xls#EigenPCA">PCA</a></em>.</span> </p>
+		<p align="left"><a href="#Contents">Содержание</a><span lang="en-us">
+		<a name="Ch2.6"></a></span></p>
+      <h2 align="left">2.6. Вычисление отклонений </h2>
+      <p align="left">Для вычисления <a href="pca.htm#Ch2.13">отклонения
+		</a>(трансверсальных расстояний) &nbsp;можно использовать функцию 
+		<strong class="prog">ODisPCA</strong>
+		, которая возвращает столбец расстояний для заданного числа ГК, по заданным матрицам <b>X</b> и <b>X</b><sub>new</sub>.
+        </p>
+        <p align="left"><b><i>Синтаксис&nbsp;</i></b>
+      <p align="left"><span lang="en-us" class="prog"><strong>ODisPCA</strong></span><span class="prog"> ((<B>X</B> [, PC]
+      [,CentWeightX] [, Xnew])</span><FONT size=3> </font> 
+      </p>
+      
+      <blockquote>
+        <p align="left"><b class="prog">X</b>&nbsp;– множество значений <b>X</b> (калибровочный
+        набор)&nbsp;
+        <p align="left"><span class="prog">PC</span> – необязательный аргумент. Целая
+        величина, <a href="projection.htm#nPCs">определяющая</a> число главных
+        компонент (<i>A</i>), используемых в <span lang="en-us">PCA</span>.&nbsp;<P align=left>
+		<span class="prog">CentWeightX</span> – 
+        необязательный аргумент. Целая величина,
+        <a href="#Cnt">определяющая</a> проводится ли центрирование и/или
+        шкалирование <B>X</B> переменных.&nbsp;<p align="left">
+		<span class="prog">Xnew</span> –
+        необязательный аргумент. Множество
+        новых значений <b>X</b><sub>new</sub> (проверочный
+        набор) для которых вычисляются и
+        выводятся значения отклонений.&nbsp;
+      </blockquote>
+        <p align="left"><b><i>Примечания</i></b><ul type="square">
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Матрица
+          новых значений 
+		<span class="prog">Xnew</span><b> </b>должна
+          иметь столько же столбцов (переменных),
+          как и матрица <b class="prog">X</b>.&nbsp;</li>
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Если
+          аргумент 
+		<span class="prog">Xnew</span> 
+          опущен, то предполагается, что он
+          совпадает с массивом <b class="prog">X</b>.&nbsp;</li>
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Результат
+          является массивом (матрицей), той же размерности, что и 
+			<span class="prog">Xnew</span>.&nbsp;</li>
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 0">Аналогичная
+          функция <span lang="en-us"><em>Chemometrics Add in</em></span>:
+			<span lang="en-us" class="prog"><strong><a href="projection.htm#Ch3.1">
+			ScoresPCA</a></strong></span>&nbsp;</li>
+      </ul>
+        <p align="left"><b><i>Пример</i></b>
+        <p align="left">Пример использования функции <strong class="prog">ODisPCA<span lang="en-us">
+		</span></strong> приведен на листе <span lang="en-us"><em>
+		<a href="tricks/Tricks.xls#OD!J23">OD</a></em>. </span>
+        <p align="center"><a href="tricks/Tricks.xls#OD!J23">
+		<img src="tricks/Fig12.png" class="style25"></a><p align="center">
+		<samp>Рис. <span lang="en-us">12</span> Пример использования
+        функции <span lang="en-us">ODisPCA</span></samp></p>
+        <p class="style27">Функция <strong class="prog">ODisPCA</strong> является <a href="excel.htm#Ch2.1">формулой
+        массива</a> и ее ввод должен завершаться нажатием комбинации 
+		<strong class="menu">CTRL+SHIFT+ENTER</strong>.</p>
+        <p align="left">Код функции <strong class="prog">ODisPCA</strong> приведен в книге <span lang="en-us"><em>Tricks.xls</em> , </span>в модуле <span lang="en-us"><em>
+		<a href="tricks/Tricks.xls#ODisPCA">PCA</a></em>.</span><p align="left"><a href="#Contents">Содержание</a><span lang="en-us">
+		<a name="Ch2.7"></a></span></p>
+      <h2 align="left">2.<span lang="en-us">7</span>. Вычисление размаха </h2>
+      <p align="left">Для вычисления <a href="pca.htm#Ch2.13">размаха</a> можно 
+		использовать функцию <strong class="prog"><span lang="en-us">S</span>DisPCA</strong>, которая возвращает 
+		столбец этих величин для заданного числа ГК, по заданным матрицам <b>X</b> и <b>X</b><sub>new</sub>.
+        </p>
+        <p align="left"><b><i>Синтаксис&nbsp;</i></b>
+      <p align="left"><span lang="en-us" class="prog"><strong>SDisPCA</strong></span><span class="prog"> ((<B>X</B> [, PC]
+      [,CentWeightX] [, Xnew])&nbsp;</span><blockquote>
+        <p align="left"><b class="prog">X</b>&nbsp;– множество значений <b>X</b> (калибровочный
+        набор)&nbsp;
+        <p align="left"><span class="prog">PC</span> – необязательный аргумент. Целая
+        величина, <a href="projection.htm#nPCs">определяющая</a> число главных
+        компонент (<i>A</i>), используемых в <span lang="en-us">PCA</span>.&nbsp;<P align=left>
+		<span class="prog">CentWeightX</span> – 
+        необязательный аргумент. Целая величина,
+        <a href="#Cnt">определяющая</a> проводится ли центрирование и/или
+        шкалирование <B>X</B> переменных.&nbsp;<p align="left">
+		<span class="prog">Xnew</span><b>
+		</b>–
+        необязательный аргумент. Множество
+        новых значений <b>X</b><sub>new</sub> (проверочный
+        набор) для которых вычисляются и
+        выводятся значения расстояний.&nbsp;
+      </blockquote>
+        <p align="left"><b><i>Примечания&nbsp;</i></b>
+      <ul type="square">
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Матрица
+          новых значений 
+		<span class="prog">Xnew</span><b> </b>должна
+          иметь столько же столбцов (переменных),
+          как и матрица <b class="prog">X</b>.&nbsp;</li>
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Если
+          аргумент 
+		<span class="prog">Xnew</span> 
+          опущен, то предполагается, что он
+          совпадает с массивом <b class="prog">X</b>.&nbsp;</li>
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Результат
+          является массивом (матрицей), той же размерности, что и 
+			<span class="prog">Xnew</span>.&nbsp;</li>
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 0">Аналогичная
+          функция <span lang="en-us"><em>Chemometrics Add in</em></span>:
+			<span lang="en-us" class="prog"><strong><a href="projection.htm#Ch3.1">
+			ScoresPCA</a></strong></span>&nbsp;</li>
+      </ul>
+        <p align="left"><b><i>Пример</i></b>
+        <p align="left">Пример использования функции <strong class="prog">
+		<span lang="en-us">S</span>DisPCA<span lang="en-us">
+		</span></strong> приведен на листе <span lang="en-us"><em>
+		<a href="tricks/Tricks.xls#SD!J23">SD</a></em>. </span>
+        <p align="center"><a href="mailto:tricks/Tricks.xls#SD!J23">
+		<img src="tricks/Fig13.png" class="style25"></a><p align="center">
+		<samp>Рис. <span lang="en-us">13</span> Пример использования
+        функции <span lang="en-us">SDisPCA</span></samp></p>
+        <p class="style27">Функция <span lang="en-us" class="prog"><strong>SDisPCA</strong><samp> </samp> </span>является <a href="excel.htm#Ch2.1">формулой
+        массива</a> и ее ввод должен завершаться нажатием комбинации 
+		<strong class="menu">CTRL+SHIFT+ENTER</strong>.</p>
+        <p align="left">Код функции <span lang="en-us" class="prog">
+		<strong>SDisPCA</strong></span><samp><span lang="en-us"> </span></samp>
+		приведен в книге <span lang="en-us"><em>Tricks.xls</em> , </span>в модуле <span lang="en-us"><em>
+		<a href="tricks/Tricks.xls#SDisPCA">PCA</a></em>.</span> 
+		<p align="left">
+		&nbsp;</p>
+		<p align="left"><a href="#Contents">Содержание</a><a name="Conclusions"></a></p>
+      <h1 align="left">Заключение</h1>
+		<p align="left">Рассмотренные приемы работы с виртуальными массивами в 
+		надстройке <span lang="en-us"><em>Chemometrics</em> </span>могут показаться 
+		слишком сложными. Однако приведенные формулы следует рассматривать 
+		прежде всего как шаблоны для использования в своей рабочей книге. Их 
+		можно просто копировать (как текст) и вставлять в нужное место. 
+		Небольшое последующее редактирование (уточнение имен ячеек и массивов) 
+		приведет эту формулу к нужному виду.</p>
+		<p align="left">Примеры <span lang="en-us">VBA </span>программирования 
+		призваны помочь пользователю облегчить работу с надстройкой
+		<span lang="en-us"><em>Chemometrics</em></span>. Используйте их как 
+		образцы для написания своих собственных пользовательских функций. После 
+		того, как таких функций накопится достаточно много и они будут проверены 
+		на практике, их можно собрать в отдельную книгу и превратить в новую 
+		надстройку <em><span lang="en-us">Chemometrics</span> <span lang="en-us">
+		Plus</span></em>.&nbsp; </p>
+      <p align="left"><a href="#Contents">Содержание</a></p>
+      <p align="left">&nbsp;</p>
+      </td>
+  </table>
+
+</body>
+

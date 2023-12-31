@@ -1,0 +1,526 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta http-equiv="Content-Language" content="ru">
+<title>Кинетическое моделирование спектральных данных</title>
+<style>
+<!--
+h1           {
+	padding: 75px 0px 0px 0px;
+	font-family: Arial;
+	font-size: 14pt;
+	font-weight: bold;
+	text-align: Center;
+}
+h2           {
+	font-family: Arial;
+	font-size: 12pt;
+	font-style: italic;
+	padding-top: 25px;
+}
+.header      { font-family: Arial; font-size: 18pt; letter-spacing: 1; font-weight: bold; 
+               text-align: Center }
+ .style2 {
+	text-align: center;
+}
+.address {
+	font-family: Arial, Helvetica, sans-serif;
+}
+.menu {
+	font-family: Tahoma;
+	font-size: 12px;
+	font-weight: bold;
+}
+ .style32 {
+	text-align: left;
+}
+.style33 {
+	font-weight: bold;
+	}
+.style34 {
+	margin-left: 30px;
+}
+.style36 {
+	border-width: 0;
+}
+.prog {
+	font-family: "Courier New", Courier, monospace;
+}
+-->
+</style>
+        <title></title>
+</head>
+
+<body>
+
+<p>&nbsp;</p>
+
+  <table border="0" width="95%" cellpadding="0" cellspacing="0" align="center">
+    <tr>
+      <td width="100%">
+      <h3 class="header">Кинетическое моделирование спектральных данных </h3>
+      <dl>
+        <div align="center">
+          <center>
+          <dt>© <span lang="en-us">2010 </span>Алексей Померанцев&nbsp;</dt>
+          </center>
+        </div>
+        <div align="center">
+          <center>
+          <dt><a href="../index.html">Российское хемометрическое общество</a></dt>
+          </center>
+        </div>
+      </dl>
+        <h1><a name="Contents"></a>Содержание&nbsp;</h1>
+        <dl>
+          <dt><a href="#Ch0"><b>Введение</b></a></dt>
+          <dt><b><a href="#Ch1">Метод &quot;серого&quot; моделирования</a></b></dt>
+          <dd><b><a href="#Ch1.1">1 Постановка задачи</a></b></dd>
+          <dd><b><a href="#Ch1.2">2. Пример</a></b></dd>
+          <dd><b><a href="#Ch1.3">3. Данные</a></b></dd>
+          <dd><b><a href="#Ch1.4">4. Формальный метод чередующихся наименьших 
+			квадратов (Soft-ALS)</a></b></dd>
+          <dd><b><a href="#Ch1.5">5. Содержательный метод чередующихся 
+			наименьших квадратов (Hard-ALS)</a></b></dd>
+          <dd><b><a href="#Ch1.6">6. Использование надстройки Solver</a></b></dd>
+          <dt><b><a href="#Ch5">Заключение</a></b></dt>
+          <dd></dd>
+        </dl>
+        <h1><a name="Ch0"></a>Введение&nbsp;</h1>
+        <p>В этом небольшом пособии рассмотрены кинетические методы, применяемые 
+		для решения задач разрешения многомерных кривых (multivariate curve 
+		resolution). Текст ориентирован, прежде всего, на специалистов в области 
+		анализа экспериментальных данных: химиков, физиков, биологов, и т.д. Он 
+		может служить пособием для исследователей, начинающих изучение этого 
+		вопроса. Продолжить исследования&nbsp; можно с помощью указанной 
+		литературы. </p>
+<p>В пособии интенсивно используются понятия и методы, описанные в других 
+материалах по хемометрике: <a href="matrix.htm">матричная алгебра</a>,<a href="mcr.htm"> разрешение 
+многомерных кривых </a>. Читателям, которые плохо 
+знакомы с этим аппаратом, рекомендуется изучить, или, хотя бы просмотреть, эти 
+материалы.&nbsp; </p>
+<p>Изложение иллюстрируется примерами, выполненными в рабочей книге Excel “<em><a href="grey/Grey.xls"><span lang="en-us">Grey</span>.xls</a></em>”, 
+которая сопровождает этот документ. </p>
+		<p align="center"><b><a href="moffice.htm">Важная информация о работе с 
+		файлом <span lang="en-us">Grey</span>.xls</a>&nbsp;</b></p>
+		<p class="style32">Предполагается, что читатель имеет базовые навыки 
+		работы в среде Excel, умеет проводить простейшие матричные вычисления с 
+		использованием функций листа, таких как МУМНОЖ, ТЕНДЕНЦИЯ и т.п. В 
+		отличие от других пособий из серии, здесь не используется надстройка 
+<em><a href="projection.htm">Chemometrics Add-In</a></em>, зато применяется 
+стандартная надстройка Solver. </p>
+		<p class="style2"><b><a href="index.html">Другие 
+		пособия по хемометрике</a></b></p>
+		<p style="line-height: 150%"><a href="#Contents">Содержание</a><span lang="en-us">
+			<a name="Ch1"></a></span><h1>Метод &quot;серого&quot; моделирования&nbsp;<a name="Ch1.1"></a></h1>
+        <h2>1. Постановка задачи </h2>
+        <p>Исходная постановка задачи аналогична рассмотренной в пособии 
+		&quot;Многомерное разрешение кривых (MCR)&quot;. Рассматривается система, 
+		состоящая из нескольких веществ (<i>компонент</i><span lang=EN-US>)</span>, <span
+style='font-family:Arial'>A</span>, <span style='font-family:Arial'>B</span>, … 
+		, концентрации которых <i><span lang=EN-US>c</span></i><sub><span
+lang=EN-US>A</span></sub>(<i><span
+lang=EN-US>t</span></i><span lang=EN-US>)</span>, <i><span lang=EN-US>c</span></i><sub><span
+lang=EN-US>B</span></sub>(<i><span
+lang=EN-US>t</span></i><span lang=EN-US>)</span>,…&nbsp;&nbsp; закономерно 
+		изменяются со временем <i><span
+lang=EN-US>t</span></i>, подчиняясь известному кинетическому механизму. С другой 
+		стороны каждый компонент может быть охарактеризован своим чистым 
+		спектром (понимаемым в обобщенном виде): <i>s</i><sub>A</sub>(&#955;),
+		<i>s</i><sub>B</sub>(&#955;),…., где
+		&#955; – это длина волны.&nbsp;По ходу 
+		эксперимента, в момент времени <i><span lang=EN-US>t<sub>i</sub></span></i><span lang=EN-US>,</span>
+		на длине волны &#955;<i><sub>j</sub></i>
+		измеряется величина </p>
+<p class="style2"><i>x</i><span
+lang=EN-US>(<i>t<sub>i</sub></i></span>,<span lang=EN-US class="style1"> </span>&#955;<i><sub>j</sub></i><span lang=EN-US>)</span><i>=<span
+lang=EN-US>c</span></i><sub><span lang=EN-US>A</span></sub><span lang=EN-US>(<i>t<sub>i</sub></i>)
+<i>s</i><sub>A</sub>(</span>&#955;<i><sub>j</sub></i><span
+lang=EN-US>)+<i>c</i><sub>B</sub>(<i>t<sub>i</sub></i>) <i>s</i><sub>B</sub>(</span>&#955;<i><sub>j</sub></i><span
+lang=EN-US>)+ ....</span></p>
+<p>равная линейной суперпозиции всех спектров и концентраций &quot;чистых&quot; 
+компонентов.<span lang="en-us">
+</span><samp><a name="Fig01"></a></samp>
+        &nbsp;</p>
+        <p align="center"><img src="grey/Fig01.png"></p>
+        <p align="center"><samp>Рис. 1 Устройство спектрально-кинетических 
+		данных </samp></p>
+      <p>Пусть <i>I</i> – это число моментов наблюдений: <i>t</i><sub>1</sub>,…<span lang=EN-US>.<i>t</i><sub><em>I</em></sub>, </span>
+		а
+<i><span lang=EN-US>J</span></i><span lang=EN-US> – </span>это число длин волн<span lang="en-us"><span class="style1">
+		</span></span>&#955;<sub>1</sub>,…,&#955;<i><sub>J</sub><span lang=EN-US>. </span></i>
+		Тогда данные, получаемые в эксперименте, можно представить в матричном 
+		виде </p>
+          <table border="0" cellpadding="0" cellspacing="0" width="95%">
+            <tr>
+              <td width="90%">
+                <p align="center"><a name="Eq1"></a><b><span lang=EN-US>X</span></b> 
+				= <b>CS</b><sup><span
+  lang=EN-US>t</span></sup> + <b>E</b>.</td>
+              <td>
+                <p align="center">(1)</td>
+            </tr>
+          </table>
+          <p>Здесь матрицы данных <b>X</b> и погрешностей <b>E</b> имеют 
+			размерность <i>I</i>&times;<i>J</i>
+<span lang=EN-US>.</span> Если в системе присутствует <i>A</i> химических 
+			компонентов, то матрица концентраций <b><span lang=EN-US>C</span></b><span
+lang=EN-US> </span>имеет <i>I</i> строк и <i>A</i> столбцов. Каждый ее столбец – 
+			это кинетический профиль изменения концентрации соответствующего 
+			вещества. Матрица чистых спектров <b>S</b><sup><span lang=EN-US>t</span></sup> 
+			(ее удобнее представлять в транспонированном виде) имеет <i>A</i> 
+			строк и <i>J</i> столбцов. Каждая ее строка – это чистый спектр 
+			соответствующего компонента.</p>
+        <p>Задача MCR состоит в том, чтобы по заданной матрице данных <strong>X</strong> 
+		найти матрицы концентраций <strong>C</strong> и чистых спектров <strong>
+		S</strong>. Для ее решения можно применять обычные, формальные (soft) 
+		методы, описанные в пособии <a href="mcr.htm">Разрешение многомерных кривых</a>. Однако, в отличие от общей задачи MCR, в рассматриваемом 
+		случае нам известны кинетики изменения концентрации всех компонентов
+        <p class="style2"><i><span
+lang=EN-US>c</span></i><sub><span lang=EN-US>A</span></sub><span lang=EN-US>(<i>t</i>)
+</span>= <span lang="en-us">f</span><sub><span lang=EN-US>A</span></sub><span lang=EN-US>(<i>t, 
+		k</i><sub>1</sub><i>, ... , k<sub>p</sub> </i>)
+<br>
+		</span><i><span
+lang=EN-US>c</span></i><sub><span lang=EN-US>B</span></sub><span lang=EN-US>(<i>t</i>)
+</span>= <span lang="en-us">f</span><sub><span lang=EN-US>B</span></sub><span lang=EN-US>(<i>t, 
+		k</i><sub>1</sub><i>, ... , k<sub>p</sub> </i>)
+<br>
+		...</span>&nbsp;<p>но только с точностью до неизвестных кинетических 
+		параметров <em><strong>k</strong></em> <span lang="en-us">=(</span><span lang=EN-US><i>k</i><sub>1</sub><i>, 
+		... , k<sub>p</sub> </i>)</span><span lang="en-us">
+		</span>– констант скоростей соответствующих реакций. Относительно 
+		матрицы спектров <strong>S</strong> 
+		известны только самые общие априорные сведения: неотрицательность, 
+		непрерывность, и т.п<span lang="en-us">.</span>
+        <p>В такой постановке задача MCR является обратной задачей химической 
+		кинетики – определение оценок кинетических параметров для известного 
+		механизма при наличии &quot;мешающих&quot; параметров ­– спектральных величин 
+		(коэффициентов экстинкции). Обычно в традиционной обратной задаче 
+		исходными экспериментальными данными являются концентрации некоторых 
+		компонентов кинетической схемы, а не спектры<span lang="en-us">.</span><p>
+		В этом пособии мы покажем, как для решения спектральной задачи 
+		применяется метод &quot;серого&quot; моделирования, в котором сочетаются 
+		формальные (&quot;черные&quot;) алгоритмы для оценки спектральных&nbsp; компонент
+		<strong>S</strong> и содержательные (&quot;белые&quot;) методы для оценки 
+		кинетических профилей <strong>C</strong>. &nbsp;Заметим, что для этого метода 
+		решение задачи MCR (если оно существует) является единственным.
+        <p><a href="#Contents">Содержание</a><span lang="en-us">&nbsp;
+		<a name="Ch1.2"></a></span></p>
+        <h2>2. Пример </h2>
+      <p align="left">Для иллюстрации и сравнения различных методов разделения 
+		кривых<span lang="en-us"> </span>будем использовать модельный пример<span lang="en-us">,</span> 
+		помещенный в рабочую книгу<span
+lang=EN-US> <em><a href="grey/Grey.xls">Grey.xls</a></em>.</span> 
+<p>Эта книга &nbsp;включает в себя следующие листы:</p>
+<p><a href="grey/Grey.xls#Intro!C4"><span lang="en-us"><em>I</em></span><em>ntro</em></a>: 
+краткое введение</p>
+<p><a href="grey/Grey.xls#Layout!A1"><em>L</em><span lang="en-us"><em>ayout</em></span></a>: 
+схемы, объясняющая имена массивов, используемых в примере</p>
+<p><em><a href="grey/Grey.xls#Kinetics!A1">Kinetics</a></em>: истинные 
+концентрационные профили 
+<strong>C</strong></p>
+<p><em><a href="grey/Grey.xls#Spectra!A1">Spectra</a></em>: истинные чистые 
+спектры 
+<strong>S&nbsp; </strong> </p>
+<p><em><a href="grey/Grey.xls#Data!A1">Data</a></em>: модельные данные, 
+используемые в примере. <span lang="en-us">O</span>шибки формируются случайным 
+образом на этой же странице. </p>
+		<p><a href="grey/Grey.xls#Soft!A1"><em>Soft:</em></a> формальный метод 
+		чередующихся наименьших квадратов (Soft-ALS) </p>
+		<p><em><a href="grey/Grey.xls#Hard!A1">Hard</a></em>: содержательный 
+		метод чередующихся наименьших квадратов (Hard-ALS) </p>
+        <p>
+<a href="#Contents">Содержание</a><a name="Ch1.3"></a>
+      <h2>3. Данные </h2>
+<p>Прообразом для этого примера служит задача оценки кинетических параметров в 
+последовательной реакции первого порядка </p>
+		<p class="style2"><img src="grey/image01.png" width="129" height="23"></p>
+		<p class="style32">Эта кинетическая схема описывается системой 
+		дифференциальных уравнений </p>
+		<p class="style2"><img src="grey/image02.png" width="184" height="131"></p>
+		<p class="style32">имеющих явное решение </p>
+          <table border="0" cellpadding="0" cellspacing="0" width="95%">
+            <tr>
+              <td width="90%" class="style2">
+                &nbsp;<a name="Eq2"></a><img src="grey/image03.png" width="296" height="129"></td>
+              <td>
+                <p align="center">(2)</td>
+            </tr>
+          </table>
+		<p class="style32">представленное на <a href="#Fig02">Рис. 2</a> для <em>
+		A</em><sub>0</sub>=1,
+		<em>k</em><sub>1</sub>=0.30, <em>k</em><sub>2</sub>=0.15. 
+		<a name="Fig02"></a> </p>
+		<p align="center">
+		<a href="grey/Grey.xls#Kinetics!G6">
+		<img src="grey/Fig02.png" class="style36"></a><p align="center"><samp>
+		Рис. 2 Новая книга Excel</samp></p>
+<p>Эти кинетические профили вычисляются по формулам <span lang="en-us">
+<a href="#Eq2">(2)</a></span> на листе <em>Kinetics</em>&nbsp;для значений параметров
+<em>k</em><sub>1</sub>и <em>k</em><sub>2</sub> заданных в ячейках
+<span class="address">H3</span> (<span class="address"><a href="grey/Grey.xls#Kinetics!H3">Rate1</a></span>) 
+и&nbsp;<span class="address">H4 </span>(<span class="address"><a href="grey/Grey.xls#Kinetics!H4">Rate2</a></span>), 
+соответственно</p>
+		<p>Для моделирования спектров использовались перекрывающиеся гауссовы 
+		пики, вычисленные для 53 условных длин волн. Они представлены на листе
+		<em>Spectra</em> и показаны на Рис. 3. <span lang="en-us">
+		&nbsp;</span><samp><a name="Fig03"></a></samp>&nbsp;</p>
+        <p align="center"><a href="grey/Grey.xls#Spectra!G4">
+		<img src="grey/Fig03.png" class="style36"></a>&nbsp;<p align="center"><samp>
+		Рис. 3 Спектры чистых компонент</samp></p>
+      <p>Смешанные данные <strong>X</strong> вычисляются на листе <em>Data</em> 
+		по формуле <a href="#Eq1">(<span lang="en-us">1</span>)</a> с 
+		относительной ошибкой 5%. Величину этой ошибки (она задается в ячейке
+		<span class="address"><a href="grey/Grey.xls#Data!E27">E27</a></span> с 
+		именем <span class="address">RMSE</span>) можно менять 
+		и получать новые данные. Для этого нужно нажать кнопку<span lang="en-us">
+		</span> <b><span lang=EN-US style='font-family:Arial;background:silver'>
+&nbsp;</span></b><span lang=EN-US
+style='font-family:Arial;background:silver' class="style33">Add New Error</span>, 
+		запускающую <a href="excel.htm#Ch4.3"> <span lang=EN-US>VBA </span>
+		макрос</a>
+		<b class="prog">MakeErrors</b>, привязанный к этому листу.<a name="Fig04"></a>
+        </p>
+		<p class="style2"><a href="grey/Grey.xls#Data!R12">
+		<img src="grey/Fig04.png" width="426" height="426" class="style36"></a></p>
+        <p align="center"><samp>Рис. 4 Модельные данные </samp> </p>
+		<p><a href="#Contents">Содержание</a>.<a name="Ch1.4"></a></p>
+      <h2>4. Формальный метод чередующихся наименьших квадратов (Soft-ALS) </h2>
+<p>Для анализа полученных модельных данных X можно применить
+<a href="mcr.htm#Ch4.2">формальный метод чередующихся наименьших квадратов (ALS)</a>. 
+Однако, в этом случае, стандартный алгоритм лучше уточнить, чтобы включить в 
+него всю имеющуюся априорную информацию. Вот, что нужно учесть при построении 
+метода.</p>
+		<p class="style34">1. Число компонент известно – их три:
+		<span class="address">A</span>, <span class="address">B</span>,
+		<span class="address">C<span lang="en-us">;</span></span>&nbsp; </p>
+		<p class="style34">2. Спектры неотрицательны<span lang="en-us">;</span>
+		</p>
+		<p class="style34">3. Концентрации неотрицательны,&nbsp;причем&nbsp;<em>A</em>(0)=1,
+		<em>B</em>(0)=<em>C</em>(0)=0<span lang="en-us">;</span> </p>
+		<p class="style34">4. Система замкнута, т.е. в любой момент <em>t</em> :
+		</p>
+          <table border="0" cellpadding="0" cellspacing="0" width="95%">
+            <tr>
+              <td width="90%" class="style2">
+                &nbsp;<a name="Eq3"></a><em>A</em>(<em>t</em>)+<em>B</em>(<em>t</em>)+<em>C</em>(<em>t</em>)=Const=1<span lang="en-us">.</span> </td>
+              <td>
+                <p align="center">(<span lang="en-us">3</span>)</td>
+            </tr>
+          </table>
+        <p>
+С учетом этой информации алгоритм метода выглядит так.
+        <p class="style34">
+1. Задается <a href="grey/Grey.xls#Soft!B4:D24">окно</a> – шаблон концентраций, 
+в котором важны только нулевые значения,&nbsp;которые нужно удерживать при итерациях. 
+В нашем случае, это:&nbsp;<em>B</em>(0)=<em>C</em>(0)=0.
+        <p class="style34">
+2. Это окно используется как начальное приближение для матрицы концентрационных 
+профилей <strong>C</strong><sub>in</sub>.
+        <p class="style34">
+3. Из матрицы <strong>C</strong><sub>in</sub><span lang="en-us"> </span>
+создается матрица <strong>C</strong><sub><span lang="en-us">adj</span></sub>: 
+элемент матрицы <strong>C</strong><sub><span lang="en-us">adj</span></sub>&nbsp;заменяется 
+нулем, если соответствующий элемент <strong>C</strong><sub>in</sub><span lang="en-us">
+</span>отрицателен, или если соответствующий элемент концентрационного окна 
+равен нулю. Кроме того, матрица <strong>C</strong><span lang="en-us"><sub>adj</sub>
+</span>нормируется так, чтобы ее элемент (1,1) был равным 1, т.к. <em>A</em>(0)=1.
+        <p class="style34">
+4. Для матрицы <strong>C</strong><sub><span lang="en-us">adj</span></sub><span lang="en-us">
+</span>вычисляется сумма всех ее элементов по рядам и формируется вектор (<span class="address"><a href="grey/Grey.xls#Soft!M4:M24">Closure</a></span>), 
+отражающей замкнутость системы в соответствии с уравнением <a href="#Eq3">(3)</a>.
+        <p class="style34">
+5. Из матрицы <strong>C</strong><sub><span lang="en-us">adj</span></sub> 
+создается матрица <strong>C</strong><sub><span lang="en-us">hat</span></sub>, 
+удовлетворяющая условиям замкнутости. Для этого каждая строка матрицы <strong>C</strong><sub><span lang="en-us">adj</span></sub> 
+делится на соответствующий элемент вектора <span class="address"><strong>Closure</strong></span>. 
+&nbsp;
+        <p class="style34">
+6. С помощью формулы
+        <p class="style2">
+<b><span lang=EN-US>S</span></b><sub>in</sub><span
+lang=EN-US>= <b>X</b><sup>t</sup> <b>C</b></span><sub>hat</sub><span
+lang=EN-US> (<b>C</b><sub>hat</sub><sup>t</sup><b>C</b><sub>hat</sub>)<sup>–1</sup></span><p class="style34">
+находится оценка матрицы чистых спектров <strong>S</strong><sub>in</sub>
+        <p class="style34">
+6. Матрица <strong>S</strong><sub>in</sub> подправляется – отрицательные 
+элементы заменяются нулями. Получается матрица <strong>S</strong><sub><span lang="en-us">hat</span></sub>.
+        <p class="style34">
+7. С помощью формулы
+        <p class="style2"><b><span lang=EN-US>C</span></b><sub>out</sub><span
+lang=EN-US>=<b>X S</b><sub>hat</sub> (<b>S</b><sub>hat</sub><sup>t</sup><b>S</b><sub>ha</sub></span><sub>t</sub><span
+lang=EN-US>)<sup>–1</sup></span></p>
+		<p class="style34">
+определяется оценка матрицы концентрационных профилей <strong>C</strong><sub>out</sub>.
+        <p class="style34">
+8. Матрица <strong>C</strong><sub>in</sub><span lang="en-us"> </span>заменяется 
+матрицей <strong>C</strong><sub>out</sub><p class="style34">
+9. Шаги 3-8 повторяются до сходимости
+        <p>
+Применение метода ALS для нашего примера показано на листе <em>
+<a href="grey/Grey.xls#Soft!A1">Soft</a></em>. Здесь используется кнопка <b><span lang=EN-US style='font-family:Arial;background:silver'>
+Calculate</span></b>, которая запускает VBA макрос, копирующий содержание 
+области <strong>C</strong><sub>out</sub><span lang="en-us"> </span>в область
+<strong>C</strong><sub>in</sub>. Число повторов задается значением в клетке
+<span class="address">K1</span> (имя <span class="address">iTer</span>). 
+Алгоритм сходится за 10 итераций к результату, который по точности (&#948; 
+= 5%) совпадает с величиной использованной ошибки. Здесь &#948; 
+– это <a href="mcr.htm#Eq10">относительная среднеквадратичная погрешность 
+моделирования</a>.&nbsp; <samp><a name="Fig05"></a></samp>
+        <p align="center"><span lang="en-us"><a href="grey/Grey.xls#Soft!C16">
+		<img src="grey/Fig05a.png" width="342" height="342" class="style36"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="grey/Grey.xls#Soft!M11">
+		<img src="grey/Fig05b.png" width="342" height="342" class="style36"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+		</span>&nbsp;</p>
+		<p align="center"><samp>
+		Рис. 5 Решение задачи методом формального ALS&nbsp; </samp></p>
+      <p>Найденное решение показано на <a href="#Fig05"> Рис. 5</a>. Оно 
+		отличается от известных нам истинных значений. Разумеется,&nbsp;это следствие
+		<a href="mcr.htm#Ch1.2">глобальной неоднозначности</a> решения, 
+		найденного формальным методом </p>
+        <p align="left"><a href="#Contents">Содержание</a>.<a name="Ch1.5"></a></p>
+        <h2 align="left">5. Содержательный метод чередующихся наименьших 
+		квадратов (Hard-ALS) </h2>
+      <p>Применяя формальный метод ALS, мы никак не учитывали имеющееся у нас 
+		знание о форме кинетических профилей – модель кинетики изменения 
+		концентраций <a href="#Eq2">(2)</a>. Учет этой информации усложнит 
+		алгоритм, но, очевидно, улучшит анализ данных. Вот как выглядит этот 
+		новый алгоритм. </p>
+		<p class="style34">1. Задается начальное приближение для матрицы 
+		концентрационных профилей <strong>C</strong><sub>in</sub>, например как 
+		решение, полученное формальным методом ALS. </p>
+		<p class="style34">2. Задаются начальные значения кинетических 
+		параметров <em>k</em><sub>1</sub>,…<em>k</em><sub>p</sub> </p>
+		<p class="style34">3. Из матрицы <strong>C</strong><sub>in</sub> 
+		создается матрица <strong>C</strong><sub><span lang="en-us">hat</span></sub>: 
+		элемент матрицы <strong>C</strong><sub><span lang="en-us">hat</span></sub>&nbsp;заменяется 
+		нулем, если соответствующий элемент <strong>C</strong><sub>in</sub> 
+		отрицателен. </p>
+		<p class="style34">4. По известным уравнениям <a href="#Eq2">(2)</a> 
+		вычисляются все концентрации, из которых формируется матрица <strong>C</strong><sub><span lang="en-us">fit</span></sub>. </p>
+		<p class="style34">5. Подбираются новые значения кинетических параметров
+		<em>k</em><sub>1</sub>,…<em>k</em><sub>p</sub> такие, которые 
+		минимизируют величину </p>
+		<p class="style2"><img src="grey/image04.png" width="256" height="44"></p>
+		<p class="style34">6. С помощью формулы </p>
+		<p class="style2"><b><span lang=EN-US>S</span></b><sub>in</sub><span
+lang=EN-US>= <b>X</b><sup>t</sup> <b>C</b></span><sub><span lang="en-us">fit</span></sub><span
+lang=EN-US> (<b>C</b><sub>fit</sub><sup>t</sup><b>C</b><sub>fit</sub>)<sup>–1</sup></span></p>
+		<p class="style34">находится оценка матрицы чистых спектров <b>
+		<span lang=EN-US>S</span></b><sub>in</sub></p>
+		<p class="style34">7. Матрица <b><span lang=EN-US>S</span></b><sub>in</sub> 
+		подправляется – отрицательные элементы заменяются нулями. Получается 
+		матрица <b><span lang=EN-US>S</span></b><sub><span lang="en-us">hat</span></sub>. </p>
+		<p class="style34">8. С помощью формулы </p>
+		<p class="style2"><b><span lang=EN-US>C</span></b><sub>out</sub><span
+lang=EN-US>=<b>X S</b><sub>hat</sub> (<b>S</b><sub>hat</sub><sup>t</sup><b>S</b><sub>ha</sub></span><sub>t</sub><span
+lang=EN-US>)<sup>–1</sup></span></p>
+		<p class="style34">определяется оценка матрицы концентрационных профилей
+		<strong>C</strong><sub><span lang="en-us">out</span></sub>. </p>
+		<p class="style34">9. Матрица <strong>C</strong><sub>in</sub> заменяется 
+		матрицей <strong>C</strong><sub><span lang="en-us">out</span></sub> </p>
+		<p class="style34">10. Шаги 3-9 повторяются до сходимости. </p>
+		<p>На Рис. 6 показаны решения модельной задачи, найденные с помощью 
+		описанного алгоритма.&nbsp;<samp><a name="Fig06"></a></samp>
+        </p>
+        <p align="center"><a href="grey/Grey.xls#Hard!C12">
+		<img src="grey/Fig06a.png" width="342" height="342" class="style36"></a><span lang="en-us">&nbsp;
+		<a href="grey/Grey.xls#Hard!L12">
+		<img src="grey/Fig06b.png" width="342" height="342" class="style36"></a></span><p align="center"><samp>
+		Рис.6 Решение задачи методом содержательного ALS </samp></p>
+        <p>Видно, что получилось гораздо лучше – ближе к истинным, исходным 
+		значениям концентраций и спектров. При этом глобальная ошибка стала 
+		несколько хуже, по сравнению с обычным ALS: 0.0200 против 0.0197. 
+		Условия замкнутости и положительности выполняются автоматически. От 
+		выбора начального приближения для матрицы <strong>C</strong><sub>in</sub> 
+		(шаг 1) сходимость зависит слабо.</p>
+<p align="left"><a href="#Contents">Содержание</a>.<a name="Ch1.6"></a>
+      <h2 align="left">6. Использование надстройки Solver</h2>
+      <p>В описанном выше алгоритме наибольшую трудность представляет шаг 5 – 
+		подбор таких значений параметров <em>k</em><sub>1</sub> и <em>k</em><sub>2</sub>,(заданных 
+		в ячейках <a href="grey/Grey.xls#Hard!Rates" class="address">Rates</a>), которые минимизируют сумму квадратов разностей
+        </p>
+		<p class="style2">||<strong>C</strong><sub>hat</sub> – <strong>C</strong><sub>fit</sub> 
+		||<sup>2</sup>
+        </p>
+		<p>находящуюся в ячейке <span class="address">
+		<a href="grey/Grey.xls#Hard!Fit">Fit</a></span>.
+        </p>
+		<p>Для этого мы используем процедуру Solver (<a href="http://office.microsoft.com/ru-ru/excel/HP051983681049.aspx">Поиск 
+		решения</a>) – стандартную <a href="excel.htm#Ch4.5">надстройку</a> 
+		Excel. Для ее подключения нужно следовать процедуре, описанной
+		<a href="excel.htm#Ch4.6">здесь</a>, начиная со второй фазы <samp><a name="Fig07"></a></samp>
+        &nbsp;</p>
+        <div class="style2">
+			&nbsp;<img src="grey/Fig07.png" width="287" height="365"></div>
+		<p align="center"><samp>
+		Рис.7 Подключение надстройки Solver </samp></p>
+        <p>Вызывается Solver из меню <span class="menu">Tools-Solver</span> 
+		(Excel 2003) или <span class="menu">Data-Solver</span> (Excel 2007). В 
+		появившемся диалоговом окне (Рис. 8) нужно указать параметры 
+		оптимизации: целевую величину и изменяемые параметры .<samp><a name="Fig08"></a></samp>
+        </p>
+        <p align="center">&nbsp;<img src="grey/Fig08.png" width="455" height="249"><p align="center"><samp>
+		Рис.8 Надстройка Solver </samp></p>
+		<p align="left">Solver это не очень эффективный метод оптимизации, но 
+		если его настроить должным образом (так, как показано на Рис. 9), то 
+		поиск будет проходить быстро.<a name="Fig09"></a>
+        <p align="center"><img src="grey/Fig09.png" width="350" height="291"><p align="center"><samp>
+		Рис.<span lang="en-us">9</span> 
+		&nbsp;Настройка опций Solver </samp></p>
+        <p>В целом, описываемый алгоритм – это довольно медленный метод. 
+		Например, для того, чтобы сойтись к решению из точки <em>k</em><sub>1</sub>=0.5,
+		<em>k</em><sub>2</sub> =0.1, требуется 300-400 итераций. Поэтому 
+		применять его на практике можно только в том случае, когда имеется 
+		некоторая автоматизация – кнопка <b><span lang=EN-US style='font-family:Arial;background:silver'>
+		Calculate</span></b>, выполняющая заданное число итераций. Такая 
+		автоматизация возможна с применением стандартных функций надстройки 
+		Solver: <strong class="prog">SolverOptions</strong>, 
+		<strong class="prog">
+		SolverOk</strong>, <strong class="prog">SolverSolve</strong>, 
+		описание которых приведено
+		<a href="http://msdn.microsoft.com/en-us/library/aa269815(v=office.10).aspx">
+		здесь</a>.</p>
+		<p align="left">Для того, чтобы VBA распознал и использовал эти функции, 
+		мало подключить надстройку Solver, необходимо также установить ссылку на 
+		библиотеку Solver в <a href="excel.htm#Ch4.1">редакторе VBA</a>. При 
+		попытке использовать встроенную автоматизацию (кнопка&nbsp;<b><span lang=EN-US style='font-family:Arial;background:silver'>Calculate</span></b>) 
+		без этой ссылки появится сообщение .<a name="Fig10"></a><p class="style2">
+<span lang="en-us">&nbsp; <img src="grey/Fig10.png" width="206" height="126"></span><p align="center"><samp>
+		Рис.1<span lang="en-us">0</span> 
+		Ошибка ссылки </samp></p>
+      <p>Для того, чтобы установить ссылку,&nbsp;надо зайти в редактор VBA и 
+		использовать меню <span class="menu">Tools-References</span>.&nbsp;Появится 
+		окно, показанное на Рис. 11&nbsp; 
+<a name="Fig11"></a>
+		</p>
+        <p align="center"><img src="grey/Fig11.png" width="449" height="357"><p align="center"><samp>
+		Рис.1<span lang="en-us">1</span> 
+		Установка ссылки на Solver </samp></p>
+		<p>В этом окне нужно найти и поставить галочку напротив имени SOLVER. </p>
+		<p>В исходном файле <em>Grey.xls</em> , размещенном на нашем сервере, надстройка&nbsp;Solver не подключена и ссылка на нее в редакторе VBA отсутствует. Это 
+		сделано намерено, т.к.&nbsp;все установленные ссылки на надстройки являются 
+		специфичными для данного компьютера, и, будучи верными для нашего 
+		компьютера, они окажутся неверными при переносе файла на другой 
+		компьютер. Поэтому пользователь должен самостоятельно подключить Solver 
+		и установить ссылку на него в редакторе. Подробнее эта проблема Excel 
+		обсуждается <a href="excel.htm#Ch4.5">здесь</a>. </p>
+		<p align="left"><a href="#Contents">Содержание</a><a name="Ch5"></a></p>
+        <h1 align="left">Заключение</h1>
+		<p align="left">Мы рассмотрели метод &quot;серого&quot; моделирования, применяемый 
+		для разрешения кинетических кривых, представленных спектральными 
+		данными. Эта новая, развивающаяся область хемометрики, в которой есть 
+		еще много белых пятен. Читателю предлагается самостоятельно исследовать 
+		возможности этого метода, меняя исходные модельные данные: параметры <em>
+		k</em><sub>1</sub>и <em>k</em><sub>2</sub> (лист <em>
+		<a href="grey/Grey.xls#Kinetics!H3:H4">Kinetics</a></em>) , и ошибки 
+		(лист<em> </em> <a href="grey/Grey.xls#Data!RMSE"><em>Data</em></a>). &nbsp;</p>
+      <p align="left"><a href="#Contents">Содержание</a></p>
+      <p align="left">&nbsp;</p>
+      </td>
+  </table>
+
+</body>
+

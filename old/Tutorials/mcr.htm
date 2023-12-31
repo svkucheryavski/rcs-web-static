@@ -1,0 +1,1193 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta http-equiv="Content-Language" content="ru">
+<title>Разрешение многомерных кривых</title>
+<style>
+<!--
+h1           {
+	font-family: Arial;
+	font-size: 14pt;
+	font-weight: bold;
+	text-align: Center;
+	padding-top: 75px;
+}
+#menu        { font-family: Tahoma; font-size: 12pt; font-weight: bold }
+h2           {
+	font-family: Arial;
+	font-size: 12pt;
+	font-style: italic;
+	padding-top: 25px;
+}
+.header      { font-family: Arial; font-size: 18pt; letter-spacing: 1; font-weight: bold; 
+               text-align: Center }
+ .style2 {
+	text-align: center;
+}
+.style3 {
+	vertical-align: middle;
+}
+.style6 {
+	color: #FF0000;
+	background-color: #000000;
+}
+.style7 {
+	color: #00FFFF;
+	background-color: #000000;
+}
+.style9 {
+	margin-left: 30pt;
+}
+.style13 {
+	padding-left: 1px;
+}
+.style15 {
+	text-align: center;
+	border-left-width: 0;
+	border-right-style: solid;
+	border-right-width: 2px;
+	border-top-width: 0;
+	border-bottom-width: 0;
+}
+.style16 {
+	text-align: center;
+	border-left-style: solid;
+	border-left-width: 2px;
+}
+.style18 {
+	font-family: Arial;
+}
+.style19 {
+	text-align: center;
+	border-left-style: solid;
+	border-left-width: 2px;
+	font-family: serif;
+}
+.style22 {
+	border-width: 0;
+}
+.address {
+	font-family: Arial, Helvetica, sans-serif;
+}
+.prog {
+	font-family: "Courier New", Courier, monospace;
+}
+.menu {
+	font-family: Tahoma;
+	font-size: 12px;
+	font-weight: bold;
+}
+-->
+</style>
+        <title></title>
+</head>
+
+<body>
+
+<p>&nbsp;</p>
+  <center>
+  <table border="0" width="95%" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="100%">
+</center>
+      <h3 class="header">Разрешение многомерных кривых</h3>
+      <dl>
+        <div align="center">
+          <center>
+          <dt>© <span lang="en-us">2009 </span>Алексей
+        Померанцев&nbsp;</dt>
+          </center>
+        </div>
+        <div align="center">
+          <center>
+          <dt><a href="../index.html">Российское хемометрическое общество</a></dt>
+          </center>
+        </div>
+      </dl>
+        <h1><a name="Contents"></a>Содержание&nbsp;</h1>
+        <dl>
+          <dt><a href="#Ch0"><b>Введение</b></a></dt>
+          <dt><a href="#Ch1"><b>1. Базовые сведения</b></a></dt>
+          <dd><b><a href="#Ch1.1">1.1. Постановка задачи&nbsp;</a></b></dd>
+          <dd><b><a href="#Ch1.2">1.2. Неоднозначность разрешения</a></b></dd>
+          <dd><b><a href="#Ch1.3">1.3. Условия разрешимости</a></b></dd>
+          <dd><b><a href="#Ch1.4">1.4. Два класса данных</a></b></dd>
+          <dd><b><a href="#Ch1.5">1.5. Известный спектр или кинетика</a></b></dd>
+          <dd><b><a href="#Ch1.6">1.6. Метод главных компонент (PCA)</a></b></dd>
+          <dd><b><a href="#Ch1.7">1.7. PCA и MCR</a></b></dd>
+          <dt><b><a href="#Ch2">2. Модельные данные</a></b></dt>
+          <dd><b><a href="#Ch2.1">2.1. Пример</a></b></dd>
+          <dd><b><a href="#Ch2.2">2.2. Данные </a></b></dd>
+          <dd><b><a href="#Ch2.3">2.3. PCA анализ данных </a></b></dd>
+          <dd><b><a href="#Ch2.4">2.4. График HELP</a></b></dd>
+          <dt><b><a href="#Ch3">3. Факторный анализ</a></b></dt>
+          <dd><b><a href="#Ch3.1">3.1. Прокрустов анализ</a></b></dd>
+          <dd><b><a href="#Ch3.2">3.2. Эволюционный факторный анализ (EFA)</a></b></dd>
+          <dd><b><a href="#Ch3.3">3.3. Оконный факторный анализ (WFA)</a></b></dd>
+          <dt><b><a href="#Ch4">4.Итерационные методы</a></b></dt>
+          <dd><b><a href="#Ch4.1">4.1. Итерационный целевой факторный анализ 
+			(ITTFA)</a></b></dd>
+          <dd><b><a href="#Ch4.2">4.2. Чередующиеся наименьшие квадраты (ALS)</a></b></dd>
+          <dt><b><a href="#Ch5">Заключение</a></b></dt>
+          <dd>&nbsp;</dd>
+          <dd></dd>
+        </dl>
+        <h1><a name="Ch0"></a>Введение&nbsp;</h1>
+        <p>В этом документе рассмотрены наиболее популярные методы, применяемые 
+		для решения задач разрешения многомерных кривых (multivariate curve 
+		resolution). Текст ориентирован, прежде всего, на специалистов в области 
+		анализа экспериментальных данных: химиков, физиков, биологов, и т.д. Он 
+		может служить пособием для исследователей, начинающих изучение этого 
+		вопроса. Продолжить исследования&nbsp; можно с помощью указанной
+		<a href="references.htm">
+        литературы</a>.&nbsp;</p>
+      <p>В пособии интенсивно используются понятия и методы, описанные в других 
+		материалах по хемометрике: <a href="statistics.htm">статистика</a>, <a href="matrix.htm">матрицы и векторы</a>,<span lang="en-us">
+		</span><a href="pca.htm">метод главных компонент</a>. Читателям, которые плохо 
+		знакомы с этим аппаратом, рекомендуется изучить, или, хотя бы 
+		просмотреть, эти материалы. Кроме того, здесь интенсивно используется 
+		специальная надстройка (Add-In) к программе Excel, которая называется 
+		<em>Chemometrics.xla</em>. Подробности об этой программе можно прочитать в 
+		пособии <a href="projection.htm">Проекционные методы в системе Excel.</a> </p>
+<p>Изложение иллюстрируется примерами, выполненными в рабочей книге Excel “<em><a href="mcr/MCR.xls">MCR.xls</a></em>”, 
+которая сопровождает этот документ. Предполагается, что читатель имеет базовые 
+навыки работы в среде Excel, умеет проводить простейшие <a href="excel.htm">матричные вычисления</a> с 
+использованием функций листа, таких как&nbsp;<a href="excel.htm#MMULT" class="prog"><strong>МУМНОЖ</strong></a>,
+      <a href="excel.htm#TREND" class="prog"><strong>ТЕНДЕНЦИЯ</strong></a> 
+и т.п. </p>
+<p>В отличие от других пособий из серии, здесь не удается один раз провести 
+проекционные вычисления, а затем использовать их в разных методах. Поэтому 
+некоторые листы книги <em>MCR.xls </em>не будут работать без использования <em>Chemometrics 
+Add-In</em>. </p>
+      <p align="center"><b><a href="moffice.htm">Важная
+      информация о работе с
+              файлом <span lang="en-us">MCR</span>.xls</a>&nbsp;</b></p>
+      <p>Ссылки на примеры помещены в текст как
+      объекты Excel. По форме эти примеры имеют
+      абстрактный, модельный характер, однако,
+      по своей сути, они тесно связаны с
+      задачами, встречающимися на практике.&nbsp;</p>
+      <p class="style2"><b><a href="index.html">Другие 
+		пособия по хемометрике</a></b></p>
+          <p><a href="#Contents">Содержание</a>
+          <a name="Ch1"></a>
+        </p>
+        <h1>1. Базовые сведения<a name="Ch1.1"></a> </h1>
+        <h2>1.1. Постановка задачи</h2>
+        <p>Рассмотрим систему, состоящую из
+нескольких веществ (<i>компонент</i><span lang=EN-US>)</span>, <span
+style='font-family:Arial'>A</span>, <span style='font-family:Arial'>B</span>, …
+, <i>концентрации</i> которых <i><span lang=EN-US>c</span></i><sub><span
+lang=EN-US>A</span></sub>, <i><span lang=EN-US>c</span></i><sub><span
+lang=EN-US>B</span></sub>,… закономерно изменяются со временем <i><span
+lang=EN-US>t</span></i><span lang=EN-US>. </span>Причиной изменения может быть
+химическая реакция, тогда <i><span lang=EN-US>c</span></i>(<i>t</i>) – это
+кинетика. Другой случай – <a href="http://ru.wikipedia.org/wiki/Хроматография">хроматографический</a> эксперимент, тогда <i><span
+lang=EN-US>c</span></i>(<i>t</i>) – это профиль элюции.–&nbsp;.<samp><a name="Fig01"></a></samp></p>
+        <p></p>
+        <p align="center"><a href="mcr/MCR.xls#Profiles!E4">
+		<img src="mcr/Fig01.png" width="341" height="341" class="style22"></a></p>
+        <p align="center"><samp>Рис. 1
+        Концентрационные профили </samp></p>
+        <p>С другой стороны каждый компонент может быть охарактеризован своим <i>
+		чистым спектром </i>(понимаемым в обобщенном виде) <i>s</i><sub>A</sub>(&#955;),
+		<i>s</i><sub>B</sub>(&#955;),…., где
+		&#955; – это длина волны. .<samp><a name="Fig02"></a></samp>&nbsp;
+        <p align="center">
+		<a href="mcr/MCR.xls#Spectra!E4">
+		<img border="0" src="mcr/Fig02.png" width="341" height="341"></a>
+        <p align="center"><samp>Рис. 2
+        Спектры чистых компонентов </samp></p>
+      <p>По ходу эксперимента, в момент
+времени <i><span lang=EN-US>t<sub>i</sub></span></i><span lang=EN-US>,</span>
+на длине волны &#955;<i><sub>j</sub></i>
+измеряется величина </p>
+<p class="style2"><i>x</i><span
+lang=EN-US>(<i>t<sub>i</sub></i><span class="style27">, </span></span>&#955;<i><sub>j</sub></i><span lang=EN-US>)</span><i>=<span
+lang=EN-US>c</span></i><sub><span lang=EN-US>A</span></sub><span lang=EN-US>(<i>t<sub>i</sub></i>)
+<i>s</i><sub>A</sub>(</span>&#955;<i><sub>j</sub></i><span
+lang=EN-US>)+<i>c</i><sub>B</sub>(<i>t<sub>i</sub></i>) <i>s</i><sub>B</sub>(</span>&#955;<i><sub>j</sub></i><span
+lang=EN-US>)+ ....</span></p>
+<p>равная линейной суперпозиции всех
+спектров и концентраций &quot;чистых&quot; компонентов.<span lang="en-us">
+</span><samp><a name="Fig03"></a></samp>
+        &nbsp;</p>
+        <p align="center">&nbsp;<a href="mcr/MCR.xls#Data!S11"><img src="mcr/Fig03.png" width="361" height="361" class="style22"></a><p align="center"><samp>Рис. 3
+        Смешанные данные </samp></p>
+      <p>Пусть <i>I</i> – это число наблюдений
+по времени: <i>t</i><sub>1</sub>,…<span lang=EN-US>.<i>t</i><sub><em>I</em></sub>, </span>а
+<i><span lang=EN-US>J</span></i><span lang=EN-US> – </span>это число длин волн:<span lang="en-us"><span class="style27">
+		</span></span>&#955;<sub>1</sub>,…,&#955;<i><sub>J</sub><span lang=EN-US>. </span></i>Тогда
+данные, получаемые в эксперименте, можно представить в матричном виде </p>
+          <table border="0" cellpadding="0" cellspacing="0" width="95%">
+            <tr>
+              <td width="90%">
+                <p align="center"><a name="Eq1"></a><b><span lang=EN-US>X</span></b> = <b>CS</b><sup><span
+  lang=EN-US>t</span></sup> + <b>E</b>.</td>
+              <td>
+                <p align="center">(1)</td>
+            </tr>
+          </table>
+          <p>Здесь матрицы данных <b>X</b> и
+погрешностей <b>E</b> имеют размерность <i>I</i>&times;<i>J</i>
+<span lang=EN-US>.</span> Если в системе присутствует <i>A</i> химических
+компонентов, то матрица концентраций <b><span lang=EN-US>C</span></b><span
+lang=EN-US> </span>имеет <i>I</i> строк и <i>A</i> столбцов. Каждый ее столбец
+– это профиль изменения концентрации соответствующего вещества. Матрица чистых
+спектров <b>S</b><sup><span lang=EN-US>t</span></sup> (ее удобнее представлять
+в транспонированном виде) имеет <i>A</i> строк и <i>J</i> столбцов. Каждая ее
+строка – это чистый спектр соответствующего компонента.</p>
+<p><i>Задача разрешения кривых <span
+lang=EN-US>(MCR) </span></i>состоит в том, чтобы по заданной матрице данных <b>X</b>
+определить число химических компонентов (<i>A</i>) и найти матрицы концентраций
+<b><span lang=EN-US>C</span></b> и чистых спектров <b>S</b>. При этом
+предполагается, что мы не обладаем никакими <i>существенными</i> априорными
+знаниями о матрицах <b><span lang=EN-US>C</span></b> и <b>S</b>, кроме самых
+общих, естественных ограничений: неотрицательность, непрерывность (по <i><span
+lang=EN-US>t</span></i> и &#955;),
+и т.п.  </p>
+<p>Разумеется, в такой постановке
+решение может не существовать, оно может быть неединственным. Все это будет
+обсуждено ниже. .<samp><a name="Fig04"></a></samp>
+        </p>
+        <p align="center">&nbsp;<img src="mcr/Fig04.png"><p align="center"><samp>Рис. 4 
+Структура &quot;хроматографических&quot; данных</samp> </p>
+        <p><a href="#Contents">Содержание</a>&nbsp; <a name="Ch1.2"></a> </p>
+        <h2>1.2. Неоднозначность разрешения </h2>
+        <p>Допустим, что решение задачи <span
+lang=EN-US>(<a href="#Eq1">1</a>)</span> существует, т.е. имеется пара матриц <b><span lang=EN-US>C</span></b>
+и <b>S</b>, приближающая исходную матрицу <b><span lang=EN-US>X</span></b> </p>
+        <p align="center"><strong>X</strong> = <strong>CS</strong><sup>t</sup> +
+		<strong>E</strong>. </p>
+        <p>Известно,
+однако, что эта пара всегда не единственная. Вместо матриц <b><span lang=EN-US>C</span></b>
+и <b><span lang=EN-US>S</span></b> можно использовать другие матрицы<span lang="en-us">
+		<img src="mcr/image01.png" width="16" height="23" class="style3"> </span>и 
+		<img src="mcr/image02.png" class="style3">, которые дадут аналогичную
+декомпозицию&nbsp;</p>
+      <p align="center"><img src="mcr/image03.png" width="85" height="28"></p>
+        <p><span
+style='line-height:150%'>с той же матрицей ошибок </span><b><span
+lang=EN-US style='font-weight:bold'>E</span></b></p>
+<p><span
+style='line-height:150%'>Два типа неопределенности являются 
+наиболее важными. </span></p>
+<p><span
+style='line-height:150%'>Пусть <b><span style='font-weight:
+bold'>R</span></b> – это ортогональная матрица вращения размерностью <i><span
+style='font-style:italic'>A</span></i></span>&times;<i><span style='font-style:
+italic'>A</span></i>, т.е такая матрица, что <b>
+<span lang=EN-US
+style='font-weight:bold'>R</span></b><sup><span lang=EN-US>t</span></sup><span
+lang=EN-US>=<b><span style='font-weight:bold'>R</span></b><sup>–1</sup>. </span>
+Тогда &nbsp;</p>
+          <table border="0" cellpadding="0" cellspacing="0" width="95%">
+            <tr>
+              <td width="90%">
+                <p align="center"><b><a name="Eq2"></a></b>&nbsp;<img src="mcr/image04.png" width="236" height="28"></td>
+              <td>
+                <p align="center"><span lang="en-us">(2)</span></td>
+            </tr>
+          </table>
+          <p><span
+style='line-height:150%'>Этот тип неоднозначности называется <i><span
+style='font-style:italic'>вращательной неопределенностью</span></i>. Этот факт
+означает, что, в принципе, имеется бесконечное число решений для задачи</span><span
+lang=EN-US> MCR</span>, <span lang=EN-US>и</span> некоторые из этих
+решений имеют физический смысл (например, неотрицательность), а другие нет.
+Использование вращательной неопределенности может быть очень полезным. Он<span
+lang=EN-US>а</span> позволяет выделять разумные решения задачи <span
+lang=EN-US>MCR</span>. Ниже будет приведен соответствующий пример. </p>
+<p>Помимо вращательной, имеется и <i><span
+style='font-style:italic'>масштабная неопределенность</span></i>. В этом случае
+матрица <b><span style='font-weight:bold'>R</span></b> диагональная. Тогда</p>
+&nbsp;<table border="0" cellpadding="0" cellspacing="0" width="95%">
+            <tr>
+              <td width="90%">
+                <p align="center"><b><a name="Eq3"></a>&nbsp;<img src="mcr/image05.png" width="249" height="28"></b></td>
+              <td>
+                <p align="center">(3)</td>
+            </tr>
+          </table>
+        <p><span
+style='line-height:150%'>Избавиться от масштабной
+неопределенности нельзя. Любое найденное решение будет определено только с
+точностью до умножения на константу,</span></p>
+      <p class="style2"><img src="mcr/image06.png" width="196" height="51">&nbsp;<p>Иными словами каждый профиль
+концентраций <i><span lang=EN-US>c<sub>a</sub></span></i> может быть в <i><span
+lang=EN-US>r<sub>a</sub></span></i> раз меньше, если соответствующий чистый
+спектр <i><span lang=EN-US>s<sub>a</sub></span></i> увеличен в <i><span
+lang=EN-US>r<sub>a</sub></span></i> раз. Однако форма кинетики и спектра при
+этом сохраняется.
+        <p>Как известно, невырожденную
+квадратную матрицу можно однозначно представить в виде 
+		<a href="matrix.htm#ch205">полярного разложения</a>. Поэтому любая
+неоднозначность сводится к комбинации масштабирования и вращения.  &nbsp;<p>
+<a href="#Contents">Содержание</a>.<a name="Ch1.3"></a>
+      <h2>1.3. Условия разрешимости</h2>
+        <p>Задача <span lang=EN-US>MCR </span>может
+не иметь решения. Для объяснения условий существования введем понятие <i>концентрационного
+(спектрального) окна </i>для химического компонента <i>a</i>. Окно – это
+область переменных (соответственно <i><span lang=EN-US>t</span></i> или &#955; для которых величина
+соответствующего чистого сигнала (кинетики или спектра) больше нуля.&nbsp;<p>Существование решения задачи MCR зависит
+от того, как перекрываются окна разных химических компонент. 
+<a href="references.htm#L2.13">Манне</a> установил
+необходимые <i>условия разрешимости</i> в двух следующих теоремах. <samp><a name="Fig05"></a></samp>
+        <p align="center"><img src="mcr/Fig05.png" width="341" height="341">&nbsp;<p align="center"><samp>Рис.
+      5 Концентрационные окна </samp></p>
+      <p><span lang=EN-US>1. </span>Концентрационный
+профиль химического компонента может быть восстановлен, если все остальные
+концентрационные окна, пересекающиеся с окном этого компонента, имеют участки
+вне этого окна.</p>
+<p><span lang=EN-US>2. </span>Спектральный
+профиль химического компонента может быть восстановлен, если его
+концентрационное окно не находится целиком внутри концентрационного окна
+какого-нибудь другого компонента.&nbsp;<samp><a name="Fig06"></a></samp>
+        </p>
+        <p align="center"><img src="mcr/Fig06.png" width="341" height="341">&nbsp;<p align="center"><samp>Рис.6
+      Вложенные концентрационные окна </samp></p>
+        <p>Рис. 6 иллюстрирует эти
+утверждения. Видно, что концентрационное окно для компонента <span
+style='font-family:Arial'>B</span> целиком лежит внутри окна для <span
+style='font-family:Arial'>A</span>. Поэтому можно восстановить концентрационный
+профиль <span style='font-family:Arial'>B</span>, но нельзя найти его чистый
+спектр. С другой стороны для <span style='font-family:Arial'>A</span> можно
+найти чистый спектр, но нельзя найти концентрационный профиль. </p>
+<p>Совершенно аналогичные теоремы
+справедливы при замене всех слов &quot;концентрационный&quot; на
+&quot;спектральный&quot;, и наоборот. Это общее свойство задачи MCR – инвариантность
+относительно замены <b>C</b> на <b>S</b>, и <b>S </b>на <b>C.</b>&nbsp;</p>
+        <p><a href="#Contents">Содержание</a>.<a name="Ch1.4"></a></p>
+      <h2>1.4. Два класса данных </h2>
+      <p>Методы <span lang=EN-US>M</span>CR
+могут быть применены к экспериментальным данным самого разного вида, в том
+числе и к многомодальным данным. Однако есть два класса данных, где MCR
+применяется чаще всего. Это – данные &quot;хроматографического&quot; и
+&quot;кинетического&quot; типа. .</p>
+      <p>Данные <i>хроматографического типа</i>
+характеризуется наличием концентрационных окон, при отсутствии окон
+спектральных. Пример таких данных приведен выше (<a href="#Fig04">Рис. 4</a>). Напротив, <i>кинетические
+данные</i>, как правило, не имеют концентрационных окон, но имеют спектральные
+окна. <samp><a name="Fig07"></a></samp>
+        &nbsp;</p>
+        <p align="center"><img src="mcr/Fig07.png" width="640" height="504">&nbsp;<p align="center"><samp>Рис.7
+      Моделирование &quot;кинетических&quot; данных
+      </samp></p>
+        <p>Пример кинетических данных показан
+на Рис. 7. В этом пособии будут рассмотрены только данные
+&quot;хроматографического&quot; типа. Тем не менее, все приведенные методы
+могут быть использованы и для &quot;кинетических&quot; данных. Для этого
+достаточно транспонировать исходную задачу <span lang=EN-US>MCR (<a href="#Eq1">1</a>),</span>&nbsp;</p>
+<p class="style2"><b><span
+lang=EN-US>X</span></b><sup><span lang=EN-US>t</span></sup><span lang=EN-US> = <b>SC</b><sup>t</sup>
++ <b>E</b><sup>t</sup></span>&nbsp;</p>
+<p>Тогда спектры становятся &quot;концентрациями&quot;, а концентрации – &quot;спектрами&quot;. 
+После этого все методы, справедливые для &quot;хроматографических&quot; задач, можно 
+применять и к &quot;кинетическим&quot;. Заметим, что и теоремы Манне сформулированы именно 
+таким, инвариантным образом. </p>
+<p>Разумеется, с химической точки зрения исходные данные могут иметь самое 
+разное происхождение. Так, например, если спектры были получены в ходе 
+титрования раствора в постоянных условиях, то концентрации изменяются в 
+зависимости не от времени, а от другого параметра, например, pH раствора. Но 
+сути дела это не меняет – главное, чтобы этот параметр менялся непрерывно и 
+монотонно. &nbsp;</p>
+        <p align="left"><a href="#Contents">Содержание</a>.<a name="Ch1.5"></a></p>
+        <h2 align="left">1.5. Известный спектр или кинетика</h2>
+        <p>Предположим, что в задаче MCR <span
+lang=EN-US>(<a href="#Eq1">1</a>)</span> известна одна из двух матриц: <b>C</b> или <b>S</b>.
+Тогда вторую матрицу можно легко восстановить по исходной матрице <b>X</b> </p>
+<p>Если известна матрица <b><span lang=EN-US>S</span></b> то, </p>
+<div align="center">
+          <center>
+          <table border="0" cellpadding="0" cellspacing="0" width="95%">
+            <tr>
+              <td width="90%">
+                <p align="center"><b><a name="Eq4"></a><span lang=EN-US>C</span></b><span
+  lang=EN-US>=<b>XS</b>(<b>S</b><sup>t</sup><b>S</b>)<sup>–1</sup></span>,</td>
+              <td>
+                <p align="center">(4)</td>
+            </tr>
+          </table>
+          </center>
+        </div>
+      <p>а если известна матрица<b> <span lang=EN-US>C</span></b> то,</p>
+        <div align="center">
+          <center>
+          <table border="0" cellpadding="0" cellspacing="0" width="95%">
+            <tr>
+              <td width="90%">
+                <p align="center"><b><a name="Eq5"></a> </b>&nbsp;<b><span lang=EN-US>S</span></b><sup><span
+  lang=EN-US>t</span></sup><span lang=EN-US>= (<b>C</b><sup>t</sup><b>C</b>)<sup>–1</sup><b>C</b><sup>t</sup><b>X
+  </b></span><b>.</b></td>
+              <td>
+                <p align="center">(5)</td>
+            </tr>
+          </table>
+          </center>
+        </div>
+        <div align="center">
+        </div>
+<p align="left"><a href="#Contents">Содержание</a>.<a name="Ch1.6"></a>
+      <h2 align="left">1.6. Метод главных компонент (PCA)</h2>
+        <p align="left">В <i><a href="pca.htm#Ch2">методе главных
+компонент</a></i> <span lang=EN-US>(Principal Component Analysis, PC</span>A<span
+lang=EN-US>) </span>матрица данных <b>X</b> (<i>I</i>&times;<i>J</i>) также раскладывается
+в произведение двух матриц<b> </b>
+        <div align="center">
+          <center>
+          <table border="0" cellpadding="0" cellspacing="0" width="95%">
+            <tr>
+              <td width="90%">
+                <p align="center"><b><a name="Eq6"></a><span lang=EN-US>X</span></b> = <b><span
+  lang=EN-US>TP</span></b><sup><span lang=EN-US>t</span></sup> + <b>E</b></td>
+              <td>
+                <p align="center">(6)</td>
+            </tr>
+          </table>
+          </center>
+        </div>
+      <p>Матрица <b>T<span lang=EN-US>,</span></b>
+размерностью (<i>I</i>&times;<i>A</i>), называется <i>матрицей счетов</i>
+(scores). Матрица <b>P</b>, размерностью (<i><span lang=EN-US>J</span></i>&times;<i><span
+lang=EN-US>A</span></i>), называется <i>матрицей нагрузок</i> (loadings). Число
+столбцов – <b>t</b><i><sub>a</sub></i> в матрице <b>T</b>, и <b>p</b><i><sub>a</sub></i>
+в матрице <b>P</b> – равно <i>A</i>. Это число называется <i>числом главных
+компонент</i>..<samp><a name="Fig08"></a></samp>
+        </p>
+        <p align="center"><img src="mcr/Fig08.png" width="400" height="311"><p align="center"><samp>Рис.8
+      </samp><code>Графическое представление метода главных компонент </code></p>
+      <p>Следует различать <i>химический компонент</i>
+(мужской род) <span style='font-family:Arial'>A</span>, <span style='font-family:
+Arial'>B</span>, <span lang=EN-US>…</span>, присутствующий в изучаемой системе,
+и <i>главную компоненту</i> (женский род), PC1, PC2,…<span lang=EN-US>, </span>определяемую
+в методе PCA. Первый <span lang=EN-US>– </span>это реальное вещество, имеющее
+свой спектр, а вторая – это абстрактная величина, характеризуемая вектором
+нагрузок. Но, в тоже время, между ними есть и много общего. Об этой пойдет речь
+ниже. </p>
+<p>Для матрицы счетов <b><span lang=EN-US>T</span></b>
+имеет место следующее соотношение <b>T</b><sup>t</sup><b>T </b>= <strong>&#923;</strong> = diag{&#955;<sub><span lang=EN-US>1</span></sub><span
+lang=EN-US>,…,</span>&#955;<i><sub><span
+lang=EN-US>A</span></sub></i>}, <span lang=EN-US>где </span>величины &#955;<sub><span lang=EN-US>1 </span></sub>&gt;<span
+lang=EN-US>…&gt;</span>&#955;<i><sub><span
+lang=EN-US>A </span></sub></i><span
+lang=EN-US>&gt;0 </span>называются <i><a href="matrix.htm#ch207">собственными значениями</a></i><span
+lang=EN-US>. </span>Они характеризуют вклад каждой компоненты в разложение</p>
+<div align="center">
+          <center>
+          <table border="0" cellpadding="0" cellspacing="0" width="95%">
+            <tr>
+              <td width="90%">
+                <p align="center"><b><a name="Eq7"></a>&nbsp;<img src="mcr/image07.png" width="157" height="48"></b></td>
+              <td>
+                <p align="center">(7)</td>
+            </tr>
+          </table>
+          </center>
+        </div>
+      <p>Нулевое
+собственное значение &#955;<sub><span
+lang=EN-US>0</span></sub> определяется как сумма всех собственных значений,
+т.е.</p>
+        <div align="center">
+          <center>
+          <table border="0" cellpadding="0" cellspacing="0" width="95%" height="50">
+            <tr>
+              <td width="90%">
+                <p align="center">
+				<a name="Eq8"></a>
+				<img src="mcr/image08.png" width="215" height="51"></td>
+              <td>
+                <p align="center">(8)</td>
+            </tr>
+          </table>
+          </center>
+        </div>
+        <p align="left">Квадратный корень из соответствующего
+собственного значения
+        <div align="center">
+          <center>
+          <table border="0" cellpadding="0" cellspacing="0" width="95%">
+            <tr>
+              <td width="90%">
+                <p align="center"><b><a name="Eq9"></a>&nbsp;<img src="mcr/image09.png" width="71" height="28"></b></td>
+              <td>
+                <p align="center">(9)</td>
+            </tr>
+          </table>
+          </center>
+        </div>
+        <p align="left">называется <a href="matrix.htm#ch211"> <i>сингулярным значением</i>.</a>&nbsp;
+        <p align="left">Число главных компонент является
+важнейшей характеристикой исследуемых данных, определяющей их сложность. Для
+оценки величины <i><span lang=EN-US>A</span></i><span lang=EN-US> </span>применяются
+различные методы, основанные на анализе поведения системы при увеличении числа
+главных компонент. Применительно к задачам MCR можно выделить два подхода –
+анализ графика собственных значений и графиков нагрузок.
+        <p align="left"><a href="#Contents">Содержание</a> <a name="Ch1.7"></a><h2 align="left">1.7.
+      PCA и MCR </h2>
+        <p align="left">Между разложением <span lang=EN-US>PCA</span> и
+задачей <span lang=EN-US>MCR </span>имеется не только внешнее, а гораздо более
+глубокое сходство. Прежде всего, PCA позволяет оценить важнейший параметр –
+число химических компонентов в MCR, которое естественно равно числу главных
+компонент в PCA. Кроме того PCA дает базис для целого класса методов разрешения
+кривых, называемых <i><a href="references.htm#L4.3">факторным анализом</a></i>. Слово &quot;базис&quot; здесь
+нужно понимать буквально – матрица счетов <b>T </b>и матрица концентраций <b>C</b>
+образуют одно и то же линейное подпространство. Аналогично обстоит дело и для
+матриц нагрузок <b>P</b> и чистых спектров<b> <span lang=EN-US>S</span></b>:
+Это означает, что оценка матрицы чистых спектров <b><span lang=EN-US>S</span></b><span lang=EN-US> </span>может
+быть найдена как линейная комбинация  векторов из матрицы нагрузок <b>P</b>, и,
+соответственно, оценка матрицы концентрационных профилей <b>C</b> может быть
+составлена из векторов счетов матрицы <b>T</b>. В связи с этим, говорят даже,
+что векторы <span lang=EN-US>PCA </span>счетов и нагрузок являются <i>абстрактными
+</i>концентрационными профилями и спектрам<p align="left"><a href="#Contents">Содержание</a><a name="Ch2"></a>
+        <h1 align="left">2. Модельные данные <a name="Ch2.1"></a></h1>
+        <h2 align="left">2.1. Пример </h2>
+      <p align="left">Для иллюстрации и сравнения
+      различных методов разделения кривых<span lang="en-us"> </span>будем 
+		использовать модельный пример<span lang="en-us">,</span> помещенный в 
+		рабочую книгу<a href="mcr/MCR.xls"> <span lang=EN-US> <i>MCR.xls</i></span></a><span
+lang=EN-US>.</span> 
+<p>Эта книга &nbsp;включает в себя следующие листы:</p>
+<p><a href="mcr/MCR.xls#Intro!C4"><span lang="en-us"><em>I</em></span><em>ntro</em></a>: краткое введение</p>
+<p><a href="mcr/MCR.xls#Layout!A1"><em>L</em><span lang="en-us"><em>ayout</em></span></a>: схемы, 
+объясняющая имена массивов, используемых в примере</p>
+<p><em><a href="mcr/MCR.xls#Profiles!A1">Profiles</a></em>: истинные концентрационные профили C</p>
+<p><em><a href="mcr/MCR.xls#Spectra!A1">Spectra</a></em>: истинные чистые спектры S&nbsp; </p>
+<p><em><a href="mcr/MCR.xls#Data!A1">Data</a></em>: модельные данные, используемые в примере. Блок 
+<strong>X</strong> получен по формуле (<a href="#Eq1">1</a>) 
+с ошибками, которые формируются случайным образом на этой же странице. </p>
+<p><em><a href="mcr/MCR.xls#Scores!A1">Scores</a></em>: <span lang="en-us">PCA
+</span>счета</p>
+<p><em><a href="mcr/MCR.xls#Loadings!A1">Loadings</a></em>: <span lang="en-us">
+PCA </span>нагрузки</p>
+<p><em><a href="mcr/MCR.xls#'Number PCs'!A1">Number PCs</a></em>: определение 
+числа главных компонент</p>
+<p><em><a href="mcr/MCR.xls#Procrustes!A1">Procrustes</a></em>: Прокрустов 
+анализ</p>
+<p><em><a href="mcr/MCR.xls#EFA!A1">EFA</a></em>:
+Эволюционный факторный 
+анализ</p>
+<p><a href="mcr/MCR.xls#WFA!A1"><em>WFA</em></a>:
+Оконный факторный анализ
+</p>
+<p><em><a href="mcr/MCR.xls#ITTFA!A1">ITTFA</a></em>:
+Итерационный целевой 
+факторный анализ</p>
+<p><em><a href="mcr/MCR.xls#ALS!A1">ALS</a></em>:
+Чередующиеся наименьшие 
+квадраты</p>
+<p><a href="#Contents">Содержание</a><a name="Ch2.2"></a>
+        </p>
+        <h2 align="left">2.2. Данные </h2>
+      <p align="left">Прообразом для
+		модельного примера служит задача разделения пиков в высокоэффективной жидкостной
+хроматографии с детектированием на диодной матрице (<a href="http://www.chem.msu.su/rus/teaching/analyt/chrom/part1.pdf">ВЭЖХ-ДДМ</a>). Известно, что в
+таких экспериментах хорошо выполняется принцип линейности (<a href="http://ru.wikipedia.org/wiki/Закон_Бера">закон
+Ламберта-Бера</a>). В системе имеются два вещества <span lang=EN-US
+style='font-family:Arial'>A</span> и <span lang=EN-US style='font-family:Arial'>B</span>,
+с профилями элюции <i><span lang=EN-US>c</span></i><sub><span lang=EN-US>A</span></sub><span
+lang=EN-US>(<i>t</i>) </span>и <i><span lang=EN-US>c</span></i><sub><span
+lang=EN-US>B</span></sub><span lang=EN-US>(<i>t</i>)</span>. Тогда спектр смеси
+        <p align="center"><i><span
+lang=EN-US>x</span></i><span lang=EN-US> = <i>c</i><sub>A</sub>&#8729;<i>s</i><sub>A</sub>+
+<i>c</i><sub>B</sub>&#8729;<i>s</i><sub>B</sub></span>,<p align="left">где <i><span
+lang=EN-US>s</span></i><sub><span lang=EN-US>A</span></sub><span lang=EN-US> </span>и
+<i><span lang=EN-US>s</span></i><sub><span lang=EN-US>B</span></sub> – спектры
+чистых веществ.<p align="left">Для моделирования профилей <span
+lang=EN-US>элюции </span>веществ <span style='font-family:Arial'>A </span>и <span
+style='font-family:Arial'>B</span> использовались перекрывающиеся гауссовы
+пики, вычисленные для 30 времен удерживания <span lang=EN-US> <i>t</i><span class="style27">
+</span></span>=0, 1, 2, …, <span lang=EN-US>30</span>. Они
+показаны на <span lang=EN-US><a href="#Fig01">Рис. 1</a></span>. Чистые спектры веществ <span
+style='font-family:Arial'>A </span>и <span style='font-family:Arial'>B</span>
+приведены на <a href="#Fig02">Рис. 2</a>. Они были рассчитаны для 28 длин волн 
+как сложное наложение нескольких гауссовых пиков.<p align="left">Смешанные данные <b>X</b>
+<a href="mcr/MCR.xls#Data!B3">вычислялись</a> по формуле <span lang=EN-US>(<a href="#Eq1">1</a>)</span> с относительной ошибкой 3%.<p align="left"><a href="#Contents">Содержание</a><a name="Ch2.3"></a>
+        <h2 align="left">2.3. PCA анализ данных </h2>
+        <p>Анализ полученных данных методом
+главных компонент должен проводиться без <a href="pca.htm#Ch2.12">центрирования и нормировки</a>. Это общее
+правило для задач MCR. <p align="left">Зависимости первых двух счетов <b><span
+lang=EN-US>t</span></b><sub><span lang=EN-US>1 </span></sub><span lang=EN-US>и<b>
+t</b><sub>2</sub><b> </b></span>от времени приведены на Рис. 9 (левый график).<a name="Fig09"></a>
+        <p align="center"><a href="mcr/MCR.xls#Scores!H5">
+		<img src="mcr/Fig09a.png" width="341" height="341" class="style22"></a><span lang="en-us">&nbsp;&nbsp;
+		<a href="mcr/MCR.xls#Loadings!H5">
+		<img src="mcr/Fig09b.png" width="341" height="341" class="style22"></a></span><p align="center"><samp>Рис.<span lang="en-us">9</span> 
+Результаты анализа данных PCA </samp></p>
+        <p align="left">Для наглядности там же показаны и
+концентрационные профили <b><span lang=EN-US>C</span></b><span lang=EN-US> </span>веществ
+<span style='font-family:Arial'>A</span> и <span style='font-family:Arial'>B</span>.
+Графики для первых двух нагрузок <b><span lang=EN-US>P</span></b><span
+lang=EN-US> </span>(вместе с чистыми спектрами <b>S</b>) приведены на Рис. 9
+(правая панель). <p align="left">Можно заметить некоторое сходство в
+поведении главных компонент и соответствующих исходных данных. Хотя,
+разумеется, главные компоненты не являются решением задачи MCR, хотя бы по
+причине их неположительности.<p align="left">Число главных компонент, конечно,
+равно 2. Это следствие того, что модельные данные <b>X</b> строились как смесь
+из двух химических компонентов A и B. Тем не менее, полезно убедится, что метод
+главных правильно оценивает эту величину.<a name="Fig10"></a><p class="style2">
+<a href="mcr/MCR.xls#'Number PCs'!B11">
+<img src="mcr/Fig10a.png" width="341" height="341" class="style22"></a><span lang="en-us">&nbsp;
+<a href="mcr/MCR.xls#'Number PCs'!K11" class="style22">
+<img src="mcr/Fig10b.png" width="341" height="341" class="style22"></a></span><p align="center"><samp>Рис.1<span lang="en-us">0</span> 
+Определение числа главных компонент </samp></p>
+      <p align="left">На Рис. 10 (левая панель) приведены
+графики изменения <a href="#Eq9">сингулярных значений </a>&#963;<a href="#Eq9"><sub><i><span lang=EN-US>a</span></i></sub></a> (<span lang=EN-US>SnV</span>,
+левая ось ординат) и <a href="pca.htm#Eq7">объясненной остаточной дисперсии</a> <span lang=EN-US>(ERV, </span>правая
+ось ординат) в зависимости от числа главных компонент. Видно, что точка PC=2
+соответствует перелому на этих кривых. На правой панели Рис. 10 представлены
+графики нагрузок в зависимости от длины волны, для PC=3 и 4. Сравнивая его с
+графиком первых нагрузок (<a href="#Fig09">Рис. 9</a>), можно заметить, что для старших главных
+компонент отсутствует какая-нибудь систематика, и они выглядят просто как шум.
+<p align="left">Анализ остатков 
+<p class="style2"><b><span
+lang=EN-US>E</span></b><span lang=EN-US>=</span><b><span style='color:black'>X</span><span
+lang=EN-US style='color:black'>–TP</span></b><sup><span style='color:black'>t</span></sup><p align="left">показывает, что относительная
+среднеквадратичная погрешность моделирования<div align="center">
+          <center>
+          <table border="0" cellpadding="0" cellspacing="0" width="95%" height="40">
+            <tr>
+              <td width="90%">
+                <p align="center"><b><a name="Eq10"></a>&nbsp;<img src="mcr/image10.png" width="120" height="104"> </b>.</td>
+              <td>
+                <p align="center">(1<span lang="en-us">0</span>)</td>
+            </tr>
+          </table>
+          </center>
+        </div>
+      <p align="left">равна <a href="mcr/MCR.xls#'Number PCs'!M6">4%</a>, что примерно
+соответствует ошибке, добавленной при создании данных.<p align="left">Для вычисления собственных значений
+<b><span lang=EN-US>EGV</span></b> использовалась формула, показанная на Рис. 11.
+<a name="Fig11"></a>
+        <p align="center"><a href="mcr/MCR.xls#'Number PCs'!C6">
+		<img src="mcr/Fig11.jpg" width="444" height="304" class="style22"></a><p align="center"><samp>Рис.1<span lang="en-us">1</span> 
+Вычисление собственных и сингулярных значений на листе Excel </samp></p>
+      <p align="left">Поясним ее смысл, а также
+преимущества, которые она доставляет. 
+<p align="left">Внутренняя функция <a href="projection.htm#Ch3.1" class="prog"><strong>ScoresPCA</strong></a>(<span class="address">Xdata</span>) вычисляет полную
+матрицу счетов <b>T</b>, размерностью <span lang=EN-US>30</span>&times;<span lang=EN-US>28<i> </i></span>.К
+результату применяется стандартная функция <span class="prog">
+<strong><a href="excel.htm#INDEX">INDEX</a></strong></span>(<span class="address"><span
+lang=EN-US>T</span>,,B6</span>)<span lang=EN-US>,</span> которая
+выделяет из матрицы <b>T</b> один столбец с номером, заданным значением в
+ячейке B6 – это текущий номер <span lang=EN-US>PC</span>. К полученному вектору
+<b>t</b><i><sub><span lang=EN-US>a</span></sub></i> применяется стандартная
+функция 
+<a href="http://office.microsoft.com/ru-ru/excel/HP052092951049.aspx" class="prog"><strong>SUMSQ</strong></a><span lang=EN-US><code>(</code></span><strong>t</strong><sub><span
+lang=EN-US><code>a</code></span></sub><span
+lang=EN-US style='font-family:"Courier New"'>)</span>, которая вычисляет сумму
+квадратов всех элементов этого вектора, т.е. собственное значение, определенное
+формулой <span lang=EN-US>(<a href="#Eq7">7</a>)</span>.<span lang=EN-US> </span>
+<p align="left">Таким образом, в одной формуле
+удается скомбинировать несколько последовательных операций. Если выводить все
+промежуточные результаты на лист, то они займут много места, увеличат файл и
+замедлят вычисления.<span lang="en-us"> </span>
+<p align="left">Подробнее эта техника описана <a href="tricks.htm#Ch1.6">здесь</a>.<p align="left"><a href="#Contents">Содержание</a><a name="Ch2.4"></a><h2 align="left">
+2.4. График HELP </h2>
+      <p align="left">Полезно изобразить зависимость между первыми счетами, так 
+		как это сделано на Рис. 12 (левая панель). У каждой точки показано 
+		соответствующее значение времени. <a name="Fig12"></a>
+        <p align="center"><a href="mcr/MCR.xls#Scores!N5">
+		<img src="mcr/Fig12a.png" width="341" height="341" class="style22"></a><img src="mcr/Fig01.png" width="341" height="341"><p align="center"><samp>Рис.12
+      График HELP</samp></p>
+      <p align="left">Видно, что процесс выходит из
+начала координат, и в него же и возвращается. Первые 4 точки лежат на прямой
+линии (<span class="style6">красная</span>), начинающейся в точке<span lang=EN-US> (</span>0, 0). Они
+соответствуют начальной стадии, когда выходит только вещество <span lang=EN-US
+style='font-family:Arial'>A</span>, а компонент <span lang=EN-US
+style='font-family:Arial'>B</span><span lang=EN-US> </span>пока отсутствует.
+Последние точки (18-30) также лежат на прямой, выделенной <span class="style7">
+		голубым</span> цветом. Они
+соответствуют финальной стадии выхода чистого вещества <span lang=EN-US
+style='font-family:Arial'>B</span>, когда вещества <span lang=EN-US
+style='font-family:Arial'>A</span> уже нет.<p align="left">Подобные графики носят название
+HELP (<span lang=EN-US><a href="http://books.google.ru/books?id=27msjvfDcKkC&amp;pg=PA94&amp;lpg=PA94&amp;dq=Heuristic+Evolving+Latent+Projections&amp;source=bl&amp;ots=v_Jj69zQ3-&amp;sig=IDyGCemycWcUq3xJy7hBuMnp5rQ&amp;hl=ru&amp;ei=zha2SsXBDIWO_Abs7ry7DQ&amp;sa=X&amp;oi=book_result&amp;ct=result&amp;resnum=5">Heuristic Evolving Latent Projections</a></span>). Они могут
+помочь в решении задач MCR, для случая двух или трех компонент. При анализе
+графика HELP, нужно руководствоваться следующими простыми правилами<p class="style9">
+1. линейные участки = чистые компоненты<span lang="en-us">;</span></p>
+<p class="style9">2. кривые участки = коэлюция<span lang="en-us">;</span></p>
+<p class="style9">3. ближе к началу = меньше интенсивность<span lang="en-us">;</span></p>
+<p class="style9">4. число поворотов = число чистых компонент<span lang="en-us">.</span> </p>
+<p align="left">&nbsp;<p align="left"><a href="#Contents">Содержание</a><a name="Ch3"></a>
+        <h1 align="left">3. Факторный анализ <a name="Ch3.1"></a></h1>
+      <h2 align="left">3.1. Прокрустов анализ</h2>
+        <p align="left">Как отмечалось <a href="#Ch1.2">выше</a>, решение задачи
+MCR не является единственным. Его можно изменить с помощью шкалирующих и
+вращающих преобразований. Идея <em>прокрустова анализа</em> (<span lang=EN-US><a href="http://en.wikipedia.org/wiki/Procrustes_analysis">Procrustes
+Analysis</a>)</span> состоит в том, чтобы использовать эту неопределенность для
+трансформации PCA-решения в MCR-решение.<p align="left">На первом этапе применим
+масштабирование. Для этого умножим матрицу счетов <b>T</b> на 
+<a href="mcr/MCR.xls#Procrustes!Stretch">диагональную
+матрицу</a> <b><span lang=EN-US>R</span></b><sub><span lang=EN-US>1</span></sub>=diag{<i><span
+lang=EN-US>r</span></i><sub><span lang=EN-US>11</span></sub><span lang=EN-US>, <i>r</i><sub>12</sub></span>}<p class="style2"><b>T</b><sub>1</sub><b>=TR</b><sub>1</sub><p>Матрицу <b><span lang=EN-US>R</span></b><sub><span
+lang=EN-US>1</span></sub> надо подобрать так, чтобы в результате получился
+прямой угол между участками чистых компонент на графике HELP (Рис. 13). В Excel
+это можно сделать с помощью метода <span
+lang=EN-US class="menu">
+<a href="http://office.microsoft.com/ru-ru/excel/HP052038941049.aspx"><strong>GoalSeek</strong></a></span>.<a name="Fig13"></a>
+        <p align="center"><img src="mcr/PA.gif" width="381" height="381">&nbsp;<p align="center"><samp>Рис.13
+      Прокрустов анализ</samp></p>
+      <p align="left">На втором шаге делается поворот. Для этого новую матрицу <b>
+		T</b><sub>1</sub> нужно умножить на 
+		<a href="mcr/MCR.xls#Procrustes!Rotation">матрицу вращения</a><b><span lang=EN-US> R</span></b><sub><span lang=EN-US>2</span></sub><span
+lang=EN-US> </span>
+<p class="style2"><b><span
+lang=EN-US>T</span></b><sub><span lang=EN-US>2</span></sub><span lang=EN-US>=<b>T</b><sub>1</sub><b>R</b><sub>2</sub></span>&nbsp;<table border="0" cellpadding="0" cellspacing="0" style="height: 90px; width: 100%;">
+            <tr>
+              <td style="width: 5%">
+                <p style="width: 40px" class="style11">где<b> </b></td>
+              <td>
+                <table cellspacing="0" cellpadding="0" class="style17">
+					<tr>
+						<td rowspan="2" class="style2" style="width: 70px">
+						<span lang="en-us"><span lang=EN-US><b>R</b><sub>2</sub></span>=</span></td>
+						<td style="width: 80px; height: 30px" class="style16">cos(&#945;)</td>
+						<td class="style15" style="width: 80px; height: 30px">
+						<span lang=EN-US>sin(&#945;)</span></td>
+					</tr>
+					<tr>
+						<td rowspan="2" style="width: 80px; height: 30px" class="style19"><span lang=EN-US>
+						–sin(&#945;)</span></td>
+						<td class="style15" style="width: 80px; height: 30px">
+						<span lang=EN-US class="style13">cos(&#945;)</span></td>
+					</tr>
+				</table>
+				</td>
+            </tr>
+          </table>
+          <p align="left"><a href="mcr/MCR.xls#Procrustes!alfa">Угол вращения<span lang="en-us">
+			</span></a>&#945; надо подобрать так, чтобы прямые,
+соответствующие чистым компонентам, совпали<span lang=EN-US> c</span>
+направлениями главных осей. &nbsp;<p align="left">Окончательный результат этих
+преобразований главных компонент в чистые химические компоненты представлен на Рис.
+14. <a name="Fig14"></a><p align="center">
+<a href="mcr/MCR.xls#Procrustes!C58">
+<img src="mcr/Fig14a.png" class="style22"></a>&nbsp;
+<a href="mcr/MCR.xls#Procrustes!K58">
+<img src="mcr/Fig14b.png" class="style22"></a><p align="center"><samp>Рис.14
+      Решение задачи MCR методом Прокрустова анализа </samp></p>
+      <p align="left">Оценки концентрационных профилей<b>
+C</b><sub>hat</sub> получены в результате преобразования матрицы PCA<span lang="en-us">-</span>счетов <b>T</b><p class="style2"><b><span
+lang=EN-US>C</span></b><sub>hat</sub><b>=TR</b><sub>1</sub><b>R</b><sub><span
+lang=EN-US>2</span></sub><b>=TR</b><span lang=EN-US>,<b> </b></span>где<b> R=R</b><sub>1</sub><b>R</b><sub><span
+lang=EN-US>2</span></sub><p align="left">Оценку чистых спектров <b><span
+lang=EN-US>S</span></b><sub>hat</sub> можно теперь найти из нагрузок <b>P</b>
+по следующей формуле&nbsp;<p class="style2"><b><span
+lang=EN-US>S</span></b><sub>hat</sub><b>=P</b>(<b>R</b><sup>t</sup>)<sup><span
+lang=EN-US>–</span>1</sup>&nbsp;<p align="left">Представленные графики
+свидетельствуют, что задача MCR решена с приемлемой точностью. Анализ остатков&nbsp;<p class="style2"><b><span
+lang=EN-US>E</span></b><span lang=EN-US>=</span><b><span style='color:black'>X</span><span
+lang=EN-US style='color:black'>–</span><span style='color:black'>C</span></b><sub><span
+style='color:black'>hat</span></sub><span style='color:black'>(<b>S</b><sub>hat</sub>)<sup>t</sup></span>&nbsp;<p align="left">показывает, что относительная
+среднеквадратичная погрешность моделирования <span lang=EN-US>(<a href="#Eq10">10</a>) </span>равна
+<a href="mcr/MCR.xls#Procrustes!AB6">4%</a>, т.е. совпадает с точностью, достигнутой в разложении по главным компонентам.
+Это свидетельствует о том, что найденное решение задачи MCR является эффективным
+и ничего точнее найти уже нельзя.<p align="left">При этом найденные 
+концентрационные профили <b><span lang=EN-US>C</span></b><sub><span lang=EN-US>hat</span></sub><span
+lang=EN-US>, </span>и спектры <b><span lang=EN-US>S</span></b><sub><span
+lang=EN-US>hat</span></sub> не точно совпадают с соответствующими исходными 
+кривыми <b><span lang=EN-US>C</span></b><sub><span lang=EN-US>true</span></sub>
+и <b><span lang=EN-US>S</span></b><sub><span lang=EN-US>true</span></sub>. 
+Относительная ошибка их определения достигает 19%. Причина этого – масштабная 
+неоднозначность. В нашем случае она возникает на первом шаге прокрустового 
+преобразования – при подгонке одного из двух элементов матрицы <b>R</b><sub>1</sub>, 
+второй может быть произвольным. На листе <i><span lang=EN-US>Procrustes</span></i><span
+lang=EN-US> </span><a href="mcr/MCR.xls#Procrustes!E4">первый элемент <i>r</i><sub><span lang=EN-US>11</span></sub></a>
+выбран так, чтобы max <span lang=EN-US>{<i>t<sub>ij</sub></i>}=1</span>, а 
+подбирается <a href="mcr/MCR.xls#Procrustes!F5">второй элемент <i>r</i><sub>22</sub></a>. Легко проверить, что при 
+другом выборе <i>r</i><sub><span lang=EN-US>11</span></sub> общая погрешность &#948; не изменится, тогда как индивидуальное 
+расхождение в компонентах будет уже другим. &nbsp;<p align="left">Масштабную неопределенность можно
+оценить, сравнив покомпонентно величины концентрационных профилей <b><span
+lang=EN-US>C</span></b><sub><span lang=EN-US>true</span></sub><span lang=EN-US>
+и <b>C</b><sub>hat</sub>, </span>а также величины чистых спектров <b><span
+lang=EN-US>S</span></b><sub><span lang=EN-US>true</span></sub><span lang=EN-US>
+и <b>S</b><sub>hat</sub></span><span lang="en-us"> <a name="Fig15"></a></span><p align="center">
+&nbsp;<span lang="en-us"> </span><a href="mcr/MCR.xls#Procrustes!B82">
+<img src="mcr/Fig15a.png" class="style22"></a>&nbsp;
+<a href="mcr/MCR.xls#Procrustes!K82">
+<img src="mcr/Fig15b.png" class="style22"></a><p align="center"><samp>Рис.15
+      Покомпонентное сравнение решений (Прокрустов анализ) </samp></p>
+      <p align="left">Из Рис. 15 видно, оценки
+концентраций систематически завышены с коэффициентом 1.07 (для <span
+lang=EN-US style='font-family:Arial'>A</span>)<span lang=EN-US> и</span> 1.1<span lang="en-us">2</span>
+(для <span lang=EN-US style='font-family:Arial'>B</span>), тогда как оценки
+спектров занижены с коэффициентом 0.9<span lang="en-us">3 </span>и 0.90. При этом в произведении <i><span
+lang=EN-US>c</span></i><span lang=EN-US>(<i>t</i>)<i>s</i>(</span>&#955;<span lang=EN-US>) </span>получаем
+		0.995 для <span style='font-family:Arial'>A</span> и
+		1.008 для <span style='font-family:Arial'>B</span> – значения близкие (с учетом
+погрешностей в данных) к 1.
+      <p align="left"><a href="#Contents">Содержание</a><a name="Ch3.2"></a></p>
+      <h2 align="left">3.2. Эволюционный факторный анализ (EFA) </h2>
+        <p align="left">В абстрактном факторном анализе,
+осуществляемым методом главных компонент, совершенно не важно, в каком порядке
+расположены строчки в матрице данных <b>X</b><span lang=EN-US>.</span> Их можно
+перемешать, но результат PCA – матрицы счетов <b>T</b> и нагрузок <b><span
+lang=EN-US>P</span></b><span lang=EN-US> </span>от этого не изменятся. В тоже
+время в задачах MCR<span lang="en-us">,</span> порядок, в котором получались экспериментальные данные,
+весьма важен, и его нужно использовать для нахождения решения.
+        <p align="left">Главная идея <i><a href="references.htm#L2.13">эволюционного
+факторного анализа</a></i> <span lang=EN-US>(EFA, Evolving factor analysis) </span>состоит в том, что метод
+главных компонент применяется не ко всей матрице <b><span lang=EN-US>X</span></b>,
+а к последовательности ее подматриц. В методе <span lang=EN-US>EFA </span>используют
+две последовательности.&nbsp;<p align="left">Расширяющаяся последовательность
+(прямой проход) включает следующие матрицы. Первая состоит из одной – первой
+(по времени) строки <b>X</b>, вторая – из двух первых строк, третья – из трех
+строк, и т.д., вплоть до последней матрицы, равной полной матрице <b>X</b>.
+        <p align="left">Вторая последовательность – это
+сокращающиеся матрицы (обратный проход). Ее первая матрица – это полная матрица
+<b>X</b>, во второй удалена первая строка, в третьей – две первые строки, и
+т.д., вплоть до матрицы, состоящей только из одной последней строки <b>X</b><span
+lang=EN-US>.</span> &nbsp;<p align="left">К каждой подматрице из
+последовательности применяется разложение по методу главных компонент, и
+определяются соответствующие <a href="#Eq9">сингулярные значения</a> (с.з.) &#963;<sub>1</sub>,..,&#963;<i><sub>A</sub></i>. (Рис. 16).<a name="Fig16"></a>
+        <p align="center"><img src="mcr/Fig16.gif" width="647" height="242">&nbsp;<p align="center"><samp>Рис.16
+      Метод эволюционного факторного анализа </samp></p>
+        <p>Важнейшая часть метода EFA – это
+анализ того, как меняются эти с.з. при расширении и сжатии матрицы <b>X</b><span
+lang=EN-US>.</span><a name="Fig17"></a>
+        <p class="style2"><a href="mcr/MCR.xls#EFA!B36">
+		<img src="mcr/Fig17a.png" class="style22"></a>&nbsp;&nbsp;
+		<a href="mcr/MCR.xls#EFA!L36">
+		<img src="mcr/Fig17b.png" class="style22"></a><p align="center"><samp>Рис.17
+      Изменение сингулярных значений </samp></p>
+<p>На Рис. 17 (левая панель) показано,
+как в нашем примере меняются первое и второе с.з. (левая ось ординат) в прямом
+проходе. На том же графике приведены и кривые концентрационных профилей веществ
+<span style='font-family:Arial'>A</span> и <span style='font-family:Arial'>B</span><span
+lang=EN-US> (</span>правая ось ординат<span lang=EN-US>)</span>. Видно, что
+возрастание с.з. связано с появлением соответствующего вещества в системе.
+Аналогичный график для обратного прохода (правая панель на Рис. 17) показывает<span
+lang=EN-US>,</span> что уменьшение с.з. связано с уходом вещества из системы.
+Часто на подобных графиках изображаются логарифмы с.з., для того чтобы
+уменьшить масштаб их различия.</p>
+<p>Анализируя оба графика EFA
+совместно можно построить оценки концентрационных окон <i><span lang=EN-US>W<sub>a</sub></span></i><span
+lang=EN-US>(<i>t</i>) </span>для всех компонентов системы. Это делается по
+следующему простому алгоритму. </p>
+<p>Пусть &#949;<span lang=EN-US> –  </span>это некоторая
+малая величина, ниже которой с.з. считается незначительным. Для каждой главной
+компоненты <i>a</i>=1,…<span lang=EN-US>,<i>A</i> </span>рассматривается пара с.з.
+<img src="mcr/image11.png" width="85" height="27" class="style3">. Для первой ГК (<i><span lang=EN-US>a</span></i><span
+lang=EN-US>=</span>1<span lang=EN-US>) </span>эта пара состоит из первого с.з.
+для прямого прохода и последнего (<i><span lang=EN-US>A</span></i>) с.з. <span
+lang=EN-US>для </span>обратного прохода. Следующая пара (<i><span lang=EN-US>a</span></i><span
+lang=EN-US>=</span>2<span lang=EN-US>) </span>включает второе с.з из прямого и
+предпоследнее с.з. <span lang=EN-US>(<i>A</i>–1) </span>из обратного, и т.д.
+Тогда,&nbsp;</p>
+<p class="style2"><img src="mcr/image12.png" width="269" height="53">&nbsp;</p>
+<p>В этом алгоритме предполагается,
+что тот химический компонент, который первым появляется, первым и исчезает.
+Выбор критического уровня &#949;<span
+lang=EN-US> </span>проводится с учетом того, как определялось число главных
+компонент <i>A</i> в полном PCA. Из <a href="#Fig10">Рис. 10</a> видно, что &#949;<span lang=EN-US> &lt; 1</span>. Мы его
+взяли равным <a href="mcr/MCR.xls#EFA!Noise">0.05</a>. Высота окна <i><span lang=EN-US>H</span></i><sub><span
+lang=EN-US>a</span></sub> величина произвольная. В частности<span lang=EN-US>,</span>
+можно положить <i>H</i><sub><span lang=EN-US>a</span></sub><span lang=EN-US>=<i>A</i>–<i>a</i>+1
+</span>или <img src="mcr/image13.png" width="149" height="27" class="style3">.&nbsp;
+      <a name="Fig18"></a>
+        </p>
+        <p align="center"><a href="mcr/MCR.xls#EFA!C60">
+		<img src="mcr/Fig18a.png" width="341" height="341" class="style22"></a>&nbsp;
+		<a href="mcr/MCR.xls#EFAM60">
+		<img src="mcr/Fig18b.png" width="341" height="341" class="style22"></a><p align="center"><samp>Рис.18
+      Решение задачи MCR методом EFA</samp></p>
+      <p align="left">Концентрационные окна <i>W<sub><span
+lang=EN-US>a</span></sub></i> можно считать грубым приближением соответствующих
+концентрационных профилей, как это показано на Рис. 18<span lang=EN-US> (</span>левая
+панель<span lang=EN-US>)</span>. Тогда оценки чистых спектров <b><span
+lang=EN-US>S</span></b><sub><span lang=EN-US>hat</span></sub><span lang=EN-US> </span>можно
+найти по формуле <span lang=EN-US>(<a href="#Eq5">5</a>).</span> Они 
+		представлены на правой панели Рис. 18.<p align="left">Видно, что приближение не очень
+хорошее, что и подтверждает величина
+<a href="#Eq10">&#948;</a> = <span lang=EN-US>6</span>2<span
+lang=EN-US>%</span>, которая значительно хуже, чем в прокрустовом анализе.
+Однако метод EFA интересен не решением задачи MCR, а тем, что он дает фундамент
+для других, более точных методов. С этой точки зрения  главный результат E<span
+lang=EN-US>FA </span>– это найденные концентрационные окна&nbsp;<p align="left">На листе E<span lang=EN-US>FA</span>
+используется еще одна <a href="tricks.htm#Ch1.6">сложная формула</a> для вычисления сингулярных значений (Рис.
+19). Она похожа на формулу<span lang=EN-US>,</span> представленную на 
+<a href="#Fig11">Рис. 11</a>, но в ней имеются и свои особенности.<a name="Fig19"></a>
+        <p align="center"><a href="mcr/MCR.xls#EFA!C9">
+		<img src="mcr/Fig19.jpg" width="619" height="357" class="style22"></a>&nbsp;<p align="center"><samp>Рис.19
+      Вычисление сингулярных значений в методе EFA на листе Excel </samp></p>
+        <p align="left">Внутренняя часть выражения имеет
+вид <span class="address"> <span lang=EN-US style='font-family:"Courier New"'>
+		OFFSET</span></span><span lang=EN-US style='font-family:"Courier New"' class="address">(Xdata,,,A9)</span>.
+Здесь, с помощью стандартной функции 
+		<span lang=EN-US style='font-family:"Courier New"' class="prog">
+		<a href="excel.htm#Ch2.4"><strong>OFFSET</strong></a></span>,
+из массива данных <b>X</b> отбирают столько первых строк, сколько заданно
+значением в ячейке 
+		<span lang=EN-US style='font-family:"Courier New"' class="address">A9</span>
+– это текущий номер момента времени <i>t<sub>i</sub></i><span lang=EN-US>. </span>В
+результате получается усеченная матрица, для которой вычисляется матрица
+счетов, из которой выбирается столбец с номером, заданным в ячейке <span
+lang=EN-US style='font-family:"Courier New"'>C$5</span>, и т.д. &nbsp;<p align="left">Для 
+<a href="mcr/MCR.xls#EFA!D9">обратного прохода</a> внутренняя
+функция имеет вид <span style='font-family:"Courier New"' class="address">OFFSET(Xdata,A9-1,,I-A9+1)</span>.
+Здесь опять используется ссылка на ячейку <span style='font-family:Arial'>
+<span class="address">A9</span>. </span>В
+результате из данных <b><span lang=EN-US>X</span></b> выбираются 
+<span
+style='font-family:"Courier New"' class="address">I-A9+1</span> строки, начиная со строки 
+<span
+style='font-family:"Courier New"' class="address">A9-1</span>&nbsp;<p align="left">На этом примере видно, какой
+большой выигрыш дает использование подобных сложных, но компактных формул. Если
+бы мы выводили на лист все промежуточные результаты, то нам потребовалось бы
+разместить 60 подматриц <b>X</b><sub>F</sub> и <b>X</b><sub>B</sub>, и 60
+матриц счетов, только для того, чтобы определить все сингулярные значения.<p align="left"><a href="#Contents">Содержание</a><a name="Ch3.3"></a></p>
+      <h2 align="left">3.3. Оконный факторный анализ (WFA) </h2>
+      <p align="left">Идея <i>оконного факторного анализа</i>
+<span lang=EN-US>(<a href="references.htm#L2.11">Windows Factor Analysis</a>, WFA) </span>состоит в
+последовательном удалении из исходных данных <b><span lang=EN-US>X</span></b><span
+lang=EN-US> </span>тех строчек, в которых концентрация каждого химического
+компонента отлична от нуля. Удаляемые области соответствуют концентрационным
+окнам, определяемым с помощью <a href="#Ch3.2">EFA</a>. Оставшуюся после удаления матрицу <b><span
+lang=EN-US>X</span></b><i><sub><span lang=EN-US>a</span></sub></i> разлагают с
+помощью PCA и определяют матрицу нагрузок <b><span lang=EN-US>P</span></b><i><sub><span
+lang=EN-US>a</span></sub></i><span lang=EN-US>. </span>Из-за того, что один
+химический компонент удален из системы, число главных PCA компонент уменьшается
+на единицу и становится равным <i>A</i>-1. Матрица <b><span lang=EN-US>P</span></b><i><sub><span
+lang=EN-US>a</span></sub></i> несет в себе информацию о спектрах всех
+химических компонентов, кроме исключенного. Поэтому для того, чтобы определить
+этот исключенный компонент, надо найти вектор ортогональный к <b><span
+lang=EN-US>P</span></b><i><sub><span lang=EN-US>a</span></sub></i>.&nbsp;<a name="Fig20"></a>
+        <p align="center"><img src="mcr/Fig20.png">&nbsp;<p align="center"><samp>Рис.20
+      Метод оконного факторного анализа WFA</samp></p>
+        <p align="left">Алгоритм WFA состоит их следующих
+шагов, повторяемых для каждого химического компонента <span lang=EN-US>a=1,…,</span><i> <span lang=EN-US>A</span></i><span lang="en-us">:</span><p align="left" class="style9">1. Определяется матрица <b><span
+lang=EN-US>X</span></b><i><sub><span lang=EN-US>a</span></sub></i><p align="left" class="style9">2. К матрице <b><span lang=EN-US>X</span></b><i><sub><span
+lang=EN-US>a</span></sub></i> применяется PCA <b><span lang=EN-US>X</span></b><i><sub><span
+lang=EN-US>a</span></sub></i> = <b><span lang=EN-US>T</span></b><i><sub><span
+lang=EN-US>a</span></sub></i> (<b>P</b><i><sub><span lang=EN-US>a</span></sub></i>)<sup>t</sup>
+<span lang=EN-US>+ <b>E</b><i><sub>a</sub></i> ,</span> и находится матрица <b><span lang=EN-US>P</span></b><i><sub><span
+lang=EN-US>a</span></sub></i><p align="left" class="style9">3. Вычисляется матрица <b><span
+lang=EN-US>Z</span></b><i><sub><span lang=EN-US>a</span></sub></i><span
+lang=EN-US>=</span><b>X</b><span lang=EN-US>–</span><b>XP</b><i><sub><span
+lang=EN-US>a</span></sub></i>(<b>P</b><i><sub><span lang=EN-US>a</span></sub></i>)<sup>t</sup>&nbsp;<p align="left" class="style9">4. К матрице <b><span lang=EN-US>Z</span></b><i><sub><span
+lang=EN-US>a</span></sub></i> применяется PCA<b>: <span lang=EN-US>&nbsp;Z</span></b><sub><span lang=EN-US><em>a</em></span></sub>
+= <b>t</b><sub><span lang=EN-US>Z</span></sub>(<b><span lang=EN-US>p</span></b><sub><span
+lang=EN-US>Z</span></sub>)<sup>t</sup> <span lang=EN-US>+ <b>E</b><sub>Z</sub> </span>с
+одной главной компонентой, <span lang=EN-US>и </span>находится вектор счетов <b>t</b><sub><span
+lang=EN-US>Z</span></sub><p align="left" class="style9"><span
+lang=EN-US> 5. </span>Все
+отрицательные элементы в <b>t</b><sub><span lang=EN-US>Z</span></sub>
+заменяются нулями, и этот результат является оценкой концентрационного профиля <b><span
+lang=EN-US>c</span></b><i><sub><span lang=EN-US>a</span></sub></i> для
+исследуемого компонента&nbsp;<p align="left">В приведенном алгоритме п.4
+заслуживает отдельного комментария. Теоретически матрица <b><span lang=EN-US>Z</span></b><i><sub><span
+lang=EN-US>a</span></sub></i> имеет <a href="matrix.htm#ch113">ранг</a> <i><span lang=EN-US>A</span></i>–<span
+lang=EN-US>(<i>A</i>–1) = </span>1, поэтому каждый ее столбец должен быть
+пропорционален искомому концентрационному профилю <b><span lang=EN-US>c</span></b><i><sub><span
+lang=EN-US>a</span></sub></i>. Однако<span lang=EN-US>,</span> в ходе описанных
+выше расчетов появляются ошибки, которые изменяют результат. Именно для
+устранения ошибок и выполняется шаг 4, который, в принципе, можно заменить
+выбором одного столбца в матрице <b><span lang=EN-US>Z</span></b><i><sub><span
+lang=EN-US>a</span></sub></i> имеющего наибольшую норму.<p align="left">После того как алгоритм применен к
+каждому компоненту и определена матрица оценок концентрационных профилей <b><span
+lang=EN-US>C</span></b><sub><span lang=EN-US>hat</span></sub>, оценки чистых
+спектров <b><span lang=EN-US>S</span></b><sub><span lang=EN-US>hat</span></sub><span
+lang=EN-US> </span>можно найти по формуле <span lang=EN-US>(<a href="#Eq5">5</a>).</span><p align="left">В рассматриваемом примере имеется
+два компонента: <span style='font-family:Arial'>A</span> и 
+<span class="style18">B</span><span lang=EN-US>, </span>поэтому <span
+lang=EN-US>WFA </span>нужно сделать два раза. Для определения вещества <span
+style='font-family:Arial'>A</span> нужно удалить из исходных данных <b><span
+lang=EN-US>X</span></b><span lang=EN-US> </span>несколько строчек: например со 2<span
+lang=EN-US>-ой</span> по 13-ую. Для определения вещества <span
+style='font-family:Arial'>B</span><b> </b>нужно
+удалить строки, например с 4-ой по 25-ую. Это следует из <a href="#Fig18">Рис. 18</a> .<a name="Fig21"></a>
+        <p align="center"><a href="mcr/MCR.xls#WFA!B38">
+		<img src="mcr/Fig21a.png" width="341" height="341" class="style22"></a><span lang="en-us">
+		<a href="mcr/MCR.xls#WFA!M38">
+		<img src="mcr/Fig21b.png" width="341" height="341" class="style22"></a></span><p align="center"><samp>Рис.21
+      Решение задачи MCR методом WFA </samp></p>
+      <p align="left">На Рис. 21. представлены решения
+задачи MCR, найденные методом WFA. Точность приближение <a href="#Eq10">&#948;</a>= 4<span lang=EN-US>%</span>, в точности 
+		такая же, как и в Прокрустовом вращении</p>
+<p align="left">Для вычисления матрицы (в нашем
+случае – вектор) нагрузок <b><span lang=EN-US>P</span></b><i><sub><span
+lang=EN-US>a</span></sub></i> применяется прием, аналогичный рассмотренным выше
+(см. Рис. 22). Специальная&nbsp; функция<strong> </strong>
+<span lang="en-us" class="prog"><strong><a href="projection.htm#Ch6.3">MCutRows</a></strong></span><span class="style25">(Xdata,$F$3,$F$4-$F$3+1)</span> 
+удаляет из данных все строки, начиная со строки, заданной&nbsp; в ячейке
+<span style='font-family:Arial' class="address">F3</span>, и заканчивая строкой, 
+заданной в ячейке
+<span style='font-family:Arial' class="address">F4</span> - всего
+<span class="style25">$F$4-$F$3+1</span> строк&nbsp; Затем для усеченных 
+данных определяются PCA-нагрузки<span lang="en-us"> </span>с помощью функции
+<span class="prog"><a href="projection.htm#Ch3.2"><strong>LoadingsPCA</strong></a></span> <a name="Fig22"></a></p>
+        <p align="center"><a href="mcr/MCR.xls#WFA!C6">
+		<img src="mcr/Fig22.png" class="style22"></a><p align="center"><samp>Рис.22
+      Вычисление нагрузок в методе WFA </samp></p>
+      <p align="left">Вычисление вектора счетов <b>t</b><sub><span
+lang=EN-US>Z</span></sub> представлено на Рис. 23.<a name="Fig23"></a></p>
+        <p align="center"><a href="mcr/MCR.xls#WFA!E6">
+		<img src="mcr/Fig23.png" class="style22"></a><p align="center"><samp>Рис.23
+      Вычисление вектора счетов в методе WFA </samp></p>
+      <p align="left"><a href="#Contents">Содержание</a><a name="Ch4"></a></p>
+        <h1 align="left">4. Итерационные методы <a name="Ch4.1"></a></h1>
+      <h2 align="left">4.1. Итерационный целевой факторный анализ (ITTFA) </h2>
+      <p align="left"><i>Итерационный целевой факторный
+анализ</i> (<span lang=EN-US><a href="references.htm#L2.13">Iterative Target Transform Factor Analysis</a>, ITTF</span>A)
+решает задачу MCR, последовательно оптимизируя оценку матрицы концентрационных
+профилей <b><span lang=EN-US>C</span></b><sub><span lang=EN-US>hat</span></sub><span
+lang=EN-US>. </span>Идея метода состоит в том, что
+исходная оценка матрицы <b>C</b><sub>in</sub> проецируется на подпространство,
+образованное векторами из матрицы <span lang=EN-US>PCA </span>счетов <b><span
+lang=EN-US>T</span></b><span lang=EN-US>. </span>Для этого используется матрица
+нормированных счетов <b>U<span lang=EN-US>,</span></b> совпадающая с
+матрицей левых собственных векторов в <a href="matrix.htm#ch211">разложении по
+сингулярным значениям</a> (SVD). Чтобы найти <b>U</b>, надо каждый
+вектор счетов разделить на соответствующее сингулярное значение </p>
+<p class="style2"><b>u</b><i><sub>a</sub></i><b>
+= t</b><i><sub>a</sub></i><span lang=EN-US>/</span>&#963;<i><sub><span lang=EN-US>a</span></sub></i></p>
+<p align="left">Полученная проекция <b>C</b><sub>out</sub>
+подправляется с учетом ограничений – положительность, унимодальность, и т.п.
+Подправленный профиль концентраций опять проецируется на <b>T</b>, и т.д.</p>
+<p align="left">Алгоритм ITTFA состоит из следующих шагов<span lang="en-us">:</span></p>
+<p align="left" class="style9">1. Исходная матрица данных разлагается с помощью 
+PCA <b><span lang=EN-US>X</span></b> = <b><span
+lang=EN-US>T</span>P</b><sup>t</sup> <span lang=EN-US>+ <b>E</b>,</span>
+находится матрица <b>T</b>, а затем матрица нормированных счетов <b>U</b><p align="left" class="style9">2. Выбирается начальное приближение
+для матрицы концентрационных профилей <b>C</b><sub>in</sub><p align="left" class="style9">3. Матрица <b>C</b><sub>in</sub>
+проецируется на подпространство, образованное <b><span lang=EN-US>T</span></b>,
+и определяется матрица 
+<p class="style2"><b>C</b><sub><span
+lang=EN-US>out</span></sub> = <b><span lang=EN-US>UU</span></b><sup><span
+lang=EN-US>t</span></sup><b>C</b><sub>in</sub></p>
+<p align="left" class="style9">4. Матрица <b>C</b><sub><span
+lang=EN-US>out</span></sub> подправляется с учетом ограничений, например, если
+какой-то ее элемент отрицателен, то он заменяется нулем. В результате
+получается оценка <b>C</b><sub><span lang=EN-US>hat</span></sub><p align="left" class="style9">5. Матрица <b>C</b><sub>in</sub>
+заменяется матрицей <b>C</b><sub><span lang=EN-US>hat</span></sub>
+<p align="left" class="style9">6. Шаги 3-5 повторяются до
+сходимости 
+<p align="left">В этом алгоритме критическим
+является шаг 2 – выбор начального приближения для матрицы концентрационных
+профилей. При неудачном выборе алгоритм расходится. Третий шаг алгоритма
+находит математическое решение задачи MCR – матрицу абстрактных профилей <b>C</b><sub><span
+lang=EN-US>out</span></sub>, которая, однако, может противоречить физическим
+ограничениям. Последующий шаг 4 согласует оценку с этими ограничениями, но
+выталкивает матрицу <b>C</b><sub><span lang=EN-US>hat</span></sub> из 
+пространства главных компонент. Поэтому все начинается заново, пока найденное 
+решение не будет удовлетворять как математическим, так и физическим требованиям<span lang="en-us">.</span></p>
+<p align="left">После того как определена матрица
+оценок концентрационных профилей <b><span lang=EN-US>C</span></b><sub><span
+lang=EN-US>hat</span></sub>, оценки чистых спектров <b><span lang=EN-US>S</span></b><sub><span
+lang=EN-US>hat</span></sub><span lang=EN-US> </span>можно найти по формуле <span
+lang=EN-US>(<a href="#Eq5">5</a>).</span></p>
+<p align="left">Рассмотрим, как метод ITTFA используется в нашем примере.<a name="Fig24"></a></p>
+        <p align="center"><a href="mcr/MCR.xls#ITTFA!A1">
+		<img src="mcr/Fig24.jpg" width="548" height="329" class="style22"></a><p align="center"><samp>Рис.24
+      Реализация метода ITTFA </samp></p>
+      <p align="left">На Рис. 24 показан фрагмент
+страницы I<span lang=EN-US>T</span>TFA. Кнопка <b><span lang=EN-US
+style='font-family:Arial;background:silver'>Calculate</span></b> запускает
+простейший 
+		<a href="excel.htm#Ch4.3"> <span lang=EN-US>VBA </span>макрос</a><span lang=EN-US>, </span>который
+копирует содержание области <b>C</b><sub><span lang=EN-US>hat</span></sub><span
+lang=EN-US> и</span> вставляет значения в область <b>C</b><sub>in</sub>.
+Эта операция повторяется столько раз, сколько указано в клетке <span
+style='font-family:"Courier New"'>F2</span><span lang=EN-US>. </span>Тем самым
+реализуется заданное число итераций.</p>
+<p align="left">В качестве начального приближения
+были выбраны игольчатые профили, показанные на Рис. 25..<a name="Fig49"></a></p>
+        <p align="center"><a href="mcr/MCR.xls#ITTFA!E37">
+		<img src="mcr/Fig25.png" width="341" height="341" class="style22"></a><p align="center"><samp>Рис.25
+      Начальное приближение для матрицы Cin игольчатыми профилями </samp></p>
+<p align="left">Через 20 итераций были получены
+решения, показанные на Рис. 26..<a name="Fig25"></a></p>
+        <p align="center"><a href="mcr/MCR.xls#ITTFA!K13">
+		<img src="mcr/Fig26a.png" width="341" height="341" class="style22"></a><span lang="en-us">&nbsp;
+		<a href="mcr/MCR.xls#ITTFA!T13">
+		<img src="mcr/Fig26b.png" width="341" height="340" class="style22"></a></span><p align="center"><samp>Рис.26
+      Решение задачи MCR методом ITTFA</samp></p>
+      <p align="left">Точность подгонки составила <a href="#Eq10">&#948;</a>= 4<span lang=EN-US>%</span>, т.е. метод I<span
+lang=EN-US>T</span>TFA дал ту же точность, что и WFA. Нетрудно проверить, что
+алгоритм I<span lang=EN-US>T</span>TFA будет расходиться, если задать неудачное
+начальное приближение <b>C</b><sub>in</sub>. </p>
+      <p align="left"><a href="#Contents">Содержание</a><a name="Ch4.2"></a></p>
+      <h2 align="left">4.2. Чередующиеся наименьшие квадраты (ALS) </h2>
+      <p align="left"><i>Метод чередующихся наименьших
+квадратов</i> (<a href="references.htm#L2.11"><span lang=EN-US>Alternating Least-Squares, </span>ALS</a>) – это
+простой и одновременно очень мощный метод решения зада MCR. В отличие от
+большинства других методов MCR, ALS не опирается на разложение PCA. Вместо
+этого он использует принцип наименьших квадратов, последовательно применяя на
+каждом шагу формулы <span lang=EN-US>(<a href="#Eq4">4</a>)</span> и <span lang=EN-US>(<a href="#Eq5">5</a>)</span>.
+Так же как <span lang=EN-US><a href="#Ch4.1">ITTFA</a></span>, метод <span lang=EN-US>ALS </span>является
+итерационным, но его сходимость значительно лучше. </p>
+<p align="left">Алгоритм метода выглядит так.</p>
+<p align="left" class="style9">1. Методом PCA определяется число компонент, а 
+методом EFA – концентрационные окна.<p align="left" class="style9">2. Задается 
+начальное приближение для матрицы концентрационных профилей <b>C</b><sub>in<span lang="en-us">
+</span></sub><span lang="en-us">.</span><p align="left" class="style9">
+3. Матрица <b>C</b><sub><span
+lang=EN-US>in</span></sub> подправляется с учетом ограничений: элемент этой
+матрицы заменяется нулем, если он отрицателен, или если соответствующий элемент
+концентрационного окна равен нулю. Кроме того, матрицу полезно нормировать так,
+чтобы ее максимальный элемент был равным 1. В результате получается оценка <b>C</b><span
+lang=EN-US><sub>hat</sub>.</span><p align="left" class="style9">4. С помощью
+формулы <span lang=EN-US>(<a href="#Eq5">5</a>)</span> находится оценка матрицы чистых спектров <b><span
+lang=EN-US>S</span></b><sub>in</sub> – <p class="style2"><b><span lang=EN-US>S</span></b><sub>in</sub><span
+lang=EN-US>= <b>X</b><sup>t</sup> <b>C</b></span><sub>hat</sub><span
+lang=EN-US> (<b>C</b><sub>hat</sub><sup>t</sup><b>C</b><sub>hat</sub>)<sup>–1</sup>.</span></p>
+<p align="left" class="style9">5. Матрица <b><span lang=EN-US>S</span></b><sub>in</sub>
+подправляется – отрицательные элементы заменяются нулями. Получается матрица <b><span
+lang=EN-US>S</span></b><sub><span lang=EN-US>hat</span></sub><span lang=EN-US>.</span>
+<p align="left" class="style9">6. С помощью формулы <span lang=EN-US>(<a href="#Eq4">4</a>)</span> определяется оценка матрицы
+концентрационных профилей <b><span lang=EN-US>C</span></b><sub>out</sub><span
+lang=EN-US> </span>– <p class="style2"><b><span lang=EN-US>C</span></b><sub>out</sub><span
+lang=EN-US>=<b>X S</b><sub>hat</sub> (<b>S</b><sub>hat</sub><sup>t</sup><b>S</b><sub>ha</sub></span><sub>t</sub><span
+lang=EN-US>)<sup>–1</sup>.</span></p>
+<p align="left" class="style9"><span lang=EN-US>7. </span>Матрица <b>C</b><sub>in</sub>
+заменяется матрицей <b>C</b><sub>out</sub>
+<span lang="en-us">.</span><p align="left" class="style9"><span lang="en-us">8</span>. Шаги 3-<span lang=EN-US>7</span>
+повторяются до сходимости<span lang="en-us" class="style25">.</span> 
+<p align="left">Как видно,
+главное отличие от метода <span lang=EN-US>ITTFA</span> состоит в активном
+использовании концентрационных окон. Как показывает практика, метод ALS не так
+критичен к выбору начального значения <b>C</b><sub>in</sub>. В частности<span
+lang=EN-US>, в </span>качестве <b>C</b><sub>in</sub>. можно взять и 
+концентрационное окно, определенное методом EFA.</p>
+<p align="left">Применение
+метода <span lang=EN-US>ALS</span> для нашего примера показано на листе <em>
+<a href="mcr/MCR.xls#ALS!A1">ALS</a></em>. Здесь, также как в ITTFA, используется
+кнопка <b><span lang=EN-US style='font-family:Arial;background:silver'>Calculate</span></b>,
+которая запускает аналогичный <span lang=EN-US>VBA </span>макрос<span
+lang=EN-US>, </span>копирующий содержание области <b>C</b><sub><span
+lang=EN-US>out</span></sub> в область <b>C</b><sub>in</sub>. Число повторов
+задается значением в клетке 
+<span style='font-family:"Courier New"' class="address">F2</span>. </p>
+      <p align="left">Концентрационные
+окна были определены методом EFA для уровня шума 0.05. Они же послужили и в
+качестве начального значения для матрицы <b>C</b><sub>in</sub>. Алгоритм
+сходится за 10 итераций к результату, который по точности (<a href="#Eq10">&#948;</a> = 4<span lang=EN-US>%</span>) совпадает с 
+		другими методами.<a name="Fig27"></a></p>
+        <p align="center"><a href="mcr/MCR.xls#ALS!B37">
+		<img src="mcr/Fig27a.png" class="style22"></a>&nbsp;
+        <a href="mcr/MCR.xls#ALS!L37">
+        <img src="mcr/Fig27b.png" class="style22"></a><p align="center">
+<samp>
+Рис.27 Решение задачи </samp> <span lang=EN-US><samp>MCR </samp> </span><samp>методом A</samp><span lang=EN-US><samp>LS</samp></span></p>
+      <p align="left">&nbsp;</p>
+      <p align="left"><a href="#Contents">Содержание</a><a name="Ch5"></a></p>
+        <h1 align="left">Заключение</h1>
+        <p align="left">Мы рассмотрели некоторые методы,
+используемые для решения задач разрешения кривых. Эта область хемометрики, как
+никакая другая, изобилует разнообразными подходами. Поэтому, с неизбежностью,
+за рамками этого пособия остались многие интересные методы, такие как,
+например, SIMPLISMA, OPA и другие. Разобраться с тем, как они работают можно
+самостоятельно, используя это пособие как руководство к действию.</p>
+<p align="left">Один из подходов к проблеме MCR,
+тесно связанный с методом ALS, достоин специального изучения. Это метод,
+объединяющий в себе формальный хемометрический подход (<span lang=EN-US>soft
+modeling</span>) с содержательным кинетическим описанием процессов (hard
+modeling)<span lang=EN-US>.</span> Он рассмотрен в отдельном пособии
+<a href="grey.htm">Кинетическое моделирование спектральных данных</a>.</p>
+      <p align="left"><a href="#Contents">Содержание</a></p>
+      <p align="left">&nbsp;</p>
+  </table>
+
+</body>
+

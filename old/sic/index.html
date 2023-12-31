@@ -1,0 +1,534 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns:st1="urn:schemas-microsoft-com:office:smarttags" xmlns="http://www.w3.org/TR/REC-html40"><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta http-equiv="Content-Language" content="en-us">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Generator" content="Microsoft FrontPage 12.0">
+<meta name="Originator" content="Microsoft Word 11">
+<title>Software implementation of SIC method for MATLAB</title>
+<o:smarttagtype namespaceuri="urn:schemas-microsoft-com:office:smarttags" name="place"></o:smarttagtype>
+<o:smarttagtype namespaceuri="urn:schemas-microsoft-com:office:smarttags" name="country-region"></o:smarttagtype>
+<o:smarttagtype namespaceuri="urn:schemas-microsoft-com:office:smarttags" name="City"></o:smarttagtype>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Rodionova</o:Author>
+  <o:LastAuthor>Rodionova</o:LastAuthor>
+  <o:Revision>5</o:Revision>
+  <o:TotalTime>63</o:TotalTime>
+  <o:Created>2007-06-06T17:26:00Z</o:Created>
+  <o:LastSaved>2007-06-06T18:26:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>775</o:Words>
+  <o:Characters>4419</o:Characters>
+  <o:Company>ICP</o:Company>
+  <o:Lines>36</o:Lines>
+  <o:Paragraphs>10</o:Paragraphs>
+  <o:CharactersWithSpaces>5184</o:CharactersWithSpaces>
+  <o:Version>11.6568</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" LatentStyleCount="156">
+ </w:LatentStyles>
+</xml><![endif]--><!--[if !mso]><object
+ classid="clsid:38481807-CA0E-42D2-BF39-B33AF135CC4D" id=ieooui></object>
+<style>
+st1\:*{behavior:url(#ieooui) }
+</style>
+<![endif]-->
+<style>
+<!--
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+a:visited, span.MsoHyperlinkFollowed
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+span.SpellE
+	{mso-style-name:"";
+	mso-spl-e:yes;}
+span.GramE
+	{mso-style-name:"";
+	mso-gram-e:yes;}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:2.0cm 42.5pt 2.0cm 3.0cm;
+	mso-header-margin:35.4pt;
+	mso-footer-margin:35.4pt;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+    .style1
+    {
+        font-weight: bold;
+        font-size: 13.5pt;
+    }
+    .style2
+    {
+        font-size: medium;
+        font-weight: bold;
+    }
+    .style3
+    {
+        text-decoration: underline;
+    }
+    .style4
+    {
+        font-weight: bold;
+    }
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="3074"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head><body background="../pcfone.gif" bgcolor="#ffffff" lang="RU">
+
+<div class="Section1">
+
+<p><o:p>&nbsp;</o:p></p>
+
+<table class="MsoNormalTable" style="width: 90%;" border="0" cellpadding="0" width="90%">
+ <tbody><tr style="">
+  <td style="padding: 0.75pt; width: 82.5pt;" width="110">
+  <p class="MsoNormal"><img id="_x0000_i1025" src="../rcsmall.gif" width="106" height="97"></p>
+  </td>
+  <td style="padding: 0.75pt;">
+  <p style="text-align: center;" align="center"><strong><span style="font-size: 24pt;" lang="EN-GB">Software implementation of
+  SIC method for MATLAB</span></strong><b><span style="font-size: 13.5pt;" lang="EN-GB"><br>
+  </span></b></p>
+  </td>
+ </tr>
+</tbody></table>
+
+<p class="MsoNormal">&nbsp;</p>
+
+<div align="center">
+  <center>
+  <table border="0" cellpadding="3">
+    <tbody><tr>
+      <td><strong><span style="font-size: 13.5pt;" lang="EN-GB"><a href="#Intro">Introduction</a></span></strong></td>
+    </tr>
+    <tr>
+      <td><strong><span style="font-size: 13.5pt;" lang="EN-GB"><a href="#Syn">Syntax</a></span></strong></td>
+    </tr>
+    <tr>
+      <td><strong><span style="font-size: 13.5pt;" lang="EN-GB"><a href="#Inst">Program
+installation</a></span></strong></td>
+    </tr>
+    <tr>
+      <td><span class="SpellE"><strong><span style="font-size: 13.5pt;"><a href="#Work">Program</a></span></strong></span><strong><span style="font-size: 13.5pt;"> <a href="#Work"> <span class="SpellE">workflow</span></a></span></strong></td>
+    </tr>
+    <tr>
+      <td><strong><span style="font-size: 13.5pt;" lang="EN-GB"><a href="#Ext">Extras</a></span></strong></td>
+    </tr>
+    <tr>
+      <td><strong><span style="font-size: 13.5pt;" lang="EN-GB"><a href="#Down">Download</a></span></strong></td>
+    </tr>
+  </tbody></table>
+  </center>
+</div>
+
+<p><strong><span style="font-size: 13.5pt;" lang="EN-GB"><a name="Intro"></a>Introduction</span></strong><span style="" lang="EN-GB"><o:p></o:p></span></p>
+
+<p class="MsoNormal"><span style="" lang="EN-US">Now <span class="GramE">the <span style=""><span style="">&nbsp;</span></span></span></span><a href="../ICP/projects.htm#SIC"><span style="" lang="EN-GB">SIC method</span></a><span style="" lang="EN-GB"> is implemented in MATLAB script-language. The
+program includes two main modules: <span class="SpellE"><b>SIC_result</b></span>
+and <b>SIC_OSP</b>, named in accordance with their basic functionality. The <span class="SpellE"><b style="">SIC_result</b></span> <span class="GramE">module calculates the estimation of the maximum error deviation <b>Beta
+</b><span style="">and<b> </b></span>SIC</span>
+intervals, using the calibration and test datasets, provided by the user. The <b style="">SIC_OSP</b> module employs the output of
+the <span class="SpellE"><b style="">SIC_result</b></span><b style=""> </b>procedure<b style=""> </b>for calculation <span class="GramE">of<span style="">&nbsp; </span>the</span> SIC-Residuals, <span style="">&nbsp;</span>SIC-Leverages and construction of the Object
+Status Plot.<o:p></o:p></span></p>
+
+<p><strong><span style="font-size: 13.5pt;" lang="EN-GB"><a name="Syn"></a>Syntax</span></strong><span style="" lang="EN-GB"><o:p></o:p></span></p>
+
+<p class="MsoNormal"><b><span style="" lang="EN-GB">Output=<span class="SpellE">Sic_result</span>(<span class="SpellE">Tc,</span></span><span style="" class="SpellE">
+</span><span class="SpellE"><span style="" lang="EN-GB">Tt,</span></span><span style="" class="SpellE">
+</span><span class="SpellE"><span style="" lang="EN-GB">Yc,</span></span><span style="" class="SpellE">
+</span><span class="SpellE"><span style="" lang="EN-GB">Yt,</span></span><span style="" class="SpellE">
+</span><span class="SpellE"><span style="" lang="EN-GB">Yc_pred<span lang="EN-GB">,</span><span style="" class="SpellE">
+</span>Yt_pred,</span></span><span style="" class="SpellE">
+</span><span class="SpellE"><span style="" lang="EN-GB">Beta,</span></span><span style="" class="SpellE">
+</span><span class="SpellE"><span style="" lang="EN-GB">nPC,</span></span><span style="" class="SpellE">
+</span><span class="SpellE"><span style="" lang="EN-GB">MeanY,</span></span><span style="" class="SpellE">
+</span><span style="" lang="EN-GB"><span class="SpellE">SdevY</span>)<br>
+</span></b></p>
+
+<div align="center">
+  <center>
+  <table border="0" cellpadding="2" width="90%">
+    <tbody><tr>
+      <td valign="top" width="15%"><span class="SpellE"><b>Tc</b></span> </td>
+      <td width="85%"><span style="" lang="EN-GB">
+ matrix of scores for calibration set <span class="SpellE">Xc</span></span></td>
+    </tr>
+    <tr>
+      <td valign="top" width="15%"><span class="SpellE"><b>Tt</b></span> </td>
+      <td width="85%"><span style="" lang="EN-GB">
+ matrix of scores for test set <span class="SpellE">Xt</span></span></td>
+    </tr>
+    <tr>
+      <td valign="top" width="15%"><span class="SpellE"><b>Yc</b></span> </td>
+      <td width="85%"><span style="" lang="EN-GB">
+ calibration set <span class="SpellE">Yc</span>
+after <span class="SpellE">preprocessing</span></span></td>
+    </tr>
+    <tr>
+      <td valign="top" width="15%"><span class="SpellE"><b>Yt</b></span> </td>
+      <td width="85%"><span style="" lang="EN-GB">
+ test set <span class="SpellE">Yt</span>
+(optional for new object) after<span style="">&nbsp; </span><span class="SpellE">preprocessing</span></span></td>
+    </tr>
+    <tr>
+      <td valign="top" width="15%"><span class="SpellE"><b>Yc_pred</b></span> </td>
+      <td width="85%"><span style="" lang="EN-GB">
+ predicted values for <span class="SpellE">Yc</span> after<span style="">&nbsp; </span><span class="SpellE">preprocessing</span></span></td>
+    </tr>
+    <tr>
+      <td valign="top" width="15%"><span class="SpellE"><b>Yt_pred</b></span> </td>
+      <td width="85%"><span style="" lang="EN-GB">
+ predicted values for <span class="SpellE">Yt</span> after <span class="SpellE">preprocessing</span></span></td>
+    </tr>
+    <tr>
+      <td valign="top" width="15%"><span style="" lang="EN-GB"><b>Beta</b> </span></td>
+      <td width="85%"><span style="" lang="EN-GB">
+ parameter that defines how <span style="">&nbsp;</span>the MED ‘Beta’ will be calculated.&nbsp;<br>
+ Admissible are
+either the string expressions ‘<span class="SpellE"><i>betasic</i></span>’or ’<span class="SpellE"><i>betamin</i></span>’,&nbsp;
+or a positive numeric value.</span></td>
+    </tr>
+    <tr>
+      <td valign="top" width="15%"><span class="GramE"><b>nPC</b></span> </td>
+      <td width="85%"><span style="" lang="EN-GB">
+ number of
+principal components used in <span class="SpellE">modeling</span></span></td>
+    </tr>
+    <tr>
+      <td valign="top" width="15%"><span style="" lang="EN-GB"><span class="SpellE"><b>MeanY</b></span> </span></td>
+      <td width="85%"><span style="" lang="EN-GB">
+ mean value for <span class="SpellE">Yc</span>,
+used for post-processing</span></td>
+    </tr>
+    <tr>
+      <td valign="top" width="15%"><span class="GramE"><b>SdevY</b> </span></td>
+      <td width="85%"><span class="GramE"> Standard deviation for <span class="SpellE">Yc</span>, also used
+for post-processing.</span></td>
+    </tr>
+  </tbody></table>
+  </center>
+</div>
+
+<p class="MsoNormal"><span style="" lang="EN-GB">
+<br>
+<b>Output</b> - MATLAB structure with the following fields<br>
+<b>{</b> </span></p>
+
+<blockquote>
+
+<div align="center">
+  <center>
+  <table border="0" cellpadding="2" width="90%">
+    <tbody><tr>
+      <td valign="top" width="16%"><span style="" lang="EN-GB"><span class="SpellE"><b>MeanY</b></span>, <span class="SpellE"><b>SdevY</b></span> </span></td>
+      <td width="84%"><span style="" lang="EN-GB"> used
+for post-processing</span></td>
+    </tr>
+    <tr>
+      <td valign="top" width="16%"><span style="" lang="EN-GB">
+<span class="SpellE"><b>nPC</b></span> &nbsp; </span></td>
+      <td width="84%"><span style="" lang="EN-GB"> number of principal components &nbsp;<span class="SpellE">Y_test</span> - test set Y </span></td>
+    </tr>
+    <tr>
+      <td valign="top" width="16%"><span style="" lang="EN-GB"><span class="SpellE"><b>Y_pred</b></span> &nbsp; </span></td>
+      <td width="84%"><span style="" lang="EN-GB"> predicted Y (PLS or PCR) </span></td>
+    </tr>
+    <tr>
+      <td valign="top" width="16%"><span style="" lang="EN-GB"><span class="SpellE"><b>Vmax</b>,</span> 
+        <span class="SpellE"><b>Vmin</b></span> </span></td>
+      <td width="84%"><span style="" lang="EN-GB"> SIC-interval<span style="">&nbsp; </span>for the test set</span></td>
+    </tr>
+    <tr>
+      <td valign="top" width="16%"><span style="" lang="EN-GB"><b>Beta</b> &nbsp;</span></td>
+      <td width="84%"><span style="" lang="EN-GB">value of ’Beta’, used in the model</span></td>
+    </tr>
+    <tr>
+      <td valign="top" width="16%"><span style="" lang="EN-GB"><b>RMSEC</b> &nbsp;</span></td>
+      <td width="84%"><span style="" lang="EN-GB">Root-Mean Square Error of Calibration</span></td>
+    </tr>
+    <tr>
+      <td valign="top" width="16%"><span style="" lang="EN-GB"><b>RMSEP</b> &nbsp;</span></td>
+      <td width="84%"><span style="" lang="EN-GB"> Root-Mean Square Error of Prediction</span></td>
+    </tr>
+  </tbody></table>
+  </center>
+</div>
+
+</blockquote>
+
+<p class="MsoNormal"><span style="" lang="EN-GB"><b>}</b></span></p>
+
+<p class="MsoNormal">&nbsp;</p>
+
+<p class="MsoNormal"><span style="" lang="EN-GB">
+<b>Result=<span class="SpellE">Sic_OSP</span>(mod)</b><br>
+<b>Result</b> - Structure, that contains SIC-Residuals, SIC-Leverages &amp; Boundary for the test dataset from the input
+structure Mod - Model from the <span class="SpellE"><b style="">SIC_result</b></span> module. <br>
+<b>{</b></span></p>
+
+<div align="center">
+  <center>
+  <table border="0" cellpadding="2" width="90%">
+    <tbody><tr>
+      <td valign="top" width="16%"><span style="" lang="EN-GB">
+<b>Res</b> &nbsp;</span></td>
+      <td width="84%"><span style="" lang="EN-GB"> SIC-Residuals vector</span></td>
+    </tr>
+    <tr>
+      <td valign="top" width="16%"><span style="" lang="EN-GB"><b>Lev</b> &nbsp;</span></td>
+      <td width="84%"><span style="" lang="EN-GB"> SIC-Leverage vector</span></td>
+    </tr>
+    <tr>
+      <td valign="top" width="16%"><span style="" lang="EN-GB"><b>Bound</b> &nbsp;</span></td>
+      <td width="84%"><span style="" lang="EN-GB"> Boundary values, shows how close is the object to model boundary</span></td>
+    </tr>
+    <tr>
+      <td valign="top" width="16%"><span style="" lang="EN-GB"><span class="SpellE"><b>Bnum</b></span> &nbsp;</span></td>
+      <td width="84%"><span style="" lang="EN-GB"> number of boundary objects</span></td>
+    </tr>
+  </tbody></table>
+  </center>
+</div>
+
+<p class="MsoNormal"><span style="" lang="EN-GB">
+<b>}</b> <o:p></o:p></span></p>
+
+<p>&nbsp;</p>
+    <p class="style1"><strong><span style="font-size: 13.5pt;" lang="EN-GB">Prerequisites</span></strong></p>
+
+<p class="MsoNormal">We provide two versions of the SIC software.</p>
+    <p class="MsoNormal">&nbsp;</p>
+    <p class="MsoNormal">Version 1&nbsp; uses standard LINPROG solver for solving the
+linear program problem as a part of the SIC algorithm.</p>
+    <p class="MsoNormal"><b>MATLAB Optimization tool-box is required to use LINPROG
+    function.</b></p>
+
+<p class="MsoNormal"><span style="" lang="EN-GB">&nbsp;</span></p>
+    <p class="style4"><span style="" lang="EN-GB" class="style3"><u><strong>We also provide a 
+        &quot;non-linprog&quot; version of our program.</strong></u></span></p>
+    <p class="MsoNormal">Version 2&nbsp; uses popular
+        <a href="http://www.dii.unisi.it/~hybrid/tools/mex/downloads.html">GLPKMEX</a> 
+        solver for solving the
+linear program problem. Version of GLPKMEX compatible with SIC software can be 
+        found in the <b>Download</b> section. </p>
+    <p class="MsoNormal">The installation of GLPKMEX into the Matlab environment is 
+        similar to the installation of the SIC software.</p>
+
+    <p><strong><span style="font-size: 13.5pt;" lang="EN-GB"><a name="Inst"></a>Program
+installation</span></strong><span style="" lang="EN-GB"><o:p></o:p></span></p>
+
+<p class="MsoNormal"><span style="" lang="EN-GB">First of all
+be sure, that the program files are accessible for your MATLAB IDE. There are
+two ways to do it. You may put the files into your current working directory
+(i.e. C:\MATLAB6p5\work), or change your working directory, in such a way that
+files are located inside.</span></p>
+    <p class="MsoNormal">&nbsp;</p>
+
+<p><span style="" lang="EN-GB"><br>
+</span><img id="_x0000_i1026" src="1.jpg" border="0" width="555" height="318"></p>
+
+<p class="MsoNormal"><span style="" lang="EN-GB">To use SIC
+program independently from the current working directory, add the path of the
+SIC program files to the MATLAB Path. <o:p></o:p></span></p>
+
+<p><span style="" lang="EN-GB"><br>
+</span><img id="_x0000_i1027" src="2.jpg" border="0" width="253" height="227"></p>
+
+<p><br>
+<img id="_x0000_i1028" src="3.jpg" border="0" width="502" height="403"></p>
+
+<p><span class="SpellE"><strong><span style="font-size: 13.5pt;"><a name="Work"></a>Program</span></strong></span><strong><span style="font-size: 13.5pt;"> <span class="SpellE">workflow</span></span></strong></p>
+
+<p><br>
+<img id="_x0000_i1029" src="4.jpg" border="0" width="552" height="320"></p>
+
+<p class="MsoNormal"><span style="" lang="EN-GB">After all necessary
+data are input in your MATLAB workspace (as shown in the picture above)<span class="GramE">,</span> you may start working with the program by typing the following
+command <o:p></o:p></span></p>
+
+<p><span style="" lang="EN-GB"><br>
+</span><img id="_x0000_i1030" src="7.jpg" border="0" width="708" height="69"></p>
+
+<p><br>
+<img id="_x0000_i1031" src="6.jpg" border="0" width="394" height="495"></p>
+
+<p><br>
+<img id="_x0000_i1032" src="5.jpg" border="0" width="567" height="504"></p>
+
+<p class="MsoNormal"><span style="" lang="EN-GB">To construct
+the OSP for your data use the following command <o:p></o:p></span></p>
+
+<p><span style="" lang="EN-GB"><br>
+</span><img id="_x0000_i1033" src="10.jpg" border="0" width="296" height="62"></p>
+
+<p><br>
+<img id="_x0000_i1034" src="9.jpg" border="0" width="297" height="495"></p>
+
+<p><br>
+<img id="_x0000_i1035" src="8.jpg" border="0" width="568" height="504"></p>
+
+<p><strong><span style="font-size: 13.5pt;" lang="EN-GB"><a name="Ext"></a>Extras</span></strong><span style="" lang="EN-GB"><o:p></o:p></span></p>
+
+<p class="MsoNormal"><span style="" lang="EN-GB">To
+calculate the OSP for the calibration set (to <span class="GramE">find <span style="">&nbsp;</span>boundary</span> samples), you should replace
+the test set with the calibration set in the programs input. <o:p></o:p></span></p>
+
+<p><span style="" lang="EN-GB"><br>
+</span><img id="_x0000_i1036" src="12.jpg" border="0" width="634" height="58"></p>
+
+<p><br>
+<img id="_x0000_i1037" src="11.jpg" border="0" width="569" height="507"></p>
+
+<p class="MsoNormal"><span style="" lang="EN-GB">If the <b>Ytest</b>
+is unknown, you may enter an empty matrix instead of it. The programs output should
+be changed as follows</span><span lang="EN-GB"> </span></p>
+
+<p><br>
+<img id="_x0000_i1038" src="13.jpg" border="0" width="623" height="54"></p>
+
+<p><br>
+<img id="_x0000_i1039" src="15.jpg" border="0" width="568" height="503"></p>
+
+<p><br>
+<img id="_x0000_i1040" src="14.jpg" border="0" width="567" height="504"></p>
+
+<p class="MsoNormal"><span style="" lang="EN-GB">It is
+possible to define the absolute outlier (sample #28) on the plot, even without
+the SIC-Residuals. <o:p></o:p></span></p>
+
+<p><strong><span style="font-size: 13.5pt;" lang="EN-GB"><a name="Down"></a>Download</span></strong><span style="" lang="EN-GB"><o:p></o:p></span></p>
+
+<p class="MsoNormal">This is a beta release of the program.
+The authors do not assume responsibility for any
+expense, damage or loss caused by your use of this software, however it comes
+down. Any feedback is welcomed. Please, contact the author <a href="mailto:rcs@chph.ras.ru?subject=%22SIC%20Matlab%22">Yury
+Zontov</a>&nbsp;&nbsp;</p>
+
+<p class="MsoNormal">&nbsp;</p>
+
+<p class="MsoNormal"><span style="" lang="EN-GB">You may
+download a free version of the program by clicking the link&nbsp; </span></p>
+
+<p class="MsoNormal">&nbsp;</p>
+
+<p class="style2" align="center"><strong><a href="sic.zip">SIC software with Linprog</a></strong></p>
+    <p class="style2" align="center"><strong><a href="sic1.zip">SIC software with Glpkmex</a></strong></p>
+    <p class="style2" align="center"><strong><a href="glpkmex.zip">GLPKMEX</a></strong></p>
+    <p class="MsoNormal"><br>
+<br>
+All the registered trademarks used herein are
+registered to whoever it is that owns them. This notification is given in lieu
+of any specific list of trademarks and their owners, which would not be as
+inclusive and would probably take a lot longer to type.&nbsp;</p>
+
+<p class="MsoNormal">&nbsp;</p>
+
+<p class="MsoNormal">&nbsp;</p>
+
+<p class="MsoNormal">&nbsp;</p>
+
+<p class="MsoNormal" align="center"><strong><span style="" lang="EN-GB">First
+presented at the <a href="http://www2.lut.fi/kete/ssc10/index.html"> Tenth
+  Scandinavian Symposium on Chemometrics</a></span></strong><span style="" lang="EN-GB"><strong><br>
+</strong><b>&nbsp;<strong>Lappeenranta, Finland, June 2007</strong></b></span></p>
+
+<p class="MsoNormal" align="center">&nbsp;</p>
+
+<p class="MsoNormal" align="center">&nbsp;</p>
+
+<p class="MsoNormal" align="center"><span style="" lang="EN-GB"><br>
+  </span></p>
+
+<table class="MsoNormalTable" style="width: 80%;" border="0" cellpadding="0" cellspacing="0" width="80%">
+ <tbody><tr style="">
+  <td style="padding: 0cm; width: 100%;" width="100%">
+  <p class="MsoNormal"><a href="../english.htm"><img src="../home_e.gif" border="0" width="228" height="27"></a></p>
+  </td>
+  <td style="padding: 0cm; width: 100%;" width="100%">
+  <p class="MsoNormal" style="text-align: right;" align="right">
+	<a href="../index.html"><img src="../home_r.gif" border="0" width="258" height="27"></a></p>
+  </td>
+ </tr>
+</tbody></table>
+
+<div>
+
+<div class="MsoNormal">
+
+<hr align="left" size="5" width="90%">
+
+</div>
+
+</div>
+
+<p><span class="SpellE"><i><span style="font-size: 7.5pt;">Last</span></i></span><i><span style="font-size: 7.5pt;"> <span class="SpellE">modification</span>: 
+<!--webbot
+  bot="Timestamp" S-Type="EDITED" S-Format="%d.%m.%y" startspan -->28.05.13<!--webbot
+  bot="Timestamp" endspan i-checksum="12714" --></span></i></p>
+
+</div>
+
+</body></html>

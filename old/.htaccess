@@ -1,0 +1,4 @@
+Action php53-cgi /php53.cgi
+<FilesMatch \.php$>
+  SetHandler php53-cgi
+</FilesMatch>

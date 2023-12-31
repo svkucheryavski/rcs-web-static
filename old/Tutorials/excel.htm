@@ -1,0 +1,1324 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta http-equiv="Content-Language" content="ru">
+<title>Матричные операции в Excel</title>
+<style>
+<!--
+h1           {
+	font-family: Arial;
+	font-size: 14pt;
+	font-weight: bold;
+	text-align: Center;
+	padding-top: 75px;
+}
+h2           {
+	font-family: Arial;
+	font-size: 12pt;
+	font-style: italic;
+	padding-top: 25px;
+}
+.header      { font-family: Arial; font-size: 18pt; letter-spacing: 1; font-weight: bold; 
+               text-align: Center }
+ .style2 {
+	text-align: center;
+}
+.style3 {
+	vertical-align: middle;
+}
+.address {
+	font-family: Arial, Helvetica, sans-serif;
+}
+.menu {
+	font-family: Tahoma;
+	font-size: 12px;
+	font-weight: bold;
+}
+.style25 {
+	border-width: 0;
+}
+.style31 {
+	border: 1px solid #000000;
+	background-color: #C0C0C0;
+}
+.prog {
+	font-family: "Courier New", Courier, monospace;
+}
+-->
+</style>
+        <title></title>
+</head>
+
+<body>
+
+<p>&nbsp;</p>
+
+  <table border="0" width="95%" cellpadding="0" cellspacing="0" align="center">
+    <tr>
+      <td width="100%">
+      <h3 class="header">Матричные операции в Excel </h3>
+      <dl>
+        <div align="center">
+          <center>
+          <dt>© <span lang="en-us">2010 </span>Алексей
+        Померанцев&nbsp;</dt>
+          </center>
+        </div>
+        <div align="center">
+          <center>
+          <dt><a href="../index.html">Российское хемометрическое общество</a></dt>
+          </center>
+        </div>
+      </dl>
+        <h1><a name="Contents"></a>Содержание&nbsp;</h1>
+        <dl>
+          <dt><a href="#Ch0"><b>Введение</b></a></dt>
+          <dt><b><a href="#Ch1">1. Элементарные сведения</a></b></dt>
+          <dd><b><a href="#Ch1.1">1.1. Локализация</a></b></dd>
+          <dd><b><a href="#Ch1.2">1.2. Книга, лист и ячейка</a></b></dd>
+          <dd><b><a href="#Ch1.3">1.3. Адресация</a></b></dd>
+          <dd><b><a href="#Ch1.4">1.4. Область</a></b></dd>
+          <dd><b><a href="#Ch1.5">1.5. Простейшие вычисления</a></b></dd>
+          <dd><b><a href="#Ch1.6">1.6. Функции</a></b></dd>
+          <dd><b><a href="#Ch1.7">1.7. Некоторые важные функции</a></b></dd>
+			<dd><b><a href="#Ch1.8">1.<span lang="en-us">8</span>. Ошибки в 
+			формулах</a></b></dd>
+			<dd><b><a href="#Ch1.9">1.<span lang="en-us">9</span>. 
+			&quot;Растаскивание&quot; формул</a></b></dd>
+			<dd><b><a href="#Ch1.10">1.<span lang="en-us">1</span>0. Построение 
+			графиков</a></b></dd>
+          <dt><b><a href="#Ch2">2. Матричные операции</a></b></dt>
+          <dd><b><a href="#Ch2.1">2.1. Формулы массива</a></b></dd>
+          <dd><b><a href="#Ch2.2">2.2. Создание и изменение формул массива</a></b></dd>
+          <dd><b><a href="#Ch2.3">2.3. Простейшие операции с матрицами</a></b></dd>
+          <dd><b><a href="#Ch2.4">2.4. Доступ к частям матрицы</a></b></dd>
+			<dd><b><a href="#Ch2.5">2.<span lang="en-us">5</span>. Унарные 
+			операции</a></b></dd>
+			<dd><b><a href="#Ch2.6">2.<span lang="en-us">6</span>. Бинарные 
+			операции</a></b></dd>
+			<dd><span lang="en-us"><a href="#Ch2.7"><strong>2.7.<span lang="ru">
+			</span>Регрессия</strong></a></span></dd>
+			<dd><a href="#Ch2.8"><strong>2.8. Критическая ошибка в Excel 2003
+			</strong></a></dd>
+			<dd><b><a href="#Ch2.9">2.9.<span lang="en-us"> </span>Виртуальный массив</a></b></dd>
+          <dt><b><a href="#Ch4">3, Расширение возможностей Excel</a></b></dt>
+          <dd><strong><a href="#Ch4.1">3.1. Программирование. Язык VBA</a></strong></dd>
+			<dd><strong><a href="#Ch4.2">3.2. Пример</a></strong></dd>
+			<dd><strong><a href="#Ch4.3">3.3. Пример макроса</a></strong></dd>
+			<dd><strong><a href="#Ch4.4">3.4. Пример пользовательской функции</a></strong></dd>
+			<dd><strong><a href="#Ch4.5">3.5. Надстройки</a></strong></dd>
+			<dd><strong><a href="#Ch4.6">3.6. Установка надстроек</a> </strong>
+			</dd>
+			<dt><b><a href="#Ch5">Заключение</a></b></dt>
+          <dd></dd>
+        </dl>
+        <h1><a name="Ch0"></a>Введение&nbsp;</h1>
+        <p>В этом пособии рассказывается о программе Microsoft Excel –популярной 
+		средe для выполнения вычислений, анализа данных и построения графиков. 
+		Наша цель – познакомить читателя с базовыми возможностями, которые Excel 
+		предоставляет для обработки данных. Главное внимание уделяется работе с 
+		многомерными данными и матричным вычислениям. Отдельно рассматривается 
+		механизм надстроек (Add-in’s), расширяющих базовые возможности системы. 
+		Приведенный текст не является учебником по Excel – это всего лишь 
+		введение, краткий справочник. Более подробное изложение может быть 
+		найдено в литературе. </p>
+<p>Сведения, приведенные в пособии, относятся к самым общим свойствам системы 
+Excel, справедливым и для версии 2003, и для последней версии 2007. В основном, 
+мы по-прежнему ориентируемся на пользователей старой версии 2003. Важные 
+отличия, имеющиеся в новой версии 2007, специально оговариваются. </p>
+		<p>Изложение иллюстрируется примерами, выполненными в рабочей книге “<a href="excel/Excel.xls"><em>Excel.xls</em></a> 
+		”, которая сопровождает этот документ. </p>
+      <p align="center"><b><a href="moffice.htm">Важная
+      информация о работе с
+              файлом <span lang="en-us">Excel</span>.xls</a>&nbsp;</b></p>
+      <p>Ссылки на примеры помещены в текст как объекты Excel. </p>
+		<p class="style2"><b><a href="index.html">Другие 
+		пособия по хемометрике</a></b></p>
+      <p style="line-height: 150%"><a href="#Contents">Содержание</a><h1>1. Элементарные сведения <a name="Ch1.1"></a> &nbsp;</h1>
+        <h2>1.1. Локализация </h2>
+        <p>Программа Excel может быть использована в разных странах и на 
+		различных языках. Специфические настройки изменяют внешний вид 
+		программы, например меню, а также названия стандартных функций и способы 
+		их задания. Например, в русской версии Excel еще недавно повсеместно 
+		употреблялась запятая (,) как разделитель целой и десятичной части 
+		числа. Соответственно разделителем списков (в частности, аргументов 
+		функций) становилась точка с запятой (;). К счастью, эта практика уходит 
+		и в научных расчетах точка (.) в качестве дробного разделителя, стала 
+		общеупотребительной. –&nbsp;.<samp><a name="Fig01"></a></samp></p>
+        <p></p>
+        <p align="center"><img src="excel/Fig01.png" width="682" height="692"></p>
+        <p align="center"><samp>Рис. 1
+        Настройка региональных опций </samp></p>
+        <p>Изменить настройки компьютера можно с помощью <span class="menu">Панели Управления</span>, 
+		через закладку <span class="menu">Regional and Language Options </span>с переходом на опцию 
+		<strong class="menu">Customize<span lang="en-us">.</span></strong>
+        <p>Имена встроенных в Excel функций зависят от того, какой вариант 
+		установлен – русский или английский. Например, в английской версии 
+		функция суммирования выглядит так
+        <p class="style2"><span class="address">=SUM(A1:A9)</span>.
+        <p>Эта же функция в русской версии имеет вид &nbsp;<p class="style2">
+<span class="address">=СУММ(A1:A9).</span>
+        <p>Список соответствия русско-английских имен функций приведен в файле
+		<em>FUNCS.XLS</em>, который находится на вашем компьютере, обычно в 
+		директории <span class="menu">C:\Program Files\Microsoft Office\OfficeVer\1049\
+		</span>, где <span class="menu">OfficeVer</span> – это имя версии, например 
+		Office 11. 
+		Подробнее о локализации Exсel можно прочитать
+		<a href="http://office.microsoft.com/ru-ru/excel/HP052427021049.aspx">
+		здесь</a><span lang="en-us">.</span>
+        В файле <a href="office/Excel_Functions.xls">Excel_Functions.xls</a> 
+		приведены имена всех функций на 16 языках.
+        <p>В этом пособии мы используем английскую версию Excel 2003, в которой 
+		разделитель дробной части – точка, а разделитель списков – запятая. 
+		Русские имена функций приводятся для справки.
+        <p><a href="#Contents">Содержание</a><span lang="en-us">&nbsp;&nbsp;
+		<a name="Ch1.2"></a></span></p>
+        <h2>1.2. Книга, лист и ячейка </h2>
+        <p>Файл Excel с расширением XLS (XLSX в версии 2007) называется 
+		(рабочей) книгой. Если запустить программу Excel, например, щелкнуть на 
+		рабочем столе иконку<span lang="en-us"> 
+		<img src="excel/image01.png" class="style3"></span>, 
+		то откроется новая пустая книга. .<samp><a name="Fig02"></a></samp>&nbsp;
+        <p align="center">
+		<img src="excel/Fig02.png" width="540" height="286">
+        <p align="center"><samp>Рис. 2 Новая книга Excel</samp></p>
+<p>Если рабочая книга уже существует, то ее проще открыть через проводник. Для 
+этого достаточно щелкнуть по иконке файла. <span lang="en-us">
+&nbsp;</span><samp><a name="Fig03"></a></samp>&nbsp;</p>
+        <p align="center"><img src="excel/Fig03.png" width="518" height="331"><p align="center"><samp>Рис. 3
+        Открытие книги Excel через проводник </samp></p>
+      <p>Рабочая книга состоит из нескольких <em>листов</em>, имена которых 
+		показаны в нижней части окна. Листы можно удалять, добавлять, 
+		переименовывать. Для этого надо щелкнуть правой клавишей мышки по имени 
+		листа. Появится меню, из которого можно выбрать нужную операцию.<a name="Fig04"></a>
+        </p>
+		<p class="style2"><img src="excel/Fig04.png" width="368" height="325"></p>
+        <p align="center"><samp>Рис. 
+4 Операции с листами </samp> </p>
+        <p>Стандартное имя листа – <em>Sheet1</em>, но ему можно дать любое имя, например 
+		<span class="address">Data</span>. На лист можно вставлять рисунки, графики и другие необходимые 
+		объекты. </p>
+		<p>Каждый лист состоит из <em>ячеек</em>, образующих таблицу, размером 256 
+		столбцов и 65536 строк (В версии 2007 –&nbsp;16384 столбцов и1048576 строк). 
+		Строки на листе обозначены числами: 1,2, 3…, а столбцы имеют буквенную 
+		кодировку: <span class="address">A</span>, <span class="address">B</span>, …,<span class="address">Z,</span>
+		<span class="address">AA</span>, <span class="address">AB</span> .., и т.д. до последнего столбца 
+		<span class="address">IV</span> (в 2007 
+		– до <span class="address">XFD</span>). Этот стиль адресации называется A1. Реже применяется 
+		альтернативный стиль <span class="address">R1C1,</span> в котором столбцы также нумеруются. Мы не 
+		будем использовать этот стиль, а прочитать об этом можно
+		<a href="http://office.microsoft.com/ru-ru/excel/HP051983231049.aspx">
+		здесь</a> </p>
+<p>Строки и столбцы можно удалять, добавлять, прятать, а также менять их размер: 
+высоту или ширину. </p>
+		<p>Ячейка может иметь содержание: число, текст или формулу. Для 
+		наглядности ячейки можно форматировать: менять фонт, цвет, рамку, и т.д. </p>
+		<p>Все операции на листе выполняются с помощью меню, представленного в 
+		верхней части окна (<a href="#Fig02">Рис. 2</a>). Меню в Excel 2007 
+		существенно отличается от прежней версии. Там, вместо обычных иконок, 
+		появилась лента. Мы не будем подробно разбирать отличия версий. Те, кому 
+		это интересно могут прочитать
+		<a href="http://office.microsoft.com/ru-ru/excel/HA101662851049.aspx">
+		здесь</a>. </p>
+        <p>
+<a href="#Contents">Содержание</a>.<a name="Ch1.3"></a>
+      <h2>1.3. Адресация </h2>
+        В Excel каждая ячейка имеет адрес, составленный из заголовков столбцов и 
+		строк. Например, адрес первой ячейки на листе – <span class="address">A1</span>. Ячейка, находящаяся 
+		на пересечении третьего столбца и пятой строки, имеет адрес
+		<span class="address">C5</span>. Текущая ячейка выделена жирной рамкой, 
+		и ее адрес высвечивается в окне <span class="menu"><strong>Name Box</strong></span>. 
+		(см. <a href="#Fig02">Рис. 2</a>). Если мы хотим скопировать содержимое 
+		какой-то ячейки (например, <span class="address">A1</span>) в другую клетку (например, 
+		<span class="address"><span lang="en-us">F</span></span>1), нужно во 
+		второй ячейке написать формулу <span class="address">=адрес</span>, например 
+		<span class="address">=A1</span>. Адресация (ссылка) может быть 
+		абсолютной, относительной и смешанной.<p>
+Например, первая ячейка имеет абсолютный адрес –&nbsp; <span class="address">$A$1</span>, относительный адрес – 
+<span class="address">A1</span>,&nbsp;и два 
+		смешанных адреса – <span class="address">$A1</span> и 
+<span class="address">A$1</span>. Различие в способе адресации проявляется, 
+		прежде всего, тогда, когда формула копируется и переносится в другое 
+		место. Поясним это на простом примере. <samp><a name="Fig05"></a></samp>
+        <p align="center"><img src="excel/Fig05b.png" width="406" height="252"><p align="center">
+		<img src="excel/Fig05a.png" width="405" height="252"><p align="center">
+		<img src="excel/Fig05c.png" width="406" height="251"><p align="center"><samp>
+Рис. 5 Абсолютная и относительная адресация </samp></p>
+      <p>На верхней панели<a href="#Fig05"> Рис. 5</a> показан фрагмент листа с 
+		данными, выделенными желтым цветом. В зеленых областях (столбец
+		<span class="address">F</span> и строка <span class="address">6</span>) 
+		приведены различные варианты адресации одной и той же ячейки –
+		<span class="address">A1</span> (выделена оранжевым). Тип адресации 
+		указан рядом с соответствующей ячейкой. Скопируем каждую из зеленых 
+		областей (по очереди) и вставим рядом – в соседних столбцах:
+		<span class="address">G</span> и <span class="address">H</span>, и в 
+		соседних строках: <span class="address">7</span> и <span class="address">
+		8</span> (средняя панель <a href="#Fig05">Рис. 5</a>). Видно, что 
+		результат зависит от типа адресации. Для абсолютной адресации ссылка на 
+		первую ячейку сохранилась. Для относительной – ссылка сдвигается вправо 
+		или вниз, сохраняя относительное положение двух ячеек: той, где стоит 
+		ссылка, и той, на которую ссылаются. Для смешанной адресации результат 
+		зависит от того, куда переносится копия, и от того, какая часть адреса 
+		фиксируется значком доллара <span class="address">$</span>. На правой 
+		панели показаны соответствующие формулы, получающиеся после копирования. 
+		Заметим, что ссылки на ячейки могут изменяться в зависимости от способа 
+		адресации, но при перемещении ячейки с формулой содержащиеся в формуле 
+		ссылки не изменяются. </p>
+		<p>Для адресации ячейки, которая находится на другом листе той же книги, 
+		надо указывать еще и имя листа, например: <span class="address">Data!B2</span>. 
+		Восклицательный знак (<span class="address">!</span>) отделяет имя листа 
+		от адреса ячейки. Если имя листа содержит пробел, тогда имя надо 
+		заключить в одинарные кавычки, например <span class="address">'Raw 
+		Spectra'!C6</span>. При адресации к другой книге, ее имя указывается 
+		впереди, в квадратных скобках, например; <span class="address">
+		[Other.xls]Results!P24 </span></p>
+		<p>Подробнее о способах адресации можно прочитать
+		<a href="http://office.microsoft.com/ru-ru/excel/HP051983231049.aspx">
+		здесь</a>.</p>
+		<p><a href="#Contents">Содержание</a>.<a name="Ch1.4"></a></p>
+      <h2>1.4. Область</h2>
+<p>Матрица занимает на листе область. Пример показан на Рис. 6, где расположена 
+матрица, которая имеет 9 строк (с 2 по 10) и 3 столбца (с B по D). &nbsp;<samp><a name="Fig06"></a></samp>
+        </p>
+        <p align="center"><img src="excel/Fig06.png" width="306" height="302"><p align="center"><samp>
+		Рис.6 Область на листе</samp></p>
+        <p>Для ссылки на область используется выражение, в котором адреса 
+		верхней левой и правой нижней ячеек области соединяются двоеточием. 
+		Например, <span class="address">B2:D10 </span>или <span class="address">
+		$B$2:$D$10</span>. </p>
+		<p>При работе с матрицами бывает удобно присвоить ее области имя. Для 
+		этого есть два способа. Самый простой – это выделить нужную область на 
+		листе, а затем кликнуть в окно <span class="menu">Name Box</span> (см.
+		<a href="#Fig02">Рис. 2</a>), стереть там адрес и вписать имя – например
+		<span class="address">Data</span> (Рис. 6). Другой способ – это 
+		действовать через меню: <span class="menu">Insert-Name-Define</span>.</p>
+		<p>Имя области может быть глобальным – доступным для любых листов книги, 
+		или локальным – определенным только для одного листа. В последнем 
+		случае, имя следует определять в форме: <span class="address">
+		ListName!RangeName</span> </p>
+		<p>Подробности смотри
+		<a href="http://office.microsoft.com/ru-ru/excel/HP052015361049.aspx">
+		здесь</a>.</p>
+        <p align="left"><a href="#Contents">Содержание</a>.<a name="Ch1.5"></a></p>
+        <h2 align="left">1.5. Простейшие вычисления</h2>
+      <p>Для проведения вычислений в Excel используются формулы. Формула 
+		начинается со знака равенства (=) и может включать в себя: ссылки, 
+		операторы, функции и константы. </p>
+		<p>Операторы позволяют проводить простейшие арифметические вычисления, 
+		примеры которых показаны на Рис. 7&nbsp; <samp><a name="Fig07"></a></samp>
+        &nbsp;</p>
+        <div class="style2">
+			<span style="mso-ansi-language:
+RU">h</span><img src="excel/Fig07a.png" width="247" height="89">
+<img src="excel/Fig07b.png" width="245" height="90">
+<img src="excel/Fig07c.png" width="246" height="86">
+<br>
+<img src="excel/Fig07d.png" width="245" height="91"> <img src="excel/Fig07e.png"></div>
+		<p align="center"><samp>
+		Рис.7 Простейшие вычисления</samp></p>
+        <p>
+		<a href="http://office.microsoft.com/ru-ru/excel/HP052255841049.aspx">
+		Подробнее</a></p>
+<p align="left"><a href="#Contents">Содержание</a>.<a name="Ch1.6"></a>
+      <h2 align="left">1.6. Функции</h2>
+      <p>Функции – это стандартные формулы, проводящие вычисления по заданным 
+		величинам, называемым аргументами. Некоторые примеры функций показаны на 
+		Рис. 8.<samp><a name="Fig08"></a></samp>
+        </p>
+        <p align="center"><img src="excel/Fig08a.png" width="277" height="90">
+		<img src="excel/Fig08b.png" width="278" height="89"> <br>
+		<img src="excel/Fig08c.png" width="277" height="88">
+		<img src="excel/Fig08d.png" width="278" height="91"><p align="center"><samp>Рис.8
+      Простейшие функции</samp></p>
+		<p align="left">Функция состоит из имени, за которым следует круглая 
+		скобка, затем идет список аргументов, разделенных запятой и, наконец, 
+		закрывающая скобка.
+        <p align="left">Например, 
+		<a href="http://office.microsoft.com/ru-ru/excel/HP052091921049.aspx">функция</a>, показанная на Рис. 9 вычисляет 
+		значение кумулятивного (<span class="prog">cumulative</span><span class="address">=TRUE</span>), 
+		стандартного (<span class="prog">mean</span><span class="address">=0, </span>
+		<span class="prog">standard_dev</span><span class="address"> =1</span>) 
+		<a href="statistics.htm#Ch2.3">нормального распределения</a> для величины, находящейся в ячейке
+		<span class="address">A1</span> .<a name="Fig09"></a>
+        <p align="center"><a href="excel/Excel.xls#Function!C1">
+		<img src="excel/Fig09.png" class="style25"></a><p align="center"><samp>Рис.<span lang="en-us">9</span> 
+		Ввод функции через Formula Bar </samp></p>
+        <p>Задать функцию можно по-разному. Проще всего ввести ее в окно
+		<span class="menu">Formula Bar</span>&nbsp;<img src="excel/fb.png" width="91" height="16" class="style3"> 
+		(см. <a href="#Fig02">Рис. 2</a>). Только предварительно нужно открыть 
+		это окно через меню <span class="menu">View-Formula Bar</span>. Такой 
+		способ удобен, когда вы хорошо помните синтаксис функции. Формулу можно 
+		задать быстро, т.к. аргументы вводятся простым кликаньем по ячейкам, в 
+		которых находятся аргументы. </p>
+		<p align="left">Другой способ спасает тогда, когда мы плохо помним вид 
+		функции, которая нам нужна. Тогда удобно воспользоваться кнопкой
+		<span class="menu">Insert Function</span>
+		<img src="excel/insfun.png" width="13" height="13" class="style3"> (<a href="#Fig02">Рис. 
+		2</a>). После этого появится диалоговое окно (Рис. 10), из которого 
+		можно выбрать нужную функцию .<a name="Fig10"></a><p class="style2">
+<span lang="en-us">&nbsp;
+<img src="excel/Fig10.png"></span><p align="center"><samp>Рис.1<span lang="en-us">0</span> 
+		Ввод функции через <strong>Insert Function</strong></samp></p>
+      <p>Как только функция выбрана, появляется&nbsp; второе окно, специфическое для выбранной функции, 
+		в котором устанавливаются ссылки на аргументы функции 
+<a name="Fig11"></a>
+		</p>
+        <p align="center"><img src="excel/Fig11.png" width="521" height="432"><p align="center"><samp>Рис.1<span lang="en-us">1</span> 
+		Задание значений аргументов</samp></p>
+		<p>Подробнее изучить эту тему можно
+		<a href="http://office.microsoft.com/training/training.aspx?AssetID=RC061914861049">здесь</a>.</p>
+		<p align="left"><a href="#Contents">Содержание</a> <a name="Ch1.7"></a><h2 align="left">
+		1.7. Некоторые важные функции </h2>
+        <p align="left">Excel предоставляет широкий выбор стандартных 
+		(встроенных) функций. Мы не можем рассмотреть их все, поэтому 
+		остановимся только на тех, которые представляются нам самыми важными. 
+		<p align="left"><span class="address"><strong>SUM<span lang="en-us">
+		</span>/ СУММ</strong></span><p align="left">Суммирует все числа в 
+		списке аргументов или в области. 
+		<p align="left"><em><strong>Синтаксис</strong></em>: 
+      <p align="left"><B><span class="prog">S<span lang="en-us">UM</span></span></B>(<span class="prog"><B><span lang="en-us">number1</span></B> [,<span lang="en-us">number2</span>]
+      [,<span lang="en-us">...</span>])&nbsp;</span> 
+      </p>
+      <p align="left"><b><i>Пример</i></b> <a name="Fig12"></a>
+        <p align="center"><a href="excel/Excel.xls#SUM!A13">
+		<img src="excel/Fig12.png" class="style25"></a><p align="center"><samp>Рис.12
+      Функция <strong>SUM</strong></samp></p>
+        <p align="left"><strong><em>
+		<a href="http://office.microsoft.com/ru-ru/excel/HP052092901049.aspx" name="SUMSQ">Описание</a></em></strong><p align="left"><span class="address"><strong>
+		SUM<span lang="en-us">SQ </span>/ СУММКВ</strong></span><p align="left">
+		Возвращает сумму квадратов аргументов. 
+		<p align="left"><em><strong>Синтаксис</strong></em>: 
+      <p align="left"><B><span class="prog">S<span lang="en-us">UMSQ</span></span></B>(<span class="prog"><B><span lang="en-us">number1</span></B> 
+		[,<span lang="en-us">number2</span>] [,<span lang="en-us">...</span>])&nbsp;</span> 
+      </p>
+      <p align="left"><b><i>Пример</i></b><a name="Fig13"></a>
+        <p align="center"><a href="excel/Excel.xls#SUM!C13">
+		<img src="excel/Fig13.png" class="style25" width="269" height="287"></a><p align="center"><samp>
+		Рис.1<span lang="en-us">3</span> Функция <strong>SUM</strong></samp><span lang="en-us"><samp><strong>SQ</strong></samp></span></p>
+        <p align="left"><strong><em>
+		<a href="http://office.microsoft.com/ru-ru/excel/HP052092951049.aspx">
+		Описание</a></em></strong><p align="left"><span class="address"><strong>
+		SUMPRODUCT / СУММПРОИЗВ</strong></span> 
+		<p align="left">Перемножает соответствующие элементы заданных массивов и 
+		возвращает сумму произведений 
+		<p align="left"><em><strong>Синтаксис</strong></em>: 
+      <p align="left"><span class="prog"><strong>SUMPRODUCT </strong></span>(<span class="prog"><strong>array1</strong>,
+		<strong>array2</strong>, ...) &nbsp;</span></p>
+      <p align="left"><b><i>Пример</i></b><a name="Fig14"></a><p align="center">
+		<a href="excel/Excel.xls#SUM!L13">
+		<img src="excel/Fig14.png" class="style25" width="361" height="287"></a>&nbsp;<p align="center"><samp>
+		Рис.1<span lang="en-us">4</span> Функция <strong>SUM<span lang="en-us">PRODUCT</span></strong></samp></p>
+        <p align="left"><strong><em>
+		<a href="http://office.microsoft.com/ru-ru/excel/HP052092931049.aspx">
+		Описание</a></em></strong><p align="left"><span class="address"><strong>
+		AVERAGE / СРЗНАЧ</strong></span><p align="left">Возвращает 
+		<a href="statistics.htm#Ch3.5">среднее 
+		арифметическое </a>своих аргументов 
+		<p align="left"><em><strong>Синтаксис</strong></em>: 
+      <p align="left" class="prog"><B><span lang="en-us">AVERAGE</span></B>(<B><span lang="en-us">number1</span></B> 
+		[,<span lang="en-us">number2</span>] [,<span lang="en-us">...</span>])&nbsp; 
+      </p>
+      <p align="left"><b><i>Пример</i></b><span lang="en-us"><a name="Fig15"></a></span>
+        <p align="center"><a href="excel/Excel.xls#SUM!E13">
+		<img src="excel/Fig15.png" class="style25" width="279" height="289"></a><p align="center"><samp>
+		Рис.1<span lang="en-us">5</span> Функция <strong>AVERAGE</strong> </samp></p>
+        <p align="left"><strong><em>
+		<a href="http://office.microsoft.com/ru-ru/excel/HP052089941049.aspx">
+		Описание</a></em></strong><p align="left"><span class="address"><strong>
+		V<span lang="en-us">AR</span> / ДИСП</strong></span>&nbsp;<p align="left">
+		Оценивает <a href="statistics.htm#Ch3.5">дисперсию</a> по выборке <img src="excel/var.png" class="style3">.<p align="left">
+		<em><strong>Синтаксис</strong></em>: 
+      <p align="left"><span class="prog"><B><span lang="en-us">VAR</span></B></span>(<span class="prog"><B><span lang="en-us">number1</span></B> 
+		,<span lang="en-us"><strong>number2,</strong></span></span>
+		<span class="prog"> <span lang="en-us">
+		...</span>)&nbsp;</span> 
+      </p>
+      <p align="left"><b><i>Пример</i></b> <a name="Fig16"></a>
+        &nbsp;<p align="center"><a href="excel/Excel.xls#SUM!G13">
+		<img src="excel/Fig16.png" class="style25" width="259" height="289"></a><p align="center"><samp>
+		Рис.1<span lang="en-us">6</span> Функция <strong>V<span lang="en-us">AR</span></strong> </samp></p>
+        <p align="left"><strong><em>
+		<a href="http://office.microsoft.com/ru-ru/excel/HP052093301049.aspx">
+		Описание</a></em></strong><p align="left"><span class="address"><strong>
+		STDEV / СТАНДОТКЛОН</strong></span> 
+		<p align="left">Оценивает <a href="statistics.htm#Ch3.5">стандартное отклонение</a> по выборке
+		<img src="excel/stdev.png" class="style3">.<p align="left"><em><strong>
+		Синтаксис</strong></em>: 
+      <p align="left"><span class="prog"><B><span lang="en-us">STDEV</span></B></span>(<span class="prog"><B><span lang="en-us">number1</span></B> 
+		,<span lang="en-us"><strong>number2,</strong></span></span>
+		<span class="prog"> <span lang="en-us">
+		...</span></span>)&nbsp; 
+      </p>
+      <p align="left"><b><i>Пример</i></b> <a name="Fig17"></a>
+        <p align="center"><a href="excel/Excel.xls#SUM!I13">
+		<img src="excel/Fig17.png" class="style25"></a>&nbsp;<p align="center"><samp>
+		Рис.1<span lang="en-us">7</span> Функция <strong><span lang="en-us">
+		STDEV</span></strong> </samp></p>
+        <p align="left"><strong><em>
+		<a href="http://office.microsoft.com/ru-ru/excel/HP052092771049.aspx">
+		Описание</a></em></strong><p align="left"><span class="address"><strong>
+		CORREL / КОРРЕЛ </strong></span>
+		<p align="left">Возвращает <a href="statistics.htm#Ch3.6">коэффициент корреляции</a>
+		<img src="excel/correl.gif" width="109" height="48" class="style3"> между интервалами 
+		ячеек array1 и array2 
+		<p align="left"><em><strong>Синтаксис</strong></em>: 
+      <p align="left"><span class="prog"><strong><span lang="en-us">CORREL</span></strong></span>(<span class="prog"><strong>array1</strong>,
+		<strong>array2</strong></span>)</p>
+      <p align="left"><b><i>Пример</i></b>
+      <a name="Fig18"></a>
+        <p align="center"><a href="excel/Excel.xls#SUM!O13">
+		<img src="excel/Fig18.png" class="style25"></a>&nbsp;<p align="center"><samp>
+		Рис.1<span lang="en-us">7</span> Функция <strong><span lang="en-us">
+		CORREL</span></strong> </samp></p>
+        <p align="left"><strong><em>
+		<a href="http://office.microsoft.com/ru-ru/excel/HP052090231049.aspx">
+		Описание</a></em></strong><p align="left">Функции можно объединять в 
+		составные формулы, пример которой показан на Рис. 19.<a name="Fig19"></a>
+        <p align="center"><a href="excel/Excel.xls#SUM!Q13">
+		<img src="excel/Fig19.png" class="style25"></a>&nbsp;<p align="center"><samp>
+		Рис.19 Пример составной формулы </samp></p>
+		<p align="left"><a href="#Contents">Содержание</a>
+		<h2 align="left">1.<span lang="en-us">8.</span> Ошибки в формулах</h2>
+		<p align="left">При вводе формул, а также при последующем изменении 
+		листов, возникают ошибки. При этом вместо ожидаемого результата в ячейке 
+		появляется один из символов, показанных на Рис. 20 .&nbsp;<a name="Fig20"></a>
+        <p align="center"><a href="excel/Excel.xls#Errors!A1">
+		<img src="excel/Fig20.png" class="style25"></a><p align="center"><samp>Рис.20
+      Ошибки в формулах </samp></p>
+        <p align="left">Установить происхождение ошибки можно с помощью меню
+		<span class="menu">Formula Auditing,</span> доступной через раздел
+		<span class="menu">Tools</span>. 
+		<p align="left">Подробнее об ошибках можно прочитать
+		<a href="http://office.microsoft.com/training/Training.aspx?AssetID=RP010919371049">
+		здесь</a><span lang="en-us">.</span><p align="left"><a href="#Contents">
+		Содержание</a> <a name="Ch1.9"></a>
+		<h2 align="left"><span lang="en-us">1</span>.9. &quot;Растаскивание&quot; формул </h2>
+      <p align="left">При работе с данными в виде матрицы, часто возникает 
+		необходимость ввести не одну, а целую серию формул. Например, при 
+		выполнении SNV преобразования спектральных данных нужно вычислить 
+		средние значения и среднеквадратичные отклонения по каждой строке. Очень 
+		утомительно было бы повторять одну и ту же формулу многократно, меняя в 
+		ней только аргумент, даже для сильно усеченного примера, показанного на
+		<a href="#Fig22">Рис. 22</a>. А в реальных данных число строк или 
+		столбцов может доходить до десятков тысяч. К счастью это и не нужно, 
+		поскольку можно воспользоваться техникой &quot;растаскивания&quot; формул.&nbsp;<p align="left">Поясним эту технику на нашем примере. Начнем с ввода 
+		формулы-образца. В этом случае – &nbsp;это формула, помещенная в ячейку
+		<span class="address">J3</span>&nbsp; .<a name="Fig21"></a>
+        <p align="center"><span lang="en-us">
+		&nbsp;<img src="excel/Fig21.png"></span><p align="center"><samp>Рис.21
+      Маркер заполнения </samp></p>
+      <p align="left">Формулы в соседние ячейки можно вставить при помощи 
+		маркера заполнения, которым называется&nbsp;небольшой черный квадрат в правом 
+		нижнем углу выделенной области ячеек. При наведении мышки на этот 
+		маркер, указатель принимает вид черного креста. После этого можно 
+		перетащить ячейку, содержащую формулу, в примыкающий диапазон. Тащить 
+		можно по вертикали, как показано на Рис. 22, и по горизонтали.<a name="Fig22"></a><p align="center">
+		<a href="excel/Excel.xls#Expand!J3">
+		<img src="excel/Fig22.gif" class="style25"></a>&nbsp;<p align="center"><samp>
+		Рис.22 Растаскивание серии однотипных формул</samp></p>
+      <p align="left">Формулы можно размножать и другим способом. Сначала 
+		копируем ячейку, содержащую формулу-образец. Потом отмечаем диапазон 
+		ячеек, в которые нужно распространить формулу, и делаем специальную 
+		вставку, выбирая опцию <span class="menu">Formulas</span>.</p>
+        <p align="center"><a href="excel/Excel.xls#Expand!B17">
+		<img src="excel/Fig23.png" class="style25"></a>&nbsp;<p align="center"><samp>Рис.23
+      Копирование серии однотипных формул </samp></p>
+      <p align="left">Отметим, что независимо от способа, ссылки получаются 
+		правильными – на соответствующий диапазон ячеек. Это произошло потому, 
+		что в исходной формуле мы использовали относительную адресацию в 
+		аргументе:<span class="address"> B3:I3</span>. 
+		<p align="left">Подробности&nbsp;можно прочитать
+		<a href="http://office.microsoft.com/ru-ru/excel/HP052014411049.aspx">
+		здесь</a>.&nbsp;<p align="left"><a href="#Contents">Содержание</a> 
+		<a name="Ch1.10"></a>
+		<h2 align="left"><span lang="en-us">1</span>.10. Построение графиков </h2>
+<p align="left">В Excel можно строить диаграммы разных типов. Но для нас 
+интересны только два вида: диаграмма рассеяния (scatter) и&nbsp; график (line). 
+Пример диаграммы рассеяния приведен на Рис. 24 .<a name="Fig24"></a></p>
+        <p align="center"><a href="excel/Excel.xls#Bug!N4">
+		<img src="excel/Fig24.png" class="style25" width="340" height="342"></a>&nbsp;<p align="center"><samp>Рис.24
+      Диаграмма рассеяния </samp></p>
+      <p align="left">Диаграммы такого типа используются для построения графиков 
+		счетов, зависимостей &quot;измерено-предсказано&quot;, и т.п. От линейных графиков 
+		они отличаются равноправием обеих осей. В линейных графиках ось абсцисс 
+		предназначена только для отображения категорийных переменных, т.е. 
+		величин, в которых важна не их величина, а порядок следования. Поэтому 
+		линейные графики подходят для представления зависимостей от числа 
+		главных компонент, например, для изображения того, как величины RMSEC и 
+		RMSEP меняются при усложнении модели. 
+		<p align="left">Методы построения &nbsp;графиков в версиях 2003 и 2007 сильно 
+		отличаются. Поэтому мы не будем на этом останавливаться, предоставив эту 
+		тему для
+		<a href="http://office.microsoft.com/ru-ru/excel/HA010346071049.aspx">
+		самостоятельного изучения</a>.<p align="left"><a href="#Contents">Содержание</a><a name="Ch2"></a>
+        <h1 align="left">2. Матричные операции <a name="Ch2.1"></a></h1>
+        <h2 align="left">2.1. Формулы массива </h2>
+      <p align="left">Многие операции с матрицами выполняются с помощью формул 
+		специального вида, называемыми <em>формулами массива</em>. От других формул они 
+		отличаются тем, что их результатом является не одна величина (число), а 
+		набор величин – массив. При вводе таких формул требуется специальное 
+		подтверждение – вместо клавиши <span class="menu">ENTER </span>надо 
+		нажимать комбинацию из трех клавиш <span class="menu">CTRL+SHIFT+ENTER</span>. 
+		<p align="left">Поясним использование формул массивов на простом 
+		примере. Предположим, что нам нужно выполнить автошкалирование 
+		(стандартизацию) данных, записанных в матрице <strong>X</strong>. Для 
+		этого сначала нужно вычислить средние значения <em>m</em><sub><em>j</em></sub>&nbsp;и 
+		среднеквадратичные отклонения <em>s<sub>j</sub></em> для каждого (<em>j</em>-го) 
+		столбца <strong>X</strong>, а затем вычесть из каждого столбца величину
+		<em>m<sub>j</sub> </em>и поделить на величину <em>s<sub>j</sub> </em>
+		<p class="style2"><img src="excel/auto.png" width="116" height="25">&nbsp;<p align="left">
+		Такое преобразование можно сделать с помощью обычных формул, как это 
+		показано на Рис. 25.<span lang="en-us"> <a name="Fig25"></a></span></p>
+        <p align="center"><span lang="en-us">&nbsp;</span><a href="excel/Excel.xls#Standard!I4"><img src="excel/Fig25.png" class="style25"></a><p align="center"><samp>Рис.25
+      Обычная формула </samp></p>
+<p align="left">Надо только не забыть указать знак $ перед номерами строк
+<span class="address">9</span> (<strong>m</strong>) и <span class="address">11</span> 
+(<strong>s</strong>) , чтобы зафиксировать положение соответствующих величин в 
+строках. </p>
+		<p align="left">Если матрица <strong>X</strong> велика, то удобнее 
+		воспользоваться формулой массива. (Рис. 26). Назовем соответствующие 
+		области на листе: <span class="address">X</span>,
+		<span class="address">m</span> и <span class="address">
+		s</span>. Отметим пустую область <span class="address">
+		N3:R7</span>, размеры которой совпадают с ожидаемым результатом. После 
+		этого введем в <span class="menu">Formula Bar</span> &nbsp;выражение
+		<span class="address">=(X-m)/s</span>. Завершает ввод комбинация клавиш
+		<span class="menu">CTRL+SHIFT+ENTER</span>. Если все сделано правильно, 
+		то в <span class="menu">Formula Bar</span> появится формула
+		<span class="address">{ =(X-m)/s}</span>, заключенная в фигурные скобки
+		<span class="address">{}</span>. Это – признак формулы массива. .<a name="Fig26"></a></p>
+        <p align="center"><span lang="en-us">&nbsp;
+		<a href="excel/Excel.xls#Expand!N3">
+		<img src="excel/Fig26.png" class="style25"></a></span><p align="center"><samp>Рис.26
+      Формула массива</samp></p>
+		<p>
+		<a href="http://office.microsoft.com/ru-ru/excel/HP051983191049.aspx">
+		Дополнительная информация.</a>&nbsp;</p>
+		<p><a href="#Contents">Содержание</a><a name="Ch2.2"></a>
+        </p>
+        <h2 align="left">2.2. Создание и изменение формул массива </h2>
+      <p align="left">Для того чтобы правильно ввести формулу массива, нужно 
+		выделить на листе область, размеры которой совпадают с ожидаемым 
+		результатом. </p>
+		<p align="left">Если выделить слишком большую область, то при вычислении 
+		избыточные ячейки будут заполнены символами ошибки <span class="address">
+		#N/A</span>. Если область вывода будет меньше, чем нужно, то часть 
+		результатов пропадет. После выделения области, в <span class="menu">
+		Formula Bar</span> <img src="excel/fb.png" class="style3">&nbsp;записывается 
+		формула и нажимается <span class="menu">CTRL+SHIFT+ENTER</span>. </p>
+		<p align="left">Альтернативно, сначала можно ввести формулу в одну 
+		ячейку, затем отметить область вывода, начиная с этой ячейки (право и 
+		вниз), потом перейти в <span class="menu">Formula Bar</span> и нажать
+		<span class="menu">CTRL+SHIFT+ENTER</span>.&nbsp; </p>
+		<p align="left">Для того, чтобы изменить формулу массива нужно выделить 
+		область содержащую результат. Затем нужно перейти <span class="menu">
+		Formula Bar</span>. При этом фигурные скобки вокруг формулы
+		<span class="address">{ }</span> исчезнут. После этого формулу можно 
+		изменить и нажать <span class="menu">CTRL+SHIFT+ENTER</span>. </p>
+		<p align="left">Для того чтобы расширить область, которую занимает 
+		формула массива, достаточно выделить для нее новую область, перейти в
+		<span class="menu">Formula Bar</span> и нажать <span class="menu">CTRL+SHIFT+ENTER</span>. А вот для того, чтобы уменьшить эту область 
+		(например, чтобы избавиться от символов <span class="address">#N/A</span>) 
+		придется потратить больше сил. Сначала нужно встать на любую ячейку 
+		области, перейти в <span class="menu">Formula Bar</span> и скопировать 
+		строку формулы. Затем нужно стереть содержимое старой области и отметить 
+		новую, меньшую область. После этого опять перейти в <span class="menu">
+		Formula Bar</span>, вставить формулу и нажать <span class="menu">CTRL+SHIFT+ENTER</span>. </p>
+		<p align="left">Изменять отдельные ячейки в формуле массива нельзя. При 
+		попытке сделать это появляется предупреждение .<a name="Fig27"></a></p>
+        <p align="center">&nbsp;<img src="excel/Fig27.png" width="260" height="108"><p align="center"><samp>
+Рис.27 Предупреждение о недопустимой операции с формулой массива </samp></p>
+      <p align="left"><a href="#Contents">Содержание</a><a name="Ch2.3"></a>
+        <h2 align="left">2.3. Простейшие операции с матрицами </h2>
+        <p>С помощью формул массива матрицы можно складывать и умножать на 
+		числа. <a name="Fig28"></a>
+		<p align="center"><a href="excel/Excel.xls#Binary!B10">
+		<img src="excel/Fig28.png" class="style25"></a>&nbsp;</p>
+		<p align="center"><samp>
+Рис.28 Сложение матриц и умножение на число</samp></p>
+      <p>Для перемножения двух матриц используется функция <span class="prog">
+		<strong>MMULT</strong></span><span lang="en-us">.</span>&nbsp;<p align="left"><a href="#Contents">Содержание</a><a name="Ch2.4"></a><h2 align="left">
+2.4. Доступ к частям матрицы&nbsp; </h2>
+      <p align="left">Для доступа и отделения частей матрицы применяются две 
+		стандартные функции листа.
+      <p align="left"><span class="address"><strong><a name="OFFSET"></a>OFFSET / СМЕЩ </strong>
+		</span>
+		<p align="left">Возвращает ссылку на диапазон, отстоящий от ячейки или 
+		диапазона ячеек на заданное число строк и столбцов.
+      <p align="left"><b>
+		<i>Синтаксис&nbsp;</i></b>
+      <p align="left"><span class="prog"><strong>OFFSET</strong></span>(<span class="prog"><strong>reference</strong>,
+		<strong>rows</strong>, <strong>cols</strong> [, height] [, width])
+		&nbsp; </span> 
+      </p>
+      <blockquote>
+        <p align="left"><span class="prog"><span lang="en-us"><strong>r</strong></span><strong>eference</strong></span> 
+		– это ссылка на область, начиная с которой вычисляется смещение<span lang="en-us">;</span>
+        <p align="left"><span class="prog"><span lang="en-us"><strong>r</strong></span><strong>ows</strong></span> 
+		– число строк, на которое надо сместиться (положительное – вниз, 
+		отрицательное вверх от начала)<span lang="en-us">;</span>
+        <p align="left"><span class="prog">cols </span>–То же, но для 
+		столбцов (положительное – вправо, отрицательное влево от начала)<span lang="en-us">;</span> &nbsp;
+        <p align="left"><span class="prog">height</span> –&nbsp; необязательный 
+		аргумент. Положительное число строк возвращаемой ссылки<span lang="en-us">;</span>
+        <p align="left"><span class="prog">width</span> –&nbsp; необязательный 
+		аргумент. Положительное число столбцов возвращаемой ссылки<span lang="en-us">.</span> &nbsp;</blockquote>
+        <p align="left"><b><i>Примечания&nbsp;</i></b>
+      <ul type="square">
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Если 
+			аргументы <span class="prog">height </span>или <span class="prog">width
+			</span>опущены, то предполагается, что используется 
+			такая же высота или ширина, как в аргументе <span class="prog">
+			<strong>reference</strong></span><span lang="en-us">;</span></li>
+		<li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Аргумент
+			<span class="prog"><strong>reference</strong> </span>– это ссылка на область, 
+			которая должна быть реальным, а не виртуальным массивом, т.е. 
+			находиться где-то на листе<span lang="en-us">.</span>&nbsp;</li>
+      </ul>
+		<p align="left"><b><i>Пример</i></b>
+        <a name="Fig29"></a>
+		<p align="center"><a href="excel/Excel.xls#Lookup!I4">
+		<img src="excel/Fig29.png" class="style25"></a>&nbsp;</p>
+		<p align="center"><samp>
+Рис.2<span lang="en-us">9</span> Функция <strong>OFFSET</strong> </samp></p>
+		<p align="left"><span class="prog"><strong>OFFSET</strong> </span>является функцией массива и ее ввод должен 
+		завершаться нажатием комбинации <span class="menu">CTRL+SHIFT+ENTER</span>.<span lang="en-us">
+		</span>
+		<p align="left">
+		<a href="http://office.microsoft.com/ru-ru/excel/HP052092081049.aspx" class="style25">
+		Описание</a><p align="left"><span class="address"><strong>
+		<a name="INDEX"></a>INDEX / ИНДЕКС</strong></span> 
+		<p align="left">Возвращает значения элементов в массиве, выбранных с 
+		помощью индексов строк и столбцов. 
+      <p align="left"><b>
+		<i>Синтаксис&nbsp;</i></b>
+      <p align="left"><span class="prog"><strong>INDEX</strong> (<strong>reference</strong> 
+		[, row_num] [, column_num]) </span> 
+      </p>
+      <blockquote>
+        <p align="left"><span class="prog"><span lang="en-us"><strong>r</strong></span><strong>eference</strong></span> 
+		– &nbsp;это массив значений (матрица)<span lang="en-us">;</span>
+        <p align="left"><span class="prog"><span lang="en-us">r</span></span><span class="prog">ow_<span lang="en-us">num</span></span> 
+		– необязательный аргумент. Номер строки, из которой берутся значения<span lang="en-us">;</span>
+        <p align="left"><span class="prog">col<span lang="en-us">_num</span></span> 
+		–необязательный аргумент. Номер столбца, из которого берутся значения<span lang="en-us">;</span>
+        </blockquote>
+        <p align="left"><b><i>Примечания&nbsp;</i></b>
+      <ul type="square">
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Если 
+			аргумент <span class="prog">row_num</span> опущен, то выбирается 
+			весь столбец<span lang="en-us">;</span></li>
+		<li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Если 
+			аргумент <span class="prog">col_num</span> опущен, то выбирается вся строка<span lang="en-us">;</span></li>
+		<li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Если указаны 
+			оба необязательных аргумента, то возвращается значение, находящееся 
+			в ячейке на пересечении соответствующей строки и столбца<span lang="en-us">;</span> </li>
+		<li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Аргумент
+			<span class="prog"><strong>reference</strong></span> может быть ссылкой, как на 
+			область, так и на виртуальный массив<span lang="en-us">.</span> </li>
+      </ul>
+		<p align="left"><b><i>Пример</i></b>
+        <a name="Fig30"></a>
+		<p align="center"><a href="excel/Excel.xls#Lookup!I9">
+		<img src="excel/Fig30.png" class="style25"></a></p>
+		<p align="center"><samp>
+Рис.<span lang="en-us">30</span> Функция <strong><span lang="en-us">INDEX</span></strong></samp></p>
+      <p align="left"><span class="prog"><strong>INDEX </strong></span>является функцией массива и ее ввод должен 
+		завершаться нажатием комбинации <span class="menu">CTRL+SHIFT+ENTER</span>.<span lang="en-us">
+		</span>
+		<p align="left">
+		<a href="http://office.microsoft.com/ru-ru/excel/HP052091381049.aspx">
+		Описание</a><p align="left"><a href="#Contents">Содержание</a><a name="Ch2.5"></a>&nbsp;<h2 align="left">
+		2.5. Унарные операции</h2>
+        <p align="left">К матрицам можно применять следующие унарные формулы<span lang="en-us">.</span> 
+		<p align="left"><span class="address"><strong><a name="MINVERSE"></a>MINVERSE /&nbsp; МОБР </strong>
+		</span>
+		<p align="left">Возвращает обратную матрицу<span lang="en-us">.</span> &nbsp;<p align="left"><b>
+		<i>Синтаксис</i></b>
+      <p align="left"><span class="prog"><strong>MINVERSE</strong> (<strong>array</strong></span>)
+		</p>
+      <blockquote>
+        <p align="left"><span class="prog"><strong>array</strong></span> – это массив 
+		значений (матрица)<span lang="en-us">.</span>
+        </blockquote>
+        <p align="left"><b><i>Примечания&nbsp;</i></b>
+      <ul type="square">
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Матрица 
+			<strong class="prog">array</strong> должна быть квадратной<span lang="en-us">;</span></li>
+		<li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Если 
+			матрица вырождена, то выводится символ ошибки <span class="address">
+			#VALUE!<span lang="en-us">.</span> </span></li>
+      </ul>
+		<p align="left"><em><strong>Пример</strong></em> <a name="Fig31"></a>&nbsp;<p class="style2">
+		<a href="excel/Excel.xls#Unitary!B10">
+		<img src="excel/Fig31.png" class="style25"></a>&nbsp;<p align="center"><samp>
+Рис.<span lang="en-us">3</span>1 Функция <strong><span lang="en-us">MINVERSE</span></strong></samp></p>
+      <p align="left"><span class="prog"><strong>MINVERSE</strong></span> является функцией массива и ее ввод должен 
+		завершаться нажатием комбинации <span class="menu">CTRL+SHIFT+ENTER</span><span lang="en-us">.</span><p align="left">
+		<a href="http://office.microsoft.com/ru-ru/excel/HP052091791049.aspx">
+		Описание</a><p align="left" class="address"><strong><a name="TRANSPOSE">
+		</a>TRANSPOSE / ТРАНСП
+		</strong>
+		<p align="left">Возвращает транспонированную матрицу
+		<p align="left"><b>
+		<i>Синтаксис&nbsp;</i></b>
+      <p align="left"><span class="prog"><strong><span lang="en-us">TRANSPOSE</span></strong> (<strong>array</strong>)
+		</span> 
+      </p>
+      <blockquote>
+        <p align="left"><span class="prog"><strong>array</strong></span>– &nbsp;это массив 
+		значений (матрица)<span lang="en-us">.</span>
+        </blockquote>
+        <p align="left"><b><i>Пример</i></b> <a name="Fig32"></a><p align="center">
+		<a href="excel/Excel.xls#Unitary!B3">
+		<img src="excel/Fig32.png" class="style25"></a></p>
+		<p align="center"><samp>
+Рис.<span lang="en-us">3</span>2 Функция <span lang="en-us"><strong>TRANSPOSE</strong></span></samp></p>
+      <p align="left">
+		<span class="prog"><strong>TRANSPOSE</strong></span> является функцией массива и ее ввод должен завершаться 
+		нажатием комбинации <span class="menu">CTRL+SHIFT+ENTER</span><span lang="en-us">.</span><p align="left">
+		<a href="http://office.microsoft.com/ru-ru/excel/HP052093191049.aspx">
+		Описание</a><p align="left"><span class="address"><strong>
+		<a name="MDETERM"></a>MDETERM / 
+		МОПРЕД </strong></span>
+		<p align="left">Возвращает детерминант матрицы<span lang="en-us">.</span>
+		<p align="left"><b>
+		<i>Синтаксис&nbsp;</i></b>
+      <p align="left"><span class="prog"><strong>MDETERM</strong> (<strong>array</strong></span>)
+		</p>
+      <blockquote>
+        <p align="left"><span class="prog"><strong>array</strong></span><span lang="en-us">
+		</span>– &nbsp;это массив 
+		значений (матрица)<span lang="en-us">.</span>
+        </blockquote>
+        <p align="left"><b><i>Примечания&nbsp;</i></b>
+      <ul type="square">
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Матрица 
+			<span class="prog"> 
+			<strong class="prog">array</strong></span>&nbsp;должна быть квадратной<span lang="en-us">.</span></li>
+      </ul>
+      <p align="left"><span class="prog"><strong>M</strong><span lang="en-us"><strong>DETERM</strong></span></span> не является функцией 
+		массива и ее ввод должен завершаться нажатием одной клавиши
+		<strong><span class="menu">ENTER</span><span lang="en-us">.</span></strong> 
+		<p align="left">
+		<a href="http://office.microsoft.com/ru-ru/excel/HP052091721049.aspx">
+		Описание</a><p align="left"><a href="#Contents">Содержание</a><a name="Ch2.6"></a>
+        <h2 align="left">
+		2.6. Бинарные операции</h2>
+        <p align="left">К матрицам можно применять следующие бинарные операции<span lang="en-us">.</span> 
+		<p align="left"><span class="address"><strong><a name="MMULT"></a>MMULT / МУМНОЖ </strong>
+		</span>
+		<p align="left">Возвращает произведение двух матриц<span lang="en-us">.</span> 
+		<p align="left"><b>
+		<i>Синтаксис&nbsp;</i></b>
+      <p align="left"><span class="prog"><strong><span lang="en-us">MMULT</span></strong> (<strong>array1</strong>,
+		<strong>array2</strong>)
+		</span> 
+      </p>
+      <blockquote>
+        <p align="left"><span class="prog"><strong>array1</strong>, <strong>array2</strong></span> – перемножаемые матрицы<span lang="en-us">.</span>
+        </blockquote>
+        <p align="left"><b><i>Примечания&nbsp;</i></b>
+      <ul type="square">
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Число 
+			столбцов в матрице <span class="prog"><strong>array1</strong></span> должно быть 
+			равно числу строк в матрицу <span class="prog"><strong>array2</strong></span>, 
+			иначе выводится символ ошибки <span class="address">#VALUE!<span lang="en-us">;</span> </span></li>
+		<li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">В получаемом 
+			массиве должно быть не более 5461 элементов (Excel 2003)<span lang="en-us">.</span>&nbsp;</li>
+      </ul>
+		<p align="left"><b><i>Пример</i></b><a name="Fig33"></a><p align="center">
+		<a href="excel/Excel.xls#MMULT!B11">
+		<img src="excel/Fig33.png" class="style25"></a></p>
+		<p align="center"><samp>
+Рис.<span lang="en-us">33</span> Функция <strong>MMULT</strong><strong class="style28">
+		</strong></samp></p>
+      <p align="left">
+		<span lang="en-us" class="prog"><strong>MMULT</strong></span> является функцией массива и ее ввод 
+		должен завершаться нажатием комбинации <span class="menu">CTRL+SHIFT+ENTER</span><span lang="en-us">.</span><p align="left">
+		<a href="http://office.microsoft.com/ru-ru/excel/HP052091811049.aspx">
+		Описание</a><p align="left"><a href="#Contents">Содержание</a><a name="Ch2.7"></a>
+        <h2 align="left">
+		2.<span lang="en-us">7</span>. Регрессия</h2>
+        <p align="left">Для построения <a href="statistics.htm#Ch7">регрессионных зависимостей</a> используются 
+		несколько стандартных функций листа. 
+		<p align="left"><span class="address"><strong><a name="TREND"></a>TREND / ТЕНДЕНЦИЯ</strong></span> 
+		<p align="left">Строит <a href="statistics.htm#Ch7.2">линейную регрессию</a><p class="style2"><em>y</em>=<em>b</em>+<em>m</em><sub>1</sub>
+		<em>x</em><sub>1</sub>+…+<em>m<sub>J</sub> x<sub>J</sub></em>+<em>e</em> 
+		<p align="left">Аппроксимирует известные значения вектора откликов<strong>
+		<span class="prog">known_y's</span></strong> для заданных значений матрицы предикторов
+		<span class="prog">known_x's</span> и возвращает значения <em>y</em>, 
+		для заданного массива<span class="prog"> new_x's</span>. &nbsp;<p align="left">
+		<b>
+		<i>Синтаксис&nbsp;</i></b>
+      <p align="left"><span class="prog"><strong>TREND</strong></span>(<span class="prog"><strong>known_y's</strong> [,known_x's] 
+		[,new_x's] [,const])</span></p>
+      <blockquote>
+        <p align="left"><span class="prog"><strong>known_y's</strong></span> – вектор 
+		известных значений откликов <em>y</em> (калибровочный набор)<span lang="en-us">;</span>&nbsp;
+        <p align="left"><span class="prog">known_x's </span>– необязательный 
+		аргумент. Матрица известных значений предикторов <strong>X</strong> 
+		(калибровочный набор)<span lang="en-us">;</span>&nbsp;
+        <p align="left"><span class="prog">new_x's</span> – необязательный 
+		аргумент. Матрица новых значений предикторов <strong>X</strong><sub>new</sub> 
+		(проверочный набор) для которых вычисляются и выводятся значения 
+		откликов<span lang="en-us">;</span>&nbsp;
+        <p align="left"><span class="prog">const </span>– необязательный 
+		аргумент. Логическое значение, которое указывает, требуется ли, чтобы 
+		параметр <em>b</em> был равен нулю. Если <span class="prog">const </span>имеет значение <span class="address">TRUE</span> или опущено, то<em> b</em> 
+		вычисляется обычным образом, иначе <em>b</em>=0<span lang="en-us">.</span></blockquote>
+        <p align="left"><b><i>Примечания&nbsp;</i></b>
+      <ul type="square">
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Вектор 
+			<span class="prog"><strong>known_y's </strong></span>должен занимать один столбец, 
+			тогда каждый столбец матрицы массива <span class="prog">known_x's</span> 
+			интерпретируется как отдельная переменная<span lang="en-us">;</span></li>
+		<li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Если 
+			аргумент <span class="prog">known_x's</span><span lang="en-us"> </span>опущен, то предполагается, что это вектор чисел {1;2;3;...} 
+			такого же размера, как и <span class="prog"><strong>known_</strong><span lang="en-us"><strong>y</strong></span><strong>'s</strong></span><span lang="en-us">;</span></li>
+		<li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Матрица 
+			новых значений <span class="prog">n<span lang="en-us">ew</span>_x's</span><span lang="en-us">
+			</span>должна иметь столько же столбцов 
+			(переменных), как и матрица <span class="prog">known_x's</span><span lang="en-us">;</span></li>
+		<li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Если 
+			аргумент <span class="prog">n<span lang="en-us">ew</span>_x's</span><span lang="en-us">
+			</span>опущен, то предполагается, что он совпадает с 
+			массивом <span class="prog">known_x's</span><span lang="en-us">.
+			</span>Результат является вектором, в котором число строк равно 
+			числу строк в массиве <span class="prog">n<span lang="en-us">ew</span>_x's</span>. </li>
+      </ul>
+		<p align="left"><em><strong>Пример</strong></em>&nbsp; <a name="Fig34">
+		</a>&nbsp;<p class="style2">
+		<a href="excel/Excel.xls#Regression!I16">
+		<img src="excel/Fig34.png" class="style25"></a>&nbsp;<p align="center"><samp>
+Рис.<span lang="en-us">34</span> Функция </samp><strong><samp>TREND</samp></strong> </p>
+      <p align="left">Функция <span class="prog"><strong>TREND</strong></span><span lang="en-us"> </span>является функцией 
+		массива и ее ввод должен завершаться нажатием комбинации 
+		<span class="menu">CTRL+SHIFT+ENTER</span><span lang="en-us">.</span>&nbsp;<p align="left">
+		<a href="http://office.microsoft.com/ru-ru/excel/HP052093201049.aspx">
+		Описание</a><p align="left"><span class="address"><strong>LINEST / 
+		ЛИНЕЙН</strong></span> 
+		<p align="left">Дополняет функцию <span class="prog"><strong>TREND</strong></span> и выводит некоторые 
+		статистические значения, связанные с регрессией &nbsp;<p class="style2"><em>y</em>=<em>b</em>+<em>m</em><sub>1</sub>
+		<em>x</em><sub>1</sub>+…+<em>m<sub>J</sub> x<sub>J</sub></em>+<em>e</em> 
+		<p align="left"><b>
+		<i>Синтаксис&nbsp;</i></b>
+      <p align="left"><span class="prog"><strong>LINEST</strong></span>(<span class="prog"><strong>known_y's</strong> 
+		[,known_x's] [,new_x's] [,const] <span lang="en-us">[,stats]</span></span>)</p>
+      <blockquote>
+        <p align="left"><span class="prog"><strong>known_y's</strong></span> – вектор 
+		известных значений откликов <em>y</em> (калибровочный набор)<span lang="en-us">;</span>&nbsp;
+        <p align="left"><span class="prog">known_x's</span> – необязательный 
+		аргумент. Матрица известных значений предикторов <strong>X</strong> 
+		(калибровочный набор)<span lang="en-us">;</span>&nbsp;
+        <p align="left">new_x's – необязательный 
+		аргумент. Матрица новых значений предикторов <strong>X</strong><sub>new</sub> 
+		(проверочный набор) для которых вычисляются и выводятся значения 
+		откликов<span lang="en-us">;</span>&nbsp;
+        <p align="left"><span class="prog">const</span> – необязательный 
+		аргумент. Логическое значение, которое указывает, требуется ли, чтобы 
+		параметр <em>b</em> был равен нулю. Если <span class="prog">const</span> 
+		имеет значение <span class="address">TRUE</span> или опущено, то<em> b</em> 
+		вычисляется обычным образом, иначе <em>b</em>=0<span lang="en-us">;</span>&nbsp;<p align="left">
+		<span class="prog">stats</span> – необязательный аргумент. Логическое 
+		значение, которое указывает, нужно ли выводить дополнительные 
+		статистические значения. Если <span class="prog">stats </span>имеет 
+		значение <span class="address">FALSE </span>или опущено, то выводятся 
+		только оценки коэффициентов<em> m<sub>J</sub></em>, …, <em>m</em><sub>2</sub>,&nbsp;<em>m</em><sub>1</sub> 
+		и <em>b</em> . Иначе выводится целая таблица &nbsp;</blockquote>
+        <p class="style2"><img src="excel/Fig35.png" width="382" height="147">&nbsp;<p class="style2">
+		<samp>Рис. 35 Таблица вывода функция <strong>LINEST</strong></samp><p>
+		<span class="address"><strong>m</strong><sub>J</sub></span>, …,
+		<span class="address"><strong>m</strong><sub>2</sub></span>,&nbsp;<span class="address"><strong>m</strong><sub>1</sub></span> 
+		и <span class="address"><strong>b</strong></span> – оценки регрессионных 
+		коэффициентов<span lang="en-us">;</span></p>
+		<p><span class="address"><strong>s</strong><sub>J</sub></span>, …,
+		<span class="address"><span lang="en-us"><strong>s</strong></span><sub>2</sub></span>,&nbsp;<span class="address"><span lang="en-us"><strong>s</strong></span><sub>1</sub></span> 
+		и <span class="address"><span lang="en-us"><strong>s</strong></span><sub>b</sub></span> 
+		– стандартные ошибки для оценок регрессионных коэффициентов<span lang="en-us">;</span></p>
+		<p><span class="address"><strong>R</strong><sup>2</sup></span> – 
+		коэффициент детерминации<span lang="en-us">;</span> </p>
+		<p><span class="address"><strong>s</strong><sub>y</sub></span> – 
+		стандартная ошибка оценки <em>y<span lang="en-us">;</span></em></p>
+		<p><span class="address"><strong>F</strong></span> – F-статистика<span lang="en-us">;</span></p>
+		<p><span class="address"><strong>DoF</strong></span> – число степеней 
+		свободы<span lang="en-us">;</span></p>
+		<p><span class="address"><strong>SS</strong><sub>reg</sub></span> – 
+		регрессионная сумма квадратов<span lang="en-us">;</span></p>
+		<p><span class="address"><strong>SS</strong><sub>res</sub> </span>– 
+		остаточная сумма квадратов. </p>
+		<p align="left"><b><i>Примечания&nbsp;</i></b>
+      <ul type="square">
+        <li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">
+			<span class="prog"><strong>LINEST</strong> </span>– это 
+			очень плохо сконструированная функция, очень неудобная в 
+			практическом применении<span lang="en-us">;</span></li>
+		<li>
+          <p align="left" style="margin-left: 25; margin-bottom: 6">Примечания, 
+			представленные в описании функции <a href="#TREND" class="prog">
+			<strong>TREND</strong></a> полностью применимы к 
+			функции <span class="prog"><strong>LINEST</strong></span><span lang="en-us">.</span> </li>
+      </ul>
+		<p align="left"><em><strong>Пример</strong></em>&nbsp; <a name="Fig36">
+		</a>&nbsp;<p class="style2">
+		<a href="excel/Excel.xls#Regression!M3">
+		<img src="excel/Fig36.png" class="style25"></a>&nbsp;<p align="center"><samp>
+		Рис.<span lang="en-us">36</span> Функция </samp><strong><samp>LINEST</samp></strong> </p>
+      <p align="left">Функция <span class="prog"><strong>LINEST</strong></span> является функцией массива и ее ввод должен 
+		завершаться нажатием комбинации <span class="menu">CTRL+SHIFT+ENTER</span><span lang="en-us">.</span>&nbsp;<p align="left">
+		<a href="http://office.microsoft.com/ru-ru/excel/HP052091551049.aspx">
+		Описание</a><p align="left"><a href="#Contents">Содержание</a><a name="Ch2.8"></a>
+        <h2 align="left">
+		2.8. Критическая ошибка в Excel 2003 </h2>
+        <p align="left">В Excel 2003 функции <span class="prog"> <strong>TR</strong><span lang="en-us"><strong>E</strong></span><strong>ND</strong></span> и 
+		<span class="prog"><strong>LINEST</strong> </span>при определенных 
+		условиях дают неверный результат. 
+		<p align="left">Так происходит когда одновременно:<ul>
+		<li>
+		<p align="left">среднее значение по каждой переменной в матрице 
+		предикторов <strong>X</strong> равно нулю<span lang="en-us">;</span></li>
+		<li>
+		<p align="left">среднее значение отклика <span lang="en-us"><strong>Y</strong>
+		</span>не равно нулю. </li>
+		</ul>
+		<p align="left">На <a href="#Fig37">Рис. 37</a> показан как раз такой 
+		случай: средние значения по всем столбцам матрицы <strong>Xc</strong> 
+		равны нулю, а среднее по столбцу <strong>Yc</strong> отлично от нуля.. 
+		<p align="left"><em><strong>Пример</strong></em>&nbsp; <a name="Fig37">
+		</a>&nbsp;<p class="style2">
+		<a href="excel/Excel.xls#Bug!I4">
+		<img src="excel/Fig37.png" class="style25"></a>&nbsp;<p align="center"><samp>
+		Рис.<span lang="en-us">3</span>7 Ошибка в регрессионных функциях Excel 
+		2003</samp></p>
+      <p align="left">Ситуацию можно исправить, применяя функцию 
+		<span class="prog"><strong>TREND</strong></span> к 
+		центрированным значениям отклика, с последующей коррекцией результата. 
+		Для этого можно использовать формулу <span class="address">
+		<span lang="en-us">=</span>TREND(Yc-ym, 
+		Xc)+ym,</span> применение которой показано на том же рисунке.
+        <p align="left">Удивительно, но эта ошибка не была замечена 
+		пользователями. Однако в новой версии 2007 она исправлена<span lang="en-us">.</span> &nbsp;<p align="left">
+		<a href="#Contents">Содержание</a> <a name="Ch2.9"></a>&nbsp;<h2 align="left">
+		2.9. Виртуальный массив</h2>
+        <p align="left">При анализе данных часто возникает проблема сохранения 
+		промежуточных результатов, которые нужны не сами по себе, а только для 
+		того, чтобы вычислить по ним другие, полезные значения. Например, 
+		остатки в методе PCA часто нам не интересны, а нужны только для 
+		определения полной объясненной дисперсии, ортогональных расстояний и 
+		т.п. При этом размеры таких промежуточных массивов могут быть очень 
+		велики, да и к тому же их приходится вычислять при различных значениях 
+		числа главных компонент. Все это ведет к заполнению рабочей книги 
+		большим количеством ненужных, промежуточных результатов. Этого можно 
+		избежать, если использовать виртуальные массивы. Поясним их суть на 
+		простом примере<span lang="en-us">.</span><a name="Fig38"></a>&nbsp;<p class="style2">
+		<a href="excel/Excel.xls#Virtual!B3">
+		<img src="excel/Fig38.png" class="style25"></a>&nbsp;<p align="center"><samp>
+		Рис.<span lang="en-us">38</span> Пример использования виртуального 
+		массива </samp></p>
+      <p align="left">Предположим, что задана матрица <strong>A</strong>, а 
+		нужно вычислить детерминант матрицы <strong>A</strong><sup>t</sup><strong>A</strong> 
+		. На Рис. 38 показаны два способа вычисления. Первый – через 
+		последовательность промежуточных массивов, отмеченных красными 
+		стрелками. Второй – с помощью одной формулы, показанной зеленой 
+		стрелкой. Оба пути ведут к одному и тому же результату, но красный путь 
+		занимает на листе много места, а зеленый последовательно использует 
+		несколько промежуточных виртуальных массивов. Все они, по сути, 
+		совпадают с реальными массивами красного пути, но на лист не выводятся.
+      <p align="left">Первый массив –&nbsp; это транспонированная матрица <strong>A</strong><sup>t</sup>, 
+		получаемая как результат функции 
+		<span class="address"><a href="#TRANSPOSE">TRANSPOSE</a>(A).
+      </span>
+      <p align="left">Второй виртуальный массив получается тогда, когда первый 
+		виртуальный массив умножается на матрицу <strong>A</strong> с помощью 
+		функции <span class="address"><a href="#MMULT">MMULT</a>(TRANSPOSE(A), A)</span>. &nbsp;<p align="left">
+		И, наконец, к этому, второму виртуальному массиву применяется функция
+		<a href="#MDETERM" class="prog"><strong>MDETERM</strong></a>.
+      <p align="left">
+		Виртуальные массивы очень полезны при вычислении всяческих 
+		вспомогательных характеристик в анализе многомерных данных: остатков, 
+		собственных значений, и т.п. Подробно об этом рассказывается в пособии
+		<a href="tricks.htm">Расширение возможностей Chemometrics Add-In</a>.
+      <p align="left"><a href="#Contents">Содержание</a><a name="Ch4"></a></p>
+        <h1 align="left"><span lang="en-us">3</span>. Расширение возможностей Excel <a name="Ch4.1"></a></h1>
+      <h2 align="left"><span lang="en-us">3</span>.1. Программирование. Язык VBA </h2>
+<p align="left">Иногда стандартных возможностей Excel не хватает и приходится 
+добавлять свои собственные подпрограммы. Для этой цели служит специальный язык 
+программирования – <em>Microsoft Visual Basic for Applications (VBA)</em>. С его помощью 
+можно создавать <em>макросы</em> – наборы команд, выполняющих определенную 
+последовательность действий, и <em>функции</em> – программы для специальных вычислений на 
+листе. Макросы – это способ автоматизации стандартных процедур. Однажды создав 
+макрос, его можно использовать для повтора рутинных действий. Обратиться к 
+макросу можно через меню <span class="menu">Tools-Macro-Macros</span>. Иногда 
+удобно бывает приписать макрос к новой кнопке на панели инструментов или на 
+листе. </p>
+		<p align="left">Функции, созданные пользователем, вызываются также как и 
+		стандартные, встроенные функции – через <span class="menu">Formula Bar</span>. </p>
+		<p align="left">Для того, чтобы макросы и пользовательские функции были 
+		доступны для применения, нужно установить соответствующий уровень 
+		безопасности через меню <span class="menu">Tools-Macro-Security </span>
+		(Excel 2003) <a name="Fig45"></a>&nbsp;</p>
+		<p class="style2"><img src="excel/Fig45.png" width="384" height="371">&nbsp;</p>
+		<p align="center"><samp>
+		Рис.<span lang="en-us">39</span> Выбор уровня безопасности в Excel 200<span lang="en-us">3</span> </samp></p>
+      <p align="left">В Excel 2007 установка уровня безопасности происходит 
+		через <span class="menu">Office Button<span lang="en-us">-</span>Excel 
+		Options<span lang="en-us">-</span>Trust Center.</span> <a name="Fig46"></a>&nbsp;</p>
+		<p class="style2"><img src="excel/Fig46.png" width="679" height="498"></p>
+		<p align="center"><samp>
+		Рис.<span lang="en-us">40</span> Выбор уровня безопасности в Excel 200<span lang="en-us">7</span> </samp></p>
+      <p align="left">Если выбран уровень &nbsp;<span class="menu">Medium</span> 
+		(2003) или <span class="menu">Disable all macros with notification</span> 
+		(2007), то при каждом входе в Excel система будет запрашивать разрешение 
+		на использование макросов. Мы рекомендуем установить уровни так, как 
+		показано на Рис. <span lang="en-us">39</span> или Рис. 4<span lang="en-us">0</span>, но не пренебрегать надежным антивирусом 
+		для проверки посторонних файлов Excel. </p>
+		<p align="left">При начальной установке Excel 2007 возможности работы с 
+		VBA сильно ограничены. Чтобы восстановить их нужно пройти по цепочке
+		<span class="menu">Office Button– Excel Options–Popular</span> и 
+		включить опцию <span class="menu">Show Developer Tab in the Ribbon</span>. 
+		&nbsp;</p>
+		<p align="left">
+		<a href="http://office.microsoft.com/ru-ru/excel/HP052012011049.aspx">
+		Подробнее</a>&nbsp;</p>
+		<p align="left"><a href="#Contents">Содержание</a><a name="Ch4.2"></a></p>
+      <h2 align="left"><span lang="en-us">3</span>.2. Пример</h2>
+      <p align="left">Рассмотрим вопрос о применении средств VBA на примере. </p>
+		<p align="left">При моделировании неизотермической кинетики (ДСК, ТГА, и 
+		т.п.) необходима 
+		<a href="http://en.wikipedia.org/wiki/Exponential_integral">интегральная показательная функция</a> (integral 
+		exponential) <em>E</em><sub>1</sub>(<em>x</em>). По определению, </p>
+		<p class="style2"><img src="excel/intexp.png" width="129" height="64">&nbsp;</p>
+		<p align="left">Для вычисления<em> E</em><sub>1</sub>(<em>x</em>) можно 
+		использовать <a href="http://www.math.sfu.ca/~cbm/aands/page_229.htm">бесконечный ряд</a> &nbsp;</p>
+		<p class="style2"><img src="excel/intexp2.png" width="241" height="112">&nbsp;</p>
+		<p align="left">На листе рабочей книги Excel каждый член этого ряда 
+		можно поместить в отдельную ячейку и затем просуммировать их. Этот 
+		способ показан на Рис. 4<span lang="en-us">1</span>.&nbsp;<a name="Fig47"></a>&nbsp;</p>
+		<p class="style2"><a href="excel/Excel.xls#VBA!D5">
+		<img src="excel/Fig47.png" class="style25"></a>&nbsp;</p>
+		<p align="center"><samp>
+		Рис.<span lang="en-us">41</span> Вычисление функции <em>E</em><sub>1</sub>(<em>x</em>) 
+		на листе</samp></p>
+		<p align="left">Нельзя признать такой способ вычисления удачным. 
+		Во-первых, вычисления занимают на листе много места. Но главное, не 
+		понятно, сколько членов в ряду нужно суммировать – иногда хватит и 10, а 
+		иногда и 50 будет мало.</p>
+		<p align="left"><a href="#Contents">Содержание</a><a name="Ch4.3"></a></p>
+      <h2 align="left"><span lang="en-us">3</span>.<span lang="en-us">3</span>. Пример макроса </h2>
+      <p align="left">Второй способ опирается на рекуррентное соотношение, 
+		связывающее два соседних члена в ряду &nbsp;</p>
+		<p class="style2"><img src="excel/intexp3.png" width="194" height="53">&nbsp;</p>
+		<p align="left">Для того чтобы воспользоваться этим соотношением, надо 
+		организовать на листе рекуррентную процедуру. Например, так, как 
+		показано на Рис. 4<span lang="en-us">2</span> <a name="Fig48"></a>&nbsp;</p>
+		<p class="style2"><a href="excel/Excel.xls#VBA!L3">
+		<img src="excel/Fig48.png" class="style25"></a>&nbsp;</p>
+		<p align="center"><samp>
+		Рис.<span lang="en-us">42</span> Вычисление функции <em>E</em><sub>1</sub>(<em>x</em>) 
+		итерационным способом </samp></p>
+      <p align="left">Один шаг итерации – это переход от значений в области
+		<span class="address">J2:J4</span> к значениям в области
+		<span class="address">L2:L4</span>. Для того, чтобы сделать следующую 
+		итерацию, нужно скопировать значения, получившиеся в области
+		<span class="address">L2:L4 </span>и вставить их в область
+		<span class="address">J2:J4</span>. При этом вставлять нужно только 
+		величины, без формул. Величины в области <span class="address">H2:H4</span> 
+		дают исходные значения для начала итерации .Повторяя многократно 
+		операцию <span class="menu">Copy-Paste Special</span>, можно получить в 
+		ячейке <span class="address">L4 </span>искомое значение. Однако 
+		копирование – это скучное занятие и его было бы неплохо 
+		автоматизировать. Для этого можно написать макрос. </p>
+		<p align="left">Проще всего начать создание макроса через запись команд, 
+		выполняемых на листе. Для этого идем в раздел меню <span class="menu">Tools–Macro–Record 
+		New Macro</span>. Появляется окно (Рис. 4<span lang="en-us">3</span>), в котором можно указать имя 
+		макроса и где он будет расположен.&nbsp;<a name="Fig49"></a>&nbsp;</p>
+		<p class="style2"><img src="excel/Fig49.png" width="297" height="212">&nbsp;</p>
+		<p align="center"><samp>
+		Рис.<span lang="en-us">43</span> Запись макро </samp></p>
+      <p align="left">После нажатия <span class="menu">OK </span>начинается 
+		запись всех действий, выполняемых на листе. Когда все, что нужно 
+		сохранено в макросе, запись надо остановить командой <span class="menu">
+		Tools–Macro–Stop Recording</span>. Результат можно увидеть, зайдя в 
+		<em><a href="excel/Excel.xls#Iteration"><strong>редактор Visual Basic</strong></a></em>. &nbsp;<a name="Fig50"></a>&nbsp;</p>
+		<p class="style2"><img src="excel/Fig50.png" width="772" height="300">&nbsp;</p>
+		<p align="center"><samp>
+		Рис.<span lang="en-us">44</span> Редактор Visual Basic </samp></p>
+      <p align="left">На Рис. <span lang="en-us">44</span> показан записанный макрос, который мы подвергли 
+		небольшому редактированию – добавили цикл для повтора операции
+		<span class="menu">Copy-Paste</span> в числе <span class="address">nIter
+		</span>раз. Величина <span class="address">nIter </span>берется со 
+		страницы из ячейки <span class="address">J6</span><span lang="en-us">,</span> 
+		имеющей локальное имя <span class="address">n</span>. Завершает 
+		автоматизацию кнопка <span class="menu">Repeat</span>, к которой 
+		привязан макрос <span class="prog"><strong>Iteration</strong></span>. &nbsp;</p>
+		<p align="left">Такой подход использовался нами для построения 
+		алгоритмов <a href="mcr.htm#Ch4.1">ITTFA</a> и <a href="mcr.htm#Ch4.2">
+		ALS</a> в многомерном разрешении кривых. </p>
+		<p align="left">
+		<a href="http://office.microsoft.com/ru-ru/excel/HP052047111049.aspx">
+		Подробнее</a>&nbsp;</p>
+		<p align="left"><a href="#Contents">Содержание</a><a name="Ch4.4"></a></p>
+      <h2 align="left"><span lang="en-us">3</span>.<span lang="en-us">4</span>. Пример пользовательской 
+		функции </h2>
+      <p align="left">Наконец, есть еще одно, самое изящное решение проблемы с 
+		интегральной показательной функцией – написать на VBA собственную 
+		функцию листа. <a name="Fig51"></a>&nbsp;</p>
+		<table align="center" class="style31">
+			<tr>
+				<td><code>Function IntExp(dX)<br>
+&nbsp;&nbsp;&nbsp;&nbsp; GammaConst = 0.5772156<br>
+&nbsp;&nbsp;&nbsp;&nbsp; Eps = 0.00000000001<br>
+&nbsp;&nbsp;&nbsp;&nbsp; IntExp = -GammaConst - Log(dX)<br>
+&nbsp;&nbsp;&nbsp;&nbsp; nFact = 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp; For n = 1 To 1000<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; nFact = nFact * n<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dR = (-dX) ^ n / n / nFact<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IntExp = IntExp - dR<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; If (Abs(dR) &lt; Eps) Then Exit Function<br>
+&nbsp;&nbsp;&nbsp;&nbsp; Next n <br>
+				End Function &nbsp;</code></td>
+			</tr>
+		</table>
+		<p class="style2"><a href="excel/Excel.xls#VBA!P2">
+		<img src="excel/Fig51.png" class="style25"></a>&nbsp;</p>
+		<p align="center"><samp>
+		Рис.<span lang="en-us">45</span> Функция IntExp </samp></p>
+      <p align="left">На Рис. <span lang="en-us">45</span> приведен 
+		<a href="excel/Excel.xls#IntExp">код этой функции</a> и пример обращения к 
+		ней. &nbsp;</p>
+		<p align="left">Мы не будем рассказывать о программировании на VBA, т.к. 
+		это очень большой и сложный вопрос. Самостоятельно его можно изучить по 
+		имеющимся в сети многочисленным пособиям, например,
+		<a href="http://www.firststeps.ru/vba/excel/">здесь</a><span lang="en-us">.</span></p>
+		<p align="left">VBA – это довольно медленный язык и он плохо подходит 
+		для больших вычислений. Например, не стоит писать на этом языке 
+		процедуру для PCA декомпозиции – на больших массивах она будет считать 
+		очень долго. Правильнее рассматривать Excel и VBA как интерфейс (front 
+		end) для ввода и вывода данных, которые затем передаются в динамическую 
+		библиотеку (DLL), написанную на быстром языке, таком как C++ (back end). 
+		Именно эта концепция и была реализована в надстройках 
+		<a href="http://polycert.chph.ras.ru/fitter.htm"><em>Fitter</em></a> и 
+		<a href="projection.htm"><em>Chemometrics</em></a>.</p>
+		<p align="left">Подробнее об использовании пользовательских функций для 
+		расширения возможностей надстройки <span lang="en-us"><em>Chemometrics</em></span> можно прочитать
+		<a href="tricks.htm#Ch2">здесь</a>. &nbsp;</p>
+		<p align="left"><a href="#Contents">Содержание</a><a name="Ch4.5"></a></p>
+      <h2 align="left"><span lang="en-us">3</span>.<span lang="en-us">5</span>. Надстройки </h2>
+      <p align="left">Написанные пользователем программы хранятся в той книге 
+		Excel, в которой они были созданы, в ее специальных разделах, называемых
+		<em>модулями</em>. Для того чтобы эти макросы были доступны в других 
+		книгах, их можно туда скопировать, но можно поступить и по-другому – 
+		создать надстройку. </p>
+		<p align="left"><em>Надстройка</em> – это специальный файл Excel, 
+		содержащий в&nbsp; себе несколько VBA модулей, связанных со всеми 
+		необходимыми библиотеками DLL. Надстройку можно подключить к системе 
+		Excel для расширения ее возможностей. </p>
+		<p align="left">Стандартная версия Excel включает несколько надстроек, 
+		среди которых для нас примечательны две: Solver Add-In и Analysis 
+		Toolpak. </p>
+		<p align="left">Надстройка <em>
+		<a href="http://office.microsoft.com/ru-ru/excel/HP051983681049.aspx">
+		Solver Add-In</a></em> предназначена для оптимизации значения в целевой 
+		ячейке. Решение находится с помощью поиска величин в других ячейках, 
+		функционально связанных с целевой.</p>
+		<p align="left">Надстройка
+		<a href="http://office.microsoft.com/ru-ru/excel/HP052038731049.aspx">
+		<em>Analysis Toolpak</em></a> содержит набор статистических инструментов 
+		для анализа данных </p>
+		<p align="left">В сети можно найти много надстроек для Excel, некоторые 
+		из которых распространяются свободно, другие за деньги. Вот некоторые 
+		примечательные. </p>
+		<p align="left">
+		<a href="http://spreadsheetpage.com/index.php/file/j_walk_chart_tools_add_in/">
+		<em>J-Walk Chart Tools Add-In</em></a> – бесплатная утилита для 
+		управление диаграммами: добавление подписей, ярлыков, и т.п. – все то, 
+		что отсутствует в стандартной версии. </p>
+		<p align="left"><a href="http://www.xlstat.com/en/home/"><em>XLStat</em></a> 
+		– большой (и дорогой) пакет статистического анализа, включающий, в 
+		частности, и PLS регрессию. </p>
+		<p align="left">
+		<a href="http://www.chm.bris.ac.uk/org/chemometrics/addins/index.html">
+		<em>Multivariate Analysis Add-in </em></a>– условно бесплатный пакет для 
+		анализа многомерных данных, созданный в Бристольском университете </p>
+		<p align="left"><a href="http://polycert.chph.ras.ru/fitter.htm"><em>
+		Fitter</em></a> – надстройка для нелинейного регрессионного анализа. </p>
+		<p align="left"><em><a href="projection.htm">Chemometrics</a></em> – пакет функций листа, выполняющий анализ 
+		многомерных данных.</p>
+		<p align="left">Подробнее о надстройках можно прочитать
+		<a href="http://office.microsoft.com/ru-ru/excel/HP052386071049.aspx">
+		здесь</a>.&nbsp;</p>
+		<p align="left"><a href="#Contents">Содержание</a><a name="Ch4.6"></a></p>
+      <h2 align="left"><span lang="en-us">3</span>.6. Установка надстроек </h2>
+      <p align="left">Прежде чем&nbsp; начать использовать надстройку, нужно 
+		выполнить процедуру ее <em>установки</em>, которая состоит из двух частей. </p>
+		<p align="left">В первой фазе файлы, входящие в пакет надстройки 
+		размещают на компьютере. В некоторых пакетах имеется программа 
+		Setup.exe, которая выполняет это автоматически. В других файлы нужно 
+		размещать самостоятельно. Объясним, как это нужно сделать. В состав 
+		пакета обязательно входит файл с расширением XLA и несколько 
+		вспомогательных файлов с расширениями DLL, HLP и др. Все вспомогательные 
+		файлы должны &nbsp;размещаться в следующих директориях: <span class="menu">
+		C:\Windows</span>, или &nbsp;<span class="menu">C:\Windows\System или 
+		C:\Windows\System32</span>. Основной файл (с расширением XLA) может, в 
+		принципе, находится в любом месте, но две директории являются 
+		предпочтительными. </p>
+		<p align="left">Microsoft рекомендует размещать файлы XLA в директории
+		<span class="menu">C:\Documents and Settings\User\Application 
+		Data\Microsoft\AddIns</span>, где <span class="menu">User </span>– это 
+		имя, под которым происходит вход в систему. Тогда этот файл можно быстро 
+		загрузить на второй фазе установки. Однако, если рабочие книги 
+		используются на нескольких компьютерах, с разными именами
+		<span class="menu">User</span>, то, при смене компьютера, связи с 
+		основным файлом надстройки теряются и их приходится
+		<a href="http://office.microsoft.com/ru-ru/excel/HP030662211049.aspx">
+		обновлять</a>. </p>
+		<p align="left">Поэтому мы предлагаем поместить файл <em>
+		Chemometrics.xla</em> в директорию, которая имеет одно и то же имя на 
+		разных компьютерах, например <span class="menu">C:\Program 
+		Files\Chemometrics</span>. Автоматическая установка надстройки
+		<span lang="en-us"><em><a href="projection.htm">Chemometrics Add-In</a></em>
+		</span>описана <a href="installation.htm">здесь</a>.</p>
+		<p align="left">Вторая фаза проводится из открытой книги Excel. В версии 
+		2003 нужно выполнить последовательность команд <span class="menu">
+		Tools-Add-Ins</span>, а в версии 2007 последовательность:
+		<span class="menu">Office Button-Excel Options-Add-Ins-Go</span>. В 
+		появившемся окне (см Рис. <span lang="en-us">45</span>) нужно нажать <span class="menu">Browse
+		</span>и найти в компьютере нужный файл XLA. <a name="Fig52"></a>&nbsp;</p>
+		<p class="style2"><img src="excel/Fig52.png" width="639" height="562">&nbsp;</p>
+		<p align="center"><samp>
+		Рис.<span lang="en-us">45</span> Установка надстройки </samp></p>
+      <p align="left">После того, как надстройка установлена, ее можно 
+		активировать и деактивировать устанавливая отметку напротив имени. Для 
+		удаления надстройки нужно снять галочку против ее имени в окне
+		<span class="menu">Add-Ins</span>, закрыть Excel и удалить все ранее 
+		установленные файлы с компьютера. &nbsp;</p>
+		<p align="left"><a href="#Contents">Содержание</a><a name="Ch5"></a></p>
+        <h1 align="left">Заключение</h1>
+		<p align="left">Мы рассмотрели основные приемы работы с матрицами в 
+		системе Excel. За рамками пособия осталось еще много всего важного. 
+		Частично заполнить эти пробелы поможет пособие <a href="projection.htm">Проекционные методы в 
+		системе Excel</a>. &nbsp;</p>
+      <p align="left"><a href="#Contents">Содержание</a></p>
+      <p align="left">&nbsp;</p>
+      </td>
+  </table>
+
+</body>
+

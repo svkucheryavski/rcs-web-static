@@ -1,0 +1,1632 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:m="http://schemas.microsoft.com/office/2004/12/omml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta http-equiv="Content-Language" content="ru">
+<title>Классификация</title>
+<style>
+<!--
+h1           {
+	font-family: Arial;
+	font-size: 14pt;
+	font-weight: bold;
+	text-align: Center;
+	padding-top: 75px;
+}
+#menu        { font-family: Tahoma; font-size: 12pt; font-weight: bold }
+h2           {
+	font-family: Arial;
+	font-size: 12pt;
+	font-style: italic;
+	padding-top: 25px;
+}
+.header      { font-family: Arial; font-size: 18pt; letter-spacing: 1; font-weight: bold; 
+               text-align: Center }
+ .style2 {
+	text-align: center;
+}
+.style9 {
+	margin-left: 30pt;
+}
+.address {
+	font-family: Arial, Helvetica, sans-serif;
+}
+.style26 {
+	color: #FF0000;
+	background-color: #000000;
+}
+.style27 {
+	color: #00FFFF;
+	background-color: #000000;
+}
+.style28 {
+	color: #00FF00;
+	background-color: #000000;
+}
+.style32 {
+	margin-left: 80px;
+}
+.style33 {
+	vertical-align: middle;
+}
+.style34 {
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+.style35 {
+	margin-top: 3px;
+	margin-bottom: 3px;
+}
+.style36 {
+	margin-top: 4px;
+	margin-bottom: 4px;
+}
+.style37 {
+	text-align: left;
+}
+.style38 {
+	margin-left: 30pt;
+	text-align: center;
+}
+.style41 {
+	border-width: 0;
+}
+.style43 {
+	margin-left: 40px;
+}
+.prog {
+	font-family: "Courier New", Courier, monospace;
+}
+-->
+</style>
+        <title></title>
+</head>
+
+<body>
+
+<p>&nbsp;</p>
+  <center>
+  <table border="0" width="95%" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="100%" class="style37">
+</center>
+      <h3 class="header">Классификация</h3>
+      <dl>
+        <div align="center">
+          <center>
+          <dt>© <span lang="en-us">2011 </span>Алексей
+        Померанцев&nbsp;</dt>
+          </center>
+        </div>
+        <div align="center">
+          <center>
+          <dt><a href="../index.html">Российское хемометрическое
+        общество</a></dt>
+          </center>
+        </div>
+      </dl>
+        <h1><a name="Contents"></a>Содержание&nbsp;</h1>
+        <dl>
+          <dt><a href="#Ch0"><b>Введение</b></a></dt>
+          <dt><a href="#Ch1"><b>1. Базовые сведения</b></a></dt>
+          <dd><b><a href="#Ch1.1">1.1. Постановка задачи&nbsp;</a></b></dd>
+          <dd><b><a href="#Ch1.2">1.2. Обучение: с учителем и без</a></b></dd>
+          <dd><b><a href="#Ch1.3">1.3. Типы классов</a></b></dd>
+          <dd><b><a href="#Ch1.4">1.4.<span lang="en-us"> Проверка гипотез</span></a></b></dd>
+          <dd><b><a href="#Ch1.5">1.5. Ошибки при классификации</a></b></dd>
+          <dd><b><a href="#Ch1.6">1.6. Одноклассовая классификация</a></b></dd>
+          <dd><b><a href="#Ch1.7">1.7. Обучение и проверка</a></b></dd>
+          <dd><b><a href="#Ch1.8">1.<span lang="en-us">8</span>. Проклятие 
+			размерности</a></b></dd>
+          <dd><b><a href="#Ch1.9">1.<span lang="en-us">9</span>. Подготовка 
+			данных</a></b></dd>
+          <dt><b><a href="#Ch2">2. Данные</a></b></dt>
+          <dd><b><a href="#Ch2.1">2.1. Пример</a></b></dd>
+          <dd><b><a href="#Ch2.2">2.2. Данные </a></b></dd>
+          <dd><b><a href="#Ch2.3">2.3. Рабочая книга Iris.xls </a></b></dd>
+          <dd><b><a href="#Ch2.4">2.4. Анализ данных методом главных компонент</a></b></dd>
+          <dt><b><a href="#Ch3">3. Классификация &quot;с учителем&quot;</a></b></dt>
+          <dd><b><a href="#Ch3.1">3.1. Линейный дискриминатный анализ (<span lang="en-us">LDA)</span></a></b></dd>
+          <dd><b><a href="#Ch3.2">3.2. Квадратичный дискриминатный анализ (<span lang="en-us">QDA</span>)</a></b></dd>
+          <dd><b><a href="#Ch3.3">3.3. PLS дискриминация (<span lang="en-us">PLSDA</span>)</a></b></dd>
+			<dd><b><a href="#Ch3.4">3.<span lang="en-us">4</span>.
+			<span lang="en-us">SIMCA </span></a></b></dd>
+			<dd><b><a href="#Ch3.5">3.<span lang="en-us">5</span>.
+			<span lang="en-us">K-ближайших соседей (KNN)</span></a></b></dd>
+			<dt><a href="#Ch4"><b>4.Классификация без учителя </b></a></dt>
+          <dd><b><a href="#Ch4.1">4.1. Опять PCA</a></b></dd>
+          <dd><b><a href="#Ch4.2">4.2. Кластеризация с помощью k-средних<span lang="en-us"> 
+			(kMeans)</span></a><span lang="en-us"> </span></b></dd>
+          <dt><b><a href="#Ch5">Заключение</a></b></dt>
+          <dd>&nbsp;</dd>
+        </dl>
+        <h1><a name="Ch0"></a>Введение&nbsp;</h1>
+        <p>В этом документе рассмотрены наиболее популярные методы 
+		классификации, применяемые в хемометрике. Текст ориентирован, прежде всего, на специалистов в области 
+		анализа экспериментальных данных: химиков, физиков, биологов, и т.д. Он 
+		может служить пособием для исследователей, начинающих изучение этого 
+		вопроса. Продолжить исследования&nbsp; можно с помощью указанной
+		<a href="references.htm">
+        литературы</a>.&nbsp;</p>
+      <p>В пособии интенсивно используются понятия и методы, описанные в других 
+		материалах по хемометрике:<span lang="en-us"> </span>
+		<a href="statistics.htm">статистика</a>, <a href="matrix.htm">матрицы и векторы</a>,<span lang="en-us">
+		</span><a href="pca.htm">метод главных компонент</a>. Читателям, которые плохо 
+		знакомы с этим аппаратом, рекомендуется изучить, или, хотя бы 
+		просмотреть, эти материалы. Кроме того, здесь интенсивно используется 
+		специальная надстройка (Add-In) к программе Excel, которая называется 
+		Chemometrics.xla. Подробности об этой программе можно прочитать в 
+		пособии <a href="projection.htm">Проекционные методы в системе Excel.</a> </p>
+<p>Изложение иллюстрируется примерами, выполненными в рабочей книге Excel <em>
+<a href="classification/Iris.xls"><span lang="en-us">Irix</span>.xls</a></em>, 
+которая сопровождает этот документ. Предполагается, что читатель имеет базовые 
+навыки работы в среде Excel, умеет проводить простейшие <a href="excel.htm">матричные вычисления</a> с 
+использованием функций листа, таких как&nbsp; 
+<a href="excel.htm#MMULT" class="prog"><strong>МУМНОЖ</strong></a>,
+      <a href="excel.htm#TREND" class="prog"><strong>ТЕНДЕНЦИЯ</strong></a> 
+и т.п. </p>
+<p>В отличие от других пособий из серии, здесь не удается один раз провести 
+проекционные вычисления, а затем использовать их в разных методах. Поэтому 
+некоторые листы книги <em><span lang="en-us">Iris</span>.xls </em>не будут работать без использования Chemometrics 
+Add-In. </p>
+      <p align="center"><b><a href="moffice.htm">Важная
+      информация о работе с
+              файлом <span lang="en-us">Iris</span>.xls</a>&nbsp;</b></p>
+      <p>Ссылки на примеры помещены в текст как объекты Excel. </p>
+      <p class="style2"><b><a href="../Tutorials">Другие 
+		пособия по хемометрике</a></b></p>
+          <p><a href="#Contents">Содержание</a>
+          <a name="Ch1"></a>
+        </p>
+        <h1>1. Базовые сведения<a name="Ch1.1"></a> </h1>
+        <h2>1.1. Постановка задачи</h2>
+        <p><em>Классификацией</em> называется процедура, в которой объекты 
+		распределяются по группам (классам) в соответствии с численными 
+		значениями их переменных, характеризующими свойства этих объектов. 
+		Исходными данными для классификации является матрица <strong>X</strong>, 
+		в которой каждая строка представляет один объект, а каждый столбец – 
+		одну из переменных. Эта матрица называется <em>исходным набором</em> 
+		данных. Число объектов (строк в матрице <strong>X</strong>) мы будем 
+		обозначать буквой <em>I</em>, а число переменных (строк в матрице
+		<strong>X</strong>) – буквой <em>J</em>. Число классов мы будем 
+		обозначать буквой <em>K</em>. </p>
+<p>Классификацией называют не только саму процедуру распределения, но и ее 
+результат. Употребляется также термин <em>распознавание образов</em> (pattern 
+recognition) , который можно считать синонимом. В математической статистике 
+классификацию часто называют <em>дискриминацией</em>. </p>
+<p>Метод (алгоритм), которым проводят классификацию, называют <em>
+классификатором</em>. Классификатор переводит&nbsp; вектор признаков объекта x в 
+целое число, 1, 2, … , соответствующее номеру класса, в который он помещает этот 
+объект. </p>
+        <p><a href="#Contents">Содержание</a>&nbsp; <a name="Ch1.2"></a> </p>
+        <h2>1.2. Обучение: с учителем и без </h2>
+        <p>Если для всех объектов исходного набора известно, к какому классу они 
+		принадлежат, то такая постановка задачи называется классификацией с 
+		учителем (или с обучением). Обучение без учителя происходит тогда, когда 
+		принадлежность объектов в исходном наборе нам заранее не известна. </p>
+<p><a href="#Contents">Содержание</a>.<a name="Ch1.3"></a>
+      </p>
+      <h2>1.3. Типы классов </h2>
+        <p>Классификация может делаться для разного числа <em>классов</em>. 
+<p>Классификация с одним классом проводится в том случае, когда нам нужно 
+установить принадлежность объектов к единственной выделенной группе. Например, 
+отделить яблоки от всех остальных фруктов в корзине. 
+<p>Двухклассная классификация – это наиболее простой, базовый случай, который 
+чаще всего называют дискриминацией. Например, разделить яблоки и груши, при 
+условии, что никаких других фруктов в корзине нет.&nbsp; 
+<p>Многоклассовая классификация часто сводится к последовательности: либо 
+одноклассных (SIMCA), либо двухклассных (LDA) задач и является наиболее сложным 
+случаем. 
+<p>В большинстве случаев классы изолированы и не пересекаются. Тогда каждый 
+объект принадлежит только к одному классу. Однако могут быть задачи и с 
+пересекающимися классами, когда объект может относиться одновременно к 
+нескольким классам. 
+<p><a href="#Contents">Содержание</a>.<a name="Ch1.4"></a></p>
+      <h2>1.4. Проверка гипотез </h2>
+      <p>В математической статистике рассматривается задача <em>
+		<a href="statistics.htm#Ch6">проверки гипотез</a></em>, 
+		которая, по сути, очень близка к классификации. Поясним это на простом 
+		примере. </p>
+<p>Пусть имеется смесь слив и яблок, которую надо автоматически разделить. 
+Очевидно, что в среднем сливы меньше яблок, поэтому задачу можно легко решить, 
+используя подходящее сито. Анализ размеров объектов показал, что они хорошо 
+описываются <a href="statistics.htm#Ch2.3">нормальными распределениями </a>со следующими параметрами. Сливы: 
+среднее 3, дисперсия 1.4. Яблоки: среднее 8, дисперсия 2.1. Таким образом, 
+разумно будет выбрать сито диаметром 5. .<samp><a name="Fig01"></a></samp></p>
+        <p></p>
+        <p align="center">
+		<img src="classification/Fig01.png" width="342" height="341"></p>
+<p align="center"><samp>Рис. 1 Распределение объектов по размерам&nbsp; </samp></p>
+        <p>С точки зрения математической статистики в этой задаче мы проверяем 
+		гипотезу о том, что среднее нормального распределения равно 3 (слива), 
+		против альтернативы 8 (яблоко).&nbsp; Проверка происходит по одному 
+		единственному наблюдению <em>x</em>. <a href="statistics.htm#Ch6.2">Критическое значение</a> равно 5: если
+		<em>x</em>&lt;5 (область принятия гипотезы), то гипотеза принимается 
+		(объект – слива), если <em>x</em>&gt;5, то принимается альтернатива (объект 
+		– яблоко).
+        <p align="left"><a href="#Contents">Содержание</a>.<a name="Ch1.5"></a></p>
+        <h2 align="left">1.5. Ошибки при классификации </h2>
+        <p>Очевидно, что в рассмотренном выше примере классификация не является 
+		идеальной – мелкие яблоки попадут в класс слив, а крупные сливы 
+		останутся вместе с яблоками. Используя распределения объектов по 
+		размерам, можно рассчитать вероятности этих событий. </p>
+<p class="style2">&#945;=1–&#934;(5<span lang="en-us">|</span> 
+3, 1.4)=0.05&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&#946;=&#934;(5<span lang="en-us">|</span> 
+8, 2.1)=0.01 </p>
+<p>где &#934;– это 
+<a href="statistics.htm#Ch2.3">кумулятивная функция нормального распределения</a>. Для расчетов в Excel можно использовать 
+встроенную функцию
+<span class="prog"><a href="statistics.htm#Ch2.3"><strong>NORMDIST</strong><span lang="en-us"> (</span><strong>НОРМРАСП</strong><span lang="en-us">)</span></a></span>. </p>
+<p>Величина<span lang="en-us"> </span>&#945; (ложное 
+отклонение ) называется <a href="statistics.htm#Ch6.3">ошибкой первого рода</a>, а величина<span lang="en-us">
+</span>&#946; (ложное принятие) – ошибкой второго рода. 
+Если поменять местами гипотезу и альтернативу, то ошибка 1-го рода&nbsp; станет 
+ошибкой 2-го рода, и наоборот. </p>
+<p>Таким образом, при этом критическом уровне, 5% слив будет потеряно, и 1% 
+яблок примешается к сливам. Если уменьшить критическое значение до 4, то примеси 
+яблок практически не будет, зато потери слив достигнут 20%. Если же его 
+увеличить до 6, то потери слив уменьшатся до 1%, но примесь яблок будет уже 5%. 
+Понятно, что в этой задаче невозможно выбрать такое сито, которое правильно 
+разделяло бы сливы и яблоки – всегда будут ошибки. </p>
+<p>При проверке гипотезы (классификации) важно понимать, какую ошибку важнее 
+минимизировать. Приведем два классических примера. В юриспруденции, при гипотезе 
+&quot;невиновен&quot;, руководствуясь презумпцией невиновности, необходимо минимизировать 
+ошибку 1-го рода – вероятность ложного обвинения. В медицине, при гипотезе 
+&quot;здоров&quot;, необходимо минимизировать ошибку 2-го рода – вероятность не распознать 
+болезнь.&nbsp; </p>
+<p>Можно ли одновременно уменьшить обе ошибки? Да, в принципе, можно. Для этого 
+надо изменить саму процедуру принятия решения, сделав ее более эффективной. 
+Одним из главных способов является увеличение числа переменных, характеризующих 
+классифицируемые объекты. В нашем примере такой новой, полезной переменной мог 
+быть цвет – синий для слив, и зеленый для яблок. Поэтому в хемометрике применяют 
+методы классификации, основанные на многомерных данных.&nbsp; </p>
+<p align="left"><a href="#Contents">Содержание</a>.<a name="Ch1.6"></a>
+      <h2 align="left">1.6. Одноклассовая классификация </h2>
+        <p align="left">Для случая одного класса ошибка первого рода &#945;<span lang="en-us">
+		</span>называется
+		<em>уровнем значимости</em>. <a href="statistics.htm#Ch6.3">Ошибка 2-го рода</a> для такой классификации 
+		равна 1 –<span lang="en-us"> </span>&#945;. <a href="statistics.htm#Ch6.4">Объяснение</a> этому парадоксальному факту очень простое – 
+		альтернативой одному классу является все оставшееся мыслимые объекты, 
+		лежащие вне этого класса. Поэтому, какой бы классификатор мы не 
+		использовали, всегда найдется объект, не лежащий в этом классе, но очень 
+		похожий на объекты из него. Допустим, для примера, что мы отбираем&nbsp; 
+		сливы, отличая их от всего прочего, существующего на свете. Тогда, 
+		тщательно изучив придуманный нами метод классификации, можно создать 
+		искусственный объект (например, пластмассовый муляж), который подходит 
+		по всем выбранным критериям. 
+<p align="left"><a href="#Contents">Содержание</a> <a name="Ch1.7"></a><h2 align="left">
+1.7. Обучение и проверка&nbsp; </h2>
+<p align="left">Классификатор (помимо вектора переменных <strong>x</strong>) 
+зависит от свободных (неизвестных) параметров. Их надо подобрать так, чтобы 
+минимизировать ошибку классификации. Подбор параметров называется <em>обучением 
+классификатора</em>. Эта процедура проводится на <em>обучающем наборе</em>
+<strong>X</strong><sub>c</sub>. Помимо обучения, необходима еще и <em>проверка</em> 
+(валидация) классификатора. Для этого должен использоваться новый проверочный 
+набор данных <strong>X</strong><sub>t</sub>. Альтернативой валидации с помощью 
+проверочного набора является проверка с помощью метода
+<a href="calibration.htm#Ch1.3">кросс-валидации</a>. </p>
+<p align="left">Между классификаций и <a href="calibration.htm">калибровкой</a> 
+есть много общего. С теоретической точки зрения&nbsp; классификацию можно 
+рассматривать как регрессию, откликом которой являются целые числа 1, 2, …, – 
+номера классов. Напрямую этот подход используется при классификации методом 
+PLS-дискриминации, который рассмотрен ниже. Также как и в калибровке, в 
+классификации имеется большая опасность переоценки, которая в задачах 
+классификации называется переобучением. Для того чтобы избежать этой опасности, 
+надо внимательно следить за тем, как, при усложнении классификационного 
+алгоритма, меняются ошибки в обучении и в проверке. </p>
+<p align="left"><a href="#Contents">Содержание</a> <a name="Ch1.8"></a> </p>
+<h2 align="left">1.<span lang="en-us">8</span>. Проклятие размерности </h2>
+        <p align="left">В задачах классификации имеет место проблема, которая 
+		поэтически называется <em>проклятием размерности</em> (<a href="http://en.wikipedia.org/wiki/Curse_of_dimensionality">Curse 
+		of dimensionality</a>). Суть дела в том, что при увеличении числа 
+		переменных <em>J</em> сложность задачи возрастает экспоненциально. 
+		Поэтому, даже относительно скромное их число (<em>J</em>&gt;10)&nbsp; может 
+		доставить неприятности. Заметим, что в хемометрических приложениях 
+		(например, при анализе спектральных данных) может быть и 1000 и 10000 
+		переменных.
+        <p align="left">В классических методах классификации большая размерность 
+		приводит к мультиколлинеарности, которая проявляется как вырожденность 
+		матрицы <strong>X</strong><sup>t</sup><strong>X</strong>, которую надо 
+		обращать в методах линейного и квадратичного дискриминационного анализа. 
+		В методах, опирающихся на расстояния между объектами (например, <em>kNN</em>), 
+		большая размерность приводит к усреднению всех расстояний. Основным 
+		способом решения этой проблемы являются&nbsp; методы понижения размерности, 
+		прежде всего <i><a href="pca.htm#Ch2">метод главных
+компонент</a></i><p align="left"><a href="#Contents">Содержание</a><span lang="en-us">
+<a name="Ch1.9"></a></span>
+<h2 align="left">1.<span lang="en-us">9</span>. Подготовка данных&nbsp; </h2>
+<p align="left">При решении задач классификации исходные данные должны быть 
+соответствующим образом подготовлены, аналогично тому, как это делается в
+<a href="pca.htm#Ch2.12">методе главных компонент</a>.<span lang="en-us"> </span>
+Например, центрирование данных автоматически заложено в алгоритм многих методов 
+классификации.
+        <p align="left">Особую роль в классификации играет преобразование 
+		данных. Поясним это на примере. На Рис. 2 показаны данные, принадлежащие 
+		двум классам. На левом рисунке они представлены в &quot;натуральном&quot; виде, а 
+		на правом рисунке – те же данные, но в полярных координатах
+        <p class="style2"><em>x</em><sub>1</sub>=<em>r</em> cos(&#966;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<em>x</em><sub>2</sub>= <em>r</em> sin(&#966;) .<samp><a name="Fig02"></a></samp>&nbsp;
+        <p align="center">
+		<img src="classification/Fig02a.png" width="342" height="342">
+		<span lang="en-us">&nbsp;<img src="classification/Fig02b.png" width="344" height="342"></span><p align="center"><samp>
+Рис. 2 Объекты в декартовых и полярных координатах </samp></p>
+<p>Ясно, что в исходных декартовых координатах разделить классы очень сложно. 
+Зато в полярных координатах дискриминация очевидна. .<span lang="en-us">
+</span><samp><a name="Fig03"></a></samp>
+        &nbsp;</p>
+        <p align="center">
+		<img src="classification/Fig03a.png" width="344" height="342"><span lang="en-us">&nbsp;
+		<img src="classification/Fig03b.png" width="342" height="342"></span><p align="center"><samp>
+Рис. 3 Классификации в полярных координатах и ее образ в декартовых&nbsp; </samp></p>
+      <p>На Рис. 3 показана такая классификация и ее образ в исходных, 
+		декартовых координатах. На этом простом принципе основаны нелинейные 
+		методы классификации, например, метод опорных векторов </p>
+<p align="left"><a href="#Contents">Содержание</a><a name="Ch2"></a>
+        <h1 align="left">2. Модельные данные <a name="Ch2.1"></a></h1>
+        <h2 align="left">2.1. Пример </h2>
+      <p align="left">Для иллюстрации различных методов классификации мы будем 
+		использовать знаменитый пример –
+		<a href="http://ru.wikipedia.org/wiki/Ирисы_Фишера">Ирисы Фишера</a>, 
+		помещенный в рабочую книгу <em><a href="classification/Iris.xls">
+		Iris.xls</a></em>. Этот набор данных стал популярным после 
+		основополагающей <a href="classification/Fisher.pdf">работы</a>, в 
+		которой Роберт Фишер предложил метод линейного дискриминационного 
+		анализа (LDA). 
+<p align="left">Набор данных включает три класса по 50 образцов в каждом. Каждый 
+класс соответствует виду ириса: <em>Iris Setosa</em> (класс 1), <em>Iris 
+Versicolour</em> (класс 2) и <em>Iris Virginica</em> (класс 3). .<samp><a name="Fig04"></a></samp> 
+        <p align="center">
+		<img src="classification/Fig04a.png" width="220" height="165"><span lang="en-us">&nbsp;
+		<img src="classification/Fig04b.png" width="220" height="165">&nbsp;
+		<img src="classification/Fig04c.png" width="220" height="164"></span><p class="style2"><samp>Рис. 4 
+Ирисы Фишера (слева направо): <em>Setosa</em>, <em>Versicolour</em> и <em>
+Virginica</em> </samp> </p>
+        <p>В своей работе Р. Фишер использовал данные, собранные американским 
+		ботаником Э. Андерсоном, который измерил следующие характеристики 
+		цветков каждого из 150 образцов:</p>
+<ul>
+	<li>Длина чашелистика (англ. sepal length);</li>
+	<li>Ширина чашелистика (англ. sepal width);</li>
+	<li>Длина лепестка (англ. petal length);</li>
+	<li>Ширина лепестка (англ. petal width). </li>
+</ul>
+<p>Все эти значения (в см) приведены в таблице на листе
+<a href="classification/Iris.xls#Data!A1">Data</a>. Пытаясь понять, где у ирисов 
+чашелистики, а где лепестки, естественно заглянуть в
+<a href="http://en.wikipedia.org/wiki/Iris_(plant)">Wikipedia </a>. Там 
+сказано следующее. </p>
+<p><cite>&quot;Соцветия ириса имеют форму веера и содержат один или более 
+симметричных шестидольных цветков. Растут они на коротком стебельке. Три 
+чашелистика направлены вниз. Они расширяются из узкого основания в обширное 
+окончание, украшенное прожилками, линиями или точками. Три лепестка, которые 
+иногда могут быть редуцированными, находятся в вертикальной позиции и частично 
+скрыты основанием чашелистика. У более мелких ирисов вверх направлены все шесть 
+доль. Чашелистики и лепестки отличаются друг от друга. Они объединены у 
+основания в цветочный цилиндр, который лежит над завязью&quot; </cite> </p>
+<p>Однако, в русскоязычной
+<a href="http://ru.wikipedia.org/wiki/Ирис_(растение)">Википедии</a> (да и на 
+многих других сайтах) утверждается следующее. </p>
+<p><cite>&quot;Цветки ирисов очень своеобразны: у них нет чашелистиков и лепестков.&quot;
+</cite> </p>
+<p>Оставим ботаников разбираться в этой проблеме. </p>
+<p><a href="#Contents">Содержание</a><a name="Ch2.2"></a>
+        </p>
+        <h2 align="left">2.2. Данные </h2>
+      <p>Исходный массив данных (3 класса по 50 образцов) был разбит на две 
+		части: обучающую и проверочную. В первое подмножество <strong>X</strong><sub>c</sub> 
+		вошли по 40 первых образцов из каждого класса (всего 120 образцов), а во 
+		второе подмножество <strong>X</strong><sub>t</sub> – оставшиеся в каждом 
+		классе 10 образцов (всего 30 образцов). Очевидно, что первую часть мы 
+		будем использовать для&nbsp; обучения разных классификаторов, а вторую часть 
+		– для их проверки. Обучающую выборку мы будем называть <em>Training</em>, 
+		а проверочную <em>Test</em>. </p>
+<p>Классы называются в соответствие с их латинскими наименованиями: <em>Setosa</em>,
+<em>Versicolor</em> и <em>Virginica</em>, а переменные обозначаются двумя 
+буквами, соответственно:&nbsp; <em>SL</em> – длина чашелистика (sepal length); <em>SW</em> 
+– ширина чашелистика (sepal width), <em>PL</em> – длина лепестка (petal length), 
+&nbsp;<em>PW</em> – ширина лепестка (petal width). <samp><a name="Fig05"></a></samp>
+</p>
+        <p align="center">
+		<a href="classification/Iris.xls#Data!O5">
+		<img src="classification/Fig05a.png" width="342" height="342" class="style41"></a><span lang="en-us">&nbsp;
+		<a href="classification/Iris.xls#Data!X5">
+		<img src="classification/Fig05b.png" width="342" height="342" class="style41"></a></span><p align="center"><samp>Рис.
+      5 Статистические характеристики обучающего и проверочного наборов </samp></p>
+      <p>На Рис. 5 показаны основные статистические характеристики обучающего и 
+		проверочного наборов. Средние значения (<em>m</em>) каждой переменной (<em>SL, 
+		SW, PL</em> и <em>PW</em>) показаны точками, а их среднеквадратичные 
+		отклонения (<em>s</em>) – отрезками. Цвет значков соответствует классу:
+		<span class="style26"><strong><span lang="en-us">&nbsp;</span>красный<span lang="en-us">
+		</span></strong></span>&nbsp;– &nbsp;<em>Setosa</em>, <span class="style27">
+		<strong><span lang="en-us">&nbsp;</span>голубой<span lang="en-us">
+		</span></strong></span>&nbsp;– <em>Versicolor</em> и
+		<span class="style28"><strong><span lang="en-us">&nbsp;</span>зеленый<span lang="en-us">
+		</span></strong></span>&nbsp;– <em>Virginica</em>. Форма значка 
+		соответствует набору, которому принадлежит образец: круг – обучающий 
+		набор, треугольник – проверочный набор. Мы и в дальнейшем будем 
+		использовать эту систему обозначений на графиках. </p>
+<p>Из Рис. 5&nbsp;видно, что переменные в разных классах отличаются как по <em>m</em>, 
+так и по <em>s</em>. Кроме того, мы можем заключить, что разбиение на обучающий 
+и проверочный наборы было сделано правильно – соответствующие графики похожи. </p>
+<p align="left"><a href="#Contents">Содержание</a><a name="Ch2.3"></a>
+        <h2 align="left">2.3. Рабочая книга Iris.xls&nbsp; </h2>
+        <p align="left">Это пособие сопровождает файл <em>
+		<a href="classification/Iris.xls">Iris.xls</a></em> – рабочая книга 
+		Excel 
+<p>Эта книга &nbsp;включает в себя следующие листы:</p>
+<p class="style43"><a href="classification/Iris.xls#Intro!B3"><span lang="en-us"><em>I</em></span><em>ntro</em></a>:&nbsp; 
+– краткое введение</p>
+<p class="style43"><em><a href="classification/Iris.xls#Data!A1">Data</a></em>:&nbsp; 
+– данные, используемые в примере. </p>
+<p class="style43"><span lang="en-us"><a href="classification/Iris.xls#PCA!A1">
+<em>PCA</em></a> </span>&nbsp;– PCA декомпозиция данных </p>
+<p class="style43"><span lang="en-us"><em>
+<a href="classification/Iris.xls#'PCA-LDA'!A1">PCA-LDA</a></em> </span>&nbsp;– Линейный 
+дискриминантный анализ сжатых данных </p>
+<p class="style43"><span lang="en-us"><em>
+<a href="classification/Iris.xls#LDA!A1">LDA</a></em> </span>&nbsp;– Линейный 
+дискриминантный анализ полных данных </p>
+<p class="style43"><span lang="en-us"><em>
+<a href="classification/Iris.xls#QDA!A1">QDA</a></em> </span>&nbsp;– Квадратичный 
+дискриминантный анализ</p>
+<p class="style43"><span lang="en-us"><em>
+<a href="classification/Iris.xls#PCALDA!A1">PLSDA</a></em> </span>&nbsp;– PLS 
+дискриминация </p>
+<p class="style43"><em><a href="classification/Iris.xls#'PLSDA-PCA-LDA'!A1">
+PLSDA-PCA-LDA</a></em>&nbsp; – Линейный дискриминантный анализ результатов PLS 
+дискриминации </p>
+<p class="style43"><span lang="en-us"><em>
+<a href="classification/Iris.xls#SIMCA_1!A1">SIMCA_1</a></em> </span>&nbsp;–
+<span lang="en-us">SIMCA </span>
+дискриминация первого класса </p>
+<p class="style43"><span lang="en-us"><em>
+<a href="classification/Iris.xls#SIMCA_2!A1">SIMCA_<span lang="ru">2</span></a></em> 
+</span>&nbsp;– <span lang="en-us">SIMCA </span>дискриминация второго класса </p>
+<p class="style43"><span lang="en-us"><em>
+<a href="classification/Iris.xls#SIMCA_3!A1">SIMCA_<span lang="ru">3</span></a></em> 
+</span>&nbsp;– <span lang="en-us">SIMCA </span>дискриминация третьего класса </p>
+<p class="style43"><span lang="en-us"><a href="classification/Iris.xls#KNN!A1">
+<em>KNN</em></a> </span>&nbsp;– <span lang="en-us">k </span>ближайших соседей</p>
+<p class="style43"><span lang="en-us"><em>
+<a href="classification/Iris.xls#'PCA-Explore'!A1">PCA-Explore</a></em> </span>&nbsp;– 
+Кластеризация с помощью PCA</p>
+<p class="style43"><span lang="en-us"><em>
+<a href="classification/Iris.xls#kMeans!A1">kMeans</a></em> </span>&nbsp;– Кластеризация 
+методом К-средних</p>
+<p align="left"><a href="#Contents">Содержание</a><a name="Ch2.4"></a><h2 align="left">
+2.4. Анализ данных методом главных компонент&nbsp; </h2>
+      <p><em>Метод главных компонент (PCA)</em> – один из главных инструментов, 
+		применяемых в хемометрике. В задачах классификации он используется с 
+		двумя целями. Во-первых, PCA понижает размерность данных, заменяя 
+		многочисленные переменные на небольшой набор (обычно 2-5) главных 
+		компонент. Во-вторых, он служит основой для построения многих методов 
+		классификации, например метода SIMCA, который рассмотрен 
+		<a href="#Ch3.4">ниже</a>. </p>
+<p>В рассматриваемом нами примере по классификации ирисов переменных немного – 
+всего четыре, поэтому первая цель не столь важна. Тем не менее, мы построим PCA 
+модель и посмотрим, насколько можно снизить эту размерность. PCA-анализ 
+выполняется с помощью функций <strong class="prog">
+<a href="projection.htm#Ch3.1">ScoresPCA</a></strong> и <span class="prog">
+<strong><a href="projection.htm#Ch3.2">LoadingsPCA</a></strong></span>,<span lang="en-us"> </span>
+PCA модель строится 
+на обучающем наборе <strong>X</strong><sub>c</sub> и затем применяется к 
+проверочному набору <strong>X</strong><sub>t</sub>. Из <a href="#Fig05">Рис. 5</a> 
+следует, что данные необходимо центрировать, но не шкалировать. </p>
+<p>Графики первых счетов приведены на Рис. 6.&nbsp;<samp><a name="Fig06"></a></samp>
+        </p>
+<p align="center"><a href="classification/Iris.xls#PCA!I2">
+<img src="classification/Fig06a.png" width="342" height="342" class="style41"></a><span lang="en-us">&nbsp;
+<a href="classification/Iris.xls#PCA!R2">
+<img src="classification/Fig06b.png" width="342" height="342" class="style41"></a></span><p align="center"><samp>Рис.6
+      Результаты PCA-анализа данных </samp></p>
+        <p>Графики старших компонент (PC3 – PC4) приведены
+		<a href="classification/Iris.xls#PCA!I25">здесь</a>. </p>
+<p>Для того, чтобы определить сколько главных компонент достаточно для 
+моделирование данных, нужно исследовать график, на котором <a href="pca.htm#Eq7">
+объясненная дисперсия</a> (ERV) для обучающего и проверочного изображается в 
+зависимости от числа главных компонент (PC). <samp><a name="Fig07"></a></samp>
+        &nbsp;</p>
+        <p align="center">
+		<a href="classification/Iris.xls#PCA!I47">
+		<img src="classification/Fig07.png" width="341" height="341" class="style41"></a><p align="center"><samp>Рис.7
+      Графики объясненной (ERV) дисперсии остатков для обучающего и проверочного 
+наборов
+      </samp></p>
+        <p>Из Рис. 7 видно, что двух PC достаточно для моделирования данных – 
+		они объясняют 98% вариаций, как для обучающего, так и для проверочного 
+		наборов. </p>
+<p align="left"><a href="#Contents">Содержание</a><a name="Ch3"></a>
+        <h1 align="left">3. Классификация &quot;с учителем&quot; <a name="Ch3.1"></a></h1>
+      <h2 align="left">3.1. Линейный дискриминатный анализ<span lang="en-us"> 
+		(LDA)</span></h2>
+        <p><em>Линейный дискриминантный анализ</em> или LDA (Linear Discriminant 
+		Analysis) это старейший из методов классификации, разработанный Р. 
+		Фишером, и опубликованный им в работе, которую мы уже упоминали 
+		<a href="#Ch2.1">выше</a>. 
+		Метод предназначен для разделения на два класса. </p>
+<p>Обучающий набор состоит из двух матриц <strong>X</strong><sub>1</sub> и
+<strong>X</strong><sub>2</sub>, в которых &nbsp;имеется по <em>I</em><sub>1</sub> и
+<em>I</em><sub>2</sub> строк (образцов). Число переменных (столбцов) одинаково и 
+равно <em>J</em>. Исходные предположения состоят в следующем: </p>
+          <table border="0" cellpadding="0" cellspacing="0" width="95%">
+            <tr>
+              <td width="90%" class="style32">
+                <dl class="style32">
+					<dt><a name="Eq1"></a><span lang="en-us">1. </span>Каждый 
+					класс (<em>k</em>=1 или 2) представляется 
+					<a href="statistics.htm#Ch2.7">нормальным 
+					распределением</a><span lang="en-us">
+					<img src="classification/image001.png" class="style33"></span></dt>
+					<dt><span lang="en-us">2. </span>Ковариационные матрицы этих 
+					двух классов одинаковые
+					<img src="classification/image002.png" width="93" height="25" class="style33"></dt>
+				</dl>
+				</td>
+              <td>
+                <p align="center">(1)</td>
+            </tr>
+          </table>
+          <p>Классификационное правило в LDA очень простое – новый образец
+			<strong>x</strong> относится к тому классу, к которому он ближе в 
+			метрике Махаланобиса </p>
+          <table border="0" cellpadding="0" cellspacing="0" width="95%">
+            <tr>
+              <td width="90%">
+                <p align="center"><b><a name="Eq2"></a></b>&nbsp;<img src="classification/image003.png" width="257" height="27" class="style34"></td>
+              <td>
+                <p align="center"><span lang="en-us">(2)</span></td>
+            </tr>
+          </table>
+          На практике неизвестные <a href="statistics.htm#Ch3.5">математические ожидания</a> и
+<a href="statistics.htm#Ch3.6">ковариационная 
+матрица</a> заменяются их оценкам
+          <table border="0" cellpadding="0" cellspacing="0" width="95%">
+            <tr>
+              <td width="90%">
+                <p align="center"><b><a name="Eq3"></a>&nbsp;<img src="classification/image004.png" class="style35"></b></td>
+              <td>
+                <p align="center">(3)</td>
+            </tr>
+          </table>
+        <p>В этих формулах
+		<img src="classification/image005.png" width="24" height="27" class="style33">&nbsp;обозначает
+		<a href="calibration.htm#Ch1.8">центрированную</a> матрицу <strong>X</strong><sub><em>k</em></sub>. 
+		Если приравнять расстояния <em>d</em><sub>1</sub>=<em>d</em><sub>2</sub> 
+		в формуле <a href="#Eq2">(2)</a>, то можно найти уравнение кривой, 
+		которая разделяет классы. При этом квадратичные члены <strong>xS</strong><sup>–1</sup><strong>x</strong><sup>t</sup> 
+		сокращаются, и уравнение становится линейным </p>
+<div align="center">
+          <center>
+          <table border="0" cellpadding="0" cellspacing="0" width="95%">
+            <tr>
+              <td width="90%">
+                <p align="center"><b><a name="Eq4"></a></b>
+				<img src="classification/image006.png" width="133" height="25"></td>
+              <td>
+                <p align="center">(4)</td>
+            </tr>
+          </table>
+          </center>
+        </div>
+      <p>где </p>
+        <div align="center">
+          <center>
+          <table border="0" cellpadding="0" cellspacing="0" width="95%">
+            <tr>
+              <td width="90%">
+                <p align="center"><b><a name="Eq5"></a> </b>&nbsp;<img src="classification/image007.png" width="239" height="27"></td>
+              <td>
+                <p align="center">(5)</td>
+            </tr>
+          </table>
+          </center>
+        </div>
+        <div align="center">
+        </div>
+<p align="left">Величины, стоящие в разных частях уравнения <a href="#Eq4">(4)</a> 
+называются <em>LDA-счетами</em>, <em>f</em><sub>1</sub> и <em>f</em><sub>2</sub>. Образец 
+относится к классу 1, если <em>f</em><sub>1</sub> <em><span lang="en-us">&gt;</span> 
+f</em><sub>2</sub> , и, наоборот, к классу 2, если <em>f</em><sub>1</sub>
+<span lang="en-us">&lt;</span><em> f</em><sub>2</sub>.
+        <p align="left">Главной проблемой в методе LDA является обращение 
+		матрицы <strong>S</strong>. Если она вырождена, то метод использовать 
+		нельзя. Поэтому часто, перед применением&nbsp;LDA, исходные данные <strong>X</strong> 
+		заменяют на матрицу PCA-счетов <strong>T</strong>, которая уже не 
+		вырождена.
+        <p align="left">Покажем, как LDA работает на примере классификации 
+		ирисов. Для большей иллюстративности мы сначала применим PCA, а уже 
+		потом LDA. Из раздела <a href="#Ch2.4">2.4</a> ясно, что двух главных 
+		компонент будет достаточно.
+        <p align="left">Т.к. LDA – это двухклассовый дискриминатор, то мы 
+		проведем классификацию в два шага. Сначала построим классификатор, 
+		который отделяет класс 1 (<em>Setosa</em>) от всех других ирисов, 
+		объединенных в класс 23 (<em>Versicolor</em> + <em>Virginica</em>). 
+		Затем построим второй классификатор, разделяющий классы 2 (<em>Versicolor</em>) 
+		и 3 (<em>Virginica</em>). Вычисления показаны на листе <em>
+		<a href="classification/Iris.xls#'PCA-LDA'!A1">PCA-LDA</a></em>.
+        <p align="left">Начнем с вычисления средних значений для всех классов по 
+		обучающим наборам. Нам надо вычислить средние значения по классу 1 (<em>I</em><sub>1</sub>=40), 
+		объединенному классу 23 (<em>I</em><sub>23</sub>=80), и классам 2 (<em>I</em><sub>2</sub>=40) 
+		и 3 (<em>I</em><sub>3</sub>=40). Значения приведены в массивах с 
+		локальными именами: <span class="address">m1c</span>,
+		<span class="address">m23c</span>, <span class="address">m2c</span> и
+		<span class="address">m3c</span>. .<samp><a name="Fig08"></a></samp>
+        <p align="center">
+		<a href="classification/Iris.xls#'PCA-LDA'!C153">
+		<img src="classification/Fig08.png" width="228" height="160" class="style41"></a><p align="center"><samp>Рис.8
+      Расчет средних значений
+      </samp></p>
+      <p align="left">Вычислим ковариационные матрицы, составленные из классов 1 
+		и 23, а также из классов 2 и 3 и обратим их. Результаты представлен в 
+		массивах с локальными именами <span class="address">Sinv123 </span>и 
+		<span class="address">Sinv23</span>. Используя формулы
+		<a href="#Eq5">(5)</a> вычислим все необходимые нам величины .<a name="Fig09"></a>
+        <p align="center"><span lang="en-us">
+		<a href="classification/Iris.xls#'PCA-LDA'!I2">
+		<img src="classification/Fig09a.png" width="215" height="450" class="style41"></a>&nbsp;&nbsp;
+		<a href="classification/Iris.xls#'PCA-LDA'!P42">
+		<img src="classification/Fig09b.png" width="202" height="448" class="style41"></a></span><p align="center"><samp>Рис.<span lang="en-us">9</span> 
+Расчет матриц ковариациий и других параметров LDA </samp></p>
+        <p align="left">Теперь, используя формулу <a href="#Eq4">(4)</a>, мы 
+		можем рассчитать &nbsp;LDA-счета <em>f</em><sub>1</sub> и <em>f</em><sub>23</sub> 
+		и определить принадлежность всех образцов к классам 1 и 23. .<a name="Fig10"></a><p class="style2">
+<a href="classification/Iris.xls#'PCA-LDA'!F5">
+<img src="classification/Fig10.png" width="549" height="449" class="style41"></a><p align="center"><samp>Рис.1<span lang="en-us">0</span> 
+Расчет LDA-счетов и принадлежности к классам 1 и 23 </samp></p>
+      <p align="left">Аналогично проводится расчет для разделения классов 2 и 3. .
+<a name="Fig11"></a>
+        <p align="center">
+		<a href="classification/Iris.xls#'PCA-LDA'!M45">
+		<img src="classification/Fig11.png" width="538" height="447" class="style41"></a><p align="center"><samp>Рис.1<span lang="en-us">1</span> 
+Расчет LDA-счетов и принадлежности к классам 2 и 3</samp></p>
+      <p align="left">Результат первой дискриминации между классами 1 и 23 
+		показан на Рис. 12.&nbsp; <a name="Fig12"></a>
+        <p align="center">
+		<a href="classification/Iris.xls#'PCA-LDA'!L2">
+		<img src="classification/Fig12a.png" width="342" height="342" class="style41"></a><span lang="en-us">&nbsp;&nbsp;
+		<a href="classification/Iris.xls#'PCA-LDA'!L22">
+		<img src="classification/Fig12b.png" width="342" height="342" class="style41"></a></span><p align="center"><samp>Рис.12
+      Результат первой дискриминации между классами 1 и 23 </samp></p>
+      <p>Дискриминационная прямая&nbsp; <a href="#Eq4">(4)</a> безошибочно 
+		разделяет классы как в обучающем, так и в проверочном наборе.
+		<a name="Fig13"></a>
+        &nbsp;<p align="center">
+<a href="classification/Iris.xls#'PCA-LDA'!Q72">
+<img src="classification/Fig13a.png" width="342" height="342" class="style41"></a><span lang="en-us">&nbsp;
+<a href="classification/Iris.xls#'PCA-LDA'!Q94">
+<img src="classification/Fig13b.png" width="342" height="342" class="style41"></a></span><p align="center"><samp>Рис.13
+      Результат второй дискриминации между классами 2 и 3 </samp></p>
+      <p align="left">Результат второй дискриминации между классами 2 и 3 
+		представлен на Рис. 13. Здесь есть ошибки в обучении: два образца из 
+		класса 2 ошибочно отнесены к классу 3, и также два образца из класса 3 
+		ошибочно отнесены к классу 2. Эти точки показаны квадратными значками. В 
+		проверочном наборе ошибок нет.
+<p align="left">В примере с ирисами переменных мало, ковариационные матрицы 
+невырождены, поэтому можно построить LDA классификацию и без предварительного 
+использования PCA. Соответствующие расчеты представлены на листе
+<span lang="en-us"><em><a href="classification/Iris.xls#LDA!A1">LDA</a></em></span>.&nbsp; <a name="Fig14"></a><p align="center">
+<a href="classification/Iris.xls#LDA!Q2">
+<img src="classification/Fig14a.png" width="342" height="342" class="style41"></a>&nbsp;
+<a href="classification/Iris.xls#LDA!Q22">
+<img src="classification/Fig14b.png" width="342" height="342" class="style41"></a><p align="center"><samp>Рис.14
+      Результат первой дискриминации между классами 1 и 23 </samp></p>
+      <p align="left">На Рис. 14 и Рис. 15 показаны результаты LDA 
+		классификации.<span lang="en-us"> <a name="Fig15"></a></span><p align="center">
+<a href="classification/Iris.xls#LDA!U65">
+<img src="classification/Fig15a.png" width="342" height="342" class="style41"></a>&nbsp;<span lang="en-us"> </span>&nbsp;
+<a href="classification/Iris.xls#LDA!U88">
+<img src="classification/Fig15b.png" width="342" height="342" class="style41"></a><p align="center"><samp>
+Рис.15 Результат второй дискриминации между классами 2 и 3</samp></p>
+      <p align="left">Т.к. переменных теперь не две, а четыре, то графики, 
+		иллюстрирующие результаты, можно построить только в координатах 
+		LDA-счетов (<em>f</em><sub>1</sub>, <em>f</em><sub>2</sub>) и 
+		дискриминирующая прямая <span lang="en-us">- </span>это биссектриса<span lang="en-us">
+		</span><em>f</em><sub>1</sub><span lang="en-us"> =</span> <em>f</em><sub>2</sub> 
+		первого квадранта. Вторая дискриминации в обучающем наборе проведена с 
+		ошибками: два образца из класса 2 ошибочно отнесены к классу 3, и один 
+		образец из класса 3 ошибочно отнесен к классу 2. Эти точки показаны 
+		квадратными значками. В проверочном наборе ошибок нет
+      <p align="left">Недостатки LDA.
+      <ol>
+		<li>
+		<p align="left">Не работает, когда матрица ковариаций вырождена, 
+		например, при большом числе переменных. Требуется регуляризация, 
+		например, PCA. </li>
+		<li>
+		<p align="left">Не пригоден, если ковариационные матрицы классов 
+		различны. </li>
+		<li>
+		<p align="left">Неявно использует предположение о нормальности 
+		распределения. </li>
+		<li>
+		<p align="left">Не позволяет менять уровни ошибок 1-го и 2-го родов. 
+		</li>
+</ol>
+<p align="left">Достоинства LDA:
+      <ol>
+		<li>
+		<p align="left">Прост в применении. </li>
+</ol>
+      <p align="left"><a href="#Contents">Содержание</a><a name="Ch3.2"></a></p>
+      <h2 align="left">3.2. Квадратичный дискриминатный анализ
+		<span lang="en-us">(QDA)</span></h2>
+        <p align="left"><em>Квадратичный дискриминантный анализ, QDA</em> 
+		(Quadratic Discriminant Analysis) является естественным обобщением 
+		метода LDA. QDA– многоклассный метод и он может использоваться для 
+		одновременной классификации нескольких классов <em>k</em>=1,…, <em>K</em>.
+        <p align="left">Обучающий набор состоит из <em>K</em> матриц <strong>X</strong><sub>1</sub> 
+		,…, <strong>X</strong><sub><em>K</em></sub>, в которых &nbsp;имеется&nbsp; <em>I</em><sub>1</sub> 
+		,…, <em>I<sub>K</sub></em> строк (образцов). Число переменных (столбцов) 
+		одинаково и равно <em>J</em>. Сохраняя первое предположение LDA в
+		<a href="#Eq1">(1)</a>, откажемся от второго, т.е. допустим, что 
+		ковариационные матрицы в каждом классе различны. Тогда <em>QDA-счета</em> 
+		вычисляются по формуле
+        <div align="center">
+          <center>
+          <table border="0" cellpadding="0" cellspacing="0" width="95%">
+            <tr>
+              <td width="90%">
+                <p align="center"><b><a name="Eq6"></a></b>
+				<img src="classification/image008.png" class="style36"></td>
+              <td>
+                <p align="center">(6)</td>
+            </tr>
+          </table>
+          </center>
+        </div>
+      <p>Классификационное правило QDA такое – новый образец <strong>x</strong> 
+		относится к тому классу, для которого QDA-счет наименьший. </p>
+<p>На практике, также как и в LDA, неизвестные математические ожидания и 
+ковариационные матрицы заменяются их оценками </p>
+<div align="center">
+          <center>
+          <table border="0" cellpadding="0" cellspacing="0" width="95%">
+            <tr>
+              <td width="90%">
+                <p align="center"><b><a name="Eq7"></a>&nbsp;<img src="classification/image009.png" width="227" height="51"></b></td>
+              <td>
+                <p align="center">(7)</td>
+            </tr>
+          </table>
+          </center>
+        </div>
+      <p>В этих формулах
+		<img src="classification/image005.png" width="24" height="27" class="style33">&nbsp;обозначает
+		<a href="calibration.htm#Ch1.8">центрированную</a> матрицу <strong>X</strong><sub><em>k</em></sub>. 
+		Поверхность, разделяющая классы <em>k</em> и <em>l</em> определяется 
+		квадратичным уравнением</p>
+<p class="style2"><em>f<sub>k</sub><span lang="en-us"> </span></em>=<em><span lang="en-us">
+</span>f<sub>l</sub></em> </p>
+<p>поэтому метод и называется квадратичным. </p>
+<p align="left">Рассмотрим, как метод QDA применяется к задаче классификации 
+ирисов. Все расчеты приведены на листе <em>
+<a href="classification/Iris.xls#QDA!A1">QDA</a></em>. Обучающий массив состоит из 
+трех классов (с локальными именами <span class="address">X1c</span>,
+<span class="address">X2c</span><span lang="en-us">, </span>
+<span class="address">X3c</span>), по&nbsp;40 образцов в каждом. Для каждого массива 
+вычисляются средние значения (локальные имена <span class="address">m1c</span>,
+<span class="address">m2c </span>и <span class="address">m3c</span>) .<a name="Fig16"></a>
+        <p align="center">
+		<a href="classification/Iris.xls#QDA!C153">
+		<img src="classification/Fig16.png" width="324" height="115" class="style41"></a><p align="center"><samp>Рис.16
+      Расчет средних значений </samp></p>
+        <p>Потом вычисляются и обращаются ковариационные матрицы (локальные 
+		имена <span class="address">Sinv1</span>, <span class="address">Sinv2</span> 
+		и <span class="address">Sinv<span lang="en-us">3</span></span>
+		<span
+lang=EN-US>.</span><a name="Fig17"></a>
+        <p class="style2">
+		<a href="classification/Iris.xls#QDA!L2">
+		<img src="classification/Fig17.png" width="728" height="329" class="style41"></a> <p align="center"><samp>Рис.17
+      Расчет матриц ковариаций </samp></p>
+<p>После этого можно рассчитать QDA счета и определить принадлежность к классам.
+<a name="Fig18"></a>
+        </p>
+        <p align="center">
+		<a href="classification/Iris.xls#QDA!H4">
+		<img src="classification/Fig18.png" width="682" height="330" class="style41"></a>&nbsp;
+		<p align="center"><samp>Рис.18
+      Расчет QDA-счетов и принадлежности к классам </samp></p>
+      <p align="left">Результаты классификации представлены графиками QDA-счетов, 
+		показанными на Рис. 19 .<a name="Fig19"></a>
+        <p align="center">
+		<a href="classification/Iris.xls#QDA!M18">
+		<img src="classification/Fig19a.png" width="342" height="342" class="style41"></a><span lang="en-us">
+		<a href="classification/Iris.xls#QDA!V18">
+		<img src="classification/Fig19b.png" width="342" height="342" class="style41"></a><br>
+		<a href="classification/Iris.xls#QDA!M40">
+		<img src="classification/Fig19c.png" width="342" height="342" class="style41"></a>
+		<a href="classification/Iris.xls#QDA!V40">
+		<img src="classification/Fig19d.png" width="342" height="342" class="style41"></a><br>
+		</span><a href="classification/Iris.xls#QDA!M62">
+		<img src="classification/Fig19e.png" width="342" height="342" class="style41"></a><span lang="en-us">
+		<a href="classification/Iris.xls#QDA!V62">
+		<img src="classification/Fig19f.png" width="342" height="342" class="style41"></a></span><p align="center"><samp>Рис.19
+      Результаты QDA классификации </samp></p>
+        <p align="left">Из этих рисунков (а также из анализа QDA-счетов) видно, 
+		что классификация в обучающем наборе проведена с ошибками: три образца 
+		из второго класса (<em>Versicolor</em>) отнесены к третьему (<em>Virginica</em>). 
+		В проверочном наборе ошибок нет. 
+<p align="left">Квадратичный дискриминантный анализ сохраняет большинство 
+недостатков LDA. 
+<ol>
+	<li>
+	<p align="left">Не работает, когда матрицы ковариаций&nbsp; вырождены, например, 
+	при большом числе переменных. Требуется регуляризация, например, PCA. </li>
+	<li>
+	<p align="left">Неявно использует предположение о нормальности 
+	распределения. </li>
+	<li>
+	<p align="left">Не позволяет менять уровни ошибок 1-го и 2-го родов. .</li>
+</ol>
+<p align="left"><a href="#Contents">Содержание</a><a name="Ch3.3"></a></p>
+      <h2 align="left">3.3. PLS дискриминация (<span lang="en-us">PLSDA</span>) </h2>
+      <p align="left">Мы уже <a href="#Ch1.7">отмечали</a>, что между задачами 
+		классификации и калибровки есть много общего. Метод <em>PLS 
+		дискриминации,</em> PLSDA (PLS-Discriminant Analysis) основан на 
+		этом принципе.
+        <p align="left">Будем рассматривать имеющиеся у нас данные как набор 
+		предикторов (обучающий <strong>X</strong><sub>c</sub> и проверочный
+		<strong>X</strong><sub>t</sub>). Дополним их <em>фиктивными</em> (<em>dummy</em>) 
+		матрицами откликов – обучающей <strong>Y</strong><sub>c</sub> и 
+		проверочной <strong>Y</strong><sub>t</sub>. – которые формируются по 
+		следующему правилу.
+        <p align="left">Число предикторов (столбцов) в матрицах <strong>Y</strong> 
+		должно быть равно числу классов (в нашем случае – три). В каждой строке 
+		матрицы <strong>Y</strong> должны стоять нули (0) или единицы (1) в 
+		зависимости от того, к какому классу относится эта строка – если строка 
+		соответствует <em>k</em>-ому классу, то в <em>k</em>-ом столбце должна 
+		стоять 1, в остальных столбцах нули. Пример такой матрицы приведен на 
+		листе <a href="classification/Iris.xls#PLSDA!G3"> <em>PLSDA</em> </a>(области с локальными именами <span class="address">
+		Yc</span> и <span class="address">Yt)</span>.
+        <p align="left">Между блоком предикторов <strong>X</strong><sub>c</sub> 
+		и блоком откликов <strong>Y</strong><sub>c</sub> строится
+		<a href="calibration.htm#Ch5.6">PLS2-регрессия</a> , и по ней 
+		вычисляются предсказанные значения фиктивных откликов <strong>Y</strong><sup>hat</sup> 
+		для обучающего и проверочного наборов. Для нового образца <strong>x</strong> 
+		вычисляется PLS2 прогноз, т.е. строка новых откликов <em>y</em><sub>1</sub>,…<em>y<sub>K</sub></em> 
+		. Классификационное правило в PLSDA такое – образец принадлежит к тому 
+		классу, для которого соответствующий элемент <em>y<sub>k</sub></em> 
+		ближе к единице. Практически определяется индекс <em>k</em> на котором 
+		достигается
+        <div align="center">
+          <center>
+          <table border="0" cellpadding="0" cellspacing="0" width="95%" height="50">
+            <tr>
+              <td width="90%">
+                <p align="center">
+				<a name="Eq8"></a>min{|1-<em>y</em><sub>1</sub> |, …,|1-<em>y<sub>K</sub></em> 
+				| } </td>
+              <td>
+                <p align="center">(8)</td>
+            </tr>
+          </table>
+          </center>
+        </div>
+        <p align="left">Применение PLSDA в задаче классификации ирисов показано 
+		на листе PLSDA. Расчеты начинаются с формирования матрицы фиктивных 
+		откликов и <a href="projection.htm#Ch5.1">вычисления PLS2-счетов</a>. <a name="Fig20"></a>
+        &nbsp;<p align="center">
+<a href="classification/Iris.xls#PLSDA!D3">
+<img src="classification/Fig20a.png" width="395" height="237" class="style41"></a><span lang="en-us">
+<a href="classification/Iris.xls#PLSDA!D123">
+<img src="classification/Fig20b.png" width="395" height="246" class="style41"></a></span><p align="center"><samp>Рис.20
+      Построение PLS2 регрессии </samp></p>
+        <p align="left">Заметим, что при получении PLS2-счетов для проверочного 
+		набора используется несколько другая формула. 
+<p align="left">Для вычисления прогнозных значений откликов <strong>Y</strong><sup>hat</sup> 
+применяется функция <a href="excel.htm#TREND"><strong><span class="prog">ТЕНДЕНЦИЯ<span lang="en-us">
+</span></span></strong><span class="prog"><span lang="en-us"><strong>(</strong></span><strong>TREND</strong></span></a><span class="prog"><span lang="en-us">)</span></span>. 
+В версии Excel 2003 эта функция иногда дает <a href="excel.htm#Ch2.8">
+неправильный результат</a>. Чтобы предотвратить эту ошибку, мы используем 
+центрированные значения фиктивных откликов в обучающем наборе .<a name="Fig21"></a>
+        <p align="center"><span lang="en-us">
+		&nbsp;<a href="classification/Iris.xls#PLSDA!K3"><img src="classification/Fig21.png" width="519" height="236" class="style41"></a></span><p align="center"><samp>
+Рис.21 Расчет прогноза фиктивных откликов&nbsp; </samp></p>
+      <p align="left">Результаты PLSDA классификации на обучающем наборе таковы: 
+		15 образцов из второго класса (<em>Versicolor</em>) ошибочно отнесены к 
+		третьему классу (<em>Virginica</em>), четыре образца из третьего класса 
+		(<em>Virginica</em>) ошибочно отнесены ко второму классу&nbsp;(<em>Versicolor</em>). 
+		В проверочном наборе тоже есть ошибки: один образец из первого класса 
+		ошибочно отнесен ко второму, и два образца из второго класса ошибочно 
+		отнесены к третьему классу. Таким образом, мы можем заключить, что PLSDA 
+		классификация удовлетворительных результатов не дала. Однако ситуацию 
+		можно значительно улучшить, если отказаться от плохого правила 
+		классификации (<a href="#Eq8">8</a>) и продолжить вычисления дальше.
+		<span lang="en-us">&nbsp;</span><a name="Fig22"></a></p>
+        <p align="center">
+		<a href="classification/Iris.xls#PLSDA!T3">
+		<img src="classification/Fig22a.png" width="342" height="342" class="style41"></a><span lang="en-us">&nbsp;
+		<a href="classification/Iris.xls#PLSDA!Z3">
+		<img src="classification/Fig22b.png" width="342" height="342" class="style41"></a><br>
+		<a href="classification/Iris.xls#PLSDA!T25">
+		<img src="classification/Fig22c.png" width="342" height="342" class="style41"></a>&nbsp;
+		<a href="classification/Iris.xls#PLSDA!Z25">
+		<img src="classification/Fig22d.png" width="342" height="342" class="style41"></a></span><p align="center"><samp>Рис.22
+      Результаты <span lang="en-us">PLSDA</span> классификации </samp></p>
+      <p align="left">Будем рассматривать найденные величины прогнозных значений 
+		фиктивных откликов <strong>Y</strong><sup>hat</sup> не как 
+		окончательные, а как промежуточные данные, и применим к ним какой-нибудь 
+		другой метод классификации, например LDA. Напрямую это сделать нельзя, 
+		поскольку матрица <strong>Y</strong><sub>c</sub><sup>hat</sup> имеет 
+		ранг <em>K</em>–1, и матрицы ковариаций <a href="#Eq3">(3)</a> будут 
+		вырождены. Поэтому, до применения LDA, необходимо использовать метод 
+		главных компонент (PCA), так же, как мы делали в разделе
+		<a href="#Ch3.1">3.1</a>. Соответствующие вычисления приведены на листе
+		<em><a href="classification/Iris.xls#'PLSDA-PCA-LDA'!A1">PLSDA-PCA-LDA</a></em> .<a name="Fig23"></a></p>
+        <p align="center">
+		<a href="classification/Iris.xls#'PLSDA-PCA-LDA'!P2">
+		<img src="classification/Fig23a.png" width="342" height="342" class="style41"></a><span lang="en-us">&nbsp;
+		<a href="classification/Iris.xls#'PLSDA-PCA-LDA'!P22">
+		<img src="classification/Fig23b.png" width="342" height="342" class="style41"></a><br>
+		<a href="classification/Iris.xls#'PLSDA-PCA-LDA'!T72">
+		<img src="classification/Fig23c.png" width="342" height="342" class="style41"></a>&nbsp;
+		<a href="classification/Iris.xls#'PLSDA-PCA-LDA'!T94">
+		<img src="classification/Fig23d.png" width="342" height="342" class="style41"></a></span><p align="center"><samp>Рис.23
+      Результаты <span lang="en-us">PLSDA</span>-PCA-LDA классификации </samp></p>
+        <p align="left">Этим способом мы получаем результат, в котором имеется 
+		всего одна ошибка в обучении: один образец из второго класса (<em>Versicolor</em>) 
+		ошибочно отнесен к третьему классу (<em>Virginica</em>). В проверочном 
+		наборе ошибок нет.
+        <p align="left">В этом методе PLS2-регрессия на матрицу фиктивных 
+		откликов с последующей PCA проекцией (PLSDA-PCA) является 
+		предварительной подготовкой исходных данных <strong>X</strong>, т.е. 
+		некоторым фильтром, выявляющим в этих данных новые характеристики, 
+		непосредственно связанные с различиями между классами. Здесь 
+		принципиально важно, что в PCA-LDA метод применяется к матрице 
+		предсказанных фиктивных откликов <strong>Y</strong><sup>hat</sup>, не к 
+		матрице PLS2-счетов.
+        <p align="left">Недостатки PLSDA
+        <ol>
+			<li>
+			<p align="left">Требует предварительного регрессионного анализа 
+			данных .</li>
+			<li>
+			<p align="left">Результат зависит от выбора числа PC в
+			<span lang="en-us">PLS</span>2<span lang="en-us"> </span>регрессии. </li>
+			<li>
+			<p align="left">Чувствителен к <a href="statistics.htm#Ch3.2">выбросам</a>. </li>
+			<li>
+			<p align="left">Плохо работает для малого числа образцов в обучающем 
+			наборе. </li>
+</ol>
+<p align="left">Достоинства PLSDA
+        <ol>
+			<li>
+			<p align="left">Не использует вид распределения. </li>
+			<li>
+			<p align="left">Применим для большого числа переменных, устойчив к 
+			проклятию размерности. </li>
+</ol>
+<p align="left"><a href="#Contents">Содержание</a><span lang="en-us">
+<a name="Ch3.4"></a></span>
+<h2 align="left">3.4. SIMCA </h2>
+<p align="left">В этом разделе мы рассмотрим метод с длинным названием <em>
+Формальное независимое моделирование аналогий классов</em>, или, сокращенно, <em>
+SIMCA</em> (<em>Soft Independent Modeling of Class Analogy</em>). Уникальность 
+этого метода определяется несколькими особенностями.
+        <p align="left">Во-первых, каждый класс моделируется обособленно, 
+		независимо (<em>independent</em>) от остальных. Поэтому SIMCA является 
+		одноклассовым методом. Во-вторых, SIMCA классификация является 
+		многозначной (<em>soft</em>) – каждый образец может быть одновременно 
+		отнесен к нескольким классам. В-третьих, в SIMCA есть уникальная 
+		возможность установить значение ошибки 1-го рода и построить 
+		соответствующий классификатор. В методах, рассмотренных выше, 
+		<a href="statistics.htm#Ch6.3">ошибки 
+		1-го и 2-го рода</a> возникают как данность, изменить которую невозможно. 
+		Например, в LDA ошибки 1-го рода (&#945;) 
+		и 2-го рода (&#946;) можно 
+		(<a href="references.htm#L2.17">с большим трудом</a>) вычислить, но изменить нельзя.
+        <p align="left">Т.к. SIMCA является одноклассовым методом, то, при его 
+		объяснении мы будем рассматривать только один класс, представленный 
+		матрицей <strong>X</strong>, размерностью <em>I</em> образцов и <em>J</em> 
+		переменных. Наша цель – построить такое классификатор (правило), по 
+		которому любой новый образец <strong>x</strong> либо принимается как 
+		принадлежащий тому же классу, что и <strong>X</strong>, либо 
+		отвергается.
+        <p align="left">Для решения этой задачи представим матрицу <strong>X</strong> 
+		как облако из <em>I</em> точек в <em>J</em>-мерном пространстве свойств. 
+		Начало координат этого пространства мы поместим в центр тяжести этого 
+		облака. Заметим, что форма облака часто является специфичной – из-за 
+		сильной корреляции между свойствами, точки могут быть расположены близко 
+		к некоторой гиперплоскости (подпространству), имеющей эффективную 
+		размерность <em>A</em>&lt;<em>J</em>. Для определения построения этой 
+		гиперплоскости и определения размерности A применяется метод главных 
+		компонент.
+        <p align="left">Каждый элемент данных можно представить как сумму двух 
+		векторов: лежащего в найденной гиперплоскости (проекция) и 
+		перпендикулярного гиперплоскости (остаток). Длины этих векторов являются 
+		важными показателями, характеризующими принадлежность точки к классу. 
+		Они называются, соответственно, <a href="pca.htm#Ch2.13"> <em>размахом</em> <em>h</em> и <em>
+		отклонением</em> <em>v</em></a>. Как только появляется новая точка – 
+		кандидат на принадлежность к классу – ее можно спроецировать на уже 
+		имеющееся подпространство и определить ее собственные характеристики: 
+		размах и отклонение. Сравнивая эти величины с критическими уровнями, 
+		определенными по обучающему набору, можно принять решение о 
+		принадлежности нового наблюдения к классу.&nbsp;.<a name="Fig24"></a><p align="center">
+<img src="classification/Fig24a.png" width="264" height="377"><span lang="en-us">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+<img src="classification/Fig24b.png" width="209" height="375"></span><p align="center"><samp>
+Рис.24 Размах и отклонение в PCA</samp></p>
+      <p align="left">Пусть построена PCA декомпозиция обучающей матрицы <strong>
+		X</strong> </p>
+<p class="style2"><strong>X</strong> = <strong>TP</strong><sup>t</sup> + <strong>
+E</strong> </p>
+<p align="left">Тогда каждый образец <strong>x</strong> (обучающий, проверочный 
+или новый) может быть спроецирован на пространство PC, т.е. найден вектор его 
+счетов </p>
+<p class="style2"><strong>t</strong>=<strong>xP</strong>=(<em>t</em><sub>1</sub>,…,<em>t<sub>A</sub></em>)<sup>t</sup> </p>
+<p align="left">Размах <em>h</em> вычисляется по следующей формуле </p>
+        <div align="center">
+          <center>
+          <table border="0" cellpadding="0" cellspacing="0" width="95%">
+            <tr>
+              <td width="90%">
+                <p align="center"><b><a name="Eq9"></a>&nbsp;<img src="classification/image010.png" width="193" height="57"></b></td>
+              <td>
+                <p align="center">(9)</td>
+            </tr>
+          </table>
+          </center>
+        </div>
+        <p align="left">где <em>s<sub>a</sub></em> – это 
+		<a href="matrix.htm#ch211">сингулярные значения,</a> 
+		т.е.
+		<img src="classification/image011.png" width="67" height="28" class="style33"><span lang="en-us">.</span><p align="left">
+Разница между исходным вектором <strong>x</strong> и его декомпозицией <div align="center">
+          <center>
+          <table border="0" cellpadding="0" cellspacing="0" width="95%" height="40">
+            <tr>
+              <td width="90%">
+                <p align="center"><b><a name="Eq10"></a>&nbsp; </b><strong>e</strong> 
+				= <strong>x</strong>(<strong>I</strong>–<strong>PP</strong><sup>t</sup>) </td>
+              <td>
+                <p align="center">(1<span lang="en-us">0</span>)</td>
+            </tr>
+          </table>
+          </center>
+        </div>
+      <p align="left">является <em>остатком</em>. Отклонение <em>v</em> – это 
+		среднеквадратичный остаток </p>
+<div align="center">
+          <center>
+          <table border="0" cellpadding="0" cellspacing="0" width="95%" height="40">
+            <tr>
+              <td width="90%">
+                <p align="center"><b><a name="Eq11"></a>&nbsp;
+				<img src="classification/image012.png" width="79" height="53"></b> </td>
+              <td>
+                <p align="center">(1<span lang="en-us">1</span>)</td>
+            </tr>
+          </table>
+          </center>
+        </div>
+      <p align="left">Существуют веские основания считать, что каждая из величин 
+		<em>h</em> и <em>v</em> подчиняется распределению 
+		<a href="statistics.htm#Ch2.4">хи-квадрат</a>, точнее </p>
+<div align="center">
+          <center>
+          <table border="0" cellpadding="0" cellspacing="0" width="95%" height="40">
+            <tr>
+              <td width="90%">
+                <p align="center"><b><a name="Eq12"></a>&nbsp;<img src="classification/image013.png" width="112" height="45"> </b>
+				<span lang="en-us">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<img src="classification/image014.png" width="105" height="47"></span></td>
+              <td>
+                <p align="center">(1<span lang="en-us">2</span>)</td>
+            </tr>
+          </table>
+          </center>
+        </div>
+      <p align="left">где<em> h</em><sub>0</sub> и <em>v</em><sub>0</sub> – &nbsp;это 
+		средние значения величин <em>h</em> и <em>v</em>, а <em>N<sub>h</sub></em>, 
+		и <em>N<sub>v</sub></em><span lang="en-us"> </span>– это числа степеней 
+		свободы соответственно для <em>h</em> и <em>v</em>. </p>
+<p align="left">Используя обучающий набор <strong>X</strong><sub>c</sub>=(<em>x</em><sub>1</sub>,…<em>x<sub>I</sub></em>)<sup>t</sup>, 
+можно найти <em>I</em> значений размахов <em>h</em><sub>1</sub>,….,<em>h<sub>I</sub></em> 
+и отклонений <em>v</em><sub>1</sub>,….,<em>v<sub>I</sub></em>. По ним можно 
+оценить соответствующие <a href="statistics.htm#Ch3.5">средние значения</a> </p>
+<div align="center">
+          <center>
+          <table border="0" cellpadding="0" cellspacing="0" width="95%" height="40">
+            <tr>
+              <td width="90%">
+                <p align="center"><b><a name="Eq13"></a>&nbsp; </b>&nbsp;<img src="classification/image015.png" width="112" height="48"><span lang="en-us">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<img src="classification/image016.png" width="84" height="51"></span></td>
+              <td>
+                <p align="center">(1<span lang="en-us">3</span>)</td>
+            </tr>
+          </table>
+          </center>
+        </div>
+      <p align="left">и <a href="statistics.htm#Ch3.5">дисперсии</a> </p>
+<div align="center">
+          <center>
+          <table border="0" cellpadding="0" cellspacing="0" width="95%" height="40">
+            <tr>
+              <td width="90%">
+                <p align="center"><b><a name="Eq14"></a>&nbsp;<img src="classification/image017.png" width="153" height="51"><span lang="en-us">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				</span>&nbsp;</b>
+				<img src="classification/image018.png" width="152" height="51"></td>
+              <td>
+                <p align="center">(1<span lang="en-us">4</span>)</td>
+            </tr>
+          </table>
+          </center>
+        </div>
+      <p align="left">После этого числа степеней свободы <em>N<sub>h</sub></em>, 
+		и <em>N<sub>v</sub></em> определяются с помощью 
+		<a href="statistics.htm#Ch3.9">метода моментов</a> </p>
+<div align="center">
+          <center>
+          <table border="0" cellpadding="0" cellspacing="0" width="95%" height="40">
+            <tr>
+              <td width="90%">
+                <p align="center"><b><a name="Eq15"></a>&nbsp; </b>&nbsp;<img src="classification/image019.png" width="69" height="49"><span lang="en-us">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<img src="classification/image020.png" width="69" height="49"></span></td>
+              <td>
+                <p align="center">(1<span lang="en-us">5</span>)</td>
+            </tr>
+          </table>
+          </center>
+        </div>
+      <p align="left"><a href="statistics.htm#Ch6.2">Статистика</a><em> f,</em> по которой проводится 
+		классификация, вычисляется по формуле </p>
+<div align="center">
+          <center>
+          <table border="0" cellpadding="0" cellspacing="0" width="95%" height="40">
+            <tr>
+              <td width="90%">
+                <p align="center"><b>&nbsp;<a name="Eq16"></a> </b>&nbsp;<img src="classification/image021.png" width="129" height="45"></td>
+              <td>
+                <p align="center">(1<span lang="en-us">6</span>)</td>
+            </tr>
+          </table>
+          </center>
+        </div>
+      <p align="left">Из <a href="#Eq12">(12)</a> следует, что </p>
+<p class="style2">
+<img src="classification/image022.png" width="119" height="28"></p>
+<p align="left">Пусть &#945; – 
+это заданная величина ошибки 2-го рода (ложное отклонение образца, который 
+принадлежит классу). Обозначим </p>
+<div align="center">
+          <center>
+          <table border="0" cellpadding="0" cellspacing="0" width="95%" height="40">
+            <tr>
+              <td width="90%">
+                <p align="center"><b><a name="Eq17"></a>&nbsp;<img src="classification/image024.png" width="153" height="28"></b></td>
+              <td>
+                <p align="center">(1<span lang="en-us">7</span>)</td>
+            </tr>
+          </table>
+          </center>
+        </div>
+      <p align="left">где <span LANG="RU">
+<span style="font-size: 12.0pt; font-family: &quot;Times New Roman&quot;,&quot;serif&quot;; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-ansi-language: RU; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+<!--[if gte vml 1]>
+<v:shapetype id="_x0000_t76"
+ coordsize="21600,21600" o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
+ filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="_x0000_i1025" type="#_x0000_t75" style='width:48pt;
+ height:21pt' o:ole="">
+ <v:imagedata src="file:///C:\TEMP\msohtmlclip1\01\clip_image001.wmz" o:title=""/>
+</v:shape><![endif]--><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1430404685">
+ </o:OLEObject>
+</xml><![endif]--></span>
+</span>&nbsp;<span lang="en-us"><img src="classification/image025.png" width="64" height="28" class="style33">
+		</span>– это &#945;-<a href="statistics.htm#Ch2.4">квантиль 
+		распределения хи-квадрат</a> с <em>n</em> степенями свободы. </p>
+<p align="left">Классификационное правило в методе SIMCA такое – образец 
+принимается как принадлежащий к классу, если</p>
+<p class="style2"><em>f</em> <span lang="en-us">&lt; </span><em>f</em><sub>crit</sub> </p>
+<p align="left">Этим правилом гарантируется, что (1-&#945;)100% 
+образцов из обучающего и проверочного наборов будут правильно классифицированы. </p>
+<p align="left">Рассмотрим, как метод SIMCA применяется в задаче классификации 
+ирисов. Начнем с первого класса (<em>Setosa</em>) и построим для него 
+одноклассовый SIMCA классификатор. Расчеты приведены на листе <span lang="en-us">
+<em><a href="classification/Iris.xls#SIMCA_1!A1">SIMCA_1</a></em></span>.</p>
+<p align="left">Первым делом применим PCA, используя в качестве обучающего 
+набора матрицу <span class="address">X1c</span> (часть матрицы <strong>X</strong><sub>c</sub> 
+относящуюся к классу 1), а в качестве проверочного набора всю матрицу
+<span class="address">Xt</span>. Также как и в других методах, мы используем две 
+PCA компоненты. <a name="Fig49"></a></p>
+        <p align="center">
+		<a href="classification/Iris.xls#SIMCA_1!D3">
+		<img src="classification/Fig25a.png" width="215" height="229" class="style41"></a><span lang="en-us">&nbsp;
+		<a href="classification/Iris.xls#SIMCA_1!P3">
+		<img src="classification/Fig25b.png" width="217" height="145" class="style41"></a>&nbsp;
+		<a href="classification/Iris.xls#SIMCA_1!D43">
+		<img src="classification/Fig25c.png" width="223" height="229" class="style41"></a></span><p align="center"><samp>
+Рис.25 Вычисление счетов и нагрузок PCA </samp></p>
+<p align="left">Области, в которых находятся значения счетов (обучающих и 
+проверочных) и нагрузок, имеют локальные имена <span class="address">Tc</span>,
+<span class="address">Tt</span> и <span class="address">Pc</span>. После этого 
+можно вычислить <a href="matrix.htm#ch211">сингулярные значения</a>, 
+суммируя квадраты счетов для каждой PC, и затем извлекая корень из результата.
+        <p align="left">Затем вычисляем значения размахов <em>h</em> по формуле
+		<a href="#Eq9">(9)</a> для обучающего и проверочного наборов. .<a name="Fig25"></a><p align="center"><span lang="en-us">
+<a href="classification/Iris.xls#SIMCA_1!G5">
+<img src="classification/Fig26.png" width="765" height="208" class="style41"></a>&nbsp;
+		</span><p align="center"><samp>Рис.26
+      Вычисление размахов </samp></p>
+      <p align="left">Отклонения <em>v</em> вычисляются несколько сложнее. Здесь 
+		мы комбинируем <a href="#Eq10">(10)</a> и <a href="#Eq11">(11)</a> 
+		способом описанным <a href="tricks.htm#Ch3.6">здесь</a>. .<a name="Fig27"></a></p>
+        <p align="center">&nbsp;
+        <a href="classification/Iris.xls#SIMCA_1!H7">
+        <img src="classification/Fig27.png" width="750" height="207" class="style41"></a><p align="center">
+<samp>
+Рис.27 Вычисление отклонений </samp></p>
+      <p align="left">Вычисление отклонений для проверочного набора проводится 
+		по аналогичной формуле с заменой <span class="address">X1c</span> на
+		<span class="address">Xt</span>, и <span class="address">Tc </span>на
+		<span class="address">Tt.</span>
+        <p align="left">Когда величины<em> h</em> и <em>v</em> получены, можно 
+		найти их средние значения <a href="#Eq13">(13)</a> и дисперсии
+		<a href="#Eq14">(14)</a>, а потом оценить числа степеней свободы по 
+		формулам <a href="#Eq15">(15)</a>. <a name="Fig28"></a>
+        <p align="center">&nbsp;<a href="classification/Iris.xls#SIMCA_1!P14"><img src="classification/Fig28.png" width="259" height="123" class="style41"></a> <p align="center">
+<samp>
+Рис.2<span lang="en-us">8</span> Вычисление числа степеней свободы </samp></p>
+      <p align="left">Теперь можно вычислить значения статистики <em>f</em> &nbsp;<a href="#Eq16">(16)</a>.
+        <p align="left">Зададим величину &#945;= 0.01. В дальнейшем ее можно менять 
+		и наблюдать изменения в результатах классификации. Величина критического 
+		уровня <em>f</em><sub>crit</sub> вычисляется по формуле <a href="#Eq17">
+		(17)</a>. <a name="Fig29"></a>
+<p class="style2"><a href="classification/Iris.xls#SIMCA_1!N18">
+<img src="classification/Fig29.png" width="278" height="204" class="style41"></a><p align="center">
+<samp>
+Рис.2<span lang="en-us">9</span> Вычисление числа степеней свободы </samp></p>
+      <p align="left">Здесь используется стандартная функция Exсel
+		<a href="statistics.htm#Ch2.4">
+		<span class="prog"><strong>CHIINV</strong></span> (<span class="prog"><strong>ХИ2ОБР</strong></span>)</a><span lang="en-us">.
+		<a name="Fig30"></a></span>&nbsp;<p class="style2">
+<a href="classification/Iris.xls#SIMCA_1!O23">
+<img src="classification/Fig30a.png" width="342" height="342" class="style41"></a><span lang="en-us">&nbsp;
+<a href="classification/Iris.xls#SIMCA_1!Y23">
+<img src="classification/Fig30b.png" width="342" height="342" class="style41"></a></span><p align="center">
+<samp>
+Рис.<span lang="en-us">30</span> Вычисление числа степеней свободы </samp></p>
+      <p align="left">На Рис. 30 показаны результаты классификации. График для 
+		проверочного набора модифицирован так, чтобы показать на нем все 
+		имеющиеся образцы. Для этого оси координат трансформированы степенным 
+		преобразованием <em>x</em><sup>1/<em>p</em></sup>, <em>p</em>=3.
+        <p align="left">Все образцы обучающего набора классифицированы 
+		правильно. В проверочном наборе один образец из первого класса (<em>Setosa</em>) 
+		не распознан.
+        <p align="left">Аналогично делается классификация для других классов. 
+		При этом для класса 2 <span lang="en-us">(</span>лист <span lang="en-us">
+		<em><a href="classification/Iris.xls#SIMCA_2!A1">SIMCA_<span lang="ru">2</span></a></em></span>) обучающей является подматрица
+		<span class="address">X2c</span>, а для класса 3 (лист
+		<span lang="en-us"><em><a href="classification/Iris.xls#SIMCA_3!A1">
+		SIMCA_<span lang="ru">3</span></a></em></span>) – подматрица
+		<span class="address">X3c</span>. Соответственно меняются и средние 
+		значения <span class="address">mean2</span> и <span class="address">
+		mean3</span>, необходимые для вычисления отклонений. <a name="Fig31">
+		</a>
+<p class="style2"><a href="classification/Iris.xls#SIMCA_2!O23">
+<img src="classification/Fig31a.png" width="342" height="342" class="style41"></a><span lang="en-us">&nbsp;
+<a href="classification/Iris.xls#SIMCA_2!Y23">
+<img src="classification/Fig31b.png" width="342" height="342" class="style41"></a></span><p align="center">
+<samp>
+Рис.<span lang="en-us">31</span> Результаты SIMCA классификации для класса 2
+<a name="Fig32"></a> </samp></p>
+      <p class="style2">
+		<a href="classification/Iris.xls#SIMCA_3!O23">
+		<img src="classification/Fig32a.png" width="342" height="342" class="style41"></a><span lang="en-us">&nbsp;
+		<a href="classification/Iris.xls#SIMCA_3!Y23">
+		<img src="classification/Fig32b.png" width="342" height="342" class="style41"></a></span><p align="center">
+<samp>
+Рис.<span lang="en-us">32</span> Результаты SIMCA классификации для класса
+<span lang="en-us">3</span> </samp></p>
+      <p align="left">Окончательные итоги SIMCA классификации таковы. Один 
+		образец из третьего обучающего набора не был принят (ошибка 1-го рода). 
+		В проверочных наборах один образец из первого класса не был 
+		классифицирован (ошибка 1-го рода), два образца из второго класса были 
+		одновременно отнесены и к третьему классу (ошибка 2-го рода), четыре 
+		образца из третьего класса были отнесены также и ко второму 
+		классу&nbsp;(ошибка 2-го рода). Актуальная ошибка 1-го рода получилась 2/150
+		&#8776; 0.013, что 
+		близко к установленной &#945;= 
+		0.01.
+        <span lang="en-us">&nbsp;</span><p align="left">Недостатки SIMCA
+        <ol>
+			<li>
+			<p align="left">Требует предварительного анализа данных методом PC<span lang="en-us">A</span>.  
+			</li>
+			<li>
+			<p align="left">Результат зависит от выбора числа PC. Однако его 
+			выбор облегчается тем, что можно брать минимальное число, при 
+			котором обучающий набор правильно распознается. </li>
+			<li>
+			<p align="left">Чувствителен к выбросам., однако они легко 
+			распознаются самим методом. </li>
+			<li>
+			<p align="left">Плохо работает для малого числа образцов в обучающем 
+			наборе. </li>
+</ol>
+<p align="left">Достоинства SIMCA
+        <ol>
+			<li>
+			<p align="left">Не использует вид распределения. </li>
+			<li>
+			<p align="left">Одноклассовый метод. </li>
+			<li>
+			<p align="left">Регулируемая ошибка 1-го рода. </li>
+			<li>
+			<p align="left">Применим для большого числа переменных, устойчив к 
+			<a href="#Ch1.8">проклятию размерности. </a> </li>
+</ol>
+<p align="left"><a href="#Contents">Содержание</a><span lang="en-us">
+<a name="Ch3.5"></a></span>
+<h2 align="left"><span lang="en-us">3.5. K </span>ближайших соседей (<span lang="en-us">KNN</span>)</h2>
+<p align="left"><em>Метод k ближайших соседей</em> (k-Nearest Neighbors, kNN) – 
+один из простейших методов классификации. </p>
+<p align="left">Пусть, как и раньше, имеется обучающий набор <strong>X</strong><sub>c</sub> 
+разбитый на классы, и новый неизвестный объект <strong>x</strong>, который надо 
+классифицировать. Вычислим расстояния (обычно, эвклидово) от <strong>x</strong> 
+до всех образцов обучающего набора (<strong>x</strong><sub>1</sub>,…, <strong>x</strong><em><sub>I</sub></em>) 
+и выделим среди них <em>k</em> ближайших соседей, расстояние до которых 
+минимально. Новый объект <strong>x</strong> принадлежит к тому классу, к 
+которому относится большинство из этих <em>k</em> соседей. Параметр <em>k</em> 
+подбирается эмпирическим путем. Увеличение <em>k</em> приводит к уменьшению 
+влияния погрешностей, но ухудшает разделение на классы. </p>
+<p align="left">Покажем, как метод kNN работает в задаче о разделении ирисов. 
+Рассчитаем расстояния от каждого проверочного образца до всех образцов 
+обучающего набора. Для этого составим таблицу, показанную на листе <em>
+<a href="classification/Iris.xls#KNN!A1">kNN</a></em>. 
+Строки этой таблицы соответствуют обучающему набору, а столбцы – проверочному
+<a name="Fig33"></a></p>
+<p class="style2"><a href="classification/Iris.xls#KNN!A2">
+<img src="classification/Fig33.png" width="561" height="324" class="style41"></a></p>
+<p align="center">
+<samp>
+Рис.<span lang="en-us">33</span>. Расчет расстояний между образцами </samp></p>
+      <p align="left">Для вычисления расстояний между образцами&nbsp; 
+		используются два глобальных имени <span class="address">nC</span> и
+		<span class="address">nT</span> (лист <em>Data</em>), соответствующие 
+		наборам имен обучающих и проверочных образцов. </p>
+<p align="left">После того, как все расстояния вычислены, каждый столбец 
+фильтруется с упорядочиванием по возрастанию расстояний, так, чтобы наименьшие 
+оказались вверху. Остальное уже просто – надо только просмотреть все столбцы, и 
+определить, к какому классу относятся проверочные образцы. <a name="Fig34"></a></p>
+<p class="style2"><a href="classification/Iris.xls#KNN!BQ2">
+<img src="classification/Fig34.png" width="608" height="190" class="style41"></a></p>
+<p align="center">
+<samp>
+Рис.<span lang="en-us">34</span>. Семь ближайших соседей для проверочных 
+образцов </samp></p>
+      <p align="left">В результате все образцы оказались правильно 
+		классифицированы. </p>
+<p align="left">Недостатки kNN. </p>
+<ol>
+	<li>
+	<p align="left">Плохо работает для большого числа признаков – 
+	<a href="#Ch1.8">проклятие 
+	размерности</a> нивелирует различия между образцами. </p>
+	</li>
+	<li>
+	<p align="left">Результат зависит от выбора метрики и числа соседей. </p>
+	</li>
+</ol>
+<p align="left">Достоинства </p>
+<ol>
+	<li>
+	<p align="left">Не использует вид распределения. </p>
+	</li>
+	<li>
+	<p align="left">Может быть использован при малом числе образцов в обучающем 
+	наборе. </p>
+	</li>
+</ol>
+<p align="left"><a href="#Contents">Содержание</a><a name="Ch4"></a></p>
+        <h1 align="left">4. Классификация без учителя <a name="Ch4.1"></a></h1>
+      <h2 align="left">4.1. Опять PCA </h2>
+      <p align="left">Метод главных компонент является простейшим и наиболее 
+		популярным методом классификации без обучения. Для его исследования мы 
+		будем использовать только обучающий набор, исключив проверочный из 
+		рассмотрения. Вычисления приведены на листе <em>
+		<a href="classification/Iris.xls#'PCA-Explore'!A1">PCA-Explore</a></em>. </p>
+<p align="left">Теперь мы заранее не знаем, к какому из классов принадлежат 
+образцы и, более того, даже число классов нам неизвестно. <a name="Fig35"></a></p>
+<p class="style2"><a href="classification/Iris.xls#'PCA-Explore'!H3">
+<img src="classification/Fig35.png" width="342" height="342" class="style41"></a></p>
+<p align="center">
+<samp>
+Рис.<span lang="en-us">35</span>. PCA анализ обучающего набора </samp></p>
+      <p align="left">Однако, рассматривая график PCA-счетов для всего 
+		обучающего набора, мы легко можем выделить группу образцов (обведенную 
+		эллипсом), которая явно отделяется от всех прочих объектов. Естественно 
+		предположить, что эти образцы принадлежат к отдельному классу. </p>
+<p align="left">Удалим все эти образцы из обучающего набора и применим PCA к 
+оставшимся образцам. На графике PC1-PC2 счетов, показанных на Рис. 36 можно (при 
+большом воображении) различить два кластера, показанные эллипсами. Но уже на 
+графике старших счетов PC1-PC3, мы ничего похожего на классы не видим.<a name="Fig36"></a> </p>
+<p class="style2"><a href="classification/Iris.xls#'PCA-Explore'!K50">
+<img src="classification/Fig36a.png" width="342" height="342" class="style41"></a>&nbsp;
+<a href="classification/Iris.xls#'PCA-Explore'!R50">
+<img src="classification/Fig36b.png" width="342" height="342" class="style41"></a></p>
+<p align="center">
+<samp>
+Рис.<span lang="en-us">36</span>. PCA анализ укороченного обучающего набора </samp></p>
+      <p align="left">Таким образом, исследование данных с помощью PCA может 
+		выявить скрытые классы, а может, и нет. В любом случае необходима 
+		дальнейшая проверка этих гипотез с помощью других методов классификации 
+		без учителя. </p>
+<p align="left"><a href="#Contents">Содержание</a><a name="Ch4.2"></a></p>
+      <h2 align="left">4.2. Кластеризация с помощью <span lang="en-us">K</span>-средних (<span lang="en-us">kMeans</span>) </h2>
+      <p align="left">Существует большой класс методов, выполняющих так 
+		называемую <em>кластеризацию</em>. Кластеризация состоит в том, чтобы 
+		разделить образцы на подмножества (называемые кластерами) так, чтобы все 
+		образцы в одном кластере были в каком-то смысле похожи друг на друга. 
+		Оценка схожести образцов <strong>x</strong><sub>1</sub>и <strong>x</strong><sub>2</sub> 
+		обычно основана на анализе расстояний <em>d</em>(<strong>x</strong><sub>1</sub>,
+		<strong>x</strong><sub>2</sub>) между ними. Для измерения расстояний 
+		чаще всего используют Эвклидову метрику. </p>
+<p align="left">Самым простым (и поэтому – популярным) является метод <em>
+<span lang="en-us">K</span>-средних</em> (<span lang="en-us"><em>K</em></span><em>-means</em>). 
+Этот метод разбивает исходный набор образцов на заранее известное число <em>K</em> 
+кластеров. При этом каждый образец xi обязательно принадлежит к одному из этих 
+кластеров <em>S<sub>k</sub></em>., <em>k</em>=1,…, <em>K</em>. Каждый кластер
+<strong>k</strong> характеризуется своим цетнроидом <strong>m</strong><sub><em>k</em></sub> 
+– точкой, являющейся центром масс всех образцов кластера. Метод K-средних – это 
+итерационный алгоритм, в котором на каждом шаге выполняются следующие операции. </p>
+<p align="left" class="style9">1. Определяются расстояния от всех образцов до 
+центроидов <em>d</em>(<strong>x</strong><sub><em>j</em></sub>, <strong>m</strong><sub><em>k</em></sub>),
+<em>j</em>=1,…<em>J</em>; <em>k</em>=1,…,<em>K</em> .<p align="left" class="style9">
+2. Образцы относятся к кластерам в соответствии с тем, какой из центроидов 
+оказался ближе. 
+<p align="left" class="style9">3. По этому новому разбиению вычисляются 
+центроиды <strong>m</strong><sub><em>k</em></sub> для каждого из кластеров 
+<p class="style38">
+<img src="classification/image026.png" width="104" height="49"><p class="style9">
+где <em>J<sub>k</sub></em> – это число образцов в кластере <em>S<sub>k</sub></em>. 
+<p align="left">Операции 1-3 повторяются до сходимости. </p>
+<p align="left">Для инициализации алгоритма нужно задать исходные значения всех 
+центроидов <strong>m</strong><sub><em>k</em></sub>. Это можно сделать 
+произвольно, например, положить их равными первым <em>K</em> образцам. </p>
+<p class="style2"><strong>m</strong><sub>1</sub>= <strong>x</strong><sub>1</sub>,
+<strong>m</strong><sub>2</sub>= <strong>x</strong><sub>2</sub>,….,<strong> m</strong><sub><em>K</em></sub>=
+<strong>x</strong><sub><em>K</em></sub> </p>
+<p align="left">Покажем, как метод K-средних работает в примере с ирисами. 
+Полный набор данных весьма громоздкий, да и первый класс (<em>Setosa</em>) легко 
+отделяется от остальных методом <span lang="en-us">PCA</span>. Поэтому мы будем анализировать только 
+укороченный обучающий набор из первых двух PC, показанный на <a href="#Fig36">
+Рис. 36</a>. </p>
+<p align="left">На листе <em><a href="classification/Iris.xls#kMeans!A1">kMeans</a></em> приведен набор 
+PCA счетов 
+соответствующий двум первым PC для укороченного обучающего набора (классы 2 и 
+3). Естественно, что мы будем проводить анализ для двух классов (<em>K</em>=2). 
+Текущие значения двух центроидов приведены в областях с локальными именами
+<span class="address">kMean1</span> и <span class="address">kMean2</span>. Их 
+начальные значения соответствуют первым двум образам. <a name="Fig37"></a></p>
+<p class="style2"><a href="classification/Iris.xls#kMeans!A2">
+<img src="classification/Fig37.png" width="267" height="97" class="style41"></a></p>
+<p align="center">
+<samp>
+Рис.<span lang="en-us">37</span>. Начальные значения центроидов</samp> </p>
+      <p align="left">Расстояния от всех образцов до двух центроидов (шаг 1) 
+		вычисляются в Эвклидовой метрике <a name="Fig38"></a></p>
+<p class="style2"><a href="classification/Iris.xls#kMeans!F9">
+<img src="classification/Fig38.png" width="487" height="215" class="style41"></a></p>
+<p align="center">
+<samp>
+Рис.<span lang="en-us">38</span>. Вычисление расстояний до центроидов</samp></p>
+      <p align="left">После этого определяется, к какому кластеру принадлежит 
+		каждый образец (шаг 2). <a name="Fig39"></a></p>
+<p class="style2"><a href="classification/Iris.xls#kMeans!I9">
+<img src="classification/Fig39.png" width="342" height="116" class="style41"></a></p>
+<p align="center">
+<samp>
+Рис.<span lang="en-us">39</span>. Определение принадлежности образцов к 
+кластерам </samp></p>
+      <p align="left">После этого, в новом месте листа, рассчитываются новые 
+		значения центроидов (шаг 3) <a name="Fig40"></a>&nbsp;</p>
+<p class="style2"><a href="classification/Iris.xls#kMeans!F3">
+<img src="classification/Fig40.png" width="490" height="214" class="style41"></a></p>
+<p align="center">
+<samp>
+Рис.<span lang="en-us">40</span>. Расчет новых значений центроидов </samp></p>
+      <p align="left">Чтобы замкнуть итерационную последовательность надо 
+		скопировать значения из области <span class="address">KMeansNew</span> и 
+		вставить их (как значения!) в область <span class="address">KMeans</span>. 
+		И это надо повторять столько раз, сколько потребуется, пока все значения
+		<span class="address">kMeans</span> – <span class="address">kMeansNew</span> 
+		не станут равными нулю. На листе <em>kMeans</em> имеется кнопка <b><span lang=EN-US style='font-family:Arial;background:silver'>Calculate</span></b>. 
+		Она запускает простейший <a href="excel.htm#Ch4.3">VBA макрос</a>, 
+		который копирует содержание области <span class="address">KMeansNew</span> 
+		и вставляет значения в область <span class="address">KMeans</span>. Эта 
+		операция повторяется столько раз, сколько указано в клетке
+		<span class="address">P2</span>. Тем самым реализуется заданное число 
+		итераций. </p>
+<p align="left">Итерационная процедура всегда сходится, но результат может быть 
+разным, в зависимости от выбора начальных центроидов.&nbsp; </p>
+<p align="left">Если выбрать в качестве начального приближения первые две точки:
+<span lang="en-us" class="style27"><strong>&nbsp;</strong></span><span class="style27"><strong>ve01<span lang="en-us">
+</span></strong></span><span lang="en-us">&nbsp;</span>и
+<span lang="en-us" class="style27">&nbsp;</span><span class="style27"><strong>ve02<span lang="en-us">
+</span></strong></span>, то получится результат, представленный на Рис. 41. 
+Левый график показывает, как образцы распределялись в начале работы алгоритма, а 
+правый график – как они распределились в итоге. <a name="Fig41"></a></p>
+<p class="style2"><a href="classification/Iris.xls#kMeans!T8">
+<img src="classification/Fig41a.png" width="342" height="342" class="style41"></a><span lang="en-us">&nbsp;
+<img src="classification/Fig41b.png" width="342" height="342"></span></p>
+<p align="center">
+<samp>
+Рис.<span lang="en-us">41</span>. Кластеризация методом K-средних. Начало и 
+конец работы алгоритма. <br>
+Начальная точка – первые два образца </samp></p>
+      <p align="left">На Рис. 42 показан результат кластеризации, который 
+		получается, если в качестве начального приближения берутся последние два 
+		образца:<span lang="en-us"> </span><strong>&nbsp;<span class="style28">vi39</span></strong><span lang="en-us"><strong>
+		</strong>
+		</span>и<strong>&nbsp;<span class="style28">vi40</span></strong>. Во-первых, видно, что кластеры поменялись местами. 
+		Во-вторых, заметно, что некоторые точки ушли в другие кластеры. </p>
+<p class="style2"><img src="classification/Fig42a.png" width="342" height="342"><span lang="en-us">&nbsp;
+<img src="classification/Fig42b.png" width="342" height="342"></span></p>
+<p align="center">
+<samp>
+Рис.<span lang="en-us">42</span>. Кластеризация методом K-средних. Начало и 
+конец работы алгоритма. <br>
+Начальная точка – последние два образца </samp></p>
+      <p align="left">Для того, чтобы понять какое решение лучше, используют 
+		целевую функцию </p>
+<p class="style2">
+<img src="classification/image027.png" width="143" height="55"></p>
+<p align="left">которая должна быть минимальна. В первом случае <em>S</em>=52.830, 
+а во втором <em>S</em>=52.797. Таким образом, второе решение предпочтительнее. </p>
+<p align="left">Естественно отождествить первый кластер с классом 2 (<em>Versicolor</em>), 
+а второй кластер с классом 3 (<em>Virginica</em>). Тогда полученные результаты 
+можно интерпретировать так: два образца класса 2 идентифицированы неправильно, а 
+среди образцов класса 3 одиннадцать неверно отнесены к классу 2. </p>
+<p align="left">Метод K-средних имеет несколько недостатков. </p>
+<ol>
+	<li>
+	<p align="left">Число кластеров <em>K</em> неизвестно и как его найти непонятно. 
+	Можно только наращивать это значения и исследовать результаты. </p>
+	</li>
+	<li>
+	<p align="left">Результат зависит от начального выбора центроидов. Нужно 
+	перебирать разные варианты. </p>
+	</li>
+	<li>
+	<p align="left">Результат зависит от выбора метрики. </p>
+	</li>
+</ol>
+<p align="left"><a href="#Contents">Содержание</a><a name="Ch5"></a></p>
+        <h1 align="left">Заключение</h1>
+<p align="left">Мы рассмотрели некоторые методы, используемые для решения задач 
+классификации. Эта область хемометрики, как никакая другая, изобилует 
+разнообразными подходами. Поэтому, с неизбежностью, за рамками этого пособия 
+остались многие интересные методы, такие как, например, UNEQ, CART и другие. 
+Разобраться с тем, как они работают можно самостоятельно, используя это пособие 
+как руководство к действию. </p>
+<p align="left">Несколько методов классификации достойны специального изучения. 
+Это методы опорных векторов и искусственных нейронных сетей. Им будут посвящены 
+отдельные пособия &nbsp;</p>
+        <p align="left"><a href="#Contents">Содержание</a></p>
+      <p align="left">&nbsp;</p>
+  </table>
+
+</body>
+

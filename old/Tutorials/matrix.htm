@@ -1,0 +1,910 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta http-equiv="Content-Language" content="ru">
+<meta name="GENERATOR" content="Microsoft FrontPage 12.0">
+<title>Матрицы и векторы</title>
+<style>
+<!--
+h1           {
+	font-family: Arial;
+	font-size: 14pt;
+	font-weight: bold;
+	text-align: Center;
+	padding-top: 75px;
+}
+#menu        { font-family: Tahoma; font-size: 12pt; font-weight: bold }
+h2           {
+	font-family: Arial;
+	font-size: 12pt;
+	font-style: italic;
+	padding-top: 25px;
+}
+.header      { font-family: Arial; font-size: 18pt; letter-spacing: 1; font-weight: bold; 
+               text-align: Center }
+.style2 {
+	text-align: center;
+}
+.style3 {
+	border-width: 0;
+}
+-->
+</style>
+        <title></title>
+</head>
+
+<body>
+
+<p>&nbsp;</p>
+  <center>
+  <table border="0" width="95%" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="100%">
+</center>
+      <h3 class="header">Матрицы и векторы</h3>
+      <dl>
+        <div align="center">
+          <center>
+          <dt>© <span lang="en-us">2007 </span>Алексей
+        Померанцев&nbsp;</dt>
+          </center>
+        </div>
+        <div align="center">
+          <center>
+          <a href="../index.html">Российское хемометрическое общество</a></center>
+        </div>
+      </dl>
+        <h1><a name="Contents"></a>Содержание&nbsp;</h1>
+        <dl>
+                <dt><a href="#intro"><b>Введение</b></a></dt>
+          <dt><a href="#ch100"><b>1. Базовые сведения</b></a></dt>
+          <dd><A href="#ch101"><b>1.1. 
+Матрицы</b></A> 
+          </dd>
+          <dd><A href="#ch102"><b>1.2. 
+Простейшие операции с матрицами</b></A> 
+          </dd>
+          <dd><A href="#ch103"><b>1.3. 
+Умножение матриц</b></A> 
+          </dd>
+          <dd><A href="#ch104"><b>1.4. 
+Квадратные матрицы</b></A> 
+          </dd>
+          <dd><A href="#ch105"><b>1.5. 
+След и определитель</b></A> 
+          </dd>
+          <dd><A href="#ch106"><b>1.6. 
+Векторы</b></A> 
+          </dd>
+          <dd><A href="#ch107"><b>1.7. 
+Простейшие операции с векторами</b></A> 
+          </dd>
+          <dd><A href="#ch108"><b>1.8. 
+Произведения векторов</b></A> 
+          </dd>
+          <dd><A href="#ch109"><b>1.9. 
+Норма вектора</b></A> 
+          </dd>
+          <dd><A href="#ch110"><b>1.10. 
+Угол между векторами</b></A> 
+          </dd>
+          <dd><A href="#ch111"><b>1.11. 
+Векторное представление матрицы</b></A> 
+          </dd>
+          <dd><A href="#ch112"><b>1.12. 
+Линейно зависимые векторы</b></A> 
+          </dd>
+          <dd><A href="#ch113"><b>1.13. 
+Ранг матрицы</b></A> 
+          </dd>
+          <dd><A href="#ch114"><b>1.14. 
+Обратная матрица</b></A> 
+          </dd>
+          <dd><A href="#ch115"><b>1.15. 
+Псевдообратная матрица</b></A> 
+          </dd>
+          <dd><A href="#ch116"><b>1.16. 
+Умножение вектора на матрицу</b></A> 
+          </dd>
+          <dt><A href="#ch200"><b>2. 
+Дополнительная информация</b></A> </dt>
+<DD><A href="#ch201"><b>2.1. 
+Системы линейных уравнений</b></A> 
+<DD><A href="#ch202"><b>2.2. 
+Билинейные и квадратичные формы</b></A> 
+<DD><A href="#ch203"><b>2.3. 
+Положительно определенные матрицы</b></A> 
+<DD><A href="#ch204"><b>2.4. 
+Разложение Холецкого</b></A> 
+<DD><A href="#ch205"><b>2.5. 
+Полярное разложение</b></A> 
+<DD><A href="#ch206"><b>2.6. 
+Собственные векторы и собственные значения</b></A> 
+<DD><A href="#ch207"><b>2.7. 
+Собственные значения</b></A> 
+<DD><A href="#ch208"><b>2.8. 
+Собственные векторы</b></A> 
+<DD><A href="#ch209"><b>2.9. 
+Эквивалентные и подобные матрицы</b></A> 
+<DD><A href="#ch210"><b>2.10. 
+Приведение матрицы к диагональному виду</b></A> 
+<DD><A href="#ch211"><b>2.11. 
+Разложение по сингулярным значениям</b></A> 
+<DD><A href="#ch212"><b>2.12. 
+Линейное пространство</b></A> 
+<DD><A href="#ch213"><b>2.13. 
+Базис линейного пространства</b></A> 
+<DD><A href="#ch214"><b>2.14. 
+Геометрическая интерпретация</b></A> 
+<DD><A href="#ch215"><b>2.15. 
+Множественность базисов</b></A> 
+<DD><A href="#ch216"><b>2.16. 
+Подпространство</b></A> 
+<DD><A href="#ch217"><b>2.17. 
+Проекция на подпространство</b></A> 
+                <dt><b><a href="#concl">Заключение</a></b></dt>
+<DD> <b> <A name=intro></A>
+  </b>&nbsp;</DD>
+        </dl>
+        <h1>Введение&nbsp;</h1>
+      <P>В этом документе собраны основные сведения из алгебры матриц и векторов, 
+которые используются в хемометрике. Приведенный текст не может служить учебником 
+по матричной алгебре — он скорее является конспектом, справочником в этой 
+области. Более глубокое и систематическое изложение может быть найдено в
+      <a href="references.htm">
+        литературе</a>. 
+<P>Текст разбит на две части названные — "<A 
+href="#ch100">Базовые 
+сведения</A>" и "<A 
+href="#ch200">Дополнительная 
+информация</A>". В первой части изложены положения, минимально необходимые для 
+понимания хемометрики, а во второй части — факты, которые необходимо знать для 
+более глубокого постижения методов многомерного анализа. Изложение 
+иллюстрируется примерами, выполненными в рабочей книге Excel&nbsp;
+<a href="matrix/Matrix.xls"><i>Matrix.xls</i></a>, 
+которая сопровождает этот документ.&nbsp;
+        <p align="center"><b><a href="moffice.htm">Важная
+        информация о работе с
+              файлом Matrix.xls</a></b></p>
+<P> Ссылки на примеры помещены в текст как 
+объекты Excel. Эти примеры имеют абстрактный характер, они никак не привязаны к 
+задачам аналитической химии. Реальные примеры использования 
+матричной алгебры в хемометрике рассмотрены в других текстах, посвященных 
+разнообразным хемометрическим приложениям. 
+<P>Большинство измерений, проводимых в аналитической химии, являются не прямыми, 
+а <EM>косвенными</EM>. Это означает, что в эксперименте вместо значения искомого 
+аналита C (концентрации) получается другая величина <EM>x</EM> (сигнал), 
+связанная, но не равная C, т.е. <EM>x</EM>(C) &#8800; С. Как правило, вид зависимости 
+<EM>x</EM>(C) не известен, однако, к счастью, в аналитической химии большинство 
+измерений пропорциональны. Это означает, что при увеличении концентрации С в 
+<EM>a</EM> раз, сигнал X увеличится на столько же., т.е.<EM> x</EM>(<EM>a</EM>C) 
+= <EM>a x</EM>(C). Кроме того, сигналы еще и аддитивны, так что сигнал от пробы, 
+в которой присутствуют два вещества с концентрациями C<SUB>1</SUB> и 
+C<SUB>2</SUB>, будет равен сумме сигналов от каждого компонента, т.е. 
+<EM>x</EM>(C<SUB>1</SUB> + C<SUB>2</SUB>) = <EM>x</EM>(C<SUB>1</SUB>)+<EM> 
+x</EM>(C<SUB>2</SUB>). Пропорциональность и аддитивность вместе дают 
+<EM>линейность</EM>. Можно привести много примеров, иллюстрирующих принцип 
+линейности, но достаточно упомянуть два самых ярких примера — хроматографию и 
+спектроскопию. Вторая особенность, присущая эксперименту в аналитической химии — 
+это <EM>многоканальность</EM>. Современное аналитическое оборудование 
+одновременно измеряет сигналы для многих каналов. Например, измеряется 
+интенсивность пропускания света сразу для нескольких длин волн, т.е. спектр. 
+Поэтому в эксперименте мы имеем дело со множеством сигналов 
+<EM>x</EM><SUB>1</SUB>, <EM>x</EM><SUB>2</SUB>,...., <EM>x</EM><SUB>n</SUB>, 
+характеризующих набор концентраций C<SUB>1</SUB>,C<SUB>2</SUB>, ..., 
+C<SUB>m</SUB> веществ, присутствующих в изучаемой системе. 
+<P align="center"><img border="0" src="matrix/fig01.gif" width="400" height="206"><p align="center"><samp><a name="Fig01"></a>Рис. 1
+      Спектры</samp></p>
+        <p align="left">Итак, аналитический эксперимент характеризуется линейностью и многомерностью. 
+Поэтому удобно рассматривать экспериментальные данные как векторы и матрицы и 
+манипулировать с ними, используя аппарат матричной алгебры. Плодотворность 
+такого подхода иллюстрирует пример, показанный на
+        <a href="#Fig01"> Рис. 1</a>, где представлены три 
+спектра, снятые для 200 длин волн от 4000 до 4796 cm<SUP>&#8722;1</SUP>. Первый 
+(<STRONG>x</STRONG><SUB>1</SUB>) и второй (<STRONG>x</STRONG><SUB>2</SUB>) 
+спектры получены для стандартных образцов, в которых концентрация двух веществ A 
+и B, известны: в первом образце [A] = 0.5, [B] = 0.1, а во втором образце [A] = 
+0.2, [B] = 0.6. Что можно сказать о новом, неизвестном образце, спектр которого 
+обозначен <STRONG>x</STRONG><SUB>3</SUB>?</p>
+<P>Рассмотрим три экспериментальных спектра <STRONG>x</STRONG><SUB>1</SUB>, 
+<STRONG>x</STRONG><SUB>2</SUB> и <STRONG>x</STRONG><SUB>3</SUB> как три вектора 
+размерности 200. Средствами линейной алгебры можно легко показать, что 
+<STRONG>x</STRONG><SUB>3</SUB> = 0.1 <STRONG>x</STRONG><SUB>1</SUB> +0.3 
+<STRONG>x</STRONG><SUB>2</SUB>, поэтому в третьем образце очевидно присутствуют 
+только вещества A и B в концентрациях [A] = 0.5&#215;0.1 + 0.2&#215;0.3 = 0.11 и [B] = 
+0.1&#215;0.1 + 0.6&#215;0.3 = 0.19.&nbsp;
+      <p class="style2"><b><a href="index.html">Другие 
+		пособия по хемометрике</a></b></p>
+          <p style="line-height: 150%"><a href="#Contents">Содержание</a>
+          <A name=ch100></A>
+<h1>1. Базовые сведения</h1><A name=ch101></A>
+<h2>1.1 Матрицы</h2>
+<P><i>Матрицей</i> называется прямоугольная таблица чисел, например
+<P align="center"><a href="matrix/Matrix.xls#Ex1!A1"><img border="0" src="matrix/fig02.gif" width="157" height="92"></a><p align="center"><samp><a name="Fig02"></a>Рис. 2
+      Матрица</samp></p>
+<P>Матрицы обозначаются заглавными полужирными буквами (<STRONG>A</STRONG>), а 
+их элементы — соответствующими строчными буквами с индексами, т.е. 
+<EM>a</EM><SUB>ij</SUB>. Первый индекс нумерует строки, а второй — столбцы. В 
+хемометрике принято обозначать максимальное значение индекса той же буквой, что 
+и сам индекс, но заглавной. Поэтому матрицу <STRONG>A</STRONG> можно также 
+записать как {<EM> a</EM><SUB><i>ij</i></SUB>, <EM>i</EM> = 1,..., <EM>I</EM>; 
+<EM>j</EM> = 1,..., <EM>J</EM>}. Для приведенной в примере матрицы <EM>I</EM> = 
+4, <EM>J</EM> = 3 и <EM>a</EM><SUB>23</SUB> = &#8722;7.5. 
+<P>Пара чисел <EM>I</EM> и <EM>J</EM> называется размерностью матрицы и 
+обознается как <EM>I</EM>&#215;<EM>J</EM>. Примером матрицы в хемометрике может 
+служить набор спектров, полученный для <EM>I</EM> образцов на <EM>J</EM> длинах 
+волн. 
+<P><a href="#Contents">Содержание</a>
+ <A name=ch102></A>
+<h2>1.2. Простейшие операции с матрицами</h2>
+<P>Матрицы можно<i> умножать на числа</i>. При этом каждый элемент умножается на это 
+число. Например —
+<P align="center"><a href="matrix/Matrix.xls#Ex2!I5"><img border="0" src="matrix/fig03.gif" width="272" height="92"></a>
+        <p align="center"><samp><a name="Fig03"></a>Рис. 3 Умножение
+        матрицы на число</samp></p>
+<P>Две матрицы одинаковой размерности можно поэлементно
+<i> складывать</i> и <i> вычитать</i>. 
+Например,
+<P align="center"><a href="matrix/Matrix.xls#Ex3!I5"><img border="0" src="matrix/fig04.gif" width="279" height="92"></a><p align="center"><samp><a name="Fig04"></a>Рис. 4
+      Сложение матриц</samp></p>
+<P>В результате умножения на число и сложения получается матрица той же 
+размерности. 
+<P>Нулевой матрицей называется матрица, состоящая из нулей. Она обозначается 
+<STRONG>O</STRONG>. Очевидно, что <STRONG>A</STRONG>+<STRONG>O</STRONG> = 
+<STRONG>A</STRONG>, <STRONG>A</STRONG>&#8722;<STRONG>A</STRONG> = <STRONG>O</STRONG> и 
+0<STRONG>A</STRONG> = <STRONG>O</STRONG>. 
+<P>Матрицу можно <EM>транспонировать</EM>. При этой операции матрица 
+переворачивается, т.е. строки и столбцы меняются местами. Транспонирование 
+обозначается штрихом, <STRONG>A</STRONG>' или индексом 
+<STRONG>A</STRONG><SUP>t</SUP>. Таким образом, если <STRONG>A</STRONG> = 
+{<EM>a</EM><SUB><i>ij</i></SUB>, <EM>i</EM> = 1,..., <EM>I</EM>; <EM>j</EM> = 
+1,...,<EM>J</EM>}, то <STRONG>A</STRONG><SUP>t</SUP> = {<EM>a</EM><SUB><i>ji</i></SUB>, 
+<EM>j</EM> = 1,...,<EM>J</EM>; i = 1,..., <EM>I</EM>}. Например 
+<P align="center"><a href="matrix/Matrix.xls#Ex4!I5"><img border="0" src="matrix/fig05.gif" width="319" height="94"></a><p align="center"><samp><a name="Fig05"></a>Рис.
+      5 </samp><samp>Транспонирование матрицы</samp></p>
+<P>Очевидно, что (<STRONG>A</STRONG><SUP>t</SUP>)<SUP>t</SUP> = 
+<STRONG>A</STRONG>, (<STRONG>A</STRONG>+<STRONG>B</STRONG>)<SUP>t</SUP><STRONG> 
+= A</STRONG><SUP>t</SUP>+<STRONG>B</STRONG><SUP>t</SUP>.
+<P><a href="#Contents">Содержание</a> <A name=ch103></A>
+<h2>1.3. Умножение матриц</h2>
+<P>Матрицы можно <i> перемножать</i>, но только в том случае, когда они имеют 
+соответствующие размерности. Почему это так, будет ясно из определения. 
+Произведением матрицы <STRONG>A</STRONG>, размерностью <EM>I</EM>&#215;<EM>K</EM>, и 
+матрицы <STRONG>B</STRONG>, размерностью <EM>K</EM>&#215;<EM>J</EM>, называется 
+матрица <STRONG>C</STRONG>, размерностью <EM>I</EM>&#215;<EM>J</EM>, элементами 
+которой являются числа
+<P align="center"><img border="0" src="matrix/fig06.gif" width="95" height="51">
+<P align="left">Таким образом для произведения <STRONG>AB</STRONG> необходимо, чтобы число 
+столбцов в левой матрице <STRONG>A</STRONG> было равно числу строк в правой 
+матрице <STRONG>B</STRONG>. Пример произведения матриц —
+<P align="center"><a href="matrix/Matrix.xls#Ex5!J5"><img border="0" src="matrix/fig07.gif" width="385" height="92"></a>
+<P align="center"><samp><a name="Fig06"></a>Рис.6&nbsp;Произведение
+матриц</samp>
+<P>Правило перемножения матриц можно сформулировать так. Для того, чтобы найти 
+элемент матрицы <STRONG>C</STRONG>, стоящий на пересечении <EM>i</EM>-ой строки 
+и <EM>j</EM>-ого столбца (<EM>c</EM><SUB><i>ij</i></SUB>) надо поэлементно перемножить 
+<EM>i</EM>-ую строку первой матрицы <STRONG>A</STRONG> на <EM>j</EM>-ый столбец 
+второй матрицы <STRONG>B</STRONG> и сложить все результаты. Так в показанном 
+примере, элемент из третьей строки и второго столбца, получается как сумма 
+поэлементных произведений третьей строки <STRONG>A</STRONG> и второго столбца 
+<STRONG>B</STRONG> 
+<P align="center"><a href="matrix/Matrix.xls#Ex5!K16"><img border="0" src="matrix/fig08.gif" width="385" height="92"></a><p align="center"><samp><a name="Fig07"></a>Рис.7&nbsp;Элемент
+      произведения матриц</samp></p>
+<P>Произведение матриц зависит от порядка, т.е. <STRONG>AB</STRONG> &#8800; 
+<STRONG>BA</STRONG>, хотя бы по соображениям размерности. Говорят, что оно 
+некоммутативно. Однако произведение матриц ассоциативно. Это означает, что 
+<STRONG>ABC</STRONG> = (<STRONG>AB</STRONG>)<STRONG>C</STRONG> = 
+<STRONG>A</STRONG>(<STRONG>BC</STRONG>). Кроме того, оно еще и дистрибутивно, 
+т.е. <STRONG>A</STRONG>(<STRONG>B</STRONG>+<STRONG>C</STRONG>) = 
+<STRONG>AB</STRONG>+<STRONG>AC</STRONG>. Очевидно, что <STRONG>AO</STRONG> = 
+<STRONG>O</STRONG>.
+<P><a href="#Contents">Содержание</a> <A name=ch104></A>
+<h2>1.4. Квадратные матрицы</h2>
+<P>Если число столбцов матрицы равно числу ее строк (<EM>I</EM> = <EM>J = 
+N</EM>), то такая матрица называется квадратной. В этом разделе мы будем 
+рассматривать только такие матрицы. Среди этих матриц можно выделить матрицы, 
+обладающие особыми свойствами. 
+<P><EM>Единичной</EM> матрицей (обозначается <STRONG>I,</STRONG> а иногда 
+<STRONG>E</STRONG>) называется матрица, у которой все элементы равны нулю, за 
+исключением диагональных, которые равны 1, т.е. 
+<P align="center"><img border="0" src="matrix/fig09.gif" width="125" height="104">
+<P>Очевидно <STRONG>AI</STRONG> = <STRONG>IA</STRONG> = <STRONG>A</STRONG>. 
+<P>Матрица называется <EM>диагональной</EM>, если все ее элементы, кроме 
+диагональных (<EM>a</EM><SUB><i>ii</i></SUB>) равны нулю. Например 
+<P align="center"><a href="matrix/Matrix.xls#'Ex6-8'!B4"><img border="0" src="matrix/fig10.gif" width="146" height="77"></a> 
+      <P align="center"><samp><a name="Fig08"></a>Рис.
+      8 Диагональная матрица</samp>
+<P>Матрица <STRONG>A</STRONG> называется верхней <EM>треугольной</EM>, если все 
+ее элементы, лежащие ниже диагонали, равны нулю, т.е. <EM>a</EM><SUB><i>ij</i></SUB> = 
+0, при <EM>i</EM>&gt;<EM>j</EM>. Например
+<P align="center"><a href="matrix/Matrix.xls#'Ex6-8'!H4"><img border="0" src="matrix/fig11.gif" width="146" height="77"></a><p align="center"><samp><a name="Fig09"></a>Рис.
+      9 Верхняя треугольная матрица</samp></p>
+<P>Аналогично определяется и нижняя треугольная матрица.<P>Матрица <STRONG>A</STRONG> называется <EM>симметричной</EM>, если 
+<STRONG>A</STRONG><SUP>t</SUP> = <STRONG>A</STRONG>. Иными словами 
+<EM>a</EM><SUB><i>ij</i></SUB> = <EM>a</EM><SUB><i>ji</i></SUB>. Например 
+<P align="center"><a href="matrix/Matrix.xls#'Ex6-8'!N4"><img border="0" src="matrix/fig12.gif" width="146" height="77"> 
+</a><P align="center"><samp><a name="Fig10"></a>Рис. 10
+      Симметричная матрица</samp>
+<P>Матрица <STRONG>A</STRONG> называется <EM>ортогональной</EM>, если&nbsp;
+<P align="center"> 
+<STRONG>A</STRONG><SUP>t</SUP><STRONG>A</STRONG> = 
+<STRONG>AA</STRONG><SUP>t</SUP> = <STRONG>I</STRONG>. 
+<P>Матрица называется <EM>нормальной</EM> если 
+<P align="center">&nbsp; 
+<STRONG>A</STRONG><SUP>t</SUP><STRONG>A</STRONG> = 
+<STRONG>AA</STRONG><SUP>t</SUP>. 
+<P><a href="#Contents">Содержание</a> <A name=ch105></A>
+<h2>1.5. След и определитель</h2>
+<P><EM>Следом</EM> квадратной матрицы <STRONG>A</STRONG> (обозначается 
+Tr(<STRONG>A</STRONG>) или Sp(<STRONG>A</STRONG>)) называется сумма ее 
+диагональных элементов,
+<P align="center"><img border="0" src="matrix/fig13.gif" width="104" height="51">
+<P>Например,
+<P align="center"><a href="matrix/Matrix.xls#Ex9!I6"><img border="0" src="matrix/fig14.gif" width="209" height="77">
+</a><P align="center"><samp><a name="Fig11"></a>Рис. 11</samp> <samp>След
+      матрицы&nbsp;</samp>
+<P>Очевидно, что 
+<P style="TEXT-ALIGN: center">Sp(&#945; <STRONG>A</STRONG>) = &#945; 
+Sp(<STRONG>A</STRONG>) и 
+<P style="TEXT-ALIGN: center">Sp(<STRONG>A</STRONG>+<STRONG>B</STRONG>) = 
+Sp(<STRONG>A</STRONG>)+ Sp(<STRONG>B</STRONG>). 
+<P>Можно показать, что 
+<P style="TEXT-ALIGN: center">Sp(<STRONG>A</STRONG>) = 
+Sp(<STRONG>A</STRONG><SUP>t</SUP>), Sp(<STRONG>I</STRONG>) = <EM>N</EM>, 
+<P>а также, что 
+<P style="TEXT-ALIGN: center">Sp(<STRONG>AB</STRONG>) = Sp(<STRONG>BA</STRONG>). 
+
+<P>Другой важной характеристикой квадратной матрицы является ее 
+<EM>определитель</EM> (обозначается det(<STRONG>A</STRONG>)). Определение 
+определителя в общем случае довольно сложно, поэтому мы начнем с простейшего 
+варианта — матрицы <STRONG>A</STRONG> размерностью (2&#215;2). Тогда 
+
+<P align="center"><img border="0" src="matrix/fig15.gif" width="163" height="23">
+<P>Для матрицы (3&#215;3) определитель будет равен
+<P align="center"><img border="0" src="matrix/fig16.gif" width="517" height="24">
+<P>В случае матрицы (<EM>N</EM>&#215;<EM>N</EM>) определитель вычисляется как сумма 1·2·3· ...
+·<EM>N </EM>= <EM>N</EM>! слагаемых, каждый из которых равен&nbsp;
+<P align="center"><img border="0" src="matrix/fig17.gif" width="143" height="31">
+<P>Индексы 
+<EM>k</EM><SUB>1</SUB>, <EM>k</EM><SUB>2</SUB>,..., <EM>k<SUB>N</SUB></EM> 
+определяются как всевозможные упорядоченные перестановки <EM>r</EM> чисел в 
+наборе (1, 2, ... , <EM>N</EM>). Вычисление определителя матрицы — это сложная 
+процедура, которую на практике осуществляется с помощью специальных программ. 
+Например,
+<P align="center"><a href="matrix/Matrix.xls#Ex10!J7"><img border="0" src="matrix/fig18.gif" width="331" height="107">
+</a><P align="center"><samp><a name="Fig12"></a>Рис. 12
+      Определитель матрицы</samp>
+<P>Отметим только очевидные свойства: 
+<P style="TEXT-ALIGN: center">det(<STRONG>I</STRONG>) = 1, 
+det(<STRONG>A</STRONG>) = det(<STRONG>A</STRONG><SUP>t</SUP>), 
+<P style="TEXT-ALIGN: center">det(<STRONG>AB</STRONG>) = 
+det(<STRONG>A</STRONG>)det(<STRONG>B</STRONG>). 
+<P align="left"><a href="#Contents">Содержание</a> <A name=ch106></A>
+<h2>1.6. Векторы</h2>
+<P>Если матрица состоит только из одного столбца (<EM>J</EM> = 1), то такой 
+объект называется <EM>вектором</EM>. Точнее говоря, вектором-столбцом. Например
+<P align="center"><img border="0" src="matrix/fig19.gif" width="65" height="104">
+<P>Можно рассматривать и матрицы, состоящие из одной строки, например
+<P align="center"><img border="0" src="matrix/fig20.gif" width="129" height="23">
+<P>Этот объект также является вектором, но <EM>вектором-строкой</EM>. При 
+анализе данных важно понимать, с какими векторами мы имеем дело — со столбцами 
+или строками. Так спектр, снятый для одного образца можно рассматривать как 
+вектор-строку. Тогда набор спектральных интенсивностей на какой-то длине волны 
+для всех образцов нужно трактовать как вектор-столбец. 
+<P>Размерностью вектора называется число его элементов. 
+<P>Ясно, что всякий вектор-столбец можно превратить в вектор-строку 
+транспонированием, т.е. 
+<P align="center"><img border="0" src="matrix/fig21.gif" width="181" height="191">
+<P>В тех случаях, когда форма вектора специально не оговаривается, а просто 
+говорится вектор, то имеют в виду вектор-столбец. Мы тоже будем придерживаться 
+этого правила. Вектор обозначается строчной прямой полужирной буквой. Нулевым 
+вектором называется вектор, все элементы которого раны нулю. Он обозначается 
+<STRONG>0</STRONG>.
+<P><a href="#Contents">Содержание</a> <A name=ch107></A>
+<h2>1.7. Простейшие операции с векторами</h2>
+<P>Векторы можно складывать и умножать на числа так же, как это делается с 
+матрицами. Например,
+<P align="center"><a href="matrix/Matrix.xls#Ex11!G5"><img border="0" src="matrix/fig22.gif" width="360" height="77"></a><P align="center"><samp><a name="Fig13"></a>Рис.
+      13 Операции с векторами</samp>
+<P>Два вектора <STRONG>x</STRONG> и <STRONG>y</STRONG> называются 
+<EM>колинеарными</EM>, если существует такое число &#945;, что&nbsp;
+<P align="center"> &#945;<STRONG>x</STRONG> = 
+<STRONG>y. </STRONG>
+<P><a href="#Contents">Содержание</a>  
+<STRONG> </STRONG><A name=ch108></A>
+<h2>1.8. Произведения векторов</h2>
+<P>Два вектора одинаковой размерности <EM>N</EM> можно перемножить. Пусть 
+имеются два вектора <STRONG>x</STRONG> = (<EM>x</EM><SUB>1</SUB>, 
+<EM>x</EM><SUB>2</SUB>,...,<EM>x</EM><SUB>N</SUB>)<SUP>t</SUP> и 
+<STRONG>y</STRONG> = (<EM>y</EM><SUB>1</SUB>, <EM>y</EM><SUB>2</SUB>,...,<EM> 
+y</EM><SUB>N</SUB>)<SUP>t</SUP>. Руководствуясь правилом перемножения "строка на 
+столбец", мы можем составить из них два произведения: 
+<STRONG>x</STRONG><SUP>t</SUP><STRONG>y</STRONG> и 
+<STRONG>xy</STRONG><SUP>t</SUP>. Первое произведение
+<P align="center"><img border="0" src="matrix/fig23.gif" width="384" height="123">
+<P>называется <EM>скалярным </EM>или <EM>внутренним</EM>. Его результат — это 
+число. Для него также используется обозначение 
+(<STRONG>x</STRONG>,<STRONG>y</STRONG>)<STRONG> </STRONG>= 
+<STRONG>x</STRONG><SUP>t</SUP><STRONG>y</STRONG>. Например,
+<P align="center"><a href="matrix/Matrix.xls#Ex12!I6"><img border="0" src="matrix/fig24.gif" width="226" height="77"></a><P align="center"><samp><a name="Fig14"></a>Рис.
+      14 Внутреннее (скалярное) </samp><samp>произведение</samp>
+<P>Второе произведение
+<P align="center"><img border="0" src="matrix/fig25.gif" width="412" height="123">
+<P>называется <EM>внешним</EM>. Его результат — это матрица размерности 
+(<EM>N</EM>&#215;<EM>N</EM>). Например,
+<P align="center"><a href="matrix/Matrix.xls#Ex13!I5"><img border="0" src="matrix/fig26.gif" width="296" height="77"></a><P align="center"><samp><a name="Fig15"></a>Рис.
+      15 Внешнее произведение</samp>
+<P>Векторы, скалярное произведение которых равно нулю, называются 
+<EM>ортогональными</EM>.
+<P><a href="#Contents">Содержание</a> <A name=ch109></A>
+<h2>1.9. Норма вектора</h2>
+<P>Скалярное произведение вектора самого на себя называется скалярным квадратом. 
+Эта величина
+<P align="center"><img border="0" src="matrix/fig27.gif" width="132" height="51">
+<P>определяет квадрат <EM>длины</EM> вектора <STRONG>x</STRONG>. Для обозначения 
+длины (называемой также <EM>нормой</EM> вектора) используется обозначение
+<P align="center"><img border="0" src="matrix/fig28.gif" width="84" height="28">
+<P>Например,
+<P align="center"><a href="matrix/Matrix.xls#Ex14!E6"><img border="0" src="matrix/fig29.gif" width="114" height="77"></a><P align="center"><samp><a name="Fig16"></a>Рис.
+      16 Норма вектора</samp>
+<P>Вектор единичной длины (||<STRONG>x</STRONG>|| = 1) называется нормированным. 
+Ненулевой вектор (<STRONG>x</STRONG> &#8800; <STRONG>0</STRONG>) можно нормировать, 
+разделив его на длину, т.е. <STRONG>x</STRONG> = ||<STRONG>x</STRONG>|| 
+(<STRONG>x/</STRONG>||<STRONG>x</STRONG>||) = ||<STRONG>x</STRONG>|| 
+<STRONG>e</STRONG>. Здесь <STRONG>e</STRONG> = 
+<STRONG>x/</STRONG>||<STRONG>x</STRONG>|| — нормированный вектор. 
+<P>Векторы называются ортонормированными, если все они нормированы и попарно 
+ортогональны. 
+<P><a href="#Contents">Содержание</a> <A name=ch110></A>
+<h2>1.10. Угол между векторами</h2>
+<P>Скалярное произведение определяет и <EM>угол</EM> &#966; между двумя векторами 
+<STRONG>x</STRONG> и <STRONG>y</STRONG> 
+<P align="center"><img border="0" src="matrix/fig30.gif" width="100" height="47"><P>Если вектора ортогональны, то cos&#966; = 0 и &#966; = &#960;/2, а если они
+      колинеарны, то 
+cos&#966; = 1 и &#966; = 0.<P><a href="#Contents">Содержание</a>&nbsp;
+      <A name=ch111></A>
+<h2>1.11. Векторное представление матрицы</h2>
+<P>Каждую матрицу <STRONG>A</STRONG> размера <EM>I</EM>&#215;<EM>J</EM> можно 
+представить как набор векторов
+<P align="center"><img border="0" src="matrix/fig31.gif" width="200" height="123">
+<P>Здесь каждый вектор <STRONG>a</STRONG><SUB><i>j</i></SUB> является <EM>j</EM>-ым 
+столбцом, а вектор-строка <STRONG>b</STRONG><SUB><i>i</i></SUB> является <EM>i</EM>-ой 
+строкой матрицы <STRONG>A</STRONG> 
+<P align="center"><img border="0" src="matrix/fig32.gif" width="309" height="125">
+<P align="left"><a href="#Contents">Содержание</a>&nbsp;
+<a name="ch112"></a>
+<h2>1.12. Линейно зависимые векторы</h2>
+<P>Векторы одинаковой размерности (<EM>N</EM>) можно складывать и умножать на 
+число, также как матрицы. В результате получится вектор той же размерности. 
+Пусть имеется несколько векторов одной размерности 
+<STRONG>x</STRONG><SUB>1</SUB>, 
+<STRONG>x</STRONG><SUB>2</SUB>,...,<STRONG>x</STRONG><SUB>K</SUB> и столько же 
+чисел &#945; &#945;<SUB>1</SUB>, &#945;<SUB>2</SUB>,...,&#945;<SUB><i>K</i></SUB>. Вектор&nbsp;
+<P align="center"> 
+<STRONG>y</STRONG> = &#945;<SUB>1</SUB><STRONG>x</STRONG><SUB>1</SUB>+ 
+&#945;<SUB>2</SUB><STRONG>x</STRONG><SUB>2</SUB>+...+ 
+&#945;<SUB><i>K</i></SUB><STRONG>x</STRONG><SUB><i>K</i></SUB> &nbsp;
+<P> называется <EM>линейной 
+комбинацией</EM> векторов <STRONG>x</STRONG><SUB><i>k</i></SUB>. 
+<P>Если существуют такие ненулевые числа &#945;<SUB><i>k</i></SUB> &#8800; 0, <EM>k</EM> = 1,..., 
+<EM>K</EM>, что <STRONG>y</STRONG> = <STRONG>0</STRONG>, то такой набор векторов 
+<STRONG>x</STRONG><SUB><i>k</i> </SUB>называется <EM>линейно зависимым</EM>. В 
+противном случае векторы называются линейно независимыми. Например, векторы 
+<STRONG>x</STRONG><SUB>1</SUB> = (2, 2)<SUP>t </SUP>и 
+<STRONG>x</STRONG><SUB>2</SUB> = (&#8722;1, &#8722;1)<SUP>t</SUP> линейно зависимы, т.к. 
+<STRONG>x</STRONG><SUB>1</SUB> +2<STRONG>x</STRONG><SUB>2</SUB> = 
+<STRONG>0</STRONG><P><a href="#Contents">Содержание</a>&nbsp; <A name=ch113></A>
+<h2>1.13. Ранг матрицы</h2>
+<P>Рассмотрим набор из <EM>K</EM> векторов <STRONG>x</STRONG><SUB>1</SUB>, 
+<STRONG>x</STRONG><SUB>2</SUB>,...,<STRONG>x</STRONG><SUB><i>K</i></SUB> размерности 
+<EM>N</EM>. Рангом этой системы векторов называется максимальное число 
+линейно-независимых векторов. Например в наборе
+<P align="center"><img border="0" src="matrix/fig33.gif" width="288" height="91">
+<P>имеются только два линейно независимых вектора, например 
+<STRONG>x</STRONG><SUB>1</SUB> и <STRONG>x</STRONG><SUB>2</SUB>, поэтому ее ранг 
+равен 2.&nbsp;
+<P> Очевидно, что если векторов в наборе больше, чем их размерность 
+(<EM>K</EM>&gt;<EM>N</EM>), то они обязательно линейно зависимы.&nbsp;
+<P> <EM>Рангом 
+матрицы </EM>(обозначается rank(<STRONG>A</STRONG>)) называется ранг системы 
+векторов, из которых она состоит. Хотя любую матрицу можно представить двумя 
+способами (векторы столбцы или строки), это не влияет на величину ранга, т.к.&nbsp;
+<P align="center">  
+rank(<STRONG>A</STRONG>) = rank(<STRONG>A</STRONG><SUP>t</SUP>).
+<P><a href="#Contents">Содержание</a> <A 
+name=ch114></A>
+<h2>1.14. Обратная матрица</h2>
+<P>Квадратная матрица <STRONG>A</STRONG> называется невырожденной, если она 
+имеет единственную <EM>обратную</EM> матрицу <STRONG>A</STRONG><SUP>-1</SUP>, 
+определяемую условиями
+<P align="center">&nbsp; <STRONG>AA</STRONG><sup>&#8722;1</sup> = 
+<STRONG>A</STRONG><sup>&#8722;1</sup><STRONG>A</STRONG> = <STRONG>I</STRONG>. 
+<P>Обратная матрица существует не для всех матриц. Необходимым и достаточным 
+условием невырожденности является&nbsp; 
+<P align="center"> det(<STRONG>A</STRONG>) &#8800; 0 или 
+rank(<STRONG>A</STRONG>) = <EM>N</EM>. 
+<P>Обращение матрицы — это сложная процедура, для выполнения которой существуют 
+специальные программы. Например, 
+<P align="center"><a href="matrix/Matrix.xls#Ex15!I6"><img border="0" src="matrix/fig34.gif" width="420" height="107"></a><P align="center"><samp><a name="Fig17"></a>Рис.
+      17 Обращение матрицы</samp>
+<P>Приведем формулы для простейшего случая — матрицы 2&#215;2
+<P align="center"><img border="0" src="matrix/fig35.gif">
+<P>Если матрицы <STRONG>A</STRONG> и <STRONG>B</STRONG> невырождены, то&nbsp;
+<P align="center"> 
+(<STRONG>AB</STRONG>)<sup>&#8722;1</sup> = 
+<STRONG>B</STRONG><sup>&#8722;1</sup><STRONG>A</STRONG><sup>&#8722;1</sup>.
+<P><a href="#Contents">Содержание</a> <A 
+name=ch115></A>
+<h2>1.15. Псевдообратная матрица</h2>
+<P>Если матрица <STRONG>A</STRONG> вырождена и обратная матрица не существует, 
+то в некоторых случаях можно использовать <i> псевдообратную</i> матрицу, которая 
+определяется как такая матрица <STRONG>A</STRONG><SUP>+</SUP>, что 
+<P style="TEXT-ALIGN: center"><STRONG>AA</STRONG><SUP>+</SUP><STRONG>A</STRONG> 
+= <STRONG>A</STRONG>. 
+<P>Псевдобратная матрица — не единственная и ее вид зависит от способа 
+построения. Например для прямоугольной матрицы можно использовать
+<a href="http://ru.wikipedia.org/wiki/Псевдообратная_матрица#.D0.9E.D1.81.D0.BE.D0.B1.D1.8B.D0.B5_.D1.81.D0.BB.D1.83.D1.87.D0.B0.D0.B8">
+метод Мура-Пенроуза</a>.<span lang="en-us"> </span>
+<P>Если число столбцов меньше числа строк, то&nbsp;<P class="style2">
+<span lang="en-us"><strong>A</strong><sup>+</sup>=(<strong>A</strong><sup>t</sup><strong>A</strong>)</span><sup>&#8722;1</sup><span lang="en-us"><strong>A</strong><sup>t</sup></span><P>
+Например,&nbsp;<P class="style2"><a href="matrix/Matrix.xls#Ex15a!I10">
+<img src="matrix/fig17a.gif" width="592" height="193" class="style3"></a>&nbsp;<P align="center"><samp>
+<a name="Fig17a"></a>Рис.
+      1<span lang="en-us">7a</span> Псевдообращение матрицы</samp>
+<P>Если же число столбцов больше числа строк, то<P class="style2">
+<span lang="en-us"><strong>A</strong><sup>+</sup>=<strong>A</strong><sup>t</sup>(<strong>AA</strong><sup>t</sup>)</span><sup>&#8722;1</sup><P>
+<a href="#Contents">Содержание</a> <A name=ch116></A>
+<h2>1.16. Умножение вектора на матрицу</h2>
+<P>Вектор <STRONG>x</STRONG> можно умножать на матрицу <STRONG>A</STRONG> 
+подходящей размерности. При этом вектор-столбец умножается справа 
+<STRONG>Ax</STRONG>, а вектор строка — слева 
+<STRONG>x</STRONG><SUP>t</SUP><STRONG>A</STRONG>. Если размерность вектора 
+<EM>J</EM>, а размерность матрицы <EM>I</EM>&#215;<EM>J</EM> то в результате 
+получится вектор размерности <EM>I</EM>. Например,
+<P align="center"><a href="matrix/Matrix.xls#Ex16!K6"><img border="0" src="matrix/fig36.gif" width="302" height="107"></a><P align="center"><samp><a name="Fig18"></a>Рис.
+      18 Умножение вектора на матрицу</samp>
+<P>Если матрица <STRONG>A</STRONG> — квадратная (<EM>I</EM>&#215;<EM>I</EM>), то 
+вектор <STRONG>y</STRONG> = <STRONG>Ax </STRONG>имеет ту же размерность, что и 
+<STRONG>x</STRONG>. Очевидно, что&nbsp;
+<P align="center"> 
+<STRONG>A</STRONG>(&#945;<SUB>1</SUB><STRONG>x</STRONG><SUB>1</SUB> + 
+&#945;<SUB>2</SUB><STRONG>x</STRONG><SUB>2</SUB>) = 
+&#945;<SUB>1</SUB><STRONG>Ax</STRONG><SUB>1</SUB> + 
+&#945;<SUB>2</SUB><STRONG>Ax</STRONG><SUB>2</SUB>.&nbsp;
+<P> Поэтому матрицы можно 
+рассматривать как линейные преобразования векторов. В частности 
+<STRONG>Ix</STRONG> = <STRONG>x</STRONG>, <STRONG>Ox</STRONG> = 
+<STRONG>0</STRONG>.
+<P><a href="#Contents">Содержание</a> <A name=ch200></A>
+<h1>2. Дополнительная информация</h1><A name=ch201></A>
+<h2>2.1. Системы линейных уравнений</h2>
+      <P align="left">Пусть <STRONG>A</STRONG> — матрица размером <EM>I</EM>&#215;<EM>J</EM>, а 
+<STRONG>b</STRONG> — вектор размерности <EM>J</EM>. Рассмотрим уравнение&nbsp;
+      <P align="center"> 
+<STRONG>Ax</STRONG> = <STRONG>b</STRONG> &nbsp;
+      <P align="left"> относительно вектора 
+<STRONG>x</STRONG>, размерности <EM>I</EM>. По сути — это система из <EM>I</EM> 
+линейных уравнений с <EM>J</EM> неизвестными 
+<EM>x</EM><SUB>1</SUB>,...,<EM>x</EM><SUB><i>J</i></SUB>. Решение существует в том, и 
+только в том случае, когда<P align="center">rank(<STRONG>A</STRONG>) = rank(<STRONG>B</STRONG>) = 
+<EM>R</EM>,&nbsp;<P> где <STRONG>B</STRONG> — это расширенная матрица размерности 
+<EM>I</EM>&#215;(<EM>J+1</EM>), состоящая из матрицы <STRONG>A</STRONG>, дополненной 
+столбцом <STRONG>b</STRONG>, <STRONG>B</STRONG> = (<STRONG>A</STRONG> 
+<STRONG>b</STRONG>). В противном случае уравнения несовместны. 
+<P>Если <EM>R</EM> = <EM>I</EM> = <EM>J</EM>, то решение единственно&nbsp; 
+<P align="center"> 
+<STRONG>x</STRONG> = <STRONG>A</STRONG><SUP>&#8722;1</SUP><STRONG>b</STRONG>.&nbsp; 
+<P> Если 
+<EM>R</EM> &lt; <EM>I</EM>, то существует множество различных решений, которые 
+можно выразить через линейную комбинацию <EM>J</EM>&#8722;<EM>R</EM> векторов. Система 
+однородных уравнений <STRONG>Ax</STRONG> = <STRONG>0</STRONG> с квадратной 
+матрицей <STRONG>A</STRONG> (<EM>N</EM>&#215;<EM>N</EM>) имеет нетривиальное решение 
+(<STRONG>x</STRONG> &#8800; <STRONG>0</STRONG>) тогда и только тогда, когда 
+det(<STRONG>A</STRONG>) = 0. Если <EM>R</EM> = 
+rank(<STRONG>A</STRONG>)&lt;<EM>N</EM>, то существуют <EM>N</EM>&#8722;<EM>R</EM> 
+линейно независимых решений.&nbsp; 
+<P><a href="#Contents">Содержание</a><A name=ch202></A>
+<h2>2.2. Билинейные и квадратичные формы</h2>
+<P>Если <STRONG>A </STRONG>— это квадратная матрица , а <STRONG>x</STRONG> и 
+<STRONG>y</STRONG> — вектора соответствующей размерности, то скалярное 
+произведение вида <STRONG>x</STRONG><SUP>t</SUP><STRONG>Ay</STRONG> называется 
+<EM>билинейной </EM>формой , определяемой матрицей <STRONG>A</STRONG>. При 
+<STRONG>x</STRONG> = <STRONG>y</STRONG> выражение 
+<STRONG>x</STRONG><SUP>t</SUP><STRONG>Ax</STRONG> называется 
+<EM>квадратичной</EM> формой.
+<P><a href="#Contents">Содержание</a> <A name=ch203></A>
+<h2>2.3. Положительно определенные матрицы</h2>
+<P>Квадратная матрица <STRONG>A </STRONG>называется <i> положительно определенной</i>, 
+если для любого ненулевого вектора <STRONG>x</STRONG> &#8800; <STRONG>0</STRONG>,&nbsp;
+<P align="center"> 
+<STRONG>x</STRONG><SUP>t</SUP><STRONG>Ax</STRONG> &gt; 0.&nbsp;
+<P> Аналогично 
+определяются <i> отрицательно</i> (<STRONG>x</STRONG><SUP>t</SUP><STRONG>Ax</STRONG> 
+&lt; 0), <i> неотрицательно</i> (<STRONG>x</STRONG><SUP>t</SUP><STRONG>Ax</STRONG> &#8805; 0) 
+и <i> неположительно</i> (<STRONG>x</STRONG><SUP>t</SUP><STRONG>Ax</STRONG> &#8804; 0) 
+определенные матрицы.
+<P><a href="#Contents">Содержание</a><A name=ch204></A>
+<h2>2.4. Разложение Холецкого</h2>
+<P>Если симметричная матрица <STRONG>A</STRONG> положительно определена, то 
+существует единственная треугольная матрица <STRONG>U</STRONG> с положительными 
+элементами, для которой&nbsp;
+<P align="center"> <STRONG>A</STRONG> = 
+<STRONG>U</STRONG><SUP>t</SUP><STRONG>U</STRONG>.
+<P align="left">Например,
+<P align="center"><a href="matrix/Matrix.xls#Ex17!C5"><img border="0" src="matrix/fig37.gif" width="348" height="77"></a><P align="center"><samp><a name="Fig19"></a>Рис.
+      19 Разложение Холецкого</samp>
+<P><a href="#Contents">Содержание</a><a name="ch205"></a>
+<h2>2.5. Полярное разложение</h2>
+<P>Пусть <STRONG>A</STRONG> — это невырожденная квадратная матрица размерности 
+<EM>N</EM>&#215;<EM>N</EM>. Тогда существует однозначное <EM>полярное</EM> 
+представление&nbsp;
+<P align="center"> <STRONG>A</STRONG> = <STRONG>SR,&nbsp;</STRONG> 
+<P>где <STRONG>S</STRONG> — 
+это неотрицательная симметричная матрица, а <STRONG>R</STRONG> — это 
+ортогональная матрица. Матрицы <STRONG>S</STRONG> и<STRONG> R</STRONG> могут 
+быть определены явно:&nbsp; 
+<P align="center"> <STRONG>S</STRONG><SUP>2</SUP> = 
+<STRONG>AA</STRONG><SUP>t</SUP> или <STRONG>S</STRONG> = 
+(<STRONG>AA</STRONG><SUP>t</SUP>)<SUP>&#189;</SUP> и <STRONG>R</STRONG> = 
+<STRONG>S</STRONG><SUP>&#8722;1</SUP><STRONG>A</STRONG> = 
+(<STRONG>AA</STRONG><SUP>t</SUP>)<SUP>&#8722;&#189;</SUP><STRONG>A</STRONG>.&nbsp; 
+<P> Например,
+<P align="center"><a href="matrix/Matrix.xls#Ex18!I5"><img border="0" src="matrix/fig38.gif" width="592" height="137"></a><P align="center"><samp><a name="Fig20"></a>Рис.
+      20 Полярное разложение</samp>
+<P>Если матрица <STRONG>A</STRONG> вырождена, то разложение не единственно — а 
+именно: <STRONG>S</STRONG> по-прежнему одна, а вот <STRONG>R</STRONG> может быть 
+много. Полярное разложение представляет матрицу <STRONG>A</STRONG> как 
+комбинацию сжатия/растяжения <STRONG>S</STRONG> и поворота <STRONG>R</STRONG>.
+<P><a href="#Contents">Содержание</a> 
+<A name=ch206></A>
+<h2>2.6. Собственные векторы и собственные значения</h2>
+<P>Пусть <STRONG>A</STRONG> — это квадратная матрица. Вектор <STRONG>v</STRONG> 
+называется <EM>собственным вектором</EM> матрицы <STRONG>A</STRONG>,
+если&nbsp;
+<P align="center"> 
+<STRONG>Av</STRONG> = &#955;<STRONG>v</STRONG>,&nbsp;
+<P> где число &#955; называется 
+<EM>собственным значением</EM> матрицы <STRONG>A</STRONG>. Таким образом 
+преобразование, которое выполняет матрица <STRONG>A</STRONG> над вектором 
+<STRONG>v</STRONG>, сводится к простому растяжению или сжатию с коэффициентом &#955;. 
+Собственный вектор определяется с точностью до умножения на константу &#945; &#8800; 0, 
+т.е. если <STRONG>v</STRONG> — собственный вектор, то и &#945;<STRONG>v</STRONG> — 
+тоже собственный вектор.&nbsp;
+<P><a href="#Contents">Содержание</a><A name=ch207></A>
+<h2>2.7. Собственные значения</h2>
+<P>У матрицы <STRONG>A</STRONG> , размерностью (<EM>N</EM>&#215;<EM>N</EM>) не может 
+быть больше чем <EM>N</EM> собственных значений. Они удовлетворяют 
+<EM>характеристическому уравнению</EM> &nbsp;
+<P align="center"> det(<STRONG>A</STRONG> &#8722; 
+&#955;<STRONG>I</STRONG>) = 0,&nbsp;
+<P> являющемуся алгебраическим уравнением <EM>N</EM>-го 
+порядка. В частности, для матрицы 2&#215;2 характеристическое уравнение имеет вид
+<P align="center"><img border="0" src="matrix/fig39.gif" width="447" height="59">
+<P>Например,
+<P align="center"><a href="matrix/Matrix.xls#Ex19!B4"><img border="0" src="matrix/fig40.gif" width="366" height="257"></a><P align="center"><samp><a name="Fig21"></a>Рис.
+      21 Собственные значения</samp>
+<P>Набор собственных значений &#955;<SUB>1</SUB>,..., &#955;<EM><SUB>N</SUB></EM> матрицы 
+<STRONG>A</STRONG> называется <EM>спектром</EM> <STRONG>A</STRONG>.&nbsp;
+<P> Спектр 
+обладает разнообразными свойствами. В частности
+<P align="center">&nbsp;det(<STRONG>A</STRONG>) = 
+&#955;<SUB>1</SUB>&#215;...&#215;&#955;<EM><SUB>N</SUB></EM>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Sp(<STRONG>A</STRONG>) = 
+&#955;<SUB>1</SUB>+...+&#955;<EM><SUB>N</SUB></EM>. 
+<P>Собственные значения произвольной матрицы могут быть комплексными числами, 
+однако если матрица симметричная (<STRONG>A</STRONG><SUP>t</SUP> = 
+<STRONG>A</STRONG>), то ее собственные значения вещественны.&nbsp; 
+<P><a href="#Contents">Содержание</a><A name=ch208></A>
+<h2>2.8. Собственные векторы</h2>
+<P>У матрицы <STRONG>A</STRONG>, размерностью (<EM>N</EM>&#215;<EM>N</EM>) не может 
+быть больше чем <EM>N</EM> собственных векторов, каждый из которых соответствует 
+своему собственному значению. Для определения собственного вектора 
+<STRONG>v</STRONG><SUB><i>n</i></SUB> нужно решить систему однородных уравнений&nbsp;
+<P align="center"> 
+(<STRONG>A</STRONG> &#8722; &#955;<SUB><i>n</i></SUB><STRONG>I</STRONG>)<STRONG> 
+v</STRONG><SUB><i>n</i></SUB> = <STRONG>0</STRONG>.&nbsp;
+<P> Она имеет нетривиальное решение, 
+поскольку det(<STRONG>A &#8722; </STRONG>&#955;<SUB><i>n</i></SUB><STRONG>I</STRONG>) = 0.&nbsp;
+<P>  
+Например,
+<P align="center"><a href="matrix/Matrix.xls#Ex20!B4"><img border="0" src="matrix/fig41.gif" width="395" height="257"></a><P align="center"><samp><a name="Fig22"></a>Рис.
+      22 Собственные вектора</samp>
+<P>Собственные вектора симметричной матрицы ортогональны.
+<P><a href="#Contents">Содержание</a> <A name=ch209></A>
+<h2>2.9. Эквивалентные и подобные матрицы</h2>
+<P>Две прямоугольные матрицы <STRONG>A</STRONG> и <STRONG>B</STRONG> одной 
+размерности <EM>I</EM>&#215;<EM>J</EM> <EM>эквивалентны</EM>, если существуют такие 
+квадратные матрицы <STRONG>S</STRONG>, размерности <EM>I</EM>&#215;<EM>I</EM>, и 
+<STRONG>T</STRONG>, размерности <EM>J</EM>&#215;<EM>J</EM>, что&nbsp;
+<P align="center"> <STRONG>B</STRONG> = 
+<STRONG>SAT</STRONG>.&nbsp;
+<P> Эквивалентные матрицы имею один и тот же ранг. 
+<P>Две прямоугольные матрицы <STRONG>A</STRONG> и <STRONG>B</STRONG> одной 
+размерности <EM>N</EM>&#215;<EM>N</EM> <EM>подобны</EM>, если существует такая 
+невырожденная матрица <STRONG>T</STRONG>, что&nbsp; 
+<P align="center"> <STRONG>B</STRONG> = 
+<STRONG>T</STRONG><SUP>&#8722;1</SUP><STRONG>AT</STRONG>.&nbsp; 
+<P> Матрица <STRONG>T</STRONG> 
+называется преобразованием подобия. 
+<P>Подобные матрицы имеют один и тот же ранг, след, определитель и спектр.&nbsp; 
+<P><a href="#Contents">Содержание</a><A 
+name=ch210></A>
+<h2>2.10. Приведение матрицы к диагональному виду</h2>
+<P>Нормальную (в частности симметричную) матрицу <STRONG>A</STRONG> можно 
+привести к диагональному виду преобразованием подобия&nbsp;—&nbsp;
+<P align="center"> <STRONG>A</STRONG> = 
+<STRONG>T&#923;T</STRONG><SUP>&#8722;1</SUP> 
+<P>Здесь <STRONG>&#923;</STRONG> = diag(&#955;<SUB>1</SUB>,..., &#955;<SUB><i>N</i></SUB>) — это 
+диагональная матрица, элементами которой являются собственные значения матрицы 
+<STRONG>A</STRONG>, а <STRONG>T</STRONG> — это матрица, составленная из 
+соответствующих собственных векторов матрицы <STRONG>A</STRONG>, т.е. 
+<STRONG>T</STRONG> = 
+(<STRONG>v</STRONG><SUB>1</SUB>,...,<STRONG>v</STRONG><SUB><i>N</i></SUB>).&nbsp; 
+<P> Например, 
+<P align="center"><a href="matrix/Matrix.xls#Ex21!B4"><img border="0" src="matrix/fig42.gif" width="453" height="152"></a><P align="center"><samp><a name="Fig23"></a>Рис.
+      23 Приведение к диагональному виду</samp>
+<P><a href="#Contents">Содержание</a> <a name="ch211"></a><h2>2.11. Разложение по сингулярным значениям
+      (SVD)</h2>
+<P>Пусть имеется прямоугольная матрица <STRONG>A</STRONG> размерностью 
+<EM>I</EM>&#215;<EM>J</EM> ранга <EM>R</EM> (<EM>I</EM>&#8804;<EM>J</EM>&#8804;<EM>R</EM>). Ее 
+можно разложить в произведение трех матриц <STRONG>P</STRONG><SUB>R</SUB> 
+(<EM>I</EM>&#215;<EM>R</EM>), <STRONG>D</STRONG><SUB>R</SUB> (<EM>R</EM>&#215;<EM>R</EM>) 
+и <STRONG>Q</STRONG><SUB>R</SUB> (<EM>J</EM>&#215;<EM>R</EM>) —&nbsp;
+<P align="center"><img border="0" src="matrix/fig43.gif" width="99" height="27">
+<P align="left">так, чтобы&nbsp;—&nbsp;
+<P align="center"><img border="0" src="matrix/fig44.gif" width="143" height="28">.
+<P>Здесь <STRONG>P</STRONG><SUB>R</SUB> — матрица, образованная <EM>R</EM> 
+ортонормированными собственными векторами <STRONG>p</STRONG><SUB>r</SUB> матрицы 
+<STRONG>AA</STRONG><SUP>t</SUP>, соответствующим <EM>R</EM> наибольшим 
+собственным значениям &#955;<SUB>r</SUB>; 
+<P 
+style="TEXT-ALIGN: center"><STRONG>AA</STRONG><SUP>t</SUP><STRONG>p</STRONG><SUB>r</SUB><STRONG> 
+= </STRONG>&#955;<SUB>r</SUB><STRONG>p</STRONG><SUB>r</SUB>; 
+<P><STRONG>Q</STRONG><SUB>R</SUB> — матрица, образованная <EM>R</EM> 
+ортонормированными собственными векторами <STRONG>q</STRONG><SUB>r</SUB> матрицы 
+<STRONG>A</STRONG><SUP>t</SUP><STRONG>A</STRONG>; 
+<P 
+style="TEXT-ALIGN: center"><b>A</b><sup>t</sup><b>Aq</b><SUB>r</SUB><STRONG> 
+= </STRONG>&#955;<SUB>r</SUB><STRONG>q</STRONG><SUB>r</SUB>.<P><STRONG>D</STRONG><SUB>R</SUB> = diag 
+(&#963;<SUB>1</SUB>,...,&#963;<SUB>R</SUB>) — положительно определенная диагональная 
+матрица , элементами которой являются &#963;<SUB>1</SUB>&#8805;... &#8805;&#963;<SUB>R</SUB>&#8805;0 —
+      <i> 
+сингулярные значения</i> матрицы <STRONG>A</STRONG>, равные квадратным корням из 
+собственных значений матрицы <STRONG>A</STRONG><SUP>t</SUP><STRONG>A
+      </STRONG>—&nbsp; 
+<P align="center"><img border="0" src="matrix/fig45.gif" width="68" height="27">
+<P>Пример,
+<P align="center"><a href="matrix/Matrix.xls#Ex22!B4"><img border="0" src="matrix/fig46.gif" width="450" height="407"></a><P align="center"><samp><a name="Fig24"></a>Рис.
+      24 SVD разложение</samp>
+<P>Дополняя матрицы <STRONG>P</STRONG><SUB>R</SUB> и 
+<STRONG>Q</STRONG><SUB>R</SUB> ортонормированными столбцами, а матрицу 
+<STRONG>D</STRONG><SUB>R</SUB> нулевыми значениями, можно сконструировать 
+матрицы <STRONG>P</STRONG> (<EM>I</EM>&#215;<EM>J</EM>), <STRONG>D</STRONG> 
+(<EM>J</EM>&#215;<EM>J</EM>) и <STRONG>Q</STRONG> (<EM>J</EM>&#215;<EM>J</EM>) такие, что
+<P align="center"><img border="0" src="matrix/fig47.gif" width="159" height="32">
+<P>Об использовании SVD рассказано в
+пособиях <a href="matlab.htm#Ch5.2">MatLab.
+          Руководство для начинающих</a>&nbsp;и <a href="pca.htm#Ch2.3">Метод
+          главных компонент (PCA)</a>
+<P><a href="#Contents">Содержание</a> <a name="ch212"></a>
+<h2>2.12. Линейное пространство</h2>
+<P>Рассмотрим все возможные векторы размерности <EM>N</EM>. Это множество 
+называется <i> линейным пространством</i> размерности <EM>N</EM> и обозначается 
+R<SUP><EM>N</EM></SUP> . Так как в R<SUP><EM>N</EM></SUP> включены все возможные 
+векторы, то любая линейная комбинация векторов из R<SUP><EM>N</EM></SUP> будет 
+также принадлежать этому пространству.
+<P><a href="#Contents">Содержание</a><A name=ch213></A>
+<h2>2.13. Базис линейного пространства</h2>
+<P>Любой набор из <EM>N</EM> линейно независимых векторов называется 
+<EM>базисом</EM> в пространстве R<SUP><EM>N</EM></SUP> . Простейший пример 
+базиса — это набор векторов
+<P align="center"><img border="0" src="matrix/fig48.gif" width="280" height="120">
+<P>в каждом из которых только один элемент равен 1, а остальные равны нулю. 
+Тогда любой вектор <STRONG>x</STRONG> = (<EM>x</EM><SUB>1</SUB>, 
+<EM>x</EM><SUB>2</SUB>,...,<EM>x</EM><SUB><i>N</i></SUB>)<SUP>t</SUP> может быть 
+представлен как линейная комбинация <STRONG>x</STRONG> = 
+<EM>x</EM><SUB>1</SUB><STRONG>e</STRONG><SUB>1</SUB>+ 
+<EM>x</EM><SUB>2</SUB><STRONG>e</STRONG><SUB>2+</SUB>...+<EM>x</EM><SUB><i>N</i></SUB><STRONG>e</STRONG><SUB><i>N</i></SUB> 
+базисных векторов.&nbsp;
+<P> Базис, составленный из попарно ортогональных векторов, 
+называется <EM>ортогональным</EM>, а если базисные вектора еще и нормированы, то 
+этот базис называется <EM>ортонормированным</EM>.
+<P><a href="#Contents">Содержание</a> <A name=ch214></A>
+<h2>2.14. Геометрическая интерпретация</h2>
+<P>Линейному пространству можно дать удобную геометрическую интерпретацию. 
+Представим себе <EM>N</EM>-мерное пространство, в котором базисные вектора 
+задают направления осей координат. Тогда произвольный вектор <STRONG>x</STRONG> 
+= (<EM>x</EM><SUB>1</SUB>, 
+<EM>x</EM><SUB>2</SUB>,...,<EM>x</EM><SUB><i>N</i></SUB>)<SUP>t</SUP> можно изобразить 
+точкой в этом пространстве с координатами (<EM>x</EM><SUB>1</SUB>, 
+<EM>x</EM><SUB>2</SUB>,...,<EM>x</EM><SUB><i>N</i></SUB>).
+<P align="center"><img border="0" src="matrix/fig49.gif" width="250" height="259">
+      <P align="center"><samp><a name="Fig25"></a>Рис. 25
+      Координатное пространство</samp>
+<P><a href="#Contents">Содержание</a> <A name=ch215></A>
+&nbsp;
+<h2>2.15. Множественность базисов</h2>
+<P>В линейном пространстве могут быть неограниченное число базисов. Так, в 
+пространстве R<SUP>3</SUP> помимо обычного ортонормированного базиса
+<P align="center"><img border="0" src="matrix/fig50.gif" width="207" height="91">
+<P>можно установить и другой ортонормированный базис, например
+<P align="center"><img border="0" src="matrix/fig51.gif" width="308" height="96">
+<P>Каждый базис можно представить матрицей <STRONG>B</STRONG> = 
+(<STRONG>b</STRONG><SUB>1</SUB>,...,<STRONG>b</STRONG><SUB>N</SUB>), 
+составленной из базисных векторов. Переход от одного базиса к другому 
+осуществляется с помощью невырожденной квадратной матрицы <STRONG>T</STRONG>, 
+т.е. <STRONG>B</STRONG><SUB>2</SUB> = <STRONG>TB</STRONG><SUB>1</SUB>.
+<P><a href="#Contents">Содержание</a> <A 
+name=ch216></A>
+<h2>2.16. Подпространство</h2>
+<P>Пусть имеется набор из <EM>K</EM> линейно независимых векторов 
+<STRONG>x</STRONG><SUB>1</SUB>, 
+<STRONG>x</STRONG><SUB>2</SUB>,...,<STRONG>x</STRONG><SUB><i>K</i></SUB> в пространстве 
+R<SUP><EM>N</EM></SUP>. Рассмотрим все возможные линейные комбинации этих 
+векторов 
+<P style="TEXT-ALIGN: center"><STRONG>x</STRONG> = &#945;<SUB>1</SUB><STRONG>x</STRONG><SUB>1</SUB>+ 
+&#945;<SUB>2</SUB><STRONG>x</STRONG><SUB>2</SUB>+...+ 
+&#945;<SUB><i>K</i></SUB><STRONG>x</STRONG><SUB><i>K</i></SUB> 
+<P>О получившимся множестве Q говорят, что оно является линейной оболочкой или 
+что оно <EM>натянуто</EM> на векторы <STRONG>x</STRONG><SUB>1</SUB>, 
+<STRONG>x</STRONG><SUB>2</SUB>,...,<STRONG>x</STRONG><SUB><i>K</i></SUB>. По 
+определению линейного пространства это множество Q само является линейным 
+пространством размерности <EM>K</EM>. При этом оно принадлежит пространству 
+R<SUP><EM>N</EM></SUP>, поэтому Q называется линейным <EM>подпространством</EM> 
+R<SUP><EM>K</EM></SUP> в пространстве R<SUP><EM>N</EM></SUP>.&nbsp; 
+<P><a href="#Contents">Содержание</a><A name=ch217></A>
+<h2>2.17. Проекция на подпространство</h2>
+      <P>Рассмотрим подпространство R<SUP><EM>K</EM></SUP>, натянутое на векторы 
+<STRONG>X</STRONG> = (<STRONG>x</STRONG><SUB>1</SUB>, 
+<STRONG>x</STRONG><SUB>2</SUB>,...,<STRONG>x</STRONG><SUB><i>K</i></SUB>) в 
+пространстве R<SUP><EM>N</EM></SUP>. Матрица базиса <STRONG>X</STRONG> имеет 
+размерность (<EM>N</EM>&#215;<EM>K</EM>). Любой вектор <STRONG>y</STRONG> из 
+R<SUP><EM>N</EM></SUP> может быть спроецирован на подпространство 
+R<SUP><EM>K</EM></SUP>, т.е. представлен в виде<STRONG> &nbsp;</STRONG> <P align="center"><STRONG> y</STRONG> = 
+<STRONG>y</STRONG><SUP>||</SUP> + <STRONG>y</STRONG><sup>&#8869;</sup>,&nbsp;<P> где вектор 
+<STRONG>y</STRONG><SUP>||</SUP> принадлежит R<SUP><EM>K</EM></SUP>, а вектор 
+<STRONG>y</STRONG><sup>&#8869;</sup> ортогонален <STRONG>y</STRONG><SUP>||</SUP>.&nbsp; 
+<P align="center"><img border="0" src="matrix/fig52.gif" width="231" height="208"><P align="center"><samp><a name="Fig26"></a>Рис.
+      26 Проекция на подпространство</samp>
+      <P> Проекцию<STRONG>  y</STRONG><SUP>||</SUP>  можно
+      представить как результат действия
+      проекционной матрицы&nbsp;<STRONG>P</STRONG><P align="center"> <STRONG>y</STRONG><SUP>||</SUP> 
+      = <STRONG>Py</STRONG> 
+<P>Проекционная матрица определяется как
+<P align="center"><img border="0" src="matrix/fig53.gif" width="115" height="31">
+<P>Пример.
+<P align="center"><a href="matrix/Matrix.xls#Ex23!B4"><img border="0" src="matrix/fig54.gif" width="395" height="244"></a><P align="center"><samp><a name="Fig26"></a>Рис.
+      27 Проекционное разложение</samp> 
+<P><a href="#Contents">Содержание</a><a name="concl"></a><h1 align="center">Заключение</h1>
+      <p align="left">Матричные методы активно
+      используются при анализе данных, в том
+      числе и хемометрическими методами.&nbsp; </p>
+      <p align="left">Примеры
+      приведены в пособиях</p>
+      <ul>
+        <li>
+          <p align="left"><a href="excel.htm">Матричные операции в Excel</a> и в
+      сопровождающем его файле <a href="excel/Excel.xls"><em>Excel.xls</em></a> &nbsp;&nbsp;</li>
+        <li>
+          <p align="left"><a href="pca.htm">Метод главных
+          компонент (PCA)</a> и в
+      сопровождающем его файле <a href="pca/People.xls"><em>People.xls</em></a>&nbsp;&nbsp;</li>
+        <li>
+          <p align="left"> <a href="calibration.htm"> Калибровка</a> и в
+      сопровождающем его файле <a href="calibration/Calibration.xls"> <em>Calibration.xls</em></a></li>
+        <li>
+          <p align="left"> <a href="classification.htm">Классификация</a> и в
+      сопровождающем его файле <a href="classification/Iris.xls">
+			<span lang="en-us"><em>Iris.</em></span><em>xls</em></a></li>
+		<li>
+          <p align="left"> <a href="mcr.htm">Разрешение многомерных кривых </a>и в
+      сопровождающем его файле <span lang="en-us"><a href="mcr/MCR.xls"><em>MCR.xls</em></a></span>.</li>
+      </ul>
+      <p align="left">&nbsp;</p>
+      <p align="left"><a href="#Contents">Содержание</a></p>
+      <p align="left">&nbsp;</p>
+  </table>
+
+</body>
+
